@@ -41,6 +41,8 @@ security:
     ROLE_ADHERENT: ROLE_USER
     ROLE_PARTENAIRE: ROLE_USER
 
+  access_denied_url: /
+
 when@test:
   security:
     password_hashers:

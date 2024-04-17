@@ -1,6 +1,11 @@
 html {
   scroll-behavior: smooth;
 
+  .turbo-progress-bar {
+    height: 0.75rem;
+    background-color: $third;
+  }
+
   body {
     @import "../pages";
   }

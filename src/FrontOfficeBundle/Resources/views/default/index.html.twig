@@ -33,7 +33,7 @@
 
                     <div class="sub">
                         <img src="{{ asset('img/documents.webp') }}" alt="Visuels & Communication"/>
-                        <a href="communication.html">
+                        <a href="{{ path('front_office_adherent_visuels_et_communication') }}">
                             Visuels
                             <br/>
                             &
@@ -43,7 +43,7 @@
                     </div>
 
                     <div class="sub">
-                        <a href="administratif.html">
+                        <a href="{{ path('front_office_adherent_contrats_et_dossiers') }}">
                             Contrats
                             <br/>
                             &
@@ -79,7 +79,7 @@
 
                     <div class="sub">
                         <img src="{{ asset('img/live.webp') }}" alt="Prestations"/>
-                        <a href="#">
+                        <a href="{{ path('front_office_partenaire_prestations_et_regie') }}">
                             Presta
                             <br/>
                             &
@@ -89,7 +89,7 @@
                     </div>
 
                     <div class="sub">
-                        <a href="#">
+                        <a href="{{ path('front_office_partenaire_organisation_et_formations') }}">
                             Orga
                             <br/>
                             &
