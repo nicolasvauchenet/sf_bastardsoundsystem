@@ -1,79 +1,80 @@
 .app-form {
-    padding: 1rem;
-    background-color: $white;
+  padding: 1rem;
+  background-color: $white;
 
-    @import "./fieldset";
+  @import "./fieldset";
 
-    .form-group {
-        margin-bottom: 1rem;
-        padding: 0 0.5rem;
+  .form-group {
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
 
-        &:last-child {
-            margin-bottom: 0;
-        }
-
-        &:has(.form-submit) {
-            margin: 1.5rem 0 0.5rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.25rem;
-            font-family: $font-secondary;
-            color: $primary;
-
-            &.required {
-                &:after {
-                    content: " *";
-                    color: $danger;
-                }
-            }
-        }
-
-        .form-control {
-            box-sizing: border-box;
-            padding: 0.5rem 1rem;
-            width: 100%;
-            font-family: $font-primary;
-            font-size: 1rem;
-            background-color: $white;
-            border: 2px solid $primary;
-            border-radius: 0.25rem;
-        }
-
-        textarea {
-            min-width: 100%;
-            max-width: 100%;
-        }
-
-        span {
-            @include respondTo(xs) {
-                display: none;
-            }
-        }
-
-        .form-submit {
-            box-sizing: border-box;
-            display: block;
-            width: 100%;
-
-            @include respondTo(md) {
-                margin: 0 1rem;
-                width: auto;
-            }
-        }
-
-        @include respondTo(md) {
-            @include displayGrid(3fr 7fr, 0.5rem);
-            align-items: center;
-
-            &:has(textarea) {
-                align-items: flex-start;
-            }
-
-            .form-label {
-                margin-bottom: 0;
-            }
-        }
+    &:last-child {
+      margin-bottom: 0;
     }
+
+    &:has(.form-submit) {
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-family: $font-secondary;
+      font-weight: bold;
+      color: $primary;
+
+      &.required {
+        &:after {
+          content: " *";
+          color: $danger;
+        }
+      }
+    }
+
+    .form-control {
+      box-sizing: border-box;
+      padding: 0.5rem 1rem;
+      width: 100%;
+      font-family: $font-primary;
+      font-size: 1rem;
+      background-color: $white;
+      border: 2px solid $primary;
+      border-radius: 0.25rem;
+    }
+
+    textarea {
+      min-width: 100%;
+      max-width: 100%;
+    }
+
+    span {
+      @include respondTo(xs) {
+        display: none;
+      }
+    }
+
+    .form-submit {
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+
+      @include respondTo(md) {
+        margin: 0 1rem;
+        width: auto;
+      }
+    }
+
+    @include respondTo(md) {
+      @include displayGrid(3fr 7fr, 0.5rem);
+      align-items: center;
+
+      &:has(textarea) {
+        align-items: flex-start;
+      }
+
+      .form-label {
+        margin-bottom: 0;
+      }
+    }
+  }
 }

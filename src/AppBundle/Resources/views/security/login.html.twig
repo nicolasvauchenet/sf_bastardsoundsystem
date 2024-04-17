@@ -1,0 +1,62 @@
+{% extends '@FrontOffice/index.html.twig' %}
+
+{% block title %}Connectez-vous{% endblock %}
+{% block body_class %}frontoffice form{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Débloquez votre expérience BSS&nbsp;!</h1>
+    </section>
+
+    <section class="app-section text">
+        <p>
+            En accédant à votre espace personnel, vous découvrirez un univers de
+            possibilités qui attendent juste d'être explorées. Chaque
+            fonctionnalité est conçue pour enrichir votre parcours artistique.
+            Connectez-vous dès maintenant et commencez à tirer le meilleur de
+            chaque note !
+        </p>
+    </section>
+
+    <section class="app-section">
+        <form method="post" class="app-form">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <fieldset class="form-fieldset">
+                <legend class="form-legend">Vos identifiants</legend>
+
+                <div class="form-group">
+                    <label for="inputEmail" class="form-label required">Votre e-mail</label>
+                    <input type="email"
+                           value="{{ last_username }}"
+                           name="email"
+                           id="inputEmail"
+                           class="form-control"
+                           autocomplete="email"
+                           required
+                           autofocus/>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputPassword" class="form-label required">Votre mot de passe</label>
+                    <input type="password"
+                           name="password"
+                           id="inputPassword"
+                           class="form-control"
+                           autocomplete="current-password"
+                           required>
+                </div>
+            </fieldset>
+
+            <div class="form-group">
+                <span>
+                    &nbsp;
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                </span>
+                <button class="form-submit app-btn cta" type="submit">Connexion</button>
+            </div>
+        </form>
+    </section>
+{% endblock %}

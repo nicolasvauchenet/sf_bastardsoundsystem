@@ -13,6 +13,7 @@ return [
     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
+    App\AppBundle\AppBundle::class => ['all' => true],
     App\FrontOfficeBundle\FrontOfficeBundle::class => ['all' => true],
     App\AdherentBundle\AdherentBundle::class => ['all' => true],
     App\PartenaireBundle\PartenaireBundle::class => ['all' => true],

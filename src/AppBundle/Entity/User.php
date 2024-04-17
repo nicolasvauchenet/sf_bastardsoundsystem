@@ -173,6 +173,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getFullname(): ?string
+    {
+        return $this->gender . ' ' . $this->firstname . ' ' . $this->lastname;
+    }
+
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;

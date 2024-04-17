@@ -27,4 +27,42 @@
   @import './main';
 
   @import './footer';
+
+  &.form {
+    background-color: $white;
+
+    .app-main {
+      .app-section {
+        &.pagetitle {
+          border-bottom: 0.25rem solid $secondary;
+        }
+
+        &.text {
+          @include respondTo(md) {
+            margin: 0 auto;
+            width: 50dvw;
+          }
+
+          &.alt {
+            margin-bottom: 1rem;
+            border-top: 0.25rem solid $primary;
+            border-bottom: 0.25rem solid $primary;
+
+            @include respondTo(md) {
+              border-left: 0.25rem solid $primary;
+              border-right: 0.25rem solid $primary;
+              border-radius: 0.25rem;
+            }
+          }
+        }
+      }
+
+      .app-form {
+        @include respondTo(md) {
+          margin: 0 auto;
+          width: 50dvw;
+        }
+      }
+    }
+  }
 }
