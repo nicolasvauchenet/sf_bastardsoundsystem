@@ -4,8 +4,14 @@
     </p>
 
     <p class="links">
-        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="{{ path('front_office_mentions_legales') }}"
+           {% if app.request.get('_route') == 'front_office_mentions_legales' %}class="active"{% endif %}>
+            Mentions légales
+        </a>
         •
-        <a href="politique-de-confidentialite.html">Politique de confidentialité</a>
+        <a href="{{ path('front_office_politique_de_confidentialite') }}"
+           {% if app.request.get('_route') == 'front_office_politique_de_confidentialite' %}class="active"{% endif %}>
+            Politique de confidentialité
+        </a>
     </p>
 </footer>

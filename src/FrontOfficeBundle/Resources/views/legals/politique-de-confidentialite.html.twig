@@ -1,0 +1,51 @@
+{% extends '@FrontOffice/index.html.twig' %}
+
+{% block title %}Politique de Confidentialité{% endblock %}
+{% block body_class %}frontoffice legals{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Politique de Confidentialité</h1>
+    </section>
+
+    <section class="app-section text">
+        <h2>Données personnelles</h2>
+        <p>
+            En vertu de la loi n° 78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés, toute
+            personne dispose des droits d'opposition (art. 26 de la loi), d'accès (art. 34 à 38 de la loi) et de
+            rectification (art. 36 de la loi) des données le concernant. Ainsi, il peut exiger que soient rectifiées,
+            complétées, clarifiées, mises à jour ou effacées les informations le concernant qui sont inexactes,
+            incomplètes, équivoques, périmées, ou dont la collecte ou l'utilisation, la communication ou la conservation
+            est interdite. Pour exercer ces droits, l'utilisateur peut contacter le responsable de publication à
+            l'adresse indiquée plus haut.
+        </p>
+    </section>
+
+    <section class="app-section text">
+        <h2>Utilisation des cookies</h2>
+        <p>
+            Le site
+            <a href="{{ path('front_office_index') }}">www.bastardsoundsystem.org</a>
+            peut-être amené à vous demander l’acceptation des cookies pour des besoins de statistiques et d'affichage.
+            Un cookie est une information déposée sur votre disque dur par le serveur du site que vous visitez. Il
+            contient plusieurs données qui sont stockées sur votre ordinateur dans un simple fichier texte auquel un
+            serveur accède pour lire et enregistrer des informations. Certaines parties de ce site ne peuvent être
+            fonctionnelles sans l’acceptation de cookies.
+        </p>
+    </section>
+
+    <section class="app-section text">
+        <h2>Conditions générales d'utilisation</h2>
+        <p>
+            Le site accessible par les url suivantes :
+            <a href="{{ path('front_office_index') }}">www.bastardsoundsystem.org</a>
+            ou
+            <a href="{{ path('front_office_index') }}">bastardsoundsystem.org</a>
+            est exploité dans le respect de la législation française. L'utilisation de ce site est régie par les
+            présentes conditions générales. En utilisant le site, vous reconnaissez avoir pris connaissance de ces
+            conditions et les avoir acceptées. Celles-ci pourront être modifiées à tout moment et sans préavis par
+            l'association Bastard Sound System. Bastard Sound System ne saurait être tenu pour responsable en aucune
+            manière d’une mauvaise utilisation du service.
+        </p>
+    </section>
+{% endblock %}

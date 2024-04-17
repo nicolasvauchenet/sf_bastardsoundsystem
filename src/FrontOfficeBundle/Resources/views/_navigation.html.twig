@@ -12,8 +12,14 @@
         </a>
 
         <div class="submenu">
-            <a href="communication.html">Visuels & Comm'</a>
-            <a href="administratif.html">Contrats & Dossiers</a>
+            <a href="{{ path('front_office_adherent_visuels_et_communication') }}"
+               {% if app.request.get('_route') == 'front_office_adherent_visuels_et_communication' %}class="active"{% endif %}>
+                Visuels & Comm'
+            </a>
+            <a href="{{ path('front_office_adherent_contrats_et_dossiers') }}"
+               {% if app.request.get('_route') == 'front_office_adherent_contrats_et_dossiers' %}class="active"{% endif %}>
+                Contrats & Dossiers
+            </a>
         </div>
     </div>
 
@@ -24,29 +30,61 @@
         </a>
 
         <div class="submenu">
-            <a href="#">Prestations & Régie</a>
-            <a href="#">Orga & Formation</a>
+            <a href="{{ path('front_office_partenaire_prestations_et_regie') }}"
+               {% if app.request.get('_route') == 'front_office_partenaire_prestations_et_regie' %}class="active"{% endif %}>
+                Prestations & Régie
+            </a>
+            <a href="{{ path('front_office_partenaire_organisation_et_formations') }}"
+               {% if app.request.get('_route') == 'front_office_partenaire_organisation_et_formations' %}class="active"{% endif %}>
+                Orga & Formations
+            </a>
         </div>
     </div>
 
-    <a href="contact.html">
+    <a href="{{ path('front_office_contact') }}"
+       {% if app.request.get('_route') == 'front_office_contact' %}class="active"{% endif %}>
         <i class="fa-solid fa-envelope"></i>
         Contact
     </a>
 
     <div class="menu-item">
         <a href="#">
-            <i class="fa-regular fa-circle-user"></i>
-            Visiteur
+            <i class="fa-{{ app.user ? 'solid' : 'regular' }} fa-circle-user"></i>
+            {{ app.user ? app.user.pseudo ? app.user.pseudo : app.user.firstname : 'Visiteur' }}
         </a>
 
         <div class="submenu">
-            <a href="{{ path('app_login') }}"
-               {% if app.request.get('_route') == 'app_login' %}class="active"{% endif %}>
-                Connexion
-            </a>
-            <a href="adhesion.html">Adhésion</a>
-            <a href="partenariat.html">Partenariat</a>
+            {% if app.user %}
+                {% if is_granted('ROLE_ADHERENT') %}
+                    <a href="{{ path('adherent_index') }}">
+                        Mon Espace Adhérent
+                    </a>
+                {% elseif is_granted('ROLE_PARTENAIRE') %}
+                    <a href="{{ path('partenaire_index') }}">
+                        Mon Espace Partenaire
+                    </a>
+                {% elseif is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('admin_index') }}">
+                        Administration BSS
+                    </a>
+                {% endif %}
+                <a href="{{ path('app_logout') }}" onclick="return window.confirm('Vous partez déjà ?')">
+                    Déconnexion
+                </a>
+            {% else %}
+                <a href="{{ path('app_login') }}"
+                   {% if app.request.get('_route') == 'app_login' %}class="active"{% endif %}>
+                    Connexion
+                </a>
+                <a href="{{ path('front_office_adhesion') }}"
+                   {% if app.request.get('_route') == 'front_office_adhesion' %}class="active"{% endif %}>
+                    Adhésion
+                </a>
+                <a href="{{ path('front_office_partenariat') }}"
+                   {% if app.request.get('_route') == 'front_office_partenariat' %}class="active"{% endif %}>
+                    Partenariat
+                </a>
+            {% endif %}
         </div>
     </div>
 </nav>

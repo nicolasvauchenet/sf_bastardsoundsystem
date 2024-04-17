@@ -33,9 +33,6 @@
 
     .app-main {
       .app-section {
-        &.pagetitle {
-          border-bottom: 0.25rem solid $secondary;
-        }
 
         &.text {
           @include respondTo(md) {
@@ -61,6 +58,21 @@
         @include respondTo(md) {
           margin: 0 auto;
           width: 50dvw;
+        }
+      }
+    }
+  }
+
+  &.legals {
+    background-color: $white;
+
+    .app-main {
+      .app-section {
+        &.text {
+          @include respondTo(md) {
+            margin: 0 auto;
+            width: 50dvw;
+          }
         }
       }
     }

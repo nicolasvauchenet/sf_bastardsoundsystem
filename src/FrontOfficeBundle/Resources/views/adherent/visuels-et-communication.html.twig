@@ -1,0 +1,84 @@
+{% extends '@FrontOffice/index.html.twig' %}
+
+{% block title %}Côté Adhérent : Visuels & Communication{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Et vos yeux en prennent plein les dents&nbsp;!</h1>
+    </section>
+
+    <div class="app-grid two">
+        <div class="grid-item">
+            <section class="app-section text">
+                <h2>Des visuels qui s'incrustent</h2>
+                <p>
+                    Bastard Sound System, c'est pas juste du son, c'est tout un style de vie ! Besoin d'un logo qui
+                    claque comme un riff endiablé ? Un cover d'album qui crie au monde que tu es la prochaine légende du
+                    rock ? Ou peut-être un T-shirt tellement badass que même les rock stars voudraient te le piquer ?
+                    Chez nous, on fabrique des visuels qui arrachent, qui te font vibrer au rythme du pur rock'n'roll.
+                    Nos créations ? Elles ont l'attitude, le charisme et le swag pour faire de toi la tête d'affiche.
+                    Alors, si t'es prêt à monter le volume et à te démarquer avec des designs aussi explosifs que tes
+                    solos, tu sais où frapper. Bastard Sound System, là où chaque visuel est un hymne au rock !
+                </p>
+
+                <p>
+                    <a href="{{ path('front_office_adhesion') }}" class="app-btn cta">J'adhère à BSS</a>
+                </p>
+            </section>
+
+            <section class="app-section">
+                <div class="content">
+                    <img src="{{ asset('img/documents.webp') }}" alt="Visuels"/>
+                    <h2>Quelques exemples</h2>
+
+                    <div class="sub">
+                        <img src="{{ asset('img/documents.webp') }}" alt="Visuels"/>
+                        <a href="#">Un exemple</a>
+                    </div>
+
+                    <div class="sub">
+                        <a href="#">Un autre</a>
+                        <img src="{{ asset('img/documents.webp') }}" alt="Visuels"/>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="grid-item">
+            <section class="app-section text alt bordered">
+                <h2>On va bientôt entendre parler de vous</h2>
+                <p>
+                    Chez BSS, on booste ta carrière jusqu'aux étoiles, aussi avec un plan de comm' qui envoie du lourd !
+                    Imagine un dossier de presse aussi percutant qu’un solo de guitare, des interviews dans les médias
+                    qui te font briller comme une star du rock, et une présence sur les réseaux sociaux qui fait
+                    exploser ton fanbase. Oui, mon pote, on s’occupe de te monter une scène médiatique où chaque post,
+                    chaque article te propulse sous les projecteurs. Bastard Sound System, c’est le manager de comm' qui
+                    fait vibrer ton univers musical, te donnant un coup de projecteur là où ça compte vraiment. On
+                    s’occupe de ta pub comme on riff sur une Gibson – avec passion et précision. Prépare-toi à faire du
+                    bruit dans le bon sens du terme !
+                </p>
+
+                <p>
+                    <a href="{{ path('front_office_contact') }}" class="app-btn cta">Je prends contact</a>
+                </p>
+            </section>
+
+            <section class="app-section alt">
+                <div class="content">
+                    <img src="{{ asset('img/communication.webp') }}" alt="Communication"/>
+                    <h2>Nos canaux de diffusion</h2>
+
+                    <div class="sub">
+                        <img src="{{ asset('img/communication.webp') }}" alt="Communication"/>
+                        <a href="#">Un canal</a>
+                    </div>
+
+                    <div class="sub">
+                        <a href="#">Un autre</a>
+                        <img src="{{ asset('img/communication.webp') }}" alt="Communication"/>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

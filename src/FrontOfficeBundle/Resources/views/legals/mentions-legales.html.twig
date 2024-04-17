@@ -1,0 +1,55 @@
+{% extends '@FrontOffice/index.html.twig' %}
+
+{% block title %}Mentions Légales{% endblock %}
+{% block body_class %}frontoffice legals{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Mentions Légales</h1>
+    </section>
+
+    <section class="app-section text">
+        <h2>Identification de l'éditeur du site</h2>
+        <p>
+            Le site
+            <a href="{{ path('front_office_index') }}">www.bastardsoundsystem.org</a>
+            est édité par Bastard Sound System, association loi 1901, située au 38 rue du cheval blanc, 23230 Gouzon,
+            France.
+        </p>
+        <ul>
+            <li>N° RNA : W232006300</li>
+            <li>N° SIRET : 927 623 462 00011</li>
+            <li>Date de création : 10/04/2024</li>
+            <li>
+                Responsable de publication : Nicolas Vauché, nvauche@gmail.com
+            </li>
+        </ul>
+    </section>
+
+    <section class="app-section text">
+        <h2>Hébergement du site</h2>
+        <p>
+            Le site
+            <a href="{{ path('front_office_index') }}">www.bastardsoundsystem.org</a>
+            est hébergé par o2switch, une société par actions simplifiée au capital de 100 000€, inscrite au RCS de
+            Clermont Ferrand sous le numéro Siret 510 909 807 00032. o2switch est un Opérateur Télécom déclaré à l'ARCEP
+            sous le numéro 09/2989, avec l'AS50474. Le siège de l'hébergeur est situé Chemin des Pardiaux, 63000
+            Clermont-Ferrand, France.
+        </p>
+        <p>
+            Pour toute réclamation sur le contenu de ce site, commentaire ou question, le responsable de publication est
+            joignable directement via l'adresse email fournie en début de cette section des mentions légales.
+        </p>
+    </section>
+
+    <section class="app-section text">
+        <h2>Propriété intellectuelle</h2>
+        <p>
+            L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la
+            propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents
+            téléchargeables et les représentations iconographiques et photographiques. La reproduction de tout ou partie
+            de ce site sur un support électronique quel qu'il soit est formellement interdite sauf autorisation expresse
+            du responsable de publication.
+        </p>
+    </section>
+{% endblock %}

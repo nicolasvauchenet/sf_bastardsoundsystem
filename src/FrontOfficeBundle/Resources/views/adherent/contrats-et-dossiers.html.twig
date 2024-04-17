@@ -1,0 +1,107 @@
+{% extends '@FrontOffice/index.html.twig' %}
+
+{% block title %}Côté Adhérent : Dossiers Techniques & Contrats{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>La paperasse, c'est pas votre taf&nbsp;!</h1>
+    </section>
+
+    <div class="app-grid two">
+        <div class="grid-item">
+            <section class="app-section text">
+                <h2>Backstage Bosses - On règle la scène, vous déchirez</h2>
+                <p>
+                    Marre de jongler avec les fiches techniques, les plans de scène, les patch lists et les riders ?
+                    Laissez-nous prendre le relais ! On est les magiciens du backstage ! On fabrique tout ça pour vous
+                    avec tellement de style que même les techniciens en coulisses vont vouloir un autographe. Imaginez :
+                    vous arrivez, tout est calé, accordé comme les cordes de vos instrus. Plus besoin de vous arracher
+                    les cheveux pour savoir qui branche quoi et où. Avec nous, c’est simple : vous faites vibrer le
+                    public, on s’occupe du reste. Bastard Sound System, c’est votre chef d’orchestre technique, pour que
+                    vous puissiez vous concentrer sur le show, pas sur les câbles !
+                </p>
+
+                <p>
+                    <a href="{{ path('front_office_adhesion') }}" class="app-btn cta">J'adhère à BSS</a>
+                </p>
+            </section>
+
+            <section class="app-section">
+                <div class="content">
+                    <img src="{{ asset('img/dossiers.webp') }}" alt="Dossiers Techniques"/>
+                    <h2>Votre Dossier Technique</h2>
+
+                    <div class="sub">
+                        <img src="{{ asset('img/dossiers.webp') }}" alt="Dossiers Techniques"/>
+                        <a href="#">
+                            Fiche Tech
+                            <br/>
+                            &
+                            <br/>
+                            Rider
+                        </a>
+                    </div>
+
+                    <div class="sub">
+                        <a href="#">
+                            Plan de Scène
+                            <br/>
+                            &
+                            <br/>
+                            Patch List
+                        </a>
+                        <img src="{{ asset('img/dossiers.webp') }}" alt="Dossiers Techniques"/>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="grid-item">
+            <section class="app-section text alt bordered">
+                <h2>Contrats blindés = Show sans souci</h2>
+                <p>
+                    Et puis aussi, chez Bastard Sound System, on sait que dans le grand show rock'n'roll du spectacle et
+                    de la zic, sécuriser tes contrats c’est aussi crucial que de s’équiper de son meilleur cuir avant de
+                    monter sur scène. On te fabrique des contrats d'engagement d'artistes béton, sur mesure, pour que
+                    toi et tes potes de la scène puissiez dormir sur vos deux oreilles sans vous soucier des galères.
+                    Oublie les prises de tête administratives, les assurances matos, et les déclarations SACEM. On
+                    s’occupe de tout ce bazar pour que tu puisses juste te lâcher et enflammer la foule. Rock on sans
+                    tracas, Bastard Sound System garde les arrières et veille au grain !
+                </p>
+
+                <p>
+                    <a href="{{ path('front_office_contact') }}" class="app-btn cta">Je prends contact</a>
+                </p>
+            </section>
+
+            <section class="app-section alt">
+                <div class="content">
+                    <img src="{{ asset('img/contrats.webp') }}" alt="Contrats & Documents"/>
+                    <h2>Toute votre paperasse</h2>
+
+                    <div class="sub">
+                        <img src="{{ asset('img/contrats.webp') }}" alt="Contrats & Documents"/>
+                        <a href="#">
+                            Contrats
+                            <br/>
+                            &
+                            <br/>
+                            Déclarations
+                        </a>
+                    </div>
+
+                    <div class="sub">
+                        <a href="#">
+                            Assurances
+                            <br/>
+                            &
+                            <br/>
+                            Matériel
+                        </a>
+                        <img src="{{ asset('img/contrats.webp') }}" alt="Contrats & Documents"/>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}
