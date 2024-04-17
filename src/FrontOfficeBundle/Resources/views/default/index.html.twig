@@ -1,0 +1,110 @@
+{% extends '@FrontOffice/index.html.twig' %}
+
+{% block title %}Quand chaque note devient une légende{% endblock %}
+{% block meta_description %}Découvrez Bastard Sound System, votre allié dans l'univers de la musique ! Nous offrons une gamme complète de services pour musiciens et organisateurs d'événements, incluant sonorisation de haute qualité, gestion technique, et création de fiches techniques et contrats d'engagement. Rejoignez-nous pour transformer chaque concert en une expérience légendaire. Ensemble, faisons vibrer la scène et créons des souvenirs inoubliables.{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Amplifiez votre Talent et créez la Légende&nbsp;!</h1>
+    </section>
+
+    <div class="app-grid two">
+        <div class="grid-item">
+            <section class="app-section text">
+                <h2>Vous êtes des Artistes</h2>
+                <p>
+                    Chez Bastard Sound System, on est là pour booster les artistes et
+                    les collectifs avec un max de services qui déchirent. On parle de
+                    créer des supports de comm' tellement stylés que même ta
+                    grand-mère voudra les afficher sur son frigo. Besoin aussi de
+                    gérer la paperasse et la logistique sans devenir fou ? On a ça
+                    dans le sac également. En gros, on s'occupe de tout ce bazar
+                    administratif pour que vous puissiez vous concentrer sur
+                    l'essentiel : votre talent, votre art et votre panard.
+                </p>
+
+                <p>
+                    <a href="#" class="app-btn cta">J'adhère à BSS</a>
+                </p>
+            </section>
+
+            <section class="app-section">
+                <div class="content">
+                    <img src="{{ asset('img/evenements.webp') }}" alt="Événements"/>
+                    <h2>Pour les Artistes & les Collectifs</h2>
+
+                    <div class="sub">
+                        <img src="{{ asset('img/documents.webp') }}" alt="Visuels & Communication"/>
+                        <a href="communication.html">
+                            Visuels
+                            <br/>
+                            &
+                            <br/>
+                            Comm'
+                        </a>
+                    </div>
+
+                    <div class="sub">
+                        <a href="administratif.html">
+                            Contrats
+                            <br/>
+                            &
+                            <br/>
+                            Dossiers
+                        </a>
+                        <img src="{{ asset('img/contrats.webp') }}" alt="Contrats & Dossiers"/>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="grid-item">
+            <section class="app-section text alt bordered">
+                <h2>Vous êtes nos futurs Partenaires</h2>
+                <p>
+                    Mais ce n’est pas tout ! On met aussi les mains dans le cambouis
+                    technique pour que vos événements artistiques et culturels se
+                    passent sans accroc. Son, lumière, régie générale – on gère tout
+                    ça pour vous. Et parce qu’on aime voir la scène artistique vibrer
+                    et grandir, on organise aussi des événements et des formations qui
+                    vont faire parler d'eux. Avec Bastard Sound System, on est là pour
+                    que chaque artiste brille et que chaque événement soit un carton
+                    plein de bonnes vibes.
+                </p>
+
+                <p>
+                    <a href="#" class="app-btn cta">Je deviens Partenaire</a>
+                </p>
+            </section>
+
+            <section class="app-section alt">
+                <div class="content">
+                    <img src="{{ asset('img/sonorisation.webp') }}" alt="Sonorisation"/>
+                    <h2>Pour le Live & le Studio</h2>
+
+                    <div class="sub">
+                        <img src="{{ asset('img/live.webp') }}" alt="Prestations"/>
+                        <a href="#">
+                            Presta
+                            <br/>
+                            &
+                            <br/>
+                            Régie
+                        </a>
+                    </div>
+
+                    <div class="sub">
+                        <a href="#">
+                            Orga
+                            <br/>
+                            &
+                            <br/>
+                            Cours
+                        </a>
+                        <img src="{{ asset('img/orga.webp') }}" alt="Organisation & Formation"/>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

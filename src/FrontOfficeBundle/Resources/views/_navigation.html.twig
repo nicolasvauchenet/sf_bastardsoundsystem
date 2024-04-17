@@ -1,0 +1,49 @@
+<nav class="app-navigation" data-controller="frontoffice--navigation">
+    <a href="{{ path('front_office_index') }}"
+       class="home {% if app.request.get('_route') == 'front_office_index' %}active{% endif %}">
+        <i class="fa-solid fa-house-chimney"></i>
+        Accueil
+    </a>
+
+    <div class="menu-item">
+        <a href="#">
+            <i class="fa-solid fa-user-astronaut"></i>
+            Adhérent
+        </a>
+
+        <div class="submenu">
+            <a href="communication.html">Visuels & Comm'</a>
+            <a href="administratif.html">Contrats & Dossiers</a>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <a href="#">
+            <i class="fa-solid fa-user-secret"></i>
+            Partenaire
+        </a>
+
+        <div class="submenu">
+            <a href="#">Prestations & Régie</a>
+            <a href="#">Orga & Formation</a>
+        </div>
+    </div>
+
+    <a href="contact.html">
+        <i class="fa-solid fa-envelope"></i>
+        Contact
+    </a>
+
+    <div class="menu-item">
+        <a href="#">
+            <i class="fa-regular fa-circle-user"></i>
+            Visiteur
+        </a>
+
+        <div class="submenu">
+            <a href="connexion.html">Connexion</a>
+            <a href="adhesion.html">Adhésion</a>
+            <a href="partenariat.html">Partenariat</a>
+        </div>
+    </div>
+</nav>

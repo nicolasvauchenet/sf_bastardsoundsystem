@@ -1,0 +1,7 @@
+.app-grid {
+  @include respondTo(md) {
+    &.two {
+      @include displayGrid(repeat(2, 1fr), 0.5rem);
+    }
+  }
+}

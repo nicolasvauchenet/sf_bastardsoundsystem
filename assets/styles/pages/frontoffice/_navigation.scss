@@ -1,0 +1,117 @@
+.app-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  @include displayFlex(center, center);
+  background-color: $white;
+
+  @include respondTo(md) {
+    top: 2rem;
+    right: 2rem;
+    bottom: auto;
+    left: auto;
+    width: calc(100% - 16rem);
+    border-radius: 0.25rem;
+    transition: all 0.5s;
+    box-shadow: 0 0.25rem 1rem rgba($black, 0.15),
+    0 0.5rem 1.25rem rgba($black, 0.1);
+
+    &.top {
+      top: 0;
+      right: 0;
+      width: 100%;
+      border-radius: 0;
+      border-bottom-left-radius: 0.25rem;
+
+      a {
+        padding: 2rem 1rem;
+
+        &.home {
+          margin-left: 6.5rem;
+        }
+      }
+    }
+  }
+
+  .menu-item {
+    position: relative;
+    text-align: center;
+    flex: 1;
+
+    &.open {
+      & > a {
+        color: $white;
+        background-color: $primary;
+      }
+
+      .submenu {
+        transform: scaleY(1);
+      }
+    }
+
+    &:has(.active) > a {
+      color: $white;
+      background-color: $primary;
+    }
+
+    .submenu {
+      position: fixed;
+      bottom: 3.75rem;
+      left: 0;
+      right: 0;
+      background-color: $white;
+      box-shadow: 0 0.25rem 1rem rgba($black, 0.15);
+      border-bottom-left-radius: 0.25rem;
+      border-bottom-right-radius: 0.25rem;
+      transition: all 0.3s;
+      transform-origin: bottom;
+      transform: scaleY(0);
+
+      @include respondTo(md) {
+        position: absolute;
+        bottom: initial;
+        top: 100%;
+        transform-origin: top;
+      }
+
+      a {
+        display: block;
+        padding: 1rem 0.5rem;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  a {
+    @include displayFlex(center, center, 0.25rem, column);
+    flex: 1;
+    padding: 0.5rem 1rem;
+    font-family: $font-secondary;
+    font-size: 0.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $primary;
+    text-decoration: none;
+    transition: all 0.5s;
+
+    @include respondTo(md) {
+      flex-direction: row;
+      align-items: first baseline;
+      padding: 2rem;
+      font-size: 1.25rem;
+    }
+
+    &.active,
+    &:hover {
+      color: $white;
+      background-color: $primary;
+    }
+
+    i,
+    svg {
+      display: block;
+      font-size: 2rem;
+    }
+  }
+}

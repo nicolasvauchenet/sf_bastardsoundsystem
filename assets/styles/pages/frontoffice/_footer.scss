@@ -1,0 +1,33 @@
+.app-footer {
+  padding: 1rem;
+  font-family: $font-secondary;
+  font-size: 0.85rem;
+  text-align: center;
+  color: $white;
+  background-color: $primary;
+
+  @include respondTo(md) {
+    @include displayFlex(space-between, center);
+  }
+
+  .copyrights {
+    margin-bottom: 0.5rem;
+
+    @include respondTo(md) {
+      margin-bottom: 0;
+    }
+  }
+
+  .links {
+    a {
+      color: $white;
+      text-decoration: none;
+      transition: all 0.5s;
+
+      &:hover,
+      &.active {
+        color: $third;
+      }
+    }
+  }
+}

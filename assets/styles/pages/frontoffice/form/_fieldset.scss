@@ -1,0 +1,25 @@
+.form-fieldset {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: $third;
+    border: 0.25rem solid $primary;
+    border-radius: 0.25rem;
+    @extend .box-shadow;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .form-legend {
+        margin-bottom: 1rem;
+        padding: 0.5rem 1rem;
+        font-family: $font-secondary;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: $white;
+        background-color: $primary;
+        border: 0.25rem solid $primary;
+        border-radius: 0.25rem;
+        @extend .box-shadow;
+    }
+}

@@ -1,0 +1,11 @@
+.app-main {
+  @import "./section";
+
+  @import "./grid";
+
+  @import "./form";
+
+  @include respondTo(xs) {
+    margin-bottom: 3.75rem;
+  }
+}

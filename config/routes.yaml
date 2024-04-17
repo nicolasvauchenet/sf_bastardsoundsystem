@@ -1,5 +1,19 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+front_office_bundle:
+  resource: '../src/FrontOfficeBundle/Controller/'
+  type: attribute
+  prefix: /
+
+adherent_bundle:
+  resource: '../src/AdherentBundle/Controller/'
+  type: attribute
+  prefix: /adherent
+
+partenaire_bundle:
+  resource: '../src/PartenaireBundle/Controller/'
+  type: attribute
+  prefix: /partenaire
+
+admin_bundle:
+  resource: '../src/AdminBundle/Controller/'
+  type: attribute
+  prefix: /administration

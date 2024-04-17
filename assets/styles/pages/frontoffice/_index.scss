@@ -1,0 +1,30 @@
+&.frontoffice {
+  font-family: $font-primary;
+  font-size: 1.25rem;
+  min-height: 100dvh;
+  background-color: $primary;
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $black;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $primary;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $primary;
+  }
+
+  @import './header';
+
+  @import './navigation';
+
+  @import './main';
+
+  @import './footer';
+}
