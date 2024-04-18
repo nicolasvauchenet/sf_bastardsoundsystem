@@ -7,14 +7,17 @@
   background-color: $primary;
 
   .infos {
+    flex: 1;
+
     h2 {
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.5rem;
       color: $white;
     }
   }
 
   .links {
-    @include displayFlex(center, center);
+    @include displayFlex(center, center, 0.5rem);
+    flex: 1;
 
     a {
       @include displayFlex(center, center, 0.25rem, column);
@@ -27,6 +30,16 @@
       color: $white;
       text-decoration: none;
       transition: all 0.5s;
+
+      &:hover {
+        color: $third;
+      }
+
+      &.danger {
+        &:hover {
+          color: $danger;
+        }
+      }
 
       i,
       svg {

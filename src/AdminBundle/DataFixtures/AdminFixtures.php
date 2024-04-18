@@ -23,8 +23,7 @@ class AdminFixtures extends Fixture
         $admin->setEmail('admin@bastardsoundsystem.org')
             ->setPassword($this->passwordHasher->hashPassword($admin, 'admin'))
             ->setRoles(['ROLE_ADMIN'])
-            ->setFirstname('Administrateur')
-            ->setLastname('Général')
+            ->setName('Administrateur BSS')
             ->setPseudo('admin')
             ->setCreatedAt(new DateTimeImmutable());
         $manager->persist($admin);

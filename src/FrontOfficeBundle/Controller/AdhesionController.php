@@ -2,8 +2,10 @@
 
 namespace App\FrontOfficeBundle\Controller;
 
+use App\AppBundle\Entity\User;
 use App\AppBundle\Service\MailerService;
 use App\FrontOfficeBundle\Entity\Adhesion;
+use App\FrontOfficeBundle\Entity\Partenariat;
 use App\FrontOfficeBundle\Form\AdhesionType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,6 +30,18 @@ class AdhesionController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            $userExists = $entityManager->getRepository(User::class)->findOneBy(['email' => $form->get('adherentEmail')->getData()]);
+            $partenaireExists = $entityManager->getRepository(Partenariat::class)->findOneBy(['partenaireEmail' => $form->get('adherentEmail')->getData()]);
+            $adherentExists = $entityManager->getRepository(Adhesion::class)->findOneBy(['adherentEmail' => $form->get('adherentEmail')->getData()]);
+
+            if($userExists || $partenaireExists || $adherentExists) {
+                $this->addFlash('danger', "Nous avons déjà quelqu'un avec cette adresse e-mail. Veuillez en choisir une autre.");
+
+                return $this->render('@FrontOffice/adhesion/index.html.twig', [
+                    'form' => $form->createView(),
+                ], new Response(null, 422));
+            }
+
             $mailerService->sendEmail([
                 'from' => [
                     'type' => $form->get('adherentType')->getData(),

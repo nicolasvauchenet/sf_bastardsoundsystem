@@ -3,21 +3,21 @@
 {% block body_class %}backoffice{% endblock %}
 
 {% block body %}
-<div class="app-grid third">
-    <div class="grid-item">
-        {% include '@Admin/_navigation.html.twig' %}
+    <div class="app-grid third">
+        <div class="grid-item">
+            {% include '@Admin/_navigation.html.twig' %}
+        </div>
+
+        <div class="grid-item">
+            {% include '@Admin/_header.html.twig' %}
+
+            <main class="app-main">
+                {% include '@App/_alert.html.twig' %}
+
+                {% block main %}{% endblock %}
+            </main>
+        </div>
     </div>
 
-    <div class="grid-item">
-        {% include '@Admin/_header.html.twig' %}
-
-        {% include '@App/_alert.html.twig' %}
-
-        <main class="app-main">
-            {% block main %}{% endblock %}
-        </main>
-    </div>
-</div>
-
-{% include '@App/_footer.html.twig' %}
+    {% include '@App/_footer.html.twig' %}
 {% endblock %}

@@ -1,44 +1,56 @@
 .app-section {
-    background-color: $white;
+  background-color: $white;
 
-    @import "./pagetitle";
+  @import "./pagetitle";
 
-    @import "./text";
+  @import "./text";
 
-    @import "./alt";
+  @import "./alt";
 
-    .content {
-        & > img {
-            width: 100%;
-            height: 40dvh;
-            object-fit: cover;
-        }
-
-        h2 {
-            padding: 1rem;
-        }
+  .content {
+    & > img {
+      width: 100%;
+      height: 40dvh;
+      object-fit: cover;
     }
 
-    .sub {
-        @include displayGrid(repeat(2, 1fr));
-
-        a {
-            @include displayFlex(center, center);
-            font-family: $font-secondary;
-            font-size: 1.5rem;
-            font-weight: bold;
-            line-height: 2rem;
-            text-align: center;
-            text-decoration: none;
-            color: $primary;
-            transition: all 0.5s;
-        }
-
-        &:hover {
-            a {
-                color: $white;
-                background-color: $primary;
-            }
-        }
+    h2 {
+      padding: 1rem;
     }
+  }
+
+  .sub {
+    @include displayGrid(repeat(2, 1fr));
+
+    a {
+      @include displayFlex(center, center);
+      font-family: $font-secondary;
+      font-size: 1.5rem;
+      font-weight: bold;
+      line-height: 2rem;
+      text-align: center;
+      text-decoration: none;
+      color: $primary;
+      transition: all 0.5s;
+    }
+
+    &:hover {
+      a {
+        color: $white;
+        background-color: $primary;
+      }
+    }
+
+    &:nth-child(even) {
+      a {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      img {
+        grid-column: 2;
+        grid-row: 1;
+      }
+    }
+  }
 }

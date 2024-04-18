@@ -8,6 +8,8 @@ twig:
   globals:
     app_locale: '%app_locale%'
     app_statistics_contact: '@App\AdminBundle\Service\Statistics\ContactService'
+    app_statistics_adherent: '@App\AdminBundle\Service\Statistics\AdherentService'
+    app_statistics_partenaire: '@App\AdminBundle\Service\Statistics\PartenaireService'
 
 when@test:
   twig:

@@ -1,18 +1,30 @@
 <div class="app-header">
     <div class="infos">
         <h2>ADMINISTRATION BASTARD SOUND SYSTEM</h2>
-        {{ app.user.fullname }}
+        C'est là-dedans que vous construisez ou que vous détruisez tout…
     </div>
 
     <div class="links">
-        <a href="{{ path('front_office_index') }}">
-            <i class="fa-solid fa-house-chimney" aria-hidden="true"></i>
-            Front Office
+        <a href="#">
+            <i class="fa-solid fa-user-astronaut"></i>
+            {{ app_statistics_adherent.adherents | length }}
+            Adhérent{{ app_statistics_adherent.adherents | length > 1 ? 's' : '' }}
         </a>
 
-        <a href="{{ path('app_logout') }}" onclick="return window.confirm('Vous partez ?')">
+        <a href="#">
+            <i class="fa-solid fa-user-secret"></i>
+            {{ app_statistics_partenaire.partenaires | length }}
+            Partenaire{{ app_statistics_partenaire.partenaires | length > 1 ? 's' : '' }}
+        </a>
+
+        <a href="{{ path('front_office_index') }}" target="_blank">
+            <i class="fa-solid fa-house-chimney" aria-hidden="true"></i>
+            Voir le site
+        </a>
+
+        <a href="{{ path('app_logout') }}" class="danger" onclick="return window.confirm('Vous partez ?')">
             <i class="fa-solid fa-right-from-bracket"></i>
-            Déconnexion
+            {{ app.user.pseudo }}
         </a>
     </div>
 </div>

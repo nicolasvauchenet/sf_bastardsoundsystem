@@ -1,6 +1,11 @@
 &.backoffice {
   background-color: $primary;
 
+  .app-alert {
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+  }
+
   h1 {
     padding: 0.25rem 0.5rem;
     margin-bottom: 1.5rem;

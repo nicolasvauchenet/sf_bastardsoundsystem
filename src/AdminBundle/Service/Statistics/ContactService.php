@@ -16,18 +16,18 @@ class ContactService
         $this->entityManager = $entityManager;
     }
 
-    public function getTotalAdhesions()
+    public function getAdhesions(): array
     {
-        return $this->entityManager->getRepository(Adhesion::class)->findNewAdhesions()->count();
+        return $this->entityManager->getRepository(Adhesion::class)->findNewAdhesions();
     }
 
-    public function getTotalPartenariats()
+    public function getPartenariats(): array
     {
-        return $this->entityManager->getRepository(Partenariat::class)->findNewPartenariats()->count();
+        return $this->entityManager->getRepository(Partenariat::class)->findNewPartenariats();
     }
 
-    public function getTotalMessages()
+    public function getMessages(): array
     {
-        return $this->entityManager->getRepository(Contact::class)->findNewMessages()->count();
+        return $this->entityManager->getRepository(Contact::class)->findNewMessages();
     }
 }

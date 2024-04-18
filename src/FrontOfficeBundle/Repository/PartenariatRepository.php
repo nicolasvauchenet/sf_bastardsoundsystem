@@ -4,7 +4,6 @@ namespace App\FrontOfficeBundle\Repository;
 
 use App\FrontOfficeBundle\Entity\Partenariat;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -22,14 +21,13 @@ class PartenariatRepository extends ServiceEntityRepository
         parent::__construct($registry, Partenariat::class);
     }
 
-    public function findNewPartenariats(): ArrayCollection
+    public function findNewPartenariats(): array
     {
-        $result = $this->createQueryBuilder('p')
+        return $this->createQueryBuilder('p')
             ->andWhere('p.acceptedAt IS NULL')
             ->andWhere('p.rejectedAt IS NULL')
+            ->orderBy('p.sentAt', 'DESC')
             ->getQuery()
             ->getResult();
-
-        return new ArrayCollection($result);
     }
 }

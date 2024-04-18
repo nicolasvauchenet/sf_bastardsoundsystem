@@ -16,27 +16,27 @@
             Contact
         </h2>
 
-        <a href="#" {% if app.request.get('_route') == 'admin_contact_adhesions' %} class="active"{% endif %}>
+        <a href="{{ path('admin_contact_adhesions_index') }}" {% if 'admin_contact_adhesions_' in app.request.get('_route') %} class="active"{% endif %}>
             <i class="fa-solid fa-user-plus"></i>
             Adhésions
-            {% if app_statistics_contact.totalAdhesions > 0 %}
-                <span class="badge">{{ app_statistics_contact.totalAdhesions }}</span>
+            {% if app_statistics_contact.adhesions | length > 0 %}
+                <span class="badge">{{ app_statistics_contact.adhesions | length }}</span>
             {% endif %}
         </a>
 
-        <a href="#" {% if app.request.get('_route') == 'admin_contact_partenariats' %} class="active"{% endif %}>
+        <a href="#" {% if 'admin_contact_partenariats_' in app.request.get('_route') %} class="active"{% endif %}>
             <i class="fa-solid fa-handshake"></i>
             Partenariats
-            {% if app_statistics_contact.totalPartenariats > 0 %}
-                <span class="badge">{{ app_statistics_contact.totalPartenariats }}</span>
+            {% if app_statistics_contact.partenariats | length > 0 %}
+                <span class="badge">{{ app_statistics_contact.partenariats | length }}</span>
             {% endif %}
         </a>
 
-        <a href="#" {% if app.request.get('_route') == 'admin_contact_messages' %} class="active"{% endif %}>
+        <a href="#" {% if 'admin_contact_messages_' in app.request.get('_route') %} class="active"{% endif %}>
             <i class="fa-solid fa-envelope"></i>
             Messages
-            {% if app_statistics_contact.totalMessages > 0 %}
-                <span class="badge">{{ app_statistics_contact.totalMessages }}</span>
+            {% if app_statistics_contact.messages | length > 0 %}
+                <span class="badge">{{ app_statistics_contact.messages | length }}</span>
             {% endif %}
         </a>
     </div>
@@ -47,12 +47,12 @@
             Services
         </h2>
 
-        <a href="#" {% if app.request.get('_route') == 'admin_services_adherents' %} class="active"{% endif %}>
+        <a href="#" {% if 'admin_services_adherents_' in app.request.get('_route') %} class="active"{% endif %}>
             <i class="fa-solid fa-user-astronaut"></i>
             Adhérents
         </a>
 
-        <a href="#" {% if app.request.get('_route') == 'admin_services_partenaires' %} class="active"{% endif %}>
+        <a href="#" {% if 'admin_services_partenaires_' in app.request.get('_route') %} class="active"{% endif %}>
             <i class="fa-solid fa-user-secret"></i>
             Partenaires
         </a>
@@ -64,7 +64,7 @@
             Contenus
         </h2>
 
-        <a href="#" {% if app.request.get('_route') == 'admin_contenus_infos' %} class="active"{% endif %}>
+        <a href="#" {% if 'admin_contenus_infos_' in app.request.get('_route') %} class="active"{% endif %}>
             <i class="fa-solid fa-landmark"></i>
             Infos BSS
         </a>

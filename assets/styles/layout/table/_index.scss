@@ -1,0 +1,11 @@
+.app-table {
+  width: 100%;
+  font-family: $font-secondary;
+  font-size: 1rem;
+  border-collapse: separate;
+  border-spacing: 2px 0.25rem;
+
+  @import "./head";
+
+  @import "./body";
+}

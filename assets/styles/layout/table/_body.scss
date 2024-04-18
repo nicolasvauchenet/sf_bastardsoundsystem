@@ -1,0 +1,63 @@
+tbody {
+  tr {
+    td {
+      padding: 1rem 0.5rem;
+      transition: all 0.5s;
+
+      &:first-child {
+        border-top-left-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+      }
+
+      &:last-child {
+        border-top-right-radius: 0.25rem;
+        border-bottom-right-radius: 0.25rem;
+      }
+
+      &:has(.info),
+      &:has(.success),
+      &:has(.danger) {
+        @include displayFlex(center, center, 0.5rem);
+      }
+
+      a {
+        &.info,
+        &.success,
+        &.danger {
+          display: block;
+          flex: 1;
+          text-align: center;
+
+          i,
+          svg {
+            font-size: 1.5rem;
+          }
+        }
+
+        &.info {
+          color: $info;
+        }
+
+        &.success {
+          color: $success;
+        }
+
+        &.danger {
+          color: $danger;
+        }
+      }
+    }
+
+    &:nth-child(even) {
+      td {
+        background-color: rgba($secondary, 0.1);
+      }
+    }
+
+    &:hover {
+      td {
+        background-color: rgba($third, 0.5);
+      }
+    }
+  }
+}

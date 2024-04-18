@@ -35,14 +35,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $gender = null;
-
     #[ORM\Column(length: 255)]
-    private ?string $firstname = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $lastname = null;
+    private ?string $name = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $pseudo = null;
@@ -128,45 +122,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getGender(): ?string
+    public function getName(): ?string
     {
-        return $this->gender;
+        return $this->name;
     }
 
-    public function setGender(?string $gender): static
+    public function setName(string $name): static
     {
-        $this->gender = $gender;
+        $this->name = $name;
 
         return $this;
-    }
-
-    public function getFirstname(): ?string
-    {
-        return $this->firstname;
-    }
-
-    public function setFirstname(string $firstname): static
-    {
-        $this->firstname = $firstname;
-
-        return $this;
-    }
-
-    public function getLastname(): ?string
-    {
-        return $this->lastname;
-    }
-
-    public function setLastname(string $lastname): static
-    {
-        $this->lastname = $lastname;
-
-        return $this;
-    }
-
-    public function getFullName(): ?string
-    {
-        return $this->gender . ' ' . $this->firstname . ' ' . $this->lastname;
     }
 
     public function getPseudo(): ?string

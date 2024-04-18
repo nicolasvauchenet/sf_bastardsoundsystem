@@ -4,7 +4,6 @@ namespace App\FrontOfficeBundle\Repository;
 
 use App\FrontOfficeBundle\Entity\Adhesion;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -22,14 +21,13 @@ class AdhesionRepository extends ServiceEntityRepository
         parent::__construct($registry, Adhesion::class);
     }
 
-    public function findNewAdhesions(): ArrayCollection
+    public function findNewAdhesions(): array
     {
-        $result = $this->createQueryBuilder('a')
+        return $this->createQueryBuilder('a')
             ->andWhere('a.acceptedAt IS NULL')
             ->andWhere('a.rejectedAt IS NULL')
+            ->orderBy('a.sentAt', 'DESC')
             ->getQuery()
             ->getResult();
-
-        return new ArrayCollection($result);
     }
 }

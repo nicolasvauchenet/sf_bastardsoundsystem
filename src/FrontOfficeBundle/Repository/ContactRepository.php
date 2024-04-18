@@ -4,7 +4,6 @@ namespace App\FrontOfficeBundle\Repository;
 
 use App\FrontOfficeBundle\Entity\Contact;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -22,13 +21,12 @@ class ContactRepository extends ServiceEntityRepository
         parent::__construct($registry, Contact::class);
     }
 
-    public function findNewMessages(): ArrayCollection
+    public function findNewMessages(): array
     {
-        $result = $this->createQueryBuilder('c')
+        return $this->createQueryBuilder('c')
             ->andWhere('c.answeredAt IS NULL')
+            ->orderBy('c.sentAt', 'DESC')
             ->getQuery()
             ->getResult();
-
-        return new ArrayCollection($result);
     }
 }

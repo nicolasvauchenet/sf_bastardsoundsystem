@@ -4,13 +4,19 @@
 
   .app-logo {
     display: block;
-    transition: all 0.5s;
+
+    &:hover {
+      img {
+        transform: rotate(360deg);
+      }
+    }
 
     img {
       display: block;
       margin: 0 auto;
       height: 8rem;
       filter: drop-shadow(0 0.25rem 0.5rem rgba($primary, 0.5));
+      transition: all 0.5s;
     }
   }
 
@@ -23,6 +29,7 @@
       font-size: 1.25rem;
       text-transform: uppercase;
       color: $white;
+      border-radius: 0.25rem;
     }
 
     &:not(:has(h2)) {
@@ -37,7 +44,7 @@
     &:has(.active) {
       h2 {
         color: $primary;
-        background-color: $white;
+        background-color: $third;
       }
     }
 

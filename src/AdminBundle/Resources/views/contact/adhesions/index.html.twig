@@ -1,0 +1,56 @@
+{% extends '@Admin/index.html.twig' %}
+
+{% block title %}Demandes d'adhésion - Administration Générale{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Nouvelles demandes d'adhésion</h1>
+    </section>
+
+    <section class="app-section">
+        {% if app_statistics_contact.adhesions | length > 0 %}
+            <table class="app-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <th colspan="2">Date de la demande</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for adhesion in app_statistics_contact.adhesions %}
+                        <tr>
+                            <td>{{ adhesion.adherentType }}</td>
+                            <td>{{ adhesion.adherentName }}</td>
+                            <td>{{ adhesion.adherentEmail }}</td>
+                            <td>{{ adhesion.adherentPhone }}</td>
+                            <td>{{ adhesion.sentAt | date("d/m/Y à H:i") }}</td>
+                            <td>
+                                <a href="{{ path('admin_contact_adhesions_accept', {'id': adhesion.id}) }}"
+                                   class="success"
+                                   onclick="return window.confirm('Accepter cette demande ?')">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                </a>
+
+                                <a href="#" class="info">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+
+                                <a href="{{ path('admin_contact_adhesions_reject', {'id': adhesion.id}) }}"
+                                   class="danger"
+                                   onclick="return window.confirm('Rejeter cette demande ?')">
+                                    <i class="fa-solid fa-circle-xmark"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Tout est nickel de ce côté ! Rien à signaler…</p>
+        {% endif %}
+    </section>
+{% endblock %}
