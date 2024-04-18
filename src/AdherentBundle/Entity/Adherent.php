@@ -9,14 +9,14 @@ use Doctrine\ORM\Mapping as ORM;
 class Adherent extends User
 {
     #[ORM\Column(type: "string", length: 255)]
-    private string $adherentType;
+    private ?string $adherentType = null;
 
-    public function getAdherentType(): string
+    public function getAdherentType(): ?string
     {
         return $this->adherentType;
     }
 
-    public function setAdherentType(string $adherentType): self
+    public function setAdherentType(string $adherentType): static
     {
         $this->adherentType = $adherentType;
 

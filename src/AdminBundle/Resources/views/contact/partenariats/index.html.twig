@@ -1,0 +1,56 @@
+{% extends '@Admin/index.html.twig' %}
+
+{% block title %}Demandes de partenariat - Administration Générale{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Nouvelles demandes de partenariat</h1>
+    </section>
+
+    <section class="app-section">
+        {% if app_statistics_contact.partenariats | length > 0 %}
+            <table class="app-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <th colspan="2">Date de la demande</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for partenariat in app_statistics_contact.partenariats %}
+                        <tr>
+                            <td>{{ partenariat.partenaireType }}</td>
+                            <td>{{ partenariat.partenaireName }}</td>
+                            <td>{{ partenariat.partenaireEmail }}</td>
+                            <td>{{ partenariat.partenairePhone }}</td>
+                            <td>{{ partenariat.sentAt | date("d/m/Y à H:i") }}</td>
+                            <td>
+                                <a href="{{ path('admin_contact_partenariats_accept', {'id': partenariat.id}) }}"
+                                   class="success"
+                                   onclick="return window.confirm('Accepter cette demande ?')">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                </a>
+
+                                <a href="#" class="info">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+
+                                <a href="{{ path('admin_contact_partenariats_reject', {'id': partenariat.id}) }}"
+                                   class="danger"
+                                   onclick="return window.confirm('Rejeter cette demande ?')">
+                                    <i class="fa-solid fa-circle-xmark"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Tout est nickel de ce côté ! Rien à signaler…</p>
+        {% endif %}
+    </section>
+{% endblock %}
