@@ -20,13 +20,13 @@ class MailerService
     /**
      * @throws TransportExceptionInterface
      */
-    public function sendEmail(array $mailData): void
+    public function sendEmail(array $mailData, string $mailContext = 'contact'): void
     {
         $email = (new TemplatedEmail())
             ->from(new Address($mailData['from']['email'], $mailData['from']['name']))
             ->to(new Address($mailData['to']['email'], $mailData['to']['name']))
             ->subject($mailData['subject'])
-            ->htmlTemplate('@App/mailer/_contact.html.twig')
+            ->htmlTemplate('@App/mailer/_' . $mailContext . '.html.twig')
             ->context([
                 'mailData' => $mailData,
             ]);

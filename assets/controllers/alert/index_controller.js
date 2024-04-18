@@ -7,7 +7,7 @@ export default class extends Controller {
 
         setTimeout(() => {
             this.element.remove()
-        }, 2500)
+        }, 5000)
     }
 
     close(e) {

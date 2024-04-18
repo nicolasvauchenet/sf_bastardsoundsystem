@@ -18,4 +18,82 @@
             maintenant et faites partie de ceux qui façonnent l'avenir de la scène !
         </p>
     </section>
+
+    <section class="app-section">
+        {{ form_start(form, {'attr': {'class': 'app-form'}}) }}
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Vos infos</legend>
+
+            <div class="form-group">
+                <label for="{{ form.adherentName.vars.id }}"
+                       class="form-label {% if form.adherentName.vars.required %}required{% endif %}">
+                    {{ form.adherentName.vars.label }}
+                </label>
+                {{ form_widget(form.adherentName) }}
+                {{ form_errors(form.adherentName) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.adherentEmail.vars.id }}"
+                       class="form-label {% if form.adherentEmail.vars.required %}required{% endif %}">
+                    {{ form.adherentEmail.vars.label }}
+                </label>
+                {{ form_widget(form.adherentEmail) }}
+                {{ form_errors(form.adherentEmail) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.adherentPhone.vars.id }}"
+                       class="form-label {% if form.adherentPhone.vars.required %}required{% endif %}">
+                    {{ form.adherentPhone.vars.label }}
+                </label>
+                {{ form_widget(form.adherentPhone) }}
+                {{ form_errors(form.adherentPhone) }}
+            </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Votre adhésion</legend>
+
+            <div class="form-group">
+                <label for="{{ form.adherentType.vars.id }}"
+                       class="form-label {% if form.adherentType.vars.required %}required{% endif %}">
+                    {{ form.adherentType.vars.label }}
+                </label>
+                {{ form_widget(form.adherentType) }}
+                {{ form_errors(form.adherentType) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.adherentMessage.vars.id }}"
+                       class="form-label {% if form.adherentMessage.vars.required %}required{% endif %}">
+                    {{ form.adherentMessage.vars.label }}
+                </label>
+                {{ form_widget(form.adherentMessage) }}
+                {{ form_errors(form.adherentMessage) }}
+            </div>
+
+            <div class="form-group form-checkbox">
+                <span>&nbsp;</span>
+                <div class="group-content">
+                    <label for="{{ form.agree.vars.id }}"
+                           class="form-label {% if form.agree.vars.required %}required{% endif %}">
+                        {{ form_widget(form.agree) }}
+                        {{ form.agree.vars.label }}
+                        <a href="{{ asset('uploads/statuts.pdf') }}" target="_blank">
+                            <small>(statuts)</small>
+                        </a>
+                    </label>
+                    {{ form_errors(form.agree) }}
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <span>&nbsp;</span>
+            <button type="submit" class="form-submit app-btn cta">Adhérez</button>
+        </div>
+
+        {{ form_end(form) }}
+    </section>
 {% endblock %}

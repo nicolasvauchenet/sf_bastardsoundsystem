@@ -16,6 +16,13 @@
       margin: 1.5rem 0 0.5rem;
     }
 
+    &.form-checkbox {
+      .form-label {
+        font-size: 1rem;
+        line-height: 1.25rem;
+      }
+    }
+
     .form-label {
       display: block;
       margin-bottom: 0.25rem;
@@ -47,6 +54,12 @@
       max-width: 100%;
     }
 
+    [type=checkbox] {
+      width: 1.15rem;
+      height: 1.15rem;
+      vertical-align: bottom;
+    }
+
     span {
       @include respondTo(xs) {
         display: none;
@@ -70,6 +83,10 @@
 
       &:has(textarea) {
         align-items: flex-start;
+
+        .form-label {
+          margin-top: 0.5rem;
+        }
       }
 
       .form-label {
