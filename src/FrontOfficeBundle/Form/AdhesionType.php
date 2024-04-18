@@ -40,6 +40,7 @@ class AdhesionType extends AbstractType
                 'label' => 'Votre nom',
                 'attr' => [
                     'class' => 'form-control',
+                    'autofocus' => true,
                 ],
             ])
             ->add('adherentEmail', EmailType::class, [

@@ -38,6 +38,7 @@ class PartenariatType extends AbstractType
                 'label' => 'Votre nom',
                 'attr' => [
                     'class' => 'form-control',
+                    'autofocus' => true,
                 ],
             ])
             ->add('partenaireEmail', EmailType::class, [

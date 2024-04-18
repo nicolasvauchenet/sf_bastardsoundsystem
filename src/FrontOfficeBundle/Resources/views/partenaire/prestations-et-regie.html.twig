@@ -4,8 +4,100 @@
 
 {% block main %}
     <section class="app-section pagetitle">
-        <h1>Titre à trouver&nbsp;!</h1>
+        <h1>Ça va secouer dans les chaumières&nbsp;!</h1>
     </section>
 
+    <div class="app-grid two">
+        <div class="grid-item">
+            <section class="app-section text">
+                <h2>Des prestas aux p'tits oignons</h2>
+                <p>
+                    T'es prêt à faire vibrer tes événements avec du son et de la lumière qui envoient du lourd ? Chez
+                    BSS, les prestas, c'est du sérieux : on peaufine chaque détail pour que ton show crève le plafond.
+                    Que ce soit pour balancer des basses qui font trembler le sol ou pour illuminer ta scène comme
+                    jamais, on maîtrise le jeu. Et pour le plateau ? Laisse tomber, on gère chaque angle comme des
+                    chefs. Même les chemins de câbles se planquent quand on est là. Alors oublie les soucis, avec nous à
+                    tes côtés, ton plan va déchirer !
+                </p>
 
+                <p>
+                    <a href="{{ path('front_office_partenariat') }}" class="app-btn cta">Je deviens partenaire</a>
+                </p>
+            </section>
+
+            <section class="app-section">
+                <div class="content">
+                    <img src="{{ asset('img/technique.webp') }}" alt="Prestations techniques"/>
+                    <h2>High Technique</h2>
+
+                    <div class="sub">
+                        <img src="{{ asset('img/sonorisation.webp') }}" alt="Sonorisation"/>
+                        <a>Sonorisation</a>
+                    </div>
+
+                    <div class="sub">
+                        <a>Lumières</a>
+                        <img src="{{ asset('img/lumieres.webp') }}" alt="Lumières"/>
+                    </div>
+
+                    <div class="sub">
+                        <img src="{{ asset('img/plateau.webp') }}" alt="Plateau"/>
+                        <a>Plateau</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="grid-item">
+            <section class="app-section text alt bordered">
+                <h2>De l'or-ga-ni-sa-tion, bon sang&nbsp;!</h2>
+                <p>
+                    Tu veux une orga qui claque ? On est là pour ça. Notre équipe de régies, générale et technique,
+                    c'est la crème de la crème pour que tout roule sans accrocs. On orchestre chaque détail, de la
+                    logistique au dernier câble, sans oublier le sacro-saint catering, pour que ton événement soit une
+                    pure réussite. Avec nous aux manettes, détends-toi : on assure le show de A à Z, et on transforme
+                    chaque galère en pure magie. Oublie le stress, on gère le chaos pour que tu puisses te concentrer
+                    sur ce que tu fais de mieux : enflammer la scène !
+                </p>
+
+                <p>
+                    <a href="{{ path('front_office_contact') }}" class="app-btn cta">Je prends contact</a>
+                </p>
+            </section>
+
+            <section class="app-section alt">
+                <div class="content">
+                    <img src="{{ asset('img/communication.webp') }}" alt="Communication"/>
+                    <h2>Totale gestion</h2>
+
+                    <div class="sub">
+                        <img src="{{ asset('img/regie-generale.webp') }}" alt="Régie Générale"/>
+                        <a>
+                            Régie
+                            <br/>
+                            Générale
+                        </a>
+                    </div>
+
+                    <div class="sub">
+                        <a>
+                            Régie
+                            <br/>
+                            Technique
+                        </a>
+                        <img src="{{ asset('img/regie-technique.webp') }}" alt="Régie Technique"/>
+                    </div>
+
+                    <div class="sub">
+                        <img src="{{ asset('img/catering.webp') }}" alt="Catering"/>
+                        <a>
+                            Le bon vieux
+                            <br/>
+                            Catering
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 {% endblock %}
