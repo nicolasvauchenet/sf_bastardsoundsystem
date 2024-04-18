@@ -8,5 +8,102 @@
         <h1>Contactons-nous&nbsp;!</h1>
     </section>
 
+    <section class="app-section text">
+        <p>
+            Nous sommes toujours à l'écoute pour répondre à vos besoins et à vos questions. Que vous soyez un artiste à
+            la recherche d'une expertise technique pour votre prochain spectacle, un organisateur d'événement désireux
+            de collaborer, ou simplement curieux d'en savoir plus sur nos services, n'hésitez pas. Nous sommes ici pour
+            fournir des solutions personnalisées en sonorisation, éclairage, gestion de plateau et régie, et pour
+            discuter de tout partenariat ou opportunité de formation. Utilisez les coordonnées fournies ou le formulaire
+            ci-dessous pour nous envoyer un message, et nous vous assurons une réponse rapide et détaillée. Chez Bastard
+            Sound System, chaque question est une ouverture vers de nouvelles possibilités créatives et collaboratives.
+        </p>
+    </section>
 
+    <section class="app-section text alt">
+        <h2>Nos coordonnées :</h2>
+        <p>
+            Nous sommes basés en Creuse, mais nous intervenons partout en France ! On est nombreux… et on est partout !
+        </p>
+        <dl>
+            <dt>Bastard Sound System</dt>
+            <dd>
+                <a href="mailto:contact@bastardsoundsystem.org">contact@bastardsoundsystem.org</a>
+                <br/>
+                <a href="tel:+33683573067">06.83.57.30.67</a>
+            </dd>
+        </dl>
+    </section>
+
+    <section class="app-section">
+        {{ form_start(form, {'attr': {'class': 'app-form'}}) }}
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Vous êtes qui ?</legend>
+
+            <div class="form-group">
+                <label for="{{ form.senderType.vars.id }}"
+                       class="form-label {% if form.senderType.vars.required %}required{% endif %}">
+                    {{ form.senderType.vars.label }}
+                </label>
+                {{ form_widget(form.senderType) }}
+                {{ form_errors(form.senderType) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.senderName.vars.id }}"
+                       class="form-label {% if form.senderName.vars.required %}required{% endif %}">
+                    {{ form.senderName.vars.label }}
+                </label>
+                {{ form_widget(form.senderName) }}
+                {{ form_errors(form.senderName) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.senderEmail.vars.id }}"
+                       class="form-label {% if form.senderEmail.vars.required %}required{% endif %}">
+                    {{ form.senderEmail.vars.label }}
+                </label>
+                {{ form_widget(form.senderEmail) }}
+                {{ form_errors(form.senderEmail) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.senderPhone.vars.id }}"
+                       class="form-label {% if form.senderPhone.vars.required %}required{% endif %}">
+                    {{ form.senderPhone.vars.label }}
+                </label>
+                {{ form_widget(form.senderPhone) }}
+                {{ form_errors(form.senderPhone) }}
+            </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Vous voulez quoi ?</legend>
+
+            <div class="form-group">
+                <label for="{{ form.subject.vars.id }}"
+                       class="form-label {% if form.subject.vars.required %}required{% endif %}">
+                    {{ form.subject.vars.label }}
+                </label>
+                {{ form_widget(form.subject) }}
+                {{ form_errors(form.subject) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.message.vars.id }}"
+                       class="form-label {% if form.message.vars.required %}required{% endif %}">
+                    {{ form.message.vars.label }}
+                </label>
+                {{ form_widget(form.message) }}
+                {{ form_errors(form.message) }}
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <span>&nbsp;</span>
+            <button type="submit" class="form-submit app-btn cta">Envoyez</button>
+        </div>
+
+        {{ form_end(form) }}
+    </section>
 {% endblock %}
