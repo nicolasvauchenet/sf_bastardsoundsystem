@@ -1,0 +1,72 @@
+<nav class="app-navigation">
+    <a href="{{ path('admin_index') }}" class="app-logo">
+        <img src="{{ asset('img/logo.png') }}" alt="Bastard Sound System"/>
+    </a>
+
+    <div class="menu">
+        <a href="{{ path('admin_index') }}" {% if app.request.get('_route') == 'admin_index' %} class="active"{% endif %}>
+            <i class="fa-solid fa-gauge"></i>
+            Dashboard
+        </a>
+    </div>
+
+    <div class="menu">
+        <h2>
+            <i class="fa-solid fa-circle"></i>
+            Contact
+        </h2>
+
+        <a href="#" {% if app.request.get('_route') == 'admin_contact_adhesions' %} class="active"{% endif %}>
+            <i class="fa-solid fa-user-plus"></i>
+            Adhésions
+            {% if app_statistics_contact.totalAdhesions > 0 %}
+                <span class="badge">{{ app_statistics_contact.totalAdhesions }}</span>
+            {% endif %}
+        </a>
+
+        <a href="#" {% if app.request.get('_route') == 'admin_contact_partenariats' %} class="active"{% endif %}>
+            <i class="fa-solid fa-handshake"></i>
+            Partenariats
+            {% if app_statistics_contact.totalPartenariats > 0 %}
+                <span class="badge">{{ app_statistics_contact.totalPartenariats }}</span>
+            {% endif %}
+        </a>
+
+        <a href="#" {% if app.request.get('_route') == 'admin_contact_messages' %} class="active"{% endif %}>
+            <i class="fa-solid fa-envelope"></i>
+            Messages
+            {% if app_statistics_contact.totalMessages > 0 %}
+                <span class="badge">{{ app_statistics_contact.totalMessages }}</span>
+            {% endif %}
+        </a>
+    </div>
+
+    <div class="menu">
+        <h2>
+            <i class="fa-solid fa-circle"></i>
+            Services
+        </h2>
+
+        <a href="#" {% if app.request.get('_route') == 'admin_services_adherents' %} class="active"{% endif %}>
+            <i class="fa-solid fa-user-astronaut"></i>
+            Adhérents
+        </a>
+
+        <a href="#" {% if app.request.get('_route') == 'admin_services_partenaires' %} class="active"{% endif %}>
+            <i class="fa-solid fa-user-secret"></i>
+            Partenaires
+        </a>
+    </div>
+
+    <div class="menu">
+        <h2>
+            <i class="fa-solid fa-circle"></i>
+            Contenus
+        </h2>
+
+        <a href="#" {% if app.request.get('_route') == 'admin_contenus_infos' %} class="active"{% endif %}>
+            <i class="fa-solid fa-landmark"></i>
+            Infos BSS
+        </a>
+    </div>
+</nav>

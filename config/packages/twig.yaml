@@ -7,6 +7,7 @@ twig:
     '%kernel.project_dir%/src/AdminBundle/Resources/views': Admin
   globals:
     app_locale: '%app_locale%'
+    app_statistics_contact: '@App\AdminBundle\Service\Statistics\ContactService'
 
 when@test:
   twig:

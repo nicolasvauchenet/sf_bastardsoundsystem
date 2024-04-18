@@ -1,0 +1,39 @@
+.app-header {
+  position: sticky;
+  top: 0;
+  @include displayFlex(space-between, center);
+  padding: 0.5rem 1rem;
+  color: $white;
+  background-color: $primary;
+
+  .infos {
+    h2 {
+      margin-bottom: 0.25rem;
+      color: $white;
+    }
+  }
+
+  .links {
+    @include displayFlex(center, center);
+
+    a {
+      @include displayFlex(center, center, 0.25rem, column);
+      flex: 1;
+      padding: 0.5rem 1rem;
+      font-family: $font-secondary;
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $white;
+      text-decoration: none;
+      transition: all 0.5s;
+
+      i,
+      svg {
+        display: block;
+        margin-bottom: 0.25rem;
+        font-size: 2rem;
+      }
+    }
+  }
+}

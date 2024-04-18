@@ -4,6 +4,7 @@ namespace App\FrontOfficeBundle\Repository;
 
 use App\FrontOfficeBundle\Entity\Adhesion;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -21,28 +22,14 @@ class AdhesionRepository extends ServiceEntityRepository
         parent::__construct($registry, Adhesion::class);
     }
 
-    //    /**
-    //     * @return Adhesion[] Returns an array of Adhesion objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('a')
-    //            ->andWhere('a.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('a.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    public function findNewAdhesions(): ArrayCollection
+    {
+        $result = $this->createQueryBuilder('a')
+            ->andWhere('a.acceptedAt IS NULL')
+            ->andWhere('a.rejectedAt IS NULL')
+            ->getQuery()
+            ->getResult();
 
-    //    public function findOneBySomeField($value): ?Adhesion
-    //    {
-    //        return $this->createQueryBuilder('a')
-    //            ->andWhere('a.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+        return new ArrayCollection($result);
+    }
 }

@@ -1,15 +1,10 @@
 {% extends '@Admin/index.html.twig' %}
 
-{% block title %}Admin Home{% endblock %}
+{% block title %}Administration Générale{% endblock %}
 
 {% block main %}
-    <h1>Welcome to the back office of Bastard Sound System</h1>
-    <p>This is the home page for our Admin domain.</p>
-    <p>
-        {{ app.user.fullname }}
-        -
-        <a href="{{ path('front_office_index') }}">Home</a>
-        -
-        <a href="{{ path('app_logout') }}">Logout</a>
-    </p>
+    <section class="app-section pagetitle">
+        <h1>Bienvenue dans le Back Office de Bastard Sound System&nbsp;!</h1>
+    </section>
+
 {% endblock %}

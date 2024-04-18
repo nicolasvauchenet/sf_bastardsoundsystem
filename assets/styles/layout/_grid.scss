@@ -3,5 +3,9 @@
     &.two {
       @include displayGrid(repeat(2, 1fr), 0.5rem);
     }
+
+    &.third {
+      @include displayGrid(15rem 1fr, 0.5rem);
+    }
   }
 }

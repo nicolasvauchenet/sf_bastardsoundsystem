@@ -1,0 +1,83 @@
+.app-navigation {
+  position: sticky;
+  top: 0;
+
+  .app-logo {
+    display: block;
+    transition: all 0.5s;
+
+    img {
+      display: block;
+      margin: 0 auto;
+      height: 8rem;
+      filter: drop-shadow(0 0.25rem 0.5rem rgba($primary, 0.5));
+    }
+  }
+
+  .menu {
+    padding: 1rem 0.5rem;
+
+    h2 {
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      color: $white;
+    }
+
+    &:not(:has(h2)) {
+      & > a {
+        padding: 0.5rem;
+        margin-left: 0;
+        font-size: 1.25rem;
+        text-transform: uppercase;
+      }
+    }
+
+    &:has(.active) {
+      h2 {
+        color: $primary;
+        background-color: $white;
+      }
+    }
+
+    & > a {
+      @include displayFlex(null, center, 0.5rem);
+      padding: 0.25rem 0.5rem;
+      margin-left: 1rem;
+      margin-bottom: 0.5rem;
+      font-family: $font-secondary;
+      font-size: 1rem;
+      font-weight: bold;
+      color: $white;
+      border-radius: 0.25rem;
+      transition: all 0.5s;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &:hover {
+        color: $third;
+      }
+
+      &.active {
+        color: $primary;
+        background-color: $white;
+      }
+
+      .badge {
+        @include displayFlex(center, center);
+        padding: 0.25rem;
+        margin-left: auto;
+        min-width: 1rem;
+        font-family: monospace;
+        font-size: 0.65rem;
+        font-weight: normal;
+        color: $white;
+        background-color: $success;
+        border-radius: 0.25rem;
+      }
+    }
+  }
+}

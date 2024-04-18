@@ -1,12 +1,41 @@
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: $black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $primary;
+}
+
 html {
   scroll-behavior: smooth;
 
   .turbo-progress-bar {
-    height: 0.75rem;
+    height: 0.5rem;
     background-color: $third;
+    border-bottom: 0.25rem solid $primary;
   }
 
   body {
+    font-family: $font-primary;
+    font-size: 1.25rem;
+    min-height: 100dvh;
+
+    @import './alert';
+
+    @import "./grid";
+
+    @import "./form";
+
+    @import './footer';
+
     @import "../pages";
   }
 }

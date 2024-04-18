@@ -1,3 +1,17 @@
 &.backoffice {
-  background-color: #d9534f;
+  background-color: $primary;
+
+  h1 {
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 1.5rem;
+    color: $primary;
+    background-color: $third;
+    border-radius: 0.25rem;
+  }
+
+  @import './header';
+
+  @import './navigation';
+
+  @import './main';
 }

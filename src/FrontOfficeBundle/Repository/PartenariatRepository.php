@@ -4,6 +4,7 @@ namespace App\FrontOfficeBundle\Repository;
 
 use App\FrontOfficeBundle\Entity\Partenariat;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -21,28 +22,14 @@ class PartenariatRepository extends ServiceEntityRepository
         parent::__construct($registry, Partenariat::class);
     }
 
-    //    /**
-    //     * @return Partenariat[] Returns an array of Partenariat objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('p.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    public function findNewPartenariats(): ArrayCollection
+    {
+        $result = $this->createQueryBuilder('p')
+            ->andWhere('p.acceptedAt IS NULL')
+            ->andWhere('p.rejectedAt IS NULL')
+            ->getQuery()
+            ->getResult();
 
-    //    public function findOneBySomeField($value): ?Partenariat
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+        return new ArrayCollection($result);
+    }
 }
