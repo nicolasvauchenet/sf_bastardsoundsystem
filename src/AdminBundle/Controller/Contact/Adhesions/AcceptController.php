@@ -3,7 +3,9 @@
 namespace App\AdminBundle\Controller\Contact\Adhesions;
 
 use App\AdherentBundle\Entity\Adherent;
+use App\AppBundle\Entity\User;
 use App\FrontOfficeBundle\Entity\Adhesion;
+use App\FrontOfficeBundle\Entity\Partenariat;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +18,14 @@ class AcceptController extends AbstractController
     #[Route('/accepter/{id}', name: 'accept')]
     public function accept(EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher, Adhesion $adhesion): Response
     {
+        $userExists = $entityManager->getRepository(User::class)->findOneBy(['email' => $adhesion->getAdherentEmail()]);
+
+        if($userExists) {
+            $this->addFlash('danger', "Nous avons déjà quelqu'un avec cette adresse e-mail");
+
+            return $this->redirectToRoute('admin_contact_adhesions_index');
+        }
+
         $adherent = new Adherent();
         $adherent->setAdherentType($adhesion->getAdherentType())
             ->setRoles(['ROLE_ADHERENT'])
@@ -26,7 +36,8 @@ class AcceptController extends AbstractController
             ->setCreatedAt(new \DateTimeImmutable());
         $entityManager->persist($adherent);
 
-        $adhesion->setAcceptedAt(new \DateTimeImmutable());
+        $adhesion->setAcceptedAt(new \DateTimeImmutable())
+            ->setRejectedAt(null);
         $entityManager->persist($adhesion);
         $entityManager->flush();
 

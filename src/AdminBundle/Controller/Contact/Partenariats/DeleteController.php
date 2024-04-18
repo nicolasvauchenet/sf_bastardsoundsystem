@@ -9,16 +9,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/contact/partenariats', name: 'admin_contact_partenariats_')]
-class RejectController extends AbstractController
+class DeleteController extends AbstractController
 {
-    #[Route('/rejeter/{id}', name: 'reject')]
-    public function reject(EntityManagerInterface $entityManager, Partenariat $partenariat): Response
+    #[Route('/supprimer/{id}', name: 'delete')]
+    public function delete(EntityManagerInterface $entityManager, Partenariat $partenariat): Response
     {
-        $partenariat->setRejectedAt(new \DateTimeImmutable());
-        $entityManager->persist($partenariat);
+        $entityManager->remove($partenariat);
         $entityManager->flush();
 
-        $this->addFlash('warning', "Vous avez rejeté la demande de partenariat de {$partenariat->getPartenaireName()}");
+        $this->addFlash('danger', "Vous avez supprimé la demande de partenariat de {$partenariat->getPartenaireName()}");
 
         return $this->redirectToRoute('admin_contact_partenariats_index');
     }

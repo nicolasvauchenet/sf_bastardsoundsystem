@@ -30,4 +30,13 @@ class AdhesionRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findRejectedAdhesions(): array
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.rejectedAt IS NOT NULL')
+            ->orderBy('a.sentAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

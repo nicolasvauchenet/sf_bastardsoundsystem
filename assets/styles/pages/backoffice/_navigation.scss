@@ -30,6 +30,7 @@
       text-transform: uppercase;
       color: $white;
       border-radius: 0.25rem;
+      transition: all 0.5s;
     }
 
     &:not(:has(h2)) {

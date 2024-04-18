@@ -20,13 +20,11 @@ class PartenariatType extends AbstractType
                 'required' => true,
                 'label' => 'Vous êtes',
                 'choices' => [
-                    /*'Musicien ou Groupe' => 'Musicien',
-                    'Comédien ou Compagnie' => 'Comédien',
-                    'Artiste (autre)' => 'Artiste',*/
                     'Organisateur' => 'Organisateur',
                     'Programmateur' => 'Programmateur',
                     "Studio d'enregistrement" => 'Studio',
-                    'Autre' => 'Autre',
+                    'Tout ça à la fois' => 'Partenaire multi-tâches',
+                    'Carrément autre chose' => 'Autre',
                 ],
                 'placeholder' => 'Choisissez dans la liste',
                 'attr' => [

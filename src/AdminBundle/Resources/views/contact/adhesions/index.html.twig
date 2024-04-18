@@ -31,17 +31,17 @@
                             <td>
                                 <a href="{{ path('admin_contact_adhesions_accept', {'id': adhesion.id}) }}"
                                    class="success"
-                                   onclick="return window.confirm('Accepter cette demande ?')">
+                                   onclick="return window.confirm('Accepter cette demande ?')" title="Accepter">
                                     <i class="fa-solid fa-circle-check"></i>
                                 </a>
 
-                                <a href="#" class="info">
+                                <a href="#" class="info" title="Voir">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
 
                                 <a href="{{ path('admin_contact_adhesions_reject', {'id': adhesion.id}) }}"
                                    class="danger"
-                                   onclick="return window.confirm('Rejeter cette demande ?')">
+                                   onclick="return window.confirm('Rejeter cette demande ?')" title="Rejeter">
                                     <i class="fa-solid fa-circle-xmark"></i>
                                 </a>
                             </td>
@@ -53,4 +53,57 @@
             <p>Tout est nickel de ce côté ! Rien à signaler…</p>
         {% endif %}
     </section>
+
+    {% if app_statistics_contact.rejectedAdhesions | length > 0 %}
+        <section class="app-section pagetitle">
+            <h2>Demandes d'adhésion rejetées</h2>
+        </section>
+
+        <section class="app-section alt">
+            {% if app_statistics_contact.rejectedAdhesions | length > 0 %}
+                <table class="app-table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Téléphone</th>
+                            <th colspan="2">Date de la demande</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for adhesion in app_statistics_contact.rejectedAdhesions %}
+                            <tr>
+                                <td>{{ adhesion.adherentType }}</td>
+                                <td>{{ adhesion.adherentName }}</td>
+                                <td>{{ adhesion.adherentEmail }}</td>
+                                <td>{{ adhesion.adherentPhone }}</td>
+                                <td>{{ adhesion.sentAt | date("d/m/Y à H:i") }}</td>
+                                <td>
+                                    <a href="{{ path('admin_contact_adhesions_accept', {'id': adhesion.id}) }}"
+                                       class="success"
+                                       onclick="return window.confirm('Accepter cette demande ?')" title="Accepter">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                    </a>
+
+                                    <a href="#" class="info" title="Voir">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+
+                                    <a href="{{ path('admin_contact_adhesions_delete', {'id': adhesion.id}) }}"
+                                       class="danger"
+                                       onclick="return window.confirm('Supprimer cette demande ?')" title="Supprimer">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Tout est nickel de ce côté ! Rien à signaler…</p>
+            {% endif %}
+        </section>
+    {% endif %}
 {% endblock %}

@@ -9,16 +9,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/contact/adhesions', name: 'admin_contact_adhesions_')]
-class RejectController extends AbstractController
+class DeleteController extends AbstractController
 {
-    #[Route('/rejeter/{id}', name: 'reject')]
-    public function reject(EntityManagerInterface $entityManager, Adhesion $adhesion): Response
+    #[Route('/supprimer/{id}', name: 'delete')]
+    public function delete(EntityManagerInterface $entityManager, Adhesion $adhesion): Response
     {
-        $adhesion->setRejectedAt(new \DateTimeImmutable());
-        $entityManager->persist($adhesion);
+        $entityManager->remove($adhesion);
         $entityManager->flush();
 
-        $this->addFlash('warning', "Vous avez rejeté la demande d'adhésion de {$adhesion->getAdherentName()}");
+        $this->addFlash('danger', "Vous avez supprimé la demande d'adhésion de {$adhesion->getAdherentName()}");
 
         return $this->redirectToRoute('admin_contact_adhesions_index');
     }

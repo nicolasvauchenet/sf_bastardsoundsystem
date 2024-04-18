@@ -30,7 +30,7 @@ class ContactController extends AbstractController
             } else if($this->isGranted('ROLE_PARTENAIRE')) {
                 $contact->setSenderType($this->getUser()->getPartenaireType());
             }
-            $contact->setSenderName($this->getUser()->getFullName())
+            $contact->setSenderName($this->getUser()->getName())
                 ->setSenderEmail($this->getUser()->getUserIdentifier())
                 ->setSenderPhone($this->getUser()->getPhone());
         }

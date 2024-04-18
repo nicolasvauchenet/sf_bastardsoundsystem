@@ -32,7 +32,7 @@
             {% endif %}
         </a>
 
-        <a href="#" {% if 'admin_contact_messages_' in app.request.get('_route') %} class="active"{% endif %}>
+        <a href="{{ path('admin_contact_messages_index') }}" {% if 'admin_contact_messages_' in app.request.get('_route') %} class="active"{% endif %}>
             <i class="fa-solid fa-envelope"></i>
             Messages
             {% if app_statistics_contact.messages | length > 0 %}

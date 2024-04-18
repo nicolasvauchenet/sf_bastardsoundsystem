@@ -24,11 +24,9 @@ class AdhesionType extends AbstractType
                 'choices' => [
                     'Musicien ou Groupe' => 'Musicien',
                     'Comédien ou Compagnie' => 'Comédien',
-                    'Artiste (autre)' => 'Artiste',
-                    /*'Organisateur' => 'Organisateur',
-                    'Programmateur' => 'Programmateur',
-                    "Studio d'enregistrement" => 'Studio',*/
-                    'Autre' => 'Autre',
+                    "Autre type d'Artiste" => 'Artiste',
+                    'Tout ça à la fois' => 'Artiste multi-disciplines',
+                    'Carrément autre chose' => 'Autre',
                 ],
                 'placeholder' => 'Choisissez dans la liste',
                 'attr' => [

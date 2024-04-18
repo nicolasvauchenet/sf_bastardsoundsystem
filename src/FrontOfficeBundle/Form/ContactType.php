@@ -22,11 +22,13 @@ class ContactType extends AbstractType
                 'choices' => [
                     'Musicien ou Groupe' => 'Musicien',
                     'Comédien ou Compagnie' => 'Comédien',
-                    'Artiste (autre)' => 'Artiste',
+                    "Autre type d'Artiste" => 'Artiste',
                     'Organisateur' => 'Organisateur',
                     'Programmateur' => 'Programmateur',
                     "Studio d'enregistrement" => 'Studio',
-                    'Autre' => 'Autre',
+                    'Tout ça à la fois' => 'Partenaire multi-tâches',
+                    'Carrément autre chose' => 'Autre',
+                    'Juste un passant' => 'Visiteur',
                 ],
                 'placeholder' => 'Choisissez dans la liste',
                 'attr' => [

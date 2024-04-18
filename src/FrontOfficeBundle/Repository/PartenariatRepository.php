@@ -30,4 +30,13 @@ class PartenariatRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findRejectedPartenariats(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.rejectedAt IS NOT NULL')
+            ->orderBy('p.sentAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

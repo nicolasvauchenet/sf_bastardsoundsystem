@@ -21,9 +21,19 @@ class ContactService
         return $this->entityManager->getRepository(Adhesion::class)->findNewAdhesions();
     }
 
+    public function getRejectedAdhesions(): array
+    {
+        return $this->entityManager->getRepository(Adhesion::class)->findRejectedAdhesions();
+    }
+
     public function getPartenariats(): array
     {
         return $this->entityManager->getRepository(Partenariat::class)->findNewPartenariats();
+    }
+
+    public function getRejectedPartenariats(): array
+    {
+        return $this->entityManager->getRepository(Partenariat::class)->findRejectedPartenariats();
     }
 
     public function getMessages(): array

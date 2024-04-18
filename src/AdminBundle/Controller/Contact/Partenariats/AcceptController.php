@@ -2,6 +2,7 @@
 
 namespace App\AdminBundle\Controller\Contact\Partenariats;
 
+use App\AppBundle\Entity\User;
 use App\FrontOfficeBundle\Entity\Partenariat;
 use App\PartenaireBundle\Entity\Partenaire;
 use Doctrine\ORM\EntityManagerInterface;
@@ -16,6 +17,14 @@ class AcceptController extends AbstractController
     #[Route('/accepter/{id}', name: 'accept')]
     public function accept(EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher, Partenariat $partenariat): Response
     {
+        $userExists = $entityManager->getRepository(User::class)->findOneBy(['email' => $partenariat->getPartenaireEmail()]);
+
+        if($userExists) {
+            $this->addFlash('danger', "Nous avons déjà quelqu'un avec cette adresse e-mail");
+
+            return $this->redirectToRoute('admin_contact_partenariats_index');
+        }
+
         $partenaire = new Partenaire();
         $partenaire->setPartenaireType($partenariat->getPartenaireType())
             ->setRoles(['ROLE_PARTENAIRE'])
@@ -26,7 +35,8 @@ class AcceptController extends AbstractController
             ->setCreatedAt(new \DateTimeImmutable());
         $entityManager->persist($partenaire);
 
-        $partenariat->setAcceptedAt(new \DateTimeImmutable());
+        $partenariat->setAcceptedAt(new \DateTimeImmutable())
+            ->setRejectedAt(null);
         $entityManager->persist($partenariat);
         $entityManager->flush();
 

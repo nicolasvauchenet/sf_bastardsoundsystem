@@ -1,0 +1,54 @@
+{% extends '@Admin/index.html.twig' %}
+
+{% block title %}Nouveaux messages - Administration Générale{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Nouveaux messages</h1>
+    </section>
+
+    <section class="app-section">
+        {% if app_statistics_contact.messages | length > 0 %}
+            <table class="app-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <th colspan="2">Date du message</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for message in app_statistics_contact.messages %}
+                        <tr>
+                            <td>{{ message.senderType }}</td>
+                            <td>{{ message.senderName }}</td>
+                            <td>{{ message.senderEmail }}</td>
+                            <td>{{ message.senderPhone }}</td>
+                            <td>{{ message.sentAt | date("d/m/Y à H:i") }}</td>
+                            <td>
+                                <a href="#" class="success" title="Répondre">
+                                    <i class="fa-solid fa-reply"></i>
+                                </a>
+
+                                <a href="#" class="info" title="Voir">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+
+                                <a href="{{ path('admin_contact_messages_delete', {'id': message.id}) }}"
+                                   class="danger"
+                                   onclick="return window.confirm('Supprimer ce message ?')" title="Supprimer">
+                                    <i class="fa-solid fa-circle-xmark"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Tout est nickel de ce côté ! Rien à signaler…</p>
+        {% endif %}
+    </section>
+{% endblock %}

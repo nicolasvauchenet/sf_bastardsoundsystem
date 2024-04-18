@@ -31,8 +31,8 @@ class AdhesionController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()) {
             $userExists = $entityManager->getRepository(User::class)->findOneBy(['email' => $form->get('adherentEmail')->getData()]);
-            $partenaireExists = $entityManager->getRepository(Partenariat::class)->findOneBy(['partenaireEmail' => $form->get('adherentEmail')->getData()]);
-            $adherentExists = $entityManager->getRepository(Adhesion::class)->findOneBy(['adherentEmail' => $form->get('adherentEmail')->getData()]);
+            $partenaireExists = $entityManager->getRepository(Partenariat::class)->findOneBy(['partenaireEmail' => $form->get('adherentEmail')->getData(), 'rejectedAt' => null]);
+            $adherentExists = $entityManager->getRepository(Adhesion::class)->findOneBy(['adherentEmail' => $form->get('adherentEmail')->getData(), 'rejectedAt' => null]);
 
             if($userExists || $partenaireExists || $adherentExists) {
                 $this->addFlash('danger', "Nous avons déjà quelqu'un avec cette adresse e-mail. Veuillez en choisir une autre.");

@@ -10,8 +10,12 @@
     @include displayFlex(space-between, center);
   }
 
-  .copyrights {
+  p {
     margin-bottom: 0.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     @include respondTo(md) {
       margin-bottom: 0;
