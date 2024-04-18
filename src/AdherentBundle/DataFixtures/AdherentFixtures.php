@@ -26,6 +26,7 @@ class AdherentFixtures extends Fixture
             ->setFirstname('Adhérent')
             ->setLastname('Test')
             ->setPseudo('adherent')
+            ->setPhone('01.02.03.04.05')
             ->setAdherentType('Musicien')
             ->setCreatedAt(new DateTimeImmutable());
         $manager->persist($adherent);

@@ -24,6 +24,17 @@ class ContactController extends AbstractController
                           EntityManagerInterface $entityManager): Response
     {
         $contact = new Contact();
+        if($this->getUser()) {
+            if($this->isGranted('ROLE_ADHERENT')) {
+                $contact->setSenderType($this->getUser()->getAdherentType());
+            } else if($this->isGranted('ROLE_PARTENAIRE')) {
+                $contact->setSenderType($this->getUser()->getPartenaireType());
+            }
+            $contact->setSenderName($this->getUser()->getFullName())
+                ->setSenderEmail($this->getUser()->getUserIdentifier())
+                ->setSenderPhone($this->getUser()->getPhone());
+        }
+
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 

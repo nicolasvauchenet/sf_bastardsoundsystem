@@ -26,6 +26,7 @@ class PartenaireFixtures extends Fixture
             ->setFirstname('Partenaire')
             ->setLastname('Test')
             ->setPseudo('partenaire')
+            ->setPhone('01.02.03.04.05')
             ->setPartenaireType('Organisateur')
             ->setCompanyName('Compagnie test')
             ->setCreatedAt(new DateTimeImmutable());

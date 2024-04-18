@@ -47,6 +47,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $pseudo = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $phone = null;
+
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
@@ -161,6 +164,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getFullName(): ?string
+    {
+        return $this->gender . ' ' . $this->firstname . ' ' . $this->lastname;
+    }
+
     public function getPseudo(): ?string
     {
         return $this->pseudo;
@@ -173,9 +181,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getFullname(): ?string
+    public function getPhone(): ?string
     {
-        return $this->gender . ' ' . $this->firstname . ' ' . $this->lastname;
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): static
+    {
+        $this->phone = $phone;
+
+        return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeImmutable
