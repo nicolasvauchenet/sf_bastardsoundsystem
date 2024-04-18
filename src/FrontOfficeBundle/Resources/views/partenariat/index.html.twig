@@ -8,5 +8,76 @@
         <h1>Travaillons main dans la main&nbsp;!</h1>
     </section>
 
+    <section class="app-section text">
+        <p>
+            Chez BSS, on fait bien plus que balancer du son et de la lumière de folie. On gère toute la scène et la
+            régie pour que ton event roule sans hics. Et ouais, on est aussi dans le coup pour co-organiser et booster
+            chaque event jusqu’au max ! En plus, on est à fond dans le partage de nos trucs et astuces avec des ateliers
+            qui te plongent dans les arcanes du spectacle. Que tu veuilles éblouir ton public ou peaufiner tes skills en
+            backstage, Bastard Sound System, c'est le partenaire qu’il te faut pour faire briller chaque instant.
+        </p>
+    </section>
 
+    <section class="app-section">
+        {{ form_start(form, {'attr': {'class': 'app-form'}}) }}
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Vos infos</legend>
+
+            <div class="form-group">
+                <label for="{{ form.partenaireName.vars.id }}"
+                       class="form-label {% if form.partenaireName.vars.required %}required{% endif %}">
+                    {{ form.partenaireName.vars.label }}
+                </label>
+                {{ form_widget(form.partenaireName) }}
+                {{ form_errors(form.partenaireName) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.partenaireEmail.vars.id }}"
+                       class="form-label {% if form.partenaireEmail.vars.required %}required{% endif %}">
+                    {{ form.partenaireEmail.vars.label }}
+                </label>
+                {{ form_widget(form.partenaireEmail) }}
+                {{ form_errors(form.partenaireEmail) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.partenairePhone.vars.id }}"
+                       class="form-label {% if form.partenairePhone.vars.required %}required{% endif %}">
+                    {{ form.partenairePhone.vars.label }}
+                </label>
+                {{ form_widget(form.partenairePhone) }}
+                {{ form_errors(form.partenairePhone) }}
+            </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Notre partenariat</legend>
+
+            <div class="form-group">
+                <label for="{{ form.partenaireType.vars.id }}"
+                       class="form-label {% if form.partenaireType.vars.required %}required{% endif %}">
+                    {{ form.partenaireType.vars.label }}
+                </label>
+                {{ form_widget(form.partenaireType) }}
+                {{ form_errors(form.partenaireType) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.partenaireMessage.vars.id }}"
+                       class="form-label {% if form.partenaireMessage.vars.required %}required{% endif %}">
+                    {{ form.partenaireMessage.vars.label }}
+                </label>
+                {{ form_widget(form.partenaireMessage) }}
+                {{ form_errors(form.partenaireMessage) }}
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <span>&nbsp;</span>
+            <button type="submit" class="form-submit app-btn cta">Envoyez</button>
+        </div>
+
+        {{ form_end(form) }}
+    </section>
 {% endblock %}
