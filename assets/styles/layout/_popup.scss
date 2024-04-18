@@ -1,0 +1,101 @@
+.app-popup {
+  @include displayFlex(center, center);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background-color: rgba($white, 0.85);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+
+    .popup-body {
+      transform: scale(1);
+    }
+  }
+
+  .popup-body {
+    position: relative;
+    min-width: 40dvw;
+    max-width: 50dvw;
+    background-color: $white;
+    border: 0.25rem solid $primary;
+    border-radius: 0.25rem;
+    @extend .box-shadow;
+    transform: scale(0);
+    transition: transform 0.5s;
+
+    .popup-header {
+      padding: 1rem 3.5rem 1rem 1rem;
+      background-color: $primary;
+      border-bottom: 0.25rem solid $primary;
+
+      h2 {
+        color: $white;
+      }
+
+      .close {
+        position: absolute;
+        top: 0.85rem;
+        right: 0.85rem;
+        color: $white;
+        transition: all 0.5s;
+
+        &:hover {
+          color: $third;
+        }
+
+        i,
+        svg {
+          font-size: 1.75rem;
+        }
+      }
+    }
+
+    .popup-content {
+      padding: 1rem;
+      max-height: 75dvh;
+      overflow-y: auto;
+
+      h3 {
+        margin-bottom: 1rem;
+      }
+
+      form {
+        padding: 1rem;
+        background-color: rgba($secondary, 0.15);
+        border-radius: 0.25rem;
+
+        label {
+          display: block;
+          margin-bottom: 1rem;
+          font-weight: bold;
+        }
+
+        textarea {
+          box-sizing: border-box;
+          padding: 0.5rem 1rem;
+          margin-bottom: 1rem;
+          width: 100%;
+          min-width: 100%;
+          max-width: 100%;
+          font-family: $font-primary;
+          font-size: 1rem;
+          background-color: $white;
+          border: 2px solid $primary;
+          border-radius: 0.25rem;
+        }
+
+        .app-btn {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}

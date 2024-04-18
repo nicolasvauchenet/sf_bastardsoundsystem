@@ -24,7 +24,8 @@ tbody {
       a {
         &.info,
         &.success,
-        &.danger {
+        &.danger,
+        &.disabled {
           display: block;
           flex: 1;
           text-align: center;
@@ -45,6 +46,11 @@ tbody {
 
         &.danger {
           color: $danger;
+        }
+
+        &.disabled {
+          color: rgba($secondary, 0.5);
+          pointer-events: none;
         }
       }
     }

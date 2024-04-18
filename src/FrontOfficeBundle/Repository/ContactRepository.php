@@ -25,6 +25,17 @@ class ContactRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.answeredAt IS NULL')
+            ->andWhere('c.senderType != :type')
+            ->setParameter('type', 'reply')
+            ->orderBy('c.sentAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findAnsweredMessages(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.answeredAt IS NOT NULL')
             ->orderBy('c.sentAt', 'DESC')
             ->getQuery()
             ->getResult();

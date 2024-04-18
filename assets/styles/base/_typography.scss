@@ -37,6 +37,11 @@ ul {
 
 dl {
   margin-left: 2rem;
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   dt {
     margin-bottom: 0.5rem;
@@ -47,7 +52,20 @@ dl {
 
   dd {
     margin-left: 1rem;
-    margin-bottom: 0.25rem;
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+blockquote {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -59,6 +77,14 @@ a {
   &:hover {
     color: $primary;
   }
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
 }
 
 small {

@@ -40,4 +40,9 @@ class ContactService
     {
         return $this->entityManager->getRepository(Contact::class)->findNewMessages();
     }
+
+    public function getAnsweredMessages(): array
+    {
+        return $this->entityManager->getRepository(Contact::class)->findAnsweredMessages();
+    }
 }

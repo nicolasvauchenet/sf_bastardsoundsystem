@@ -31,18 +31,56 @@
                             <td>
                                 <a href="{{ path('admin_contact_partenariats_accept', {'id': partenariat.id}) }}"
                                    class="success"
-                                   onclick="return window.confirm('Accepter cette demande ?')" title="Accepter">
-                                    <i class="fa-solid fa-circle-check"></i>
+                                   onclick="return window.confirm('Accepter cette demande ?')"
+                                   title="Accepter la demande">
+                                    <i class="fa-solid fa-thumbs-up"></i>
                                 </a>
 
-                                <a href="#" class="info" title="Voir">
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
+                                {% if partenariat.partenaireMessage %}
+                                    <a href="#"
+                                       class="info"
+                                       title="Lire le message"
+                                       data-controller="popup--index"
+                                       data-action="popup--index#open"
+                                       data-popupid="popup-{{ partenariat.id }}">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </a>
+                                    <div id="popup-{{ partenariat.id }}" class="app-popup">
+                                        <div class="popup-body">
+                                            <div class="popup-header">
+                                                <h2>Nouvelle demande de partenariat</h2>
+                                                <a href="#"
+                                                   class="close"
+                                                   data-controller="popup--index"
+                                                   data-action="popup--index#close"
+                                                   data-popupid="popup-{{ partenariat.id }}">
+                                                    <i class="fa-solid fa-circle-xmark"></i>
+                                                </a>
+                                            </div>
+                                            <div class="popup-content">
+                                                <p>
+                                                    <strong>{{ partenariat.partenaireName }}</strong>
+                                                    -
+                                                    {{ partenariat.partenaireType }}
+                                                </p>
+                                                <p>
+                                                    <strong>Message :</strong>
+                                                </p>
+                                                <blockquote>{{ partenariat.partenaireMessage }}</blockquote>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <a class="disabled" title="Pas de message">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </a>
+                                {% endif %}
 
                                 <a href="{{ path('admin_contact_partenariats_reject', {'id': partenariat.id}) }}"
                                    class="danger"
-                                   onclick="return window.confirm('Rejeter cette demande ?')" title="Rejeter">
-                                    <i class="fa-solid fa-circle-xmark"></i>
+                                   onclick="return window.confirm('Rejeter cette demande ?')"
+                                   title="Rejeter la demande">
+                                    <i class="fa-solid fa-handshake-slash"></i>
                                 </a>
                             </td>
                         </tr>
@@ -83,17 +121,55 @@
                                 <td>
                                     <a href="{{ path('admin_contact_partenariats_accept', {'id': partenariat.id}) }}"
                                        class="success"
-                                       onclick="return window.confirm('Accepter cette demande ?')" title="Accepter">
-                                        <i class="fa-solid fa-circle-check"></i>
+                                       onclick="return window.confirm('Accepter cette demande ?')"
+                                       title="Accepter la demande">
+                                        <i class="fa-solid fa-thumbs-up"></i>
                                     </a>
 
-                                    <a href="#" class="info" title="Voir">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </a>
+                                    {% if partenariat.partenaireMessage %}
+                                        <a href="#"
+                                           class="info"
+                                           title="Lire le message"
+                                           data-controller="popup--index"
+                                           data-action="popup--index#open"
+                                           data-popupid="popup-rejected-{{ partenariat.id }}">
+                                            <i class="fa-solid fa-envelope"></i>
+                                        </a>
+                                        <div id="popup-rejected-{{ partenariat.id }}" class="app-popup">
+                                            <div class="popup-body">
+                                                <div class="popup-header">
+                                                    <h2>Demande de partenariat rejetée</h2>
+                                                    <a href="#"
+                                                       class="close"
+                                                       data-controller="popup--index"
+                                                       data-action="popup--index#close"
+                                                       data-popupid="popup-rejected-{{ partenariat.id }}">
+                                                        <i class="fa-solid fa-circle-xmark"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="popup-content">
+                                                    <p>
+                                                        <strong>{{ partenariat.partenaireName }}</strong>
+                                                        -
+                                                        {{ partenariat.partenaireType }}
+                                                    </p>
+                                                    <p>
+                                                        <strong>Message :</strong>
+                                                    </p>
+                                                    <blockquote>{{ partenariat.partenaireMessage }}</blockquote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <a class="disabled" title="Pas de message">
+                                            <i class="fa-solid fa-envelope"></i>
+                                        </a>
+                                    {% endif %}
 
                                     <a href="{{ path('admin_contact_partenariats_delete', {'id': partenariat.id}) }}"
                                        class="danger"
-                                       onclick="return window.confirm('Supprimmer cette demande ?')" title="Supprimer">
+                                       onclick="return window.confirm('Supprimmer cette demande ?')"
+                                       title="Supprimer la demande">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </a>
                                 </td>

@@ -29,18 +29,83 @@
                             <td>{{ message.senderPhone }}</td>
                             <td>{{ message.sentAt | date("d/m/Y à H:i") }}</td>
                             <td>
-                                <a href="#" class="success" title="Répondre">
+                                <a href="#" class="success"
+                                   data-controller="popup--index"
+                                   data-action="popup--index#open"
+                                   data-popupid="popup-reply-{{ message.id }}"
+                                   title="Répondre au message">
                                     <i class="fa-solid fa-reply"></i>
                                 </a>
+                                <div id="popup-reply-{{ message.id }}" class="app-popup">
+                                    <div class="popup-body">
+                                        <div class="popup-header">
+                                            <h2>{{ message.subject }}</h2>
+                                            <a href="#"
+                                               class="close"
+                                               data-controller="popup--index"
+                                               data-action="popup--index#close"
+                                               data-popupid="popup-reply-{{ message.id }}">
+                                                <i class="fa-solid fa-circle-xmark"></i>
+                                            </a>
+                                        </div>
+                                        <div class="popup-content">
+                                            <h3>
+                                                {{ message.senderName }}
+                                                -
+                                                {{ message.senderType }}, le
+                                                {{ message.sentAt | date('d/m/Y à H:i') }} :
+                                            </h3>
 
-                                <a href="#" class="info" title="Voir">
-                                    <i class="fa-solid fa-eye"></i>
+                                            <blockquote>{{ message.message }}</blockquote>
+
+                                            <form action="{{ path('admin_contact_messages_reply', {'id': message.id}) }}"
+                                                  method="post">
+                                                <label for="answer">Réponse :</label>
+                                                <textarea name="answer" id="answer" rows="5" required></textarea>
+                                                <button type="submit" class="app-btn">Envoyer</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <a href="#"
+                                   class="info"
+                                   title="Lire le message"
+                                   data-controller="popup--index"
+                                   data-action="popup--index#open"
+                                   data-popupid="popup-{{ message.id }}">
+                                    <i class="fa-solid fa-envelope"></i>
                                 </a>
+                                <div id="popup-{{ message.id }}" class="app-popup">
+                                    <div class="popup-body">
+                                        <div class="popup-header">
+                                            <h2>{{ message.subject }}</h2>
+                                            <a href="#"
+                                               class="close"
+                                               data-controller="popup--index"
+                                               data-action="popup--index#close"
+                                               data-popupid="popup-{{ message.id }}">
+                                                <i class="fa-solid fa-circle-xmark"></i>
+                                            </a>
+                                        </div>
+                                        <div class="popup-content">
+                                            <h3>
+                                                {{ message.senderName }}
+                                                -
+                                                {{ message.senderType }}, le
+                                                {{ message.sentAt | date('d/m/Y à H:i') }} :
+                                            </h3>
+
+                                            <blockquote>{{ message.message }}</blockquote>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <a href="{{ path('admin_contact_messages_delete', {'id': message.id}) }}"
                                    class="danger"
-                                   onclick="return window.confirm('Supprimer ce message ?')" title="Supprimer">
-                                    <i class="fa-solid fa-circle-xmark"></i>
+                                   onclick="return window.confirm('Supprimer ce message ?')"
+                                   title="Supprimer le message">
+                                    <i class="fa-solid fa-trash-can"></i>
                                 </a>
                             </td>
                         </tr>
@@ -50,5 +115,147 @@
         {% else %}
             <p>Tout est nickel de ce côté ! Rien à signaler…</p>
         {% endif %}
+    </section>
+
+    {% if app_statistics_contact.answeredMessages | length > 0 %}
+        <section class="app-section pagetitle">
+            <h2>Réponses aux messages</h2>
+        </section>
+
+        <section class="app-section">
+        <table class="app-table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th colspan="2">Date du message</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for message in app_statistics_contact.answeredMessages %}
+                    <tr>
+                        <td>{{ message.senderType }}</td>
+                        <td>{{ message.senderName }}</td>
+                        <td>{{ message.senderEmail }}</td>
+                        <td>{{ message.senderPhone }}</td>
+                        <td>{{ message.sentAt | date("d/m/Y à H:i") }}</td>
+                        <td>
+                            <a href="#" class="success"
+                               data-controller="popup--index"
+                               data-action="popup--index#open"
+                               data-popupid="popup-replyagain-{{ message.id }}"
+                               title="Répondre encore une fois">
+                                <i class="fa-solid fa-reply"></i>
+                            </a>
+                            <div id="popup-replyagain-{{ message.id }}" class="app-popup">
+                                <div class="popup-body">
+                                    <div class="popup-header">
+                                        <h2>{{ message.subject }}</h2>
+                                        <a href="#"
+                                           class="close"
+                                           data-controller="popup--index"
+                                           data-action="popup--index#close"
+                                           data-popupid="popup-replyagain-{{ message.id }}">
+                                            <i class="fa-solid fa-circle-xmark"></i>
+                                        </a>
+                                    </div>
+                                    <div class="popup-content">
+                                        <h3>
+                                            {{ message.senderName }}
+                                            -
+                                            {{ message.senderType }}, le
+                                            {{ message.sentAt | date('d/m/Y à H:i') }} :
+                                        </h3>
+
+                                        <blockquote>{{ message.message }}</blockquote>
+
+                                        {% if message.replies | length > 0 %}
+                                            <h3>Réponse{{ message.replies | length > 1 ? 's' : '' }} :</h3>
+                                            {% for reply in message.replies %}
+                                                <dl>
+                                                    <dt>
+                                                        <em>
+                                                            {{ reply.senderName }}, le
+                                                            {{ reply.sentAt | date('d/m/Y à H:i') }} :
+                                                        </em>
+                                                    </dt>
+                                                    <dd>{{ reply.message }}</dd>
+                                                </dl>
+                                            {% endfor %}
+                                        {% endif %}
+
+                                        <form action="{{ path('admin_contact_messages_reply', {'id': message.id}) }}"
+                                              method="post">
+                                            <label for="answer">Nouvelle réponse :</label>
+                                            <textarea name="answer" id="answer" rows="5" required></textarea>
+                                            <button type="submit" class="app-btn">Envoyer</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="#"
+                               class="info"
+                               title="Lire le message"
+                               data-controller="popup--index"
+                               data-action="popup--index#open"
+                               data-popupid="popup-{{ message.id }}">
+                                <i class="fa-solid fa-eye"></i>
+                            </a>
+                            <div id="popup-{{ message.id }}" class="app-popup">
+                                <div class="popup-body">
+                                    <div class="popup-header">
+                                        <h2>{{ message.subject }}</h2>
+                                        <a href="#"
+                                           class="close"
+                                           data-controller="popup--index"
+                                           data-action="popup--index#close"
+                                           data-popupid="popup-{{ message.id }}">
+                                            <i class="fa-solid fa-circle-xmark"></i>
+                                        </a>
+                                    </div>
+                                    <div class="popup-content">
+                                        <h3>
+                                            {{ message.senderName }}
+                                            -
+                                            {{ message.senderType }}, le
+                                            {{ message.sentAt | date('d/m/Y à H:i') }} :
+                                        </h3>
+
+                                        <blockquote>{{ message.message }}</blockquote>
+
+                                        {% if message.replies | length > 0 %}
+                                            <h3>Réponse{{ message.replies | length > 1 ? 's' : '' }} :</h3>
+                                            {% for reply in message.replies %}
+                                                <dl>
+                                                    <dt>
+                                                        <em>
+                                                            {{ reply.senderName }}, le
+                                                            {{ reply.sentAt | date('d/m/Y à H:i') }} :
+                                                        </em>
+                                                    </dt>
+                                                    <dd>{{ reply.message }}</dd>
+                                                </dl>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="{{ path('admin_contact_messages_delete', {'id': message.id}) }}"
+                               class="danger"
+                               onclick="return window.confirm('Supprimer ce message ?')"
+                               title="Supprimer le message">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
     </section>
 {% endblock %}
