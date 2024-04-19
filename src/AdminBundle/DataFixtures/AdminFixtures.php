@@ -5,10 +5,11 @@ namespace App\AdminBundle\DataFixtures;
 use App\AppBundle\Entity\User;
 use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class AdminFixtures extends Fixture
+class AdminFixtures extends Fixture implements OrderedFixtureInterface
 {
     private UserPasswordHasherInterface $passwordHasher;
 
@@ -29,5 +30,10 @@ class AdminFixtures extends Fixture
         $manager->persist($admin);
 
         $manager->flush();
+    }
+
+    public function getOrder(): int
+    {
+        return 1;
     }
 }

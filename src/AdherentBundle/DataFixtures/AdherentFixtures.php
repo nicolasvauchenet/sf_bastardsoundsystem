@@ -4,11 +4,12 @@ namespace App\AdherentBundle\DataFixtures;
 
 use App\AdherentBundle\Entity\Adherent;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use DateTimeImmutable;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class AdherentFixtures extends Fixture
+class AdherentFixtures extends Fixture implements OrderedFixtureInterface
 {
     private UserPasswordHasherInterface $passwordHasher;
 
@@ -31,5 +32,10 @@ class AdherentFixtures extends Fixture
         $manager->persist($adherent);
 
         $manager->flush();
+    }
+
+    public function getOrder(): int
+    {
+        return 2;
     }
 }

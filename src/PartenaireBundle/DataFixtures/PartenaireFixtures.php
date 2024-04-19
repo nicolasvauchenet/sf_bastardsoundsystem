@@ -4,11 +4,12 @@ namespace App\PartenaireBundle\DataFixtures;
 
 use App\PartenaireBundle\Entity\Partenaire;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use DateTimeImmutable;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class PartenaireFixtures extends Fixture
+class PartenaireFixtures extends Fixture implements OrderedFixtureInterface
 {
     private UserPasswordHasherInterface $passwordHasher;
 
@@ -32,5 +33,10 @@ class PartenaireFixtures extends Fixture
         $manager->persist($partenaire);
 
         $manager->flush();
+    }
+
+    public function getOrder(): int
+    {
+        return 3;
     }
 }
