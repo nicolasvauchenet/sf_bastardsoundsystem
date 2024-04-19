@@ -17,14 +17,18 @@ tbody {
 
       &:has(.info),
       &:has(.success),
-      &:has(.danger) {
-        @include displayFlex(center, center, 0.5rem);
+      &:has(.warning),
+      &:has(.danger),
+      &:has(.primary),
+      &:has(.disabled) {
+        @include displayFlex(center, center, 1rem);
       }
 
       a {
         &.info,
         &.success,
         &.danger,
+        &.primary,
         &.disabled {
           display: block;
           flex: 1;
@@ -46,6 +50,10 @@ tbody {
 
         &.danger {
           color: $danger;
+        }
+
+        &.primary {
+          color: $primary;
         }
 
         &.disabled {

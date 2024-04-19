@@ -1,0 +1,66 @@
+{% extends '@Admin/index.html.twig' %}
+
+{% block title %}Modifier une demande d'adhésion - Administration Générale{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Modifier une demande d'adhésion</h1>
+    </section>
+
+    <section class="app-section">
+        {{ form_start(form, {'attr': {'class': 'app-form'}}) }}
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Infos du demandeur</legend>
+
+            <div class="form-group">
+                <label for="{{ form.adherentName.vars.id }}"
+                       class="form-label {% if form.adherentName.vars.required %}required{% endif %}">
+                    {{ form.adherentName.vars.label }}
+                </label>
+                {{ form_widget(form.adherentName) }}
+                {{ form_errors(form.adherentName) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.adherentEmail.vars.id }}"
+                       class="form-label {% if form.adherentEmail.vars.required %}required{% endif %}">
+                    {{ form.adherentEmail.vars.label }}
+                </label>
+                {{ form_widget(form.adherentEmail) }}
+                {{ form_errors(form.adherentEmail) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.adherentPhone.vars.id }}"
+                       class="form-label {% if form.adherentPhone.vars.required %}required{% endif %}">
+                    {{ form.adherentPhone.vars.label }}
+                </label>
+                {{ form_widget(form.adherentPhone) }}
+                {{ form_errors(form.adherentPhone) }}
+            </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Type d'adhésion</legend>
+
+            <div class="form-group">
+                <label for="{{ form.adherentType.vars.id }}"
+                       class="form-label {% if form.adherentType.vars.required %}required{% endif %}">
+                    {{ form.adherentType.vars.label }}
+                </label>
+                {{ form_widget(form.adherentType) }}
+                {{ form_errors(form.adherentType) }}
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <a href="{{ path('admin_contact_adhesions_index') }}" class="app-btn">
+                <i class="fa-solid fa-hand-point-left"></i>
+                Retour
+            </a>
+            <button type="submit" class="form-submit app-btn cta">Modifiez</button>
+        </div>
+
+        {{ form_end(form) }}
+    </section>
+{% endblock %}

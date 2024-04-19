@@ -2,7 +2,9 @@
 
 {% block title %}
     {% if app_statistics_contact.messages | length > 0 %}
-        Nouveaux messages
+        {{ app_statistics_contact.messages | length }}
+        Nouveau{{ app_statistics_contact.messages | length > 1 ? 'x' : '' }}
+        message{{ app_statistics_contact.messages | length > 1 ? 's' : '' }}
     {% else %}
         Pas de nouveaux messages
     {% endif %}
@@ -69,19 +71,19 @@
                                                   method="post">
                                                 <label for="answer">Réponse :</label>
                                                 <textarea name="answer" id="answer" rows="5" required></textarea>
-                                                <button type="submit" class="app-btn">Envoyer</button>
+                                                <button type="submit" class="app-btn cta">Envoyer</button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
 
                                 <a href="#"
-                                   class="info"
+                                   class="primary"
                                    title="Lire le message"
                                    data-controller="popup--index"
                                    data-action="popup--index#open"
                                    data-popupid="popup-{{ message.id }}">
-                                    <i class="fa-solid fa-envelope"></i>
+                                    <i class="fa-solid fa-eye"></i>
                                 </a>
                                 <div id="popup-{{ message.id }}" class="app-popup">
                                     <div class="popup-body">
@@ -198,14 +200,14 @@
                                               method="post">
                                             <label for="answer">Nouvelle réponse :</label>
                                             <textarea name="answer" id="answer" rows="5" required></textarea>
-                                            <button type="submit" class="app-btn">Envoyer</button>
+                                            <button type="submit" class="app-btn cta">Envoyer</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
 
                             <a href="#"
-                               class="info"
+                               class="primary"
                                title="Lire le message"
                                data-controller="popup--index"
                                data-action="popup--index#open"

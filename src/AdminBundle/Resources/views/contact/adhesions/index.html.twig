@@ -2,7 +2,10 @@
 
 {% block title %}
     {% if app_statistics_contact.adhesions | length > 0 %}
-        Nouvelles demandes d'adhésion
+        {{ app_statistics_contact.adhesions | length }}
+        Nouvelle{{ app_statistics_contact.adhesions | length > 1 ? 's' : '' }}
+        demande{{ app_statistics_contact.adhesions | length > 1 ? 's' : '' }}
+        d'adhésion
     {% else %}
         Pas de nouvelles adhésions
     {% endif %}
@@ -36,21 +39,14 @@
                             <td>{{ adhesion.adherentPhone }}</td>
                             <td>{{ adhesion.sentAt | date("d/m/Y à H:i") }}</td>
                             <td>
-                                <a href="{{ path('admin_contact_adhesions_accept', {'id': adhesion.id}) }}"
-                                   class="success"
-                                   onclick="return window.confirm('Accepter cette demande ?')"
-                                   title="Accepter la demande">
-                                    <i class="fa-solid fa-thumbs-up"></i>
-                                </a>
-
                                 {% if adhesion.adherentMessage %}
                                     <a href="#"
-                                       class="info"
+                                       class="primary"
                                        title="Lire le message"
                                        data-controller="popup--index"
                                        data-action="popup--index#open"
                                        data-popupid="popup-{{ adhesion.id }}">
-                                        <i class="fa-solid fa-envelope"></i>
+                                        <i class="fa-solid fa-eye"></i>
                                     </a>
                                     <div id="popup-{{ adhesion.id }}" class="app-popup">
                                         <div class="popup-body">
@@ -82,6 +78,19 @@
                                         <i class="fa-solid fa-envelope"></i>
                                     </a>
                                 {% endif %}
+
+                                <a href="{{ path('admin_contact_adhesions_edit', {'id': adhesion.id}) }}"
+                                   class="info"
+                                   title="Modifier la demande">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+
+                                <a href="{{ path('admin_contact_adhesions_accept', {'id': adhesion.id}) }}"
+                                   class="success"
+                                   onclick="return window.confirm('Accepter cette demande ?')"
+                                   title="Accepter la demande">
+                                    <i class="fa-solid fa-thumbs-up"></i>
+                                </a>
 
                                 <a href="{{ path('admin_contact_adhesions_reject', {'id': adhesion.id}) }}"
                                    class="danger"
@@ -126,21 +135,14 @@
                                 <td>{{ adhesion.adherentPhone }}</td>
                                 <td>{{ adhesion.sentAt | date("d/m/Y à H:i") }}</td>
                                 <td>
-                                    <a href="{{ path('admin_contact_adhesions_accept', {'id': adhesion.id}) }}"
-                                       class="success"
-                                       onclick="return window.confirm('Accepter cette demande ?')"
-                                       title="Accepter la demande">
-                                        <i class="fa-solid fa-thumbs-up"></i>
-                                    </a>
-
                                     {% if adhesion.adherentMessage %}
                                         <a href="#"
-                                           class="info"
+                                           class="primary"
                                            title="Lire le message"
                                            data-controller="popup--index"
                                            data-action="popup--index#open"
                                            data-popupid="popup-rejected-{{ adhesion.id }}">
-                                            <i class="fa-solid fa-envelope"></i>
+                                            <i class="fa-solid fa-eye"></i>
                                         </a>
                                         <div id="popup-rejected-{{ adhesion.id }}" class="app-popup">
                                             <div class="popup-body">
@@ -172,6 +174,19 @@
                                             <i class="fa-solid fa-envelope"></i>
                                         </a>
                                     {% endif %}
+
+                                    <a href="{{ path('admin_contact_adhesions_edit', {'id': adhesion.id}) }}"
+                                       class="info"
+                                       title="Modifier la demande">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+
+                                    <a href="{{ path('admin_contact_adhesions_accept', {'id': adhesion.id}) }}"
+                                       class="success"
+                                       onclick="return window.confirm('Accepter cette demande ?')"
+                                       title="Accepter la demande">
+                                        <i class="fa-solid fa-thumbs-up"></i>
+                                    </a>
 
                                     <a href="{{ path('admin_contact_adhesions_delete', {'id': adhesion.id}) }}"
                                        class="danger"

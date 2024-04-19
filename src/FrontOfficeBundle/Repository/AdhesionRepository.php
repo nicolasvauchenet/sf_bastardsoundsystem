@@ -27,6 +27,7 @@ class AdhesionRepository extends ServiceEntityRepository
             ->andWhere('a.acceptedAt IS NULL')
             ->andWhere('a.rejectedAt IS NULL')
             ->orderBy('a.sentAt', 'DESC')
+            ->addOrderBy('a.id', 'DESC')
             ->getQuery()
             ->getResult();
     }

@@ -1,0 +1,66 @@
+{% extends '@Admin/index.html.twig' %}
+
+{% block title %}Modifier une demande de partenariat - Administration Générale{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Modifier une demande de partenariat</h1>
+    </section>
+
+    <section class="app-section">
+        {{ form_start(form, {'attr': {'class': 'app-form'}}) }}
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Infos du demandeur</legend>
+
+            <div class="form-group">
+                <label for="{{ form.partenaireName.vars.id }}"
+                       class="form-label {% if form.partenaireName.vars.required %}required{% endif %}">
+                    {{ form.partenaireName.vars.label }}
+                </label>
+                {{ form_widget(form.partenaireName) }}
+                {{ form_errors(form.partenaireName) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.partenaireEmail.vars.id }}"
+                       class="form-label {% if form.partenaireEmail.vars.required %}required{% endif %}">
+                    {{ form.partenaireEmail.vars.label }}
+                </label>
+                {{ form_widget(form.partenaireEmail) }}
+                {{ form_errors(form.partenaireEmail) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.partenairePhone.vars.id }}"
+                       class="form-label {% if form.partenairePhone.vars.required %}required{% endif %}">
+                    {{ form.partenairePhone.vars.label }}
+                </label>
+                {{ form_widget(form.partenairePhone) }}
+                {{ form_errors(form.partenairePhone) }}
+            </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Type de partenariat</legend>
+
+            <div class="form-group">
+                <label for="{{ form.partenaireType.vars.id }}"
+                       class="form-label {% if form.partenaireType.vars.required %}required{% endif %}">
+                    {{ form.partenaireType.vars.label }}
+                </label>
+                {{ form_widget(form.partenaireType) }}
+                {{ form_errors(form.partenaireType) }}
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <a href="{{ path('admin_contact_partenariats_index') }}" class="app-btn">
+                <i class="fa-solid fa-hand-point-left"></i>
+                Retour
+            </a>
+            <button type="submit" class="form-submit app-btn cta">Modifiez</button>
+        </div>
+
+        {{ form_end(form) }}
+    </section>
+{% endblock %}

@@ -27,6 +27,7 @@ class PartenariatRepository extends ServiceEntityRepository
             ->andWhere('p.acceptedAt IS NULL')
             ->andWhere('p.rejectedAt IS NULL')
             ->orderBy('p.sentAt', 'DESC')
+            ->addOrderBy('p.id', 'DESC')
             ->getQuery()
             ->getResult();
     }
