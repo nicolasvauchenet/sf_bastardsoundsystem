@@ -7,6 +7,36 @@
 
   @import './main';
 
+  &.home {
+    .app-header {
+      height: 30dvh;
+
+      @include respondTo(md) {
+        height: 50dvh;
+      }
+
+      &.top {
+        @include respondTo(md) {
+          .app-logo {
+            img {
+              height: 9.5dvh;
+            }
+          }
+        }
+      }
+
+      .app-logo {
+        img {
+          height: 30dvh;
+
+          @include respondTo(md) {
+            height: 23dvh;
+          }
+        }
+      }
+    }
+  }
+
   &.form {
     background-color: $white;
 
