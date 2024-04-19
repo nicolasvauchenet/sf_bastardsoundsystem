@@ -50,7 +50,7 @@
     <div class="menu-item">
         <a href="#">
             <i class="fa-{{ app.user ? 'solid' : 'regular' }} fa-circle-user"></i>
-            {{ app.user ? app.user.pseudo ? app.user.pseudo : app.user.firstname : 'Visiteur' }}
+            {{ app.user ? app.user.pseudo ? app.user.pseudo : app.user.name : 'Visiteur' }}
         </a>
 
         <div class="submenu">

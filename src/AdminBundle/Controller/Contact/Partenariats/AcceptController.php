@@ -3,10 +3,12 @@
 namespace App\AdminBundle\Controller\Contact\Partenariats;
 
 use App\AppBundle\Entity\User;
+use App\AppBundle\Service\MailerService;
 use App\FrontOfficeBundle\Entity\Partenariat;
 use App\PartenaireBundle\Entity\Partenaire;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
@@ -15,10 +17,13 @@ use Symfony\Component\Routing\Attribute\Route;
 class AcceptController extends AbstractController
 {
     #[Route('/accepter/{id}', name: 'accept')]
-    public function accept(EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher, Partenariat $partenariat): Response
+    public function accept(EntityManagerInterface      $entityManager,
+                           UserPasswordHasherInterface $passwordHasher,
+                           MailerService               $mailerService,
+                           Request                     $request,
+                           Partenariat                 $partenariat): Response
     {
         $userExists = $entityManager->getRepository(User::class)->findOneBy(['email' => $partenariat->getPartenaireEmail()]);
-
         if($userExists) {
             $this->addFlash('danger', "Nous avons déjà quelqu'un avec cette adresse e-mail");
 
@@ -39,6 +44,22 @@ class AcceptController extends AbstractController
             ->setRejectedAt(null);
         $entityManager->persist($partenariat);
         $entityManager->flush();
+
+        $mailerService->sendEmail([
+            'from' => [
+                'type' => 'Partenaire',
+                'name' => 'Bastard Sound System',
+                'email' => 'admin@bastardsoundsystem.org',
+                'phone' => '06.83.57.30.67',
+            ],
+            'to' => [
+                'name' => $partenaire->getName(),
+                'email' => $partenaire->getEmail(),
+            ],
+            'subject' => "Bienvenue chez Bastard Sound System !",
+            'date' => $partenariat->getAcceptedAt(),
+            'url' => $request->getSchemeAndHttpHost() . '/partenaire',
+        ], 'accepted');
 
         $this->addFlash('success', "Vous avez accepté la demande de partenariat de {$partenariat->getPartenaireName()}");
 

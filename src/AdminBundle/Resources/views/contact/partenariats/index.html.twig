@@ -1,6 +1,13 @@
 {% extends '@Admin/index.html.twig' %}
 
-{% block title %}Demandes de partenariat - Administration Générale{% endblock %}
+{% block title %}
+    {% if app_statistics_contact.partenariats | length > 0 %}
+        Nouvelles demandes de partenariat
+    {% else %}
+        Pas de nouveaux partenariats
+    {% endif %}
+    - Administration Générale
+{% endblock %}
 
 {% block main %}
     <section class="app-section pagetitle">

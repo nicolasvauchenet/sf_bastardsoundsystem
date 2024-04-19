@@ -1,6 +1,13 @@
 {% extends '@Admin/index.html.twig' %}
 
-{% block title %}Nouveaux messages - Administration Générale{% endblock %}
+{% block title %}
+    {% if app_statistics_contact.messages | length > 0 %}
+        Nouveaux messages
+    {% else %}
+        Pas de nouveaux messages
+    {% endif %}
+    - Administration Générale
+{% endblock %}
 
 {% block main %}
     <section class="app-section pagetitle">

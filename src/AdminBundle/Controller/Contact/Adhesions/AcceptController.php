@@ -4,10 +4,11 @@ namespace App\AdminBundle\Controller\Contact\Adhesions;
 
 use App\AdherentBundle\Entity\Adherent;
 use App\AppBundle\Entity\User;
+use App\AppBundle\Service\MailerService;
 use App\FrontOfficeBundle\Entity\Adhesion;
-use App\FrontOfficeBundle\Entity\Partenariat;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
@@ -16,7 +17,11 @@ use Symfony\Component\Routing\Attribute\Route;
 class AcceptController extends AbstractController
 {
     #[Route('/accepter/{id}', name: 'accept')]
-    public function accept(EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher, Adhesion $adhesion): Response
+    public function accept(EntityManagerInterface      $entityManager,
+                           UserPasswordHasherInterface $passwordHasher,
+                           MailerService               $mailerService,
+                           Request                     $request,
+                           Adhesion                    $adhesion): Response
     {
         $userExists = $entityManager->getRepository(User::class)->findOneBy(['email' => $adhesion->getAdherentEmail()]);
 
@@ -40,6 +45,22 @@ class AcceptController extends AbstractController
             ->setRejectedAt(null);
         $entityManager->persist($adhesion);
         $entityManager->flush();
+
+        $mailerService->sendEmail([
+            'from' => [
+                'type' => 'Adhérent',
+                'name' => 'Bastard Sound System',
+                'email' => 'admin@bastardsoundsystem.org',
+                'phone' => '06.83.57.30.67',
+            ],
+            'to' => [
+                'name' => $adherent->getName(),
+                'email' => $adherent->getEmail(),
+            ],
+            'subject' => "Bienvenue chez Bastard Sound System !",
+            'date' => $adhesion->getAcceptedAt(),
+            'url' => $request->getSchemeAndHttpHost() . '/adherent',
+        ], 'accepted');
 
         $this->addFlash('success', "Vous avez accepté la demande d'adhésion de {$adhesion->getAdherentName()}");
 
