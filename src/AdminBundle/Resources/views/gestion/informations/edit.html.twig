@@ -1,0 +1,59 @@
+{% extends '@Admin/index.html.twig' %}
+
+{% block title %}Modifier les Informations de l'Association - Administration Générale{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Modifier les Informations de l'Association</h1>
+    </section>
+
+    <section class="app-section">
+        {{ form_start(form, {'attr': {'class': 'app-form'}}) }}
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Infos de l'association</legend>
+
+            <div class="form-group">
+                <label for="{{ form.name.vars.id }}"
+                       class="form-label {% if form.name.vars.required %}required{% endif %}">
+                    {{ form.name.vars.label }}
+                </label>
+                {{ form_widget(form.name) }}
+                {{ form_errors(form.name) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.email.vars.id }}"
+                       class="form-label {% if form.email.vars.required %}required{% endif %}">
+                    {{ form.email.vars.label }}
+                </label>
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.phone.vars.id }}"
+                       class="form-label {% if form.phone.vars.required %}required{% endif %}">
+                    {{ form.phone.vars.label }}
+                </label>
+                {{ form_widget(form.phone) }}
+                {{ form_errors(form.phone) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.address.vars.id }}"
+                       class="form-label {% if form.address.vars.required %}required{% endif %}">
+                    {{ form.address.vars.label }}
+                </label>
+                {{ form_widget(form.address) }}
+                {{ form_errors(form.address) }}
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <span>&nbsp;</span>
+            <button type="submit" class="form-submit app-btn cta">Modifiez</button>
+        </div>
+
+        {{ form_end(form) }}
+    </section>
+{% endblock %}

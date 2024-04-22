@@ -64,7 +64,7 @@
             Gestion
         </h2>
 
-        <a href="#" {% if 'admin_gestion_infos_' in app.request.get('_route') %} class="active"{% endif %}>
+        <a href="{{ path('admin_gestion_informations_edit') }}" {% if 'admin_gestion_informations_' in app.request.get('_route') %} class="active"{% endif %}>
             <i class="fa-solid fa-circle-info"></i>
             Infos Générales
         </a>
