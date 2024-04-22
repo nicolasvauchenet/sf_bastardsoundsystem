@@ -1,9 +1,7 @@
 .app-main {
   padding: 1rem;
   min-height: calc(100dvh - 10.2rem);
-  background-color: $white;
   border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
 
   @import "./section";
 }

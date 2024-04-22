@@ -2,6 +2,7 @@
 
 namespace App\FrontOfficeBundle\Controller;
 
+use App\AppBundle\Service\InformationsService;
 use App\AppBundle\Service\MailerService;
 use App\FrontOfficeBundle\Entity\Contact;
 use App\FrontOfficeBundle\Form\ContactType;
@@ -21,6 +22,7 @@ class ContactController extends AbstractController
     #[Route('contactons-nous', name: 'contact')]
     public function index(Request                $request,
                           MailerService          $mailerService,
+                          InformationsService    $informationsService,
                           EntityManagerInterface $entityManager): Response
     {
         $contact = new Contact();
@@ -47,8 +49,8 @@ class ContactController extends AbstractController
                     'phone' => $form->get('senderPhone')->getData(),
                 ],
                 'to' => [
-                    'name' => 'Administrateur BSS',
-                    'email' => 'admin@bastardsoundsystem.org',
+                    'name' => $informationsService->getAssociationName(),
+                    'email' => $informationsService->getAssociationEmail(),
                 ],
                 'subject' => $form->get('subject')->getData(),
                 'message' => $form->get('message')->getData(),

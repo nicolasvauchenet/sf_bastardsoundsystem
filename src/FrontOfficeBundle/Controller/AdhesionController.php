@@ -3,6 +3,7 @@
 namespace App\FrontOfficeBundle\Controller;
 
 use App\AppBundle\Entity\User;
+use App\AppBundle\Service\InformationsService;
 use App\AppBundle\Service\MailerService;
 use App\FrontOfficeBundle\Entity\Adhesion;
 use App\FrontOfficeBundle\Entity\Partenariat;
@@ -23,6 +24,7 @@ class AdhesionController extends AbstractController
     #[Route('devenir-adherent', name: 'adhesion')]
     public function index(Request                $request,
                           MailerService          $mailerService,
+                          InformationsService    $informationsService,
                           EntityManagerInterface $entityManager): Response
     {
         $adhesion = new Adhesion();
@@ -50,8 +52,8 @@ class AdhesionController extends AbstractController
                     'phone' => $form->get('adherentPhone')->getData(),
                 ],
                 'to' => [
-                    'name' => 'Administrateur BSS',
-                    'email' => 'admin@bastardsoundsystem.org',
+                    'name' => $informationsService->getAssociationName(),
+                    'email' => $informationsService->getAssociationEmail(),
                 ],
                 'subject' => "Nouvelle demande d'adhésion",
                 'message' => $form->get('adherentMessage')->getData(),

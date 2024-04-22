@@ -81,10 +81,15 @@
         min-width: 1rem;
         font-family: monospace;
         font-size: 0.65rem;
-        font-weight: normal;
+        font-weight: bold;
         color: $white;
         background-color: $success;
         border-radius: 0.25rem;
+
+        &.danger {
+          color: $white !important;
+          background-color: $danger;
+        }
       }
     }
   }

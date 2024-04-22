@@ -26,11 +26,13 @@
             Nous sommes basés en Creuse, mais nous intervenons partout en France ! On est nombreux… et on est partout !
         </p>
         <dl>
-            <dt>Bastard Sound System</dt>
+            <dt>{{ app_informations.associationName }}</dt>
             <dd>
-                <a href="mailto:contact@bastardsoundsystem.org">contact@bastardsoundsystem.org</a>
+                {#{{ app_informations.associationAddress }}
+                <br/>#}
+                <a href="mailto:{{ app_informations.associationEmail }}">{{ app_informations.associationEmail }}</a>
                 <br/>
-                <a href="tel:+33683573067">06.83.57.30.67</a>
+                <a href="tel:{{ '+33' ~ app_informations.associationPhone | replace({'.': '', ' ': ''})|slice(1) }}">{{ app_informations.associationPhone }}</a>
             </dd>
         </dl>
     </section>

@@ -1,6 +1,16 @@
 &.backoffice {
   background-color: $primary;
 
+  .app-grid {
+    .grid-item {
+      &:last-child {
+        background-color: $white;
+        border-top-left-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+      }
+    }
+  }
+
   .app-alert {
     margin-bottom: 1rem;
     border-radius: 0.25rem;

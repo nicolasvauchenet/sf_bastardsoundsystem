@@ -60,18 +60,26 @@
 
     <div class="menu">
         <h2>
-            <i class="fa-solid fa-file-invoice"></i>
-            Contenus
+            <i class="fa-solid fa-building"></i>
+            Gestion
         </h2>
 
-        <a href="#" {% if 'admin_contenus_infos_' in app.request.get('_route') %} class="active"{% endif %}>
+        <a href="#" {% if 'admin_gestion_infos_' in app.request.get('_route') %} class="active"{% endif %}>
             <i class="fa-solid fa-circle-info"></i>
-            Infos BSS
+            Infos Générales
         </a>
 
-        <a href="#" {% if 'admin_contenus_legals_' in app.request.get('_route') %} class="active"{% endif %}>
-            <i class="fa-solid fa-landmark"></i>
-            Mentions légales
+        <a href="#" {% if 'admin_gestion_cotisations_' in app.request.get('_route') %} class="active"{% endif %}>
+            <i class="fa-solid fa-money-bill-wave"></i>
+            Cotisations
+            {% if true %}
+                <span class="badge danger">2</span>
+            {% endif %}
+        </a>
+
+        <a href="#" {% if 'admin_gestion_compte-rendus_' in app.request.get('_route') %} class="active"{% endif %}>
+            <i class="fa-solid fa-book"></i>
+            Compte-rendus
         </a>
     </div>
 

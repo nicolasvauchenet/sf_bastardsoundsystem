@@ -3,6 +3,7 @@
 namespace App\AdminBundle\Controller\Contact\Partenariats;
 
 use App\AppBundle\Entity\User;
+use App\AppBundle\Service\InformationsService;
 use App\AppBundle\Service\MailerService;
 use App\FrontOfficeBundle\Entity\Partenariat;
 use App\PartenaireBundle\Entity\Partenaire;
@@ -21,6 +22,7 @@ class AcceptController extends AbstractController
                            UserPasswordHasherInterface $passwordHasher,
                            MailerService               $mailerService,
                            Request                     $request,
+                           InformationsService         $informationsService,
                            Partenariat                 $partenariat): Response
     {
         $userExists = $entityManager->getRepository(User::class)->findOneBy(['email' => $partenariat->getPartenaireEmail()]);
@@ -48,15 +50,15 @@ class AcceptController extends AbstractController
         $mailerService->sendEmail([
             'from' => [
                 'type' => 'Partenaire',
-                'name' => 'Bastard Sound System',
-                'email' => 'admin@bastardsoundsystem.org',
-                'phone' => '06.83.57.30.67',
+                'name' => $informationsService->getAssociationName(),
+                'email' => $informationsService->getAssociationEmail(),
+                'phone' => $informationsService->getAssociationPhone(),
             ],
             'to' => [
                 'name' => $partenaire->getName(),
                 'email' => $partenaire->getEmail(),
             ],
-            'subject' => "Bienvenue chez Bastard Sound System !",
+            'subject' => "Bienvenue chez {$informationsService->getAssociationName()} !",
             'date' => $partenariat->getAcceptedAt(),
             'url' => $request->getSchemeAndHttpHost() . '/partenaire',
         ], 'accepted');

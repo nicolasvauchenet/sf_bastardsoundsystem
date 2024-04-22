@@ -3,6 +3,7 @@
 namespace App\FrontOfficeBundle\Controller;
 
 use App\AppBundle\Entity\User;
+use App\AppBundle\Service\InformationsService;
 use App\AppBundle\Service\MailerService;
 use App\FrontOfficeBundle\Entity\Adhesion;
 use App\FrontOfficeBundle\Entity\Partenariat;
@@ -23,6 +24,7 @@ class PartenariatController extends AbstractController
     #[Route('devenir-partenaire', name: 'partenariat')]
     public function index(Request                $request,
                           MailerService          $mailerService,
+                          InformationsService    $informationsService,
                           EntityManagerInterface $entityManager): Response
     {
         $partenariat = new Partenariat();
@@ -50,8 +52,8 @@ class PartenariatController extends AbstractController
                     'phone' => $form->get('partenairePhone')->getData(),
                 ],
                 'to' => [
-                    'name' => 'Administrateur BSS',
-                    'email' => 'admin@bastardsoundsystem.org',
+                    'name' => $informationsService->getAssociationName(),
+                    'email' => $informationsService->getAssociationEmail(),
                 ],
                 'subject' => 'Nouvelle demande de partenariat',
                 'message' => $form->get('partenaireMessage')->getData(),

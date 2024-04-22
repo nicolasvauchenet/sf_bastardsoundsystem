@@ -20,6 +20,7 @@
             <table class="app-table">
                 <thead>
                     <tr>
+                        <th>À jour</th>
                         <th>Type</th>
                         <th>Nom</th>
                         <th>Services inclus</th>
@@ -31,6 +32,9 @@
                 <tbody>
                     {% for adherent in adherents %}
                         <tr>
+                            <td class="icon success">
+                                <i class="fa-solid fa-check"></i>
+                            </td>
                             <td>{{ adherent.adherentType }}</td>
                             <td>{{ adherent.name }}</td>
                             <td>

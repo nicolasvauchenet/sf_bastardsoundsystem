@@ -2,6 +2,7 @@
 
 namespace App\AdminBundle\Controller\Contact\Messages;
 
+use App\AppBundle\Service\InformationsService;
 use App\AppBundle\Service\MailerService;
 use App\FrontOfficeBundle\Entity\Contact;
 use Doctrine\ORM\EntityManagerInterface;
@@ -17,14 +18,15 @@ class ReplyController extends AbstractController
     public function reply(Request                $request,
                           MailerService          $mailerService,
                           EntityManagerInterface $entityManager,
+                          InformationsService    $informationsService,
                           Contact                $contact): Response
     {
         $mailerService->sendEmail([
             'from' => [
                 'type' => 'reply',
-                'name' => 'Bastard Sound System',
-                'email' => 'admin@bastardsoundsystem.org',
-                'phone' => '06.83.57.30.67',
+                'name' => $informationsService->getAssociationName(),
+                'email' => $informationsService->getAssociationEmail(),
+                'phone' => $informationsService->getAssociationPhone(),
             ],
             'to' => [
                 'name' => $contact->getSenderName(),
@@ -36,9 +38,9 @@ class ReplyController extends AbstractController
 
         $newContact = (new Contact())
             ->setSenderType('reply')
-            ->setSenderEmail('admin@bastardsoundsystem.org')
-            ->setSenderName('Bastard Sound System')
-            ->setSenderPhone('06.83.57.30.67')
+            ->setSenderEmail($informationsService->getAssociationEmail())
+            ->setSenderName($informationsService->getAssociationName())
+            ->setSenderPhone($informationsService->getAssociationPhone())
             ->setSubject("Re: {$contact->getSubject()}")
             ->setMessage($request->request->get('answer'))
             ->setSentAt(new \DateTimeImmutable());
