@@ -46,10 +46,44 @@
 
                 <a href="{{ path('admin_archives_adherents_archive', {'id': adherent.id}) }}"
                    class="warning"
-                   onclick="return window.confirm('Archiver cet adhérent ?')"
+                   data-controller="popup--index"
+                   data-action="popup--index#open"
+                   data-popupid="popup-archive-{{ adherent.id }}"
                    title="Archiver l'adhérent">
                     <i class="fa-solid fa-box-archive"></i>
                 </a>
+                <div id="popup-archive-{{ adherent.id }}" class="app-popup">
+                    <div class="popup-body">
+                        <div class="popup-header">
+                            <h2>Archiver un Adhérent</h2>
+                            <a href="#"
+                               class="close"
+                               data-controller="popup--index"
+                               data-action="popup--index#close"
+                               data-popupid="popup-archive-{{ adherent.id }}">
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </a>
+                        </div>
+                        <div class="popup-content">
+                            <h3>
+                                {{ adherent.name }}
+                                -
+                                {{ adherent.adherentType }}
+                            </h3>
+
+                            <form action="{{ path('admin_archives_adherents_archive', {'id': adherent.id}) }}"
+                                  method="post">
+                                <label for="archivedMotivation" class="form-label required">Motif :</label>
+                                <input type="text"
+                                       name="archivedMotivation"
+                                       id="archivedMotivation"
+                                       class="form-control"
+                                       required/>
+                                <button type="submit" class="app-btn cta">Archiver</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

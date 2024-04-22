@@ -46,10 +46,45 @@
 
                 <a href="{{ path('admin_archives_partenaires_archive', {'id': partenaire.id}) }}"
                    class="warning"
-                   onclick="return window.confirm('Archiver ce partenaire ?')"
+                   data-controller="popup--index"
+                   data-action="popup--index#open"
+                   data-popupid="popup-archive-{{ partenaire.id }}"
                    title="Archiver le partenaire">
                     <i class="fa-solid fa-box-archive"></i>
                 </a>
+
+                <div id="popup-archive-{{ partenaire.id }}" class="app-popup">
+                    <div class="popup-body">
+                        <div class="popup-header">
+                            <h2>Archiver un Partenaire</h2>
+                            <a href="#"
+                               class="close"
+                               data-controller="popup--index"
+                               data-action="popup--index#close"
+                               data-popupid="popup-archive-{{ partenaire.id }}">
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </a>
+                        </div>
+                        <div class="popup-content">
+                            <h3>
+                                {{ partenaire.name }}
+                                -
+                                {{ partenaire.partenaireType }}
+                            </h3>
+
+                            <form action="{{ path('admin_archives_partenaires_archive', {'id': partenaire.id}) }}"
+                                  method="post">
+                                <label for="archivedMotivation" class="form-label required">Motif :</label>
+                                <input type="text"
+                                       name="archivedMotivation"
+                                       id="archivedMotivation"
+                                       class="form-control"
+                                       required/>
+                                <button type="submit" class="app-btn cta">Archiver</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

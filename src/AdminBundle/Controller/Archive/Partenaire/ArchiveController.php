@@ -5,6 +5,7 @@ namespace App\AdminBundle\Controller\Archive\Partenaire;
 use App\PartenaireBundle\Entity\Partenaire;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -12,13 +13,18 @@ use Symfony\Component\Routing\Attribute\Route;
 class ArchiveController extends AbstractController
 {
     #[Route('/archiver/{id}', name: 'archive')]
-    public function archive(EntityManagerInterface $entityManager, Partenaire $partenaire): Response
+    public function archive(Request                $request,
+                            EntityManagerInterface $entityManager,
+                            Partenaire             $partenaire): Response
     {
-        $partenaire->setArchivedAt(new \DateTimeImmutable());
-        $entityManager->persist($partenaire);
-        $entityManager->flush();
+        if($request->request->get('archivedMotivation')) {
+            $partenaire->setArchivedAt(new \DateTimeImmutable())
+                ->setArchivedMotivation($request->request->get('archivedMotivation'));
+            $entityManager->persist($partenaire);
+            $entityManager->flush();
 
-        $this->addFlash('warning', "Le partenaire {$partenaire->getName()} a été archivé");
+            $this->addFlash('warning', "Le partenaire {$partenaire->getName()} a été archivé");
+        }
 
         return $this->redirectToRoute('admin_partenaires_index', [], Response::HTTP_SEE_OTHER);
     }

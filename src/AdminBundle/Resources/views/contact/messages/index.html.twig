@@ -71,8 +71,12 @@
 
                                             <form action="{{ path('admin_contact_messages_reply', {'id': message.id}) }}"
                                                   method="post">
-                                                <label for="answer">Réponse :</label>
-                                                <textarea name="answer" id="answer" rows="5" required></textarea>
+                                                <label for="answer" class="form-label required">Réponse :</label>
+                                                <textarea name="answer"
+                                                          id="answer"
+                                                          class="form-control"
+                                                          rows="5"
+                                                          required></textarea>
                                                 <button type="submit" class="app-btn cta">Envoyer</button>
                                             </form>
                                         </div>
@@ -204,8 +208,12 @@
 
                                         <form action="{{ path('admin_contact_messages_reply', {'id': message.id}) }}"
                                               method="post">
-                                            <label for="answer">Nouvelle réponse :</label>
-                                            <textarea name="answer" id="answer" rows="5" required></textarea>
+                                            <label for="answer" class="form-label required">Nouvelle réponse :</label>
+                                            <textarea name="answer"
+                                                      id="answer"
+                                                      class="form-control"
+                                                      rows="5"
+                                                      required></textarea>
                                             <button type="submit" class="app-btn cta">Envoyer</button>
                                         </form>
                                     </div>

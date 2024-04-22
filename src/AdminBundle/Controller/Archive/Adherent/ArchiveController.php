@@ -5,6 +5,7 @@ namespace App\AdminBundle\Controller\Archive\Adherent;
 use App\AdherentBundle\Entity\Adherent;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -12,13 +13,18 @@ use Symfony\Component\Routing\Attribute\Route;
 class ArchiveController extends AbstractController
 {
     #[Route('/archiver/{id}', name: 'archive')]
-    public function archive(EntityManagerInterface $entityManager, Adherent $adherent): Response
+    public function archive(Request                $request,
+                            EntityManagerInterface $entityManager,
+                            Adherent               $adherent): Response
     {
-        $adherent->setArchivedAt(new \DateTimeImmutable());
-        $entityManager->persist($adherent);
-        $entityManager->flush();
+        if($request->request->get('archivedMotivation')) {
+            $adherent->setArchivedAt(new \DateTimeImmutable())
+                ->setArchivedMotivation($request->request->get('archivedMotivation'));
+            $entityManager->persist($adherent);
+            $entityManager->flush();
 
-        $this->addFlash('warning', "L'adhérent {$adherent->getName()} a été archivé");
+            $this->addFlash('warning', "L'adhérent {$adherent->getName()} a été archivé");
+        }
 
         return $this->redirectToRoute('admin_adherents_index', [], Response::HTTP_SEE_OTHER);
     }
