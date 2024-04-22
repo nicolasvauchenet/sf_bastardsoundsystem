@@ -1,0 +1,72 @@
+{% extends '@Admin/index.html.twig' %}
+
+{% block title %}Adhérent archivé : {{ adherent.name }} - Administration Générale{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Adhérent archivé : {{ adherent.name }}</h1>
+    </section>
+
+    <section class="app-section alt">
+        <div class="app-flex">
+            <div class="flex-item actions">
+                <a href="{{ adherent.archivedAt ? path('admin_archives_adherents_index') : path('admin_adherents_index') }}"
+                   class="primary"
+                   title="Retour à la liste">
+                    <i class="fa-solid fa-hand-point-left"></i>
+                </a>
+            </div>
+
+            <div class="flex-item">
+                <strong>Type</strong>
+                {{ adherent.adherentType }}
+            </div>
+
+            <div class="flex-item">
+                <strong>E-mail</strong>
+                {{ adherent.email }}
+            </div>
+
+            <div class="flex-item">
+                <strong>Téléphone</strong>
+                {{ adherent.phone ?? '&nbsp;' }}
+            </div>
+
+            <div class="flex-item">
+                <strong>Adhérent depuis</strong>
+                {{ adherent.createdAt | date('d/m/Y à H:i') }}
+            </div>
+
+            <div class="flex-item">
+                <strong>Archivé depuis</strong>
+                {{ adherent.archivedAt | date('d/m/Y à H:i') }}
+            </div>
+
+            <div class="flex-item actions">
+                <a href="{{ path('admin_archives_adherents_edit', {'id': adherent.id}) }}"
+                   class="info"
+                   title="Modifier la fiche adhérent">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+
+                <a href="{{ path('admin_archives_adherents_unarchive', {'id': adherent.id}) }}"
+                   class="success"
+                   onclick="return window.confirm('Réintégrer cet adhérent ?')"
+                   title="Réintégrer l'adhérent">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </a>
+
+                <a href="{{ path('admin_archives_adherents_delete', {'id': adherent.id}) }}"
+                   class="danger"
+                   onclick="return window.confirm('Supprimer définitivement cet adhérent ?')"
+                   title="Supprimer l'adhérent">
+                    <i class="fa-solid fa-trash-can"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-alert warning">
+        <h3>Cotisation non renouvelée</h3>
+    </section>
+{% endblock %}

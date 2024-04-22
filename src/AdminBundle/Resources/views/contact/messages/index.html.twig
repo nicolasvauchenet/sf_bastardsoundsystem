@@ -25,7 +25,8 @@
                         <th>Nom</th>
                         <th>Email</th>
                         <th>Téléphone</th>
-                        <th colspan="2">Date du message</th>
+                        <th>Date du message</th>
+                        <th>&nbsp;</th>
                     </tr>
                 </thead>
 
@@ -61,7 +62,8 @@
                                             <h3>
                                                 {{ message.senderName }}
                                                 -
-                                                {{ message.senderType }}, le
+                                                {{ message.senderType }}
+                                                - Le
                                                 {{ message.sentAt | date('d/m/Y à H:i') }} :
                                             </h3>
 
@@ -101,7 +103,8 @@
                                             <h3>
                                                 {{ message.senderName }}
                                                 -
-                                                {{ message.senderType }}, le
+                                                {{ message.senderType }}
+                                                - Le
                                                 {{ message.sentAt | date('d/m/Y à H:i') }} :
                                             </h3>
 
@@ -139,7 +142,8 @@
                     <th>Nom</th>
                     <th>Email</th>
                     <th>Téléphone</th>
-                    <th colspan="2">Date du message</th>
+                    <th>Date du message</th>
+                    <th>&nbsp;</th>
                 </tr>
             </thead>
 
@@ -175,7 +179,8 @@
                                         <h3>
                                             {{ message.senderName }}
                                             -
-                                            {{ message.senderType }}, le
+                                            {{ message.senderType }}
+                                            - Le
                                             {{ message.sentAt | date('d/m/Y à H:i') }} :
                                         </h3>
 
@@ -187,7 +192,8 @@
                                                 <dl>
                                                     <dt>
                                                         <em>
-                                                            {{ reply.senderName }}, le
+                                                            {{ reply.senderName }}
+                                                            - Le
                                                             {{ reply.sentAt | date('d/m/Y à H:i') }} :
                                                         </em>
                                                     </dt>
@@ -230,7 +236,8 @@
                                         <h3>
                                             {{ message.senderName }}
                                             -
-                                            {{ message.senderType }}, le
+                                            {{ message.senderType }}
+                                            - Le
                                             {{ message.sentAt | date('d/m/Y à H:i') }} :
                                         </h3>
 
@@ -242,7 +249,8 @@
                                                 <dl>
                                                     <dt>
                                                         <em>
-                                                            {{ reply.senderName }}, le
+                                                            {{ reply.senderName }}
+                                                            - Le
                                                             {{ reply.sentAt | date('d/m/Y à H:i') }} :
                                                         </em>
                                                     </dt>

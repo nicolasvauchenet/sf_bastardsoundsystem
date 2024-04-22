@@ -1,0 +1,56 @@
+{% extends '@Admin/index.html.twig' %}
+
+{% block title %}Fiche Adhérent : {{ adherent.name }} - Administration Générale{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Fiche Adhérent : {{ adherent.name }}</h1>
+    </section>
+
+    <section class="app-section alt">
+        <div class="app-flex">
+            <div class="flex-item actions">
+                <a href="{{ adherent.archivedAt ? path('admin_archives_adherents_index') : path('admin_adherents_index') }}"
+                   class="primary"
+                   title="Retour à la liste">
+                    <i class="fa-solid fa-hand-point-left"></i>
+                </a>
+            </div>
+
+            <div class="flex-item">
+                <strong>Type</strong>
+                {{ adherent.adherentType }}
+            </div>
+
+            <div class="flex-item">
+                <strong>E-mail</strong>
+                {{ adherent.email }}
+            </div>
+
+            <div class="flex-item">
+                <strong>Téléphone</strong>
+                {{ adherent.phone ?? '&nbsp;' }}
+            </div>
+
+            <div class="flex-item">
+                <strong>Adhérent depuis</strong>
+                {{ adherent.createdAt | date('d/m/Y à H:i') }}
+            </div>
+
+            <div class="flex-item actions">
+                <a href="{{ path('admin_adherents_edit', {'id': adherent.id}) }}"
+                   class="info"
+                   title="Modifier la fiche adhérent">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+
+                <a href="{{ path('admin_archives_adherents_archive', {'id': adherent.id}) }}"
+                   class="warning"
+                   onclick="return window.confirm('Archiver cet adhérent ?')"
+                   title="Archiver l'adhérent">
+                    <i class="fa-solid fa-box-archive"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

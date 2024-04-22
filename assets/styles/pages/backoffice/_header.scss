@@ -29,16 +29,22 @@
       text-transform: uppercase;
       color: $white;
       text-decoration: none;
+      border-radius: 0.25rem;
       transition: all 0.5s;
 
       &:hover {
         color: $third;
       }
 
-      &.danger {
+      &.danger-hover {
         &:hover {
           color: $danger;
         }
+      }
+
+      &.active {
+        color: $primary;
+        background-color: $white;
       }
 
       i,

@@ -3,6 +3,7 @@
 namespace App\AdminBundle\Service\Statistics;
 
 use App\AdherentBundle\Entity\Adherent;
+use App\AppBundle\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 
 class AdherentService
@@ -16,6 +17,11 @@ class AdherentService
 
     public function getAdherents(): array
     {
-        return $this->entityManager->getRepository(Adherent::class)->findAll();
+        return $this->entityManager->getRepository(Adherent::class)->findBy(['archivedAt' => null], ['adherentType' => 'ASC', 'createdAt' => 'DESC']);
+    }
+
+    public function getArchivedAdherents(): array
+    {
+        return $this->entityManager->getRepository(User::class)->findArchivedUsers('adherent');
     }
 }

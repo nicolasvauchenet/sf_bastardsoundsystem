@@ -1,0 +1,73 @@
+{% extends '@Admin/index.html.twig' %}
+
+{% block title %}Les Adhérents archivés - Administration Générale{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>
+            {% if adherents | length > 0 %}
+                {{ adherents | length }}
+                Adhérent{{ adherents | length > 1 ? 's' : '' }}
+                archivé{{ adherents | length > 1 ? 's' : '' }}
+            {% else %}
+                Les Adhérents archivés
+            {% endif %}
+        </h1>
+    </section>
+
+    <section class="app-section">
+        {% if adherents | length > 0 %}
+            <table class="app-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Nom</th>
+                        <th>Services inclus</th>
+                        <th>Archivé depuis</th>
+                        <th>Motif</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for adherent in adherents %}
+                        <tr>
+                            <td>{{ adherent.adherentType }}</td>
+                            <td>{{ adherent.name }}</td>
+                            <td>
+                                <a href="#">Dossier Technique</a>
+                                •
+                                <a href="#">Visuels</a>
+                                •
+                                <a href="#">Communication</a>
+                                •
+                                <a href="#">Diffusion</a>
+                                •
+                                <a href="#">Contrats</a>
+                                •
+                                <a href="#">Assurances</a>
+                            </td>
+                            <td>{{ adherent.archivedAt | date("d/m/Y à H:i") }}</td>
+                            <td>Cotisation non renouvelée</td>
+                            <td>
+                                <a href="{{ path('admin_archives_adherents_view', {'id': adherent.id}) }}"
+                                   class="primary"
+                                   title="Voir la fiche adhérent">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+
+                                <a href="{{ path('admin_archives_adherents_edit', {'id': adherent.id}) }}"
+                                   class="info"
+                                   title="Modifier la fiche adhérent">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Aucun adhérent archivé…</p>
+        {% endif %}
+    </section>
+{% endblock %}

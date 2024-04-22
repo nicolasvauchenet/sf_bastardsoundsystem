@@ -12,7 +12,7 @@
 
     <div class="menu">
         <h2>
-            <i class="fa-solid fa-circle"></i>
+            <i class="fa-solid fa-comments"></i>
             Contact
         </h2>
 
@@ -43,7 +43,7 @@
 
     <div class="menu">
         <h2>
-            <i class="fa-solid fa-circle"></i>
+            <i class="fa-solid fa-bell-concierge"></i>
             Services
         </h2>
 
@@ -60,13 +60,41 @@
 
     <div class="menu">
         <h2>
-            <i class="fa-solid fa-circle"></i>
+            <i class="fa-solid fa-file-invoice"></i>
             Contenus
         </h2>
 
         <a href="#" {% if 'admin_contenus_infos_' in app.request.get('_route') %} class="active"{% endif %}>
-            <i class="fa-solid fa-landmark"></i>
+            <i class="fa-solid fa-circle-info"></i>
             Infos BSS
+        </a>
+
+        <a href="#" {% if 'admin_contenus_legals_' in app.request.get('_route') %} class="active"{% endif %}>
+            <i class="fa-solid fa-landmark"></i>
+            Mentions légales
+        </a>
+    </div>
+
+    <div class="menu">
+        <h2>
+            <i class="fa-solid fa-box-archive"></i>
+            Archives
+        </h2>
+
+        <a href="{{ path('admin_archives_adherents_index') }}" {% if 'admin_archives_adherents_' in app.request.get('_route') %} class="active"{% endif %}>
+            <i class="fa-solid fa-user-astronaut"></i>
+            Adhérents
+            {% if app_statistics_adherent.archivedAdherents | length > 0 %}
+                <span class="badge">{{ app_statistics_adherent.archivedAdherents | length }}</span>
+            {% endif %}
+        </a>
+
+        <a href="{{ path('admin_archives_partenaires_index') }}" {% if 'admin_archives_partenaires_' in app.request.get('_route') %} class="active"{% endif %}>
+            <i class="fa-solid fa-user-secret"></i>
+            Partenaires
+            {% if app_statistics_partenaire.archivedPartenaires | length > 0 %}
+                <span class="badge">{{ app_statistics_partenaire.archivedPartenaires | length }}</span>
+            {% endif %}
         </a>
     </div>
 </nav>

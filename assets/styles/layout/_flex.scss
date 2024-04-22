@@ -1,0 +1,30 @@
+.app-flex {
+  @include displayFlex(center, center, 1rem);
+
+  .flex-item {
+    flex: 1;
+    text-align: center;
+
+    &.actions {
+      @include displayFlex(center, center, 0.5rem);
+      flex: initial;
+
+      a {
+        flex: 1;
+        padding: 0.5rem;
+
+        i,
+        svg {
+          font-size: 2rem;
+        }
+      }
+    }
+
+    strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-family: $font-secondary;
+      color: $primary;
+    }
+  }
+}

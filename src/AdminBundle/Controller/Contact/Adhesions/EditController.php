@@ -25,7 +25,7 @@ class EditController extends AbstractController
             $entityManager->persist($adhesion);
             $entityManager->flush();
 
-            $this->addFlash('success', "Vous avez modifé la demande d'adhésion de {$adhesion->getAdherentName()}");
+            $this->addFlash('success', "Vous avez modifié la demande d'adhésion de {$adhesion->getAdherentName()}");
 
             return $this->redirectToRoute('admin_contact_adhesions_index', [], Response::HTTP_SEE_OTHER);
         }

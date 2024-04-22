@@ -1,0 +1,69 @@
+{% extends '@Admin/index.html.twig' %}
+
+{% block title %}Les Partenaires - Administration Générale{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>
+            {% if partenaires | length > 0 %}
+                BSS a déjà
+                {{ partenaires | length }}
+                Partenaire{{ partenaires | length > 1 ? 's' : '' }}&nbsp;!
+            {% else %}
+                Les Partenaires de Bastard Sound System
+            {% endif %}
+        </h1>
+    </section>
+
+    <section class="app-section">
+        {% if partenaires | length > 0 %}
+            <table class="app-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Nom</th>
+                        <th>Partenariats actifs</th>
+                        <th>Partenaire depuis</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for partenaire in partenaires %}
+                        <tr>
+                            <td>{{ partenaire.partenaireType }}</td>
+                            <td>{{ partenaire.name }}</td>
+                            <td>
+                                <a href="#">Prestation</a>
+                                •
+                                <a href="#">Régie Générale</a>
+                                •
+                                <a href="#">Régie Technique</a>
+                                •
+                                <a href="#">Organisation</a>
+                                •
+                                <a href="#">Formation</a>
+                            </td>
+                            <td>{{ partenaire.createdAt | date("d/m/Y à H:i") }}</td>
+                            <td>
+                                <a href="{{ path('admin_partenaires_view', {'id': partenaire.id}) }}"
+                                   class="primary"
+                                   title="Voir la fiche partenaire">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+
+                                <a href="{{ path('admin_partenaires_edit', {'id': partenaire.id}) }}"
+                                   class="info"
+                                   title="Modifier la fiche partenaire">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Aucun partenaire…</p>
+        {% endif %}
+    </section>
+{% endblock %}

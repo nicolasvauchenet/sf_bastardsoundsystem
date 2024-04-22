@@ -1,0 +1,75 @@
+{% extends '@Admin/index.html.twig' %}
+
+{% block title %}Modifier un Partenaire - Administration Générale{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Modifier un Partenaire</h1>
+    </section>
+
+    <section class="app-section">
+        {{ form_start(form, {'attr': {'class': 'app-form'}}) }}
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Infos du partenaire</legend>
+
+            <div class="form-group">
+                <label for="{{ form.partenaireType.vars.id }}"
+                       class="form-label {% if form.partenaireType.vars.required %}required{% endif %}">
+                    {{ form.partenaireType.vars.label }}
+                </label>
+                {{ form_widget(form.partenaireType) }}
+                {{ form_errors(form.partenaireType) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.name.vars.id }}"
+                       class="form-label {% if form.name.vars.required %}required{% endif %}">
+                    {{ form.name.vars.label }}
+                </label>
+                {{ form_widget(form.name) }}
+                {{ form_errors(form.name) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.phone.vars.id }}"
+                       class="form-label {% if form.phone.vars.required %}required{% endif %}">
+                    {{ form.phone.vars.label }}
+                </label>
+                {{ form_widget(form.phone) }}
+                {{ form_errors(form.phone) }}
+            </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Identifiants du partenaire</legend>
+
+            <div class="form-group">
+                <label for="{{ form.email.vars.id }}"
+                       class="form-label {% if form.email.vars.required %}required{% endif %}">
+                    {{ form.email.vars.label }}
+                </label>
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.plainPassword.vars.id }}"
+                       class="form-label {% if form.plainPassword.vars.required %}required{% endif %}">
+                    {{ form.plainPassword.vars.label }}
+                </label>
+                {{ form_widget(form.plainPassword) }}
+                {{ form_errors(form.plainPassword) }}
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <a href="{{ path('admin_partenaires_view', {'id': partenaire.id}) }}" class="app-btn">
+                <i class="fa-solid fa-hand-point-left"></i>
+                Retour
+            </a>
+            <button type="submit" class="form-submit app-btn cta">Modifiez</button>
+        </div>
+
+        {{ form_end(form) }}
+    </section>
+{% endblock %}

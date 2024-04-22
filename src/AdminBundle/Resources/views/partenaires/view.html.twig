@@ -1,0 +1,56 @@
+{% extends '@Admin/index.html.twig' %}
+
+{% block title %}Fiche Partenaire : {{ partenaire.name }} - Administration Générale{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Fiche Partenaire : {{ partenaire.name }}</h1>
+    </section>
+
+    <section class="app-section alt">
+        <div class="app-flex">
+            <div class="flex-item actions">
+                <a href="{{ partenaire.archivedAt ? path('admin_archives_partenaires_index') : path('admin_partenaires_index') }}"
+                   class="primary"
+                   title="Retour à la liste">
+                    <i class="fa-solid fa-hand-point-left"></i>
+                </a>
+            </div>
+
+            <div class="flex-item">
+                <strong>Type</strong>
+                {{ partenaire.partenaireType }}
+            </div>
+
+            <div class="flex-item">
+                <strong>E-mail</strong>
+                {{ partenaire.email }}
+            </div>
+
+            <div class="flex-item">
+                <strong>Téléphone</strong>
+                {{ partenaire.phone ?? '&nbsp;' }}
+            </div>
+
+            <div class="flex-item">
+                <strong>Adhérent depuis</strong>
+                {{ partenaire.createdAt | date('d/m/Y à H:i') }}
+            </div>
+
+            <div class="flex-item actions">
+                <a href="{{ path('admin_partenaires_edit', {'id': partenaire.id}) }}"
+                   class="info"
+                   title="Modifier la fiche partenaire">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+
+                <a href="{{ path('admin_archives_partenaires_archive', {'id': partenaire.id}) }}"
+                   class="warning"
+                   onclick="return window.confirm('Archiver ce partenaire ?')"
+                   title="Archiver le partenaire">
+                    <i class="fa-solid fa-box-archive"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

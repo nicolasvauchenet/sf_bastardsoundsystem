@@ -5,13 +5,13 @@
     </div>
 
     <div class="links">
-        <a href="#">
+        <a href="{{ path('admin_adherents_index') }}" {% if 'admin_adherents_' in app.request.get('_route') %} class="active"{% endif %}>
             <i class="fa-solid fa-user-astronaut"></i>
             {{ app_statistics_adherent.adherents | length }}
             Adhérent{{ app_statistics_adherent.adherents | length > 1 ? 's' : '' }}
         </a>
 
-        <a href="#">
+        <a href="{{ path('admin_partenaires_index') }}" {% if 'admin_partenaires_' in app.request.get('_route') %} class="active"{% endif %}>
             <i class="fa-solid fa-user-secret"></i>
             {{ app_statistics_partenaire.partenaires | length }}
             Partenaire{{ app_statistics_partenaire.partenaires | length > 1 ? 's' : '' }}
@@ -22,9 +22,9 @@
             Voir le site
         </a>
 
-        <a href="{{ path('app_logout') }}" class="danger" onclick="return window.confirm('Vous partez ?')">
+        <a href="{{ path('app_logout') }}" class="danger-hover" onclick="return window.confirm('Vous partez ?')">
             <i class="fa-solid fa-right-from-bracket"></i>
-            {{ app.user.pseudo }}
+            Déconnexion
         </a>
     </div>
 </div>

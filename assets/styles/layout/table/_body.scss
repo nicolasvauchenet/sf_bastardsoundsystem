@@ -25,8 +25,16 @@ tbody {
       }
 
       a {
+        color: $primary;
+        transition: all 0.5s;
+
+        &:hover {
+          color: $secondary;
+        }
+
         &.info,
         &.success,
+        &.warning,
         &.danger,
         &.primary,
         &.disabled {
@@ -38,27 +46,6 @@ tbody {
           svg {
             font-size: 1.5rem;
           }
-        }
-
-        &.info {
-          color: $info;
-        }
-
-        &.success {
-          color: $success;
-        }
-
-        &.danger {
-          color: $danger;
-        }
-
-        &.primary {
-          color: $primary;
-        }
-
-        &.disabled {
-          color: rgba($secondary, 0.5);
-          pointer-events: none;
         }
       }
     }
