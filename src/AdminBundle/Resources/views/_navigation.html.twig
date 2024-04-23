@@ -72,8 +72,8 @@
         <a href="{{ path('admin_gestion_cotisations_index') }}" {% if 'admin_gestion_cotisations_' in app.request.get('_route') %} class="active"{% endif %}>
             <i class="fa-solid fa-money-bill-wave"></i>
             Cotisations
-            {% if app_statistics_cotisation.cotisationsKo %}
-                <span class="badge danger">{{ app_statistics_cotisation.cotisationsKo | length }}</span>
+            {% if app_gestion_cotisations.cotisationsKo %}
+                <span class="badge danger">{{ app_gestion_cotisations.cotisationsKo | length }}</span>
             {% endif %}
         </a>
 

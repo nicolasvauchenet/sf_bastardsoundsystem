@@ -27,7 +27,7 @@ services:
       - { name: twig.extension }
 
   App\AppBundle\EventSubscriber\CotisationUpdateSubscriber:
-    arguments: [ '@App\AdminBundle\Service\Statistics\CotisationService' ]
+    arguments: [ '@App\AdminBundle\Service\Gestion\CotisationService' ]
     tags:
       - { name: kernel.event_subscriber }
   # add more service definitions when explicit configuration is needed

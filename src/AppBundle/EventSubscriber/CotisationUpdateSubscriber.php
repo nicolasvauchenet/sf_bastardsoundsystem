@@ -2,9 +2,10 @@
 
 namespace App\AppBundle\EventSubscriber;
 
-use Symfony\Component\HttpKernel\Event\RequestEvent;
+use App\AdminBundle\Service\Gestion\CotisationService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use App\AdminBundle\Service\Statistics\CotisationService;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 
 class CotisationUpdateSubscriber implements EventSubscriberInterface
 {
@@ -15,6 +16,9 @@ class CotisationUpdateSubscriber implements EventSubscriberInterface
         $this->cotisationService = $cotisationService;
     }
 
+    /**
+     * @throws TransportExceptionInterface
+     */
     public function onKernelRequest(RequestEvent $event): void
     {
         if(!$event->isMainRequest()) {

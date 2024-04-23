@@ -6,8 +6,6 @@ use App\AppBundle\Entity\Informations;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use DateTimeImmutable;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class InformationsFixtures extends Fixture implements OrderedFixtureInterface
 {
@@ -17,7 +15,8 @@ class InformationsFixtures extends Fixture implements OrderedFixtureInterface
         $informations->setEmail('contact@bastardsoundsystem.org')
             ->setName('Bastard Sound System')
             ->setPhone('06.83.57.30.67')
-            ->setAddress('38 rue du cheval blanc, 23230 Gouzon');
+            ->setAddress('38 rue du cheval blanc, 23230 Gouzon')
+            ->setCotisationAmount(12);
         $manager->persist($informations);
 
         $manager->flush();

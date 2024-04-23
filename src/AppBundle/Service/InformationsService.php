@@ -26,27 +26,34 @@ class InformationsService
     {
         $this->loadInformations();
 
-        return $this->informations ? $this->informations->getName() : null;
+        return $this->informations?->getName();
     }
 
     public function getAssociationEmail(): ?string
     {
         $this->loadInformations();
 
-        return $this->informations ? $this->informations->getEmail() : null;
+        return $this->informations?->getEmail();
     }
 
     public function getAssociationPhone(): ?string
     {
         $this->loadInformations();
 
-        return $this->informations ? $this->informations->getPhone() : null;
+        return $this->informations?->getPhone();
     }
 
     public function getAssociationAddress(): ?string
     {
         $this->loadInformations();
 
-        return $this->informations ? $this->informations->getAddress() : null;
+        return $this->informations?->getAddress();
+    }
+
+    public function getCotisationAmount(): ?int
+    {
+        $this->loadInformations();
+
+        return $this->informations?->getCotisationAmount();
     }
 }

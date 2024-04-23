@@ -1,12 +1,11 @@
 <?php
 
-namespace App\AdminBundle\Service\Statistics;
+namespace App\AdminBundle\Service\Gestion;
 
 use App\AdminBundle\Entity\Cotisation;
 use App\AppBundle\Service\InformationsService;
 use App\AppBundle\Service\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 
 class CotisationService
@@ -35,21 +34,14 @@ class CotisationService
             if($nextAt !== null) {
                 $interval = $today->diff($nextAt);
                 $days = $interval->days;
-                //$isPastDue = $interval->invert == 1;  // True si nextAt est dans le passé
 
-                // Déterminer quel rappel envoyer
-                //if(!$isPastDue) {
-                    if($days >= 16 && $days <= 30 && $cotisation->getReminded() < 1) {
-                        // Envoie premier rappel
-                        $this->sendReminder($cotisation, $days);
-                    } else if($days >= 1 && $days <= 15 && $cotisation->getReminded() < 2) {
-                        // Envoie deuxième rappel
-                        $this->sendReminder($cotisation, $days);
-                    } else if($days <= 0 && $cotisation->getReminded() < 3) {
-                        // Envoie dernier rappel
-                        $this->sendReminder($cotisation, $days);
-                    }
-                //}
+                if($days >= 16 && $days <= 30 && $cotisation->getReminded() < 1) {
+                    $this->sendReminder($cotisation, $days);
+                } else if($days >= 1 && $days <= 15 && $cotisation->getReminded() < 2) {
+                    $this->sendReminder($cotisation, $days);
+                } else if($days <= 0 && $cotisation->getReminded() < 3) {
+                    $this->sendReminder($cotisation, $days);
+                }
             }
         }
 
@@ -79,7 +71,7 @@ class CotisationService
             'subject' => "Rappel de cotisation à J-$days - {$this->informationsService->getAssociationName()}",
             'nextAt' => $cotisation->getNextAt(),
             'reminded' => $cotisation->getReminded(),
-            'amount' => 12,
+            'amount' => $this->informationsService->getCotisationAmount(),
         ], 'cotisation-remind');
     }
 

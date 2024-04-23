@@ -8,7 +8,7 @@
     </section>
 
     <section class="app-section">
-        {% if app_statistics_cotisation.cotisationsOk | length > 0 %}
+        {% if app_gestion_cotisations.cotisationsOk | length > 0 %}
             <table class="app-table">
                 <thead>
                     <tr>
@@ -21,7 +21,7 @@
                 </thead>
 
                 <tbody>
-                    {% for cotisation in app_statistics_cotisation.cotisationsOk %}
+                    {% for cotisation in app_gestion_cotisations.cotisationsOk %}
                         {% set delai = date_diff('now', cotisation.nextAt) %}
                         <tr>
                             <td>{{ cotisation.adherent.name }}</td>
@@ -31,17 +31,17 @@
                                 {{ delai }}
                                 jour{{ delai > 1 ? 's' : '' }}
                             </td>
-                            <td>12€</td>
+                            <td>{{ app_informations.cotisationAmount | number_format('2', ',', ' ') }}€</td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
         {% else %}
-            <p>Aucune cotisation…</p>
+            <p>Aucune cotisation en cours…</p>
         {% endif %}
     </section>
 
-    {% if app_statistics_cotisation.cotisationsKo() %}
+    {% if app_gestion_cotisations.cotisationsKo() %}
         <section class="app-section pagetitle">
             <h2>Cotisations à renouveler</h2>
         </section>
@@ -61,7 +61,7 @@
                 </thead>
 
                 <tbody>
-                    {% for cotisation in app_statistics_cotisation.cotisationsKo %}
+                    {% for cotisation in app_gestion_cotisations.cotisationsKo %}
                         {% set delai = date_diff('now', cotisation.nextAt) %}
                         {% if delai > 15 %}
                             {% set class = 'success' %}
@@ -84,7 +84,7 @@
                                 </strong>
                             </td>
                             <td class="text-center">{{ cotisation.reminded ?? 0 }}</td>
-                            <td>12€</td>
+                            <td>{{ app_informations.cotisationAmount | number_format('2', ',', ' ') }}€</td>
                             <td>
                                 <a href="{{ path('admin_gestion_cotisations_payment', {'id': cotisation.id}) }}"
                                    class="success"

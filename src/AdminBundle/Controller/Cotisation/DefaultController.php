@@ -2,9 +2,6 @@
 
 namespace App\AdminBundle\Controller\Cotisation;
 
-use App\AdherentBundle\Entity\Adherent;
-use App\AdminBundle\Service\Statistics\CotisationService;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;

@@ -41,9 +41,9 @@
                 </dt>
                 <dt>
                     {% if mailData['reminded'] == 3 %}
-                        Elle est de {{ mailData['amount'] }}€.
+                        Elle est de {{ mailData['amount'] | number_format('2', ',', ' ') }}€.
                     {% else %}
-                        Elle sera de {{ mailData['amount'] }}€.
+                        Elle sera de {{ mailData['amount'] | number_format('2', ',', ' ') }}€.
                     {% endif %}
                 </dt>
                 <dt>

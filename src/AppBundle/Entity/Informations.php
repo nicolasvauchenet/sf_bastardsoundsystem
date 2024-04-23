@@ -25,6 +25,9 @@ class Informations
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $address = null;
 
+    #[ORM\Column(nullable: false)]
+    private ?int $cotisationAmount = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +77,18 @@ class Informations
     public function setAddress(?string $address): static
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    public function getCotisationAmount(): ?int
+    {
+        return $this->cotisationAmount;
+    }
+
+    public function setCotisationAmount(int $cotisationAmount): static
+    {
+        $this->cotisationAmount = $cotisationAmount;
 
         return $this;
     }

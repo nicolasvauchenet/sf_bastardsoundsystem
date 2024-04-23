@@ -53,7 +53,7 @@ class PaymentController extends AbstractController
                 'email' => $cotisation->getAdherent()->getEmail(),
             ],
             'subject' => "Merci pour votre cotisation !",
-            'amount' => 12,
+            'amount' => $informationsService->getCotisationAmount(),
             'paidAt' => $cotisation->getPaidAt(),
             'nextAt' => $cotisation->getNextAt(),
             'url' => $request->getSchemeAndHttpHost() . '/adherent',

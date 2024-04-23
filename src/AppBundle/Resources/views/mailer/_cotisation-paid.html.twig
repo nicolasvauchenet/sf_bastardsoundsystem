@@ -33,7 +33,7 @@
         <blockquote>
             <dl>
                 <dt>
-                    Vous avez payé une cotisation de {{ mailData['amount'] }}€.
+                    Vous avez payé une cotisation de {{ mailData['amount'] | number_format('2', ',', ' ') }}€.
                 </dt>
                 <dt>
                     Votre cotisation a été payée le {{ mailData['paidAt'] | date('d/m/Y à H:i') }}.

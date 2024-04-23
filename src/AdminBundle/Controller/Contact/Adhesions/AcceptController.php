@@ -91,7 +91,7 @@ class AcceptController extends AbstractController
                 'email' => $adherent->getEmail(),
             ],
             'subject' => "Merci pour votre cotisation !",
-            'amount' => 12,
+            'amount' => $informationsService->getCotisationAmount(),
             'paidAt' => $cotisation->getPaidAt(),
             'nextAt' => $cotisation->getNextAt(),
             'url' => $request->getSchemeAndHttpHost() . '/adherent',
