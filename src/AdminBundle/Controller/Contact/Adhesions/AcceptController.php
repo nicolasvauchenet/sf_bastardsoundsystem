@@ -3,6 +3,7 @@
 namespace App\AdminBundle\Controller\Contact\Adhesions;
 
 use App\AdherentBundle\Entity\Adherent;
+use App\AdminBundle\Entity\Cotisation;
 use App\AppBundle\Entity\User;
 use App\AppBundle\Service\InformationsService;
 use App\AppBundle\Service\MailerService;
@@ -37,6 +38,8 @@ class AcceptController extends AbstractController
             return $this->redirectToRoute('admin_contact_adhesions_index');
         }
 
+        $today = new \DateTimeImmutable();
+
         $adherent = new Adherent();
         $adherent->setAdherentType($adhesion->getAdherentType())
             ->setRoles(['ROLE_ADHERENT'])
@@ -44,12 +47,20 @@ class AcceptController extends AbstractController
             ->setPassword($passwordHasher->hashPassword($adherent, 'change-moi-ce-mot-de-passe-tout-de-suite'))
             ->setPhone($adhesion->getAdherentPhone())
             ->setName($adhesion->getAdherentName())
-            ->setCreatedAt(new \DateTimeImmutable());
+            ->setCreatedAt($today);
         $entityManager->persist($adherent);
 
-        $adhesion->setAcceptedAt(new \DateTimeImmutable())
+        $adhesion->setAcceptedAt($today)
             ->setRejectedAt(null);
         $entityManager->persist($adhesion);
+
+        $cotisation = new Cotisation();
+        $cotisation->setAdherent($adherent)
+            ->setStatus('ok')
+            ->setPaidAt($today)
+            ->setNextAt($today->modify('+1 year'));
+        $entityManager->persist($cotisation);
+
         $entityManager->flush();
 
         $mailerService->sendEmail([
@@ -67,6 +78,24 @@ class AcceptController extends AbstractController
             'date' => $adhesion->getAcceptedAt(),
             'url' => $request->getSchemeAndHttpHost() . '/adherent',
         ], 'accepted');
+
+        $mailerService->sendEmail([
+            'from' => [
+                'type' => 'Cotisation',
+                'name' => $informationsService->getAssociationName(),
+                'email' => $informationsService->getAssociationEmail(),
+                'phone' => $informationsService->getAssociationPhone(),
+            ],
+            'to' => [
+                'name' => $adherent->getName(),
+                'email' => $adherent->getEmail(),
+            ],
+            'subject' => "Merci pour votre cotisation !",
+            'amount' => 12,
+            'paidAt' => $cotisation->getPaidAt(),
+            'nextAt' => $cotisation->getNextAt(),
+            'url' => $request->getSchemeAndHttpHost() . '/adherent',
+        ], 'cotisation-paid');
 
         $this->addFlash('success', "Vous avez accepté la demande d'adhésion de {$adhesion->getAdherentName()}");
 

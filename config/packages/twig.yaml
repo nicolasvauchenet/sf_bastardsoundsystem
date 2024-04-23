@@ -10,6 +10,7 @@ twig:
     app_statistics_contact: '@App\AdminBundle\Service\Statistics\ContactService'
     app_statistics_adherent: '@App\AdminBundle\Service\Statistics\AdherentService'
     app_statistics_partenaire: '@App\AdminBundle\Service\Statistics\PartenaireService'
+    app_statistics_cotisation: '@App\AdminBundle\Service\Statistics\CotisationService'
     app_informations: '@App\AppBundle\Service\InformationsService'
 
 when@test:

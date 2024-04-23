@@ -7,30 +7,46 @@ use App\AppBundle\Repository\InformationsRepository;
 
 class InformationsService
 {
-    private Informations $informations;
+    private ?Informations $informations = null;
+    private InformationsRepository $informationsRepository;
 
     public function __construct(InformationsRepository $informationsRepository)
     {
-        $this->informations = $informationsRepository->find(1);
+        $this->informationsRepository = $informationsRepository;
+    }
+
+    private function loadInformations(): void
+    {
+        if($this->informations === null) {
+            $this->informations = $this->informationsRepository->find(1);
+        }
     }
 
     public function getAssociationName(): ?string
     {
-        return $this->informations->getName();
+        $this->loadInformations();
+
+        return $this->informations ? $this->informations->getName() : null;
     }
 
     public function getAssociationEmail(): ?string
     {
-        return $this->informations->getEmail();
+        $this->loadInformations();
+
+        return $this->informations ? $this->informations->getEmail() : null;
     }
 
     public function getAssociationPhone(): ?string
     {
-        return $this->informations->getPhone();
+        $this->loadInformations();
+
+        return $this->informations ? $this->informations->getPhone() : null;
     }
 
     public function getAssociationAddress(): ?string
     {
-        return $this->informations->getAddress();
+        $this->loadInformations();
+
+        return $this->informations ? $this->informations->getAddress() : null;
     }
 }

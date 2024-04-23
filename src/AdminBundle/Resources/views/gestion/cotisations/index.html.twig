@@ -1,0 +1,154 @@
+{% extends '@Admin/index.html.twig' %}
+
+{% block title %}Les Cotisations - Administration Générale{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Les Cotisations des Adhérents</h1>
+    </section>
+
+    <section class="app-section">
+        {% if app_statistics_cotisation.cotisationsOk | length > 0 %}
+            <table class="app-table">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Dernier paiement</th>
+                        <th>Prochain paiement</th>
+                        <th>Reste</th>
+                        <th>Montant</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for cotisation in app_statistics_cotisation.cotisationsOk %}
+                        {% set delai = date_diff('now', cotisation.nextAt) %}
+                        <tr>
+                            <td>{{ cotisation.adherent.name }}</td>
+                            <td>{{ cotisation.paidAt | date("d/m/Y à H:i") }}</td>
+                            <td>{{ cotisation.nextAt | date("d/m/Y à H:i") }}</td>
+                            <td>
+                                {{ delai }}
+                                jour{{ delai > 1 ? 's' : '' }}
+                            </td>
+                            <td>12€</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Aucune cotisation…</p>
+        {% endif %}
+    </section>
+
+    {% if app_statistics_cotisation.cotisationsKo() %}
+        <section class="app-section pagetitle">
+            <h2>Cotisations à renouveler</h2>
+        </section>
+
+        <section class="app-section">
+            <table class="app-table">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Dernier paiement</th>
+                        <th>Prochain paiement</th>
+                        <th>Délai</th>
+                        <th>Rappels</th>
+                        <th>Montant</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for cotisation in app_statistics_cotisation.cotisationsKo %}
+                        {% set delai = date_diff('now', cotisation.nextAt) %}
+                        {% if delai > 15 %}
+                            {% set class = 'success' %}
+                        {% elseif delai > 5 %}
+                            {% set class = 'warning' %}
+                        {% else %}
+                            {% set class = 'danger' %}
+                        {% endif %}
+
+                        <tr>
+                            <td>{{ cotisation.adherent.name }}</td>
+                            <td>{{ cotisation.paidAt | date("d/m/Y à H:i") }}</td>
+                            <td>
+                                {{ cotisation.nextAt | date("d/m/Y à H:i") }}
+                            </td>
+                            <td>
+                                <strong class="{{ class }}">
+                                    {{ delai }}
+                                    jour{{ delai > 1 ? 's' : '' }}
+                                </strong>
+                            </td>
+                            <td class="text-center">{{ cotisation.reminded ?? 0 }}</td>
+                            <td>12€</td>
+                            <td>
+                                <a href="{{ path('admin_gestion_cotisations_payment', {'id': cotisation.id}) }}"
+                                   class="success"
+                                   onclick="return window.confirm('Valider la cotisation de cet adhérent ?')"
+                                   title="Cotisation payée">
+                                    <i class="fa-solid fa-money-bill-1-wave"></i>
+                                </a>
+
+                                <a href="#"
+                                   class="info"
+                                   onclick="return window.confirm('Relancer cet adhérent ?')"
+                                   title="Relancer l'adhérent">
+                                    <i class="fa-solid fa-clock-rotate-left"></i>
+                                </a>
+
+                                {% if cotisation.reminded == 3 %}
+                                    <a href="{{ path('admin_archives_adherents_archive', {'id': cotisation.adherent.id}) }}"
+                                       class="warning"
+                                       data-controller="popup--index"
+                                       data-action="popup--index#open"
+                                       data-popupid="popup-archive-{{ cotisation.adherent.id }}"
+                                       title="Archiver l'adhérent">
+                                        <i class="fa-solid fa-box-archive"></i>
+                                    </a>
+                                    <div id="popup-archive-{{ cotisation.adherent.id }}" class="app-popup">
+                                        <div class="popup-body">
+                                            <div class="popup-header">
+                                                <h2>Archiver un Adhérent</h2>
+                                                <a href="#"
+                                                   class="close"
+                                                   data-controller="popup--index"
+                                                   data-action="popup--index#close"
+                                                   data-popupid="popup-archive-{{ cotisation.adherent.id }}">
+                                                    <i class="fa-solid fa-circle-xmark"></i>
+                                                </a>
+                                            </div>
+                                            <div class="popup-content">
+                                                <h3>
+                                                    {{ cotisation.adherent.name }}
+                                                    -
+                                                    {{ cotisation.adherent.adherentType }}
+                                                </h3>
+
+                                                <form action="{{ path('admin_archives_adherents_archive', {'id': cotisation.adherent.id}) }}"
+                                                      method="post">
+                                                    <label for="archivedMotivation" class="form-label required">Motif :
+                                                    </label>
+                                                    <input type="text"
+                                                           name="archivedMotivation"
+                                                           id="archivedMotivation"
+                                                           class="form-control"
+                                                           value="Cotisation non renouvelée"
+                                                           required/>
+                                                    <button type="submit" class="app-btn cta">Archiver</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    {% endif %}
+{% endblock %}

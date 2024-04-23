@@ -30,6 +30,7 @@ class AdherentFixtures extends Fixture implements OrderedFixtureInterface
             ->setAdherentType('Musicien')
             ->setCreatedAt(new DateTimeImmutable());
         $manager->persist($adherent);
+        $this->setReference('adherent-test', $adherent);
 
         $manager->flush();
     }

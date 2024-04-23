@@ -69,11 +69,11 @@
             Infos Générales
         </a>
 
-        <a href="#" {% if 'admin_gestion_cotisations_' in app.request.get('_route') %} class="active"{% endif %}>
+        <a href="{{ path('admin_gestion_cotisations_index') }}" {% if 'admin_gestion_cotisations_' in app.request.get('_route') %} class="active"{% endif %}>
             <i class="fa-solid fa-money-bill-wave"></i>
             Cotisations
-            {% if true %}
-                <span class="badge danger">2</span>
+            {% if app_statistics_cotisation.cotisationsKo %}
+                <span class="badge danger">{{ app_statistics_cotisation.cotisationsKo | length }}</span>
             {% endif %}
         </a>
 

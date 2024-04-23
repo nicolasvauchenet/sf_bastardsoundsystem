@@ -24,12 +24,12 @@ tbody {
         }
       }
 
-      &:has(.info),
-      &:has(.success),
-      &:has(.warning),
-      &:has(.danger),
-      &:has(.primary),
-      &:has(.disabled) {
+      &:has(a.info),
+      &:has(a.success),
+      &:has(a.warning),
+      &:has(a.danger),
+      &:has(a.primary),
+      &:has(a.disabled) {
         @include displayFlex(center, center, 1rem);
       }
 

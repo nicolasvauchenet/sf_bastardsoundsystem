@@ -1,0 +1,69 @@
+{% apply inline_css %}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+        body {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 16px;
+            color: #222222;
+            background-color: #ffffff;
+        }
+
+        h1 {
+            font-family: "Roboto", sans-serif;
+            font-size: 1.75rem;
+            font-weight: bold;
+            line-height: 2rem;
+            text-transform: uppercase;
+            color: #650f3c;
+        }
+
+        .danger {
+            color: #d9534f;
+        }
+    </style>
+
+    <main>
+        <h1>Bonjour {{ mailData['to']['name'] }} !</h1>
+
+        <p>
+            Nous vous contactons pour le renouvellement de votre cotisation annuelle&nbsp;!
+        </p>
+
+        <blockquote>
+            <dl>
+                <dt>
+                    {% if mailData['reminded'] == 3 %}
+                        Votre prochaine cotisation est redevable depuis le {{ mailData['nextAt'] | date('d/m/Y') }}.
+                    {% else %}
+                        Votre prochaine cotisation sera redevable le {{ mailData['nextAt'] | date('d/m/Y') }}.
+                    {% endif %}
+                </dt>
+                <dt>
+                    {% if mailData['reminded'] == 3 %}
+                        Elle est de {{ mailData['amount'] }}€.
+                    {% else %}
+                        Elle sera de {{ mailData['amount'] }}€.
+                    {% endif %}
+                </dt>
+                <dt>
+                    {% if mailData['reminded'] == 1 %}
+                        C'est juste le 1er rappel à 30 jours, vous avez le temps !
+                    {% elseif mailData['reminded'] == 2 %}
+                        C'est juste le 2ème rappel à 15 jours, vous avez encore un peu de temps !
+                    {% else %}
+                        C'est le troisième et dernier rappel, là il va falloir prendre une décision…
+                    {% endif %}
+                </dt>
+            </dl>
+        </blockquote>
+
+        {% if mailData['from']['phone'] %}
+            <p>
+                En cas de besoin, vous pouvez contacter {{ mailData['from']['name'] }}
+                au {{ mailData['from']['phone'] }}.
+            </p>
+        {% endif %}
+        <p>À bientôt !</p>
+    </main>
+{% endapply %}
