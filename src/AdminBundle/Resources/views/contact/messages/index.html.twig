@@ -39,7 +39,7 @@
                             <td>{{ message.senderEmail }}</td>
                             <td>{{ message.senderPhone }}</td>
                             <td>{{ message.subject }}</td>
-                            <td>{{ message.sentAt | date("d/m/Y à H:i") }}</td>
+                            <td>{{ message.sentAt | date("d/m/Y à H:i") | replace({':': 'h'}) }}</td>
                             <td>
                                 <a href="#" class="success"
                                    data-controller="popup--index"
@@ -66,7 +66,7 @@
                                                 -
                                                 {{ message.senderType }}
                                                 - Le
-                                                {{ message.sentAt | date('d/m/Y à H:i') }} :
+                                                {{ message.sentAt | date('d/m/Y à H:i') | replace({':': 'h'}) }} :
                                             </h3>
 
                                             <blockquote>{{ message.message }}</blockquote>
@@ -111,7 +111,7 @@
                                                 -
                                                 {{ message.senderType }}
                                                 - Le
-                                                {{ message.sentAt | date('d/m/Y à H:i') }} :
+                                                {{ message.sentAt | date('d/m/Y à H:i') | replace({':': 'h'}) }} :
                                             </h3>
 
                                             <blockquote>{{ message.message }}</blockquote>
@@ -162,7 +162,7 @@
                         <td>{{ message.senderEmail }}</td>
                         <td>{{ message.senderPhone }}</td>
                         <td>{{ message.subject }}</td>
-                        <td>{{ message.sentAt | date("d/m/Y à H:i") }}</td>
+                        <td>{{ message.sentAt | date("d/m/Y à H:i") | replace({':': 'h'}) }}</td>
                         <td>
                             <a href="#" class="success"
                                data-controller="popup--index"
@@ -189,7 +189,7 @@
                                             -
                                             {{ message.senderType }}
                                             - Le
-                                            {{ message.sentAt | date('d/m/Y à H:i') }} :
+                                            {{ message.sentAt | date('d/m/Y à H:i') | replace({':': 'h'}) }} :
                                         </h3>
 
                                         <blockquote>{{ message.message }}</blockquote>
@@ -202,7 +202,7 @@
                                                         <em>
                                                             {{ reply.senderName }}
                                                             - Le
-                                                            {{ reply.sentAt | date('d/m/Y à H:i') }} :
+                                                            {{ reply.sentAt | date('d/m/Y à H:i') | replace({':': 'h'}) }} :
                                                         </em>
                                                     </dt>
                                                     <dd>{{ reply.message }}</dd>
@@ -250,7 +250,7 @@
                                             -
                                             {{ message.senderType }}
                                             - Le
-                                            {{ message.sentAt | date('d/m/Y à H:i') }} :
+                                            {{ message.sentAt | date('d/m/Y à H:i') | replace({':': 'h'}) }} :
                                         </h3>
 
                                         <blockquote>{{ message.message }}</blockquote>
@@ -263,7 +263,7 @@
                                                         <em>
                                                             {{ reply.senderName }}
                                                             - Le
-                                                            {{ reply.sentAt | date('d/m/Y à H:i') }} :
+                                                            {{ reply.sentAt | date('d/m/Y à H:i') | replace({':': 'h'}) }} :
                                                         </em>
                                                     </dt>
                                                     <dd>{{ reply.message }}</dd>

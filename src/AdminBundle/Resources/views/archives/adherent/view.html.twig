@@ -34,12 +34,12 @@
 
             <div class="flex-item">
                 <strong>Adhérent depuis</strong>
-                {{ adherent.createdAt | date('d/m/Y à H:i') }}
+                {{ adherent.createdAt | date('d/m/Y à H:i') | replace({':': 'h'}) }}
             </div>
 
             <div class="flex-item">
                 <strong>Archivé depuis</strong>
-                {{ adherent.archivedAt | date('d/m/Y à H:i') }}
+                {{ adherent.archivedAt | date('d/m/Y à H:i') | replace({':': 'h'}) }}
             </div>
 
             <div class="flex-item actions">

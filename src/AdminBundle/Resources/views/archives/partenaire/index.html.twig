@@ -45,7 +45,7 @@
                                 •
                                 <a href="#">Formation</a>
                             </td>
-                            <td>{{ partenaire.archivedAt | date("d/m/Y à H:i") }}</td>
+                            <td>{{ partenaire.archivedAt | date("d/m/Y à H:i") | replace({':': 'h'}) }}</td>
                             <td>{{ partenaire.archivedMotivation }}</td>
                             <td>
                                 <a href="{{ path('admin_archives_partenaires_view', {'id': partenaire.id}) }}"

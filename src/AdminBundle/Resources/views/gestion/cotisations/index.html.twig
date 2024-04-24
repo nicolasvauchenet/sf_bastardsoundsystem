@@ -9,6 +9,7 @@
 
     <section class="app-section">
         {% if app_gestion_cotisations.cotisationsOk | length > 0 %}
+            {% set cotisationsTotal = 0 %}
             <table class="app-table">
                 <thead>
                     <tr>
@@ -23,10 +24,11 @@
                 <tbody>
                     {% for cotisation in app_gestion_cotisations.cotisationsOk %}
                         {% set delai = date_diff('now', cotisation.nextAt) %}
+                        {% set cotisationsTotal = cotisationsTotal + app_informations.cotisationAmount %}
                         <tr>
                             <td>{{ cotisation.adherent.name }}</td>
-                            <td>{{ cotisation.paidAt | date("d/m/Y à H:i") }}</td>
-                            <td>{{ cotisation.nextAt | date("d/m/Y à H:i") }}</td>
+                            <td>{{ cotisation.paidAt | date("d/m/Y à H:i") | replace({':': 'h'}) }}</td>
+                            <td>{{ cotisation.nextAt | date("d/m/Y à H:i") | replace({':': 'h'}) }}</td>
                             <td>
                                 {{ delai }}
                                 jour{{ delai > 1 ? 's' : '' }}
@@ -35,6 +37,12 @@
                         </tr>
                     {% endfor %}
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="4">Total</th>
+                        <th>{{ cotisationsTotal | number_format('2', ',', ' ') }}€</th>
+                    </tr>
+                </tfoot>
             </table>
         {% else %}
             <p>Aucune cotisation en cours…</p>
@@ -42,6 +50,7 @@
     </section>
 
     {% if app_gestion_cotisations.cotisationsKo() %}
+        {% set cotisationsTotal = 0 %}
         <section class="app-section pagetitle">
             <h2>Cotisations à renouveler</h2>
         </section>
@@ -70,12 +79,13 @@
                         {% else %}
                             {% set class = 'danger' %}
                         {% endif %}
+                        {% set cotisationsTotal = cotisationsTotal + app_informations.cotisationAmount %}
 
                         <tr>
                             <td>{{ cotisation.adherent.name }}</td>
-                            <td>{{ cotisation.paidAt | date("d/m/Y à H:i") }}</td>
+                            <td>{{ cotisation.paidAt | date("d/m/Y à H:i") | replace({':': 'h'}) }}</td>
                             <td>
-                                {{ cotisation.nextAt | date("d/m/Y à H:i") }}
+                                {{ cotisation.nextAt | date("d/m/Y à H:i") | replace({':': 'h'}) }}
                             </td>
                             <td>
                                 <strong class="{{ class }}">
@@ -93,12 +103,12 @@
                                     <i class="fa-solid fa-money-bill-1-wave"></i>
                                 </a>
 
-                                <a href="#"
+                                {# <a href="#"
                                    class="info"
                                    onclick="return window.confirm('Relancer cet adhérent ?')"
                                    title="Relancer l'adhérent">
                                     <i class="fa-solid fa-clock-rotate-left"></i>
-                                </a>
+                                </a> #}
 
                                 {% if cotisation.reminded == 3 %}
                                     <a href="{{ path('admin_archives_adherents_archive', {'id': cotisation.adherent.id}) }}"
@@ -148,6 +158,13 @@
                         </tr>
                     {% endfor %}
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="5">Total</th>
+                        <th>{{ cotisationsTotal | number_format('2', ',', ' ') }}€</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </tfoot>
             </table>
         </section>
     {% endif %}

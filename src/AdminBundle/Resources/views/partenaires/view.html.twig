@@ -34,7 +34,7 @@
 
             <div class="flex-item">
                 <strong>Adhérent depuis</strong>
-                {{ partenaire.createdAt | date('d/m/Y à H:i') }}
+                {{ partenaire.createdAt | date('d/m/Y à H:i') | replace({':': 'h'}) }}
             </div>
 
             <div class="flex-item actions">

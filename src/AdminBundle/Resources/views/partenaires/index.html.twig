@@ -44,7 +44,7 @@
                                 •
                                 <a href="#">Formation</a>
                             </td>
-                            <td>{{ partenaire.createdAt | date("d/m/Y à H:i") }}</td>
+                            <td>{{ partenaire.createdAt | date("d/m/Y à H:i") | replace({':': 'h'}) }}</td>
                             <td>
                                 <a href="{{ path('admin_partenaires_view', {'id': partenaire.id}) }}"
                                    class="primary"

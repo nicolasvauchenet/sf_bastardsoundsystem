@@ -54,7 +54,7 @@
                                 •
                                 <a href="#">Assurances</a>
                             </td>
-                            <td>{{ adherent.createdAt | date("d/m/Y à H:i") }}</td>
+                            <td>{{ adherent.createdAt | date("d/m/Y à H:i") | replace({':': 'h'}) }}</td>
                             <td>
                                 <a href="{{ path('admin_adherents_view', {'id': adherent.id}) }}"
                                    class="primary"

@@ -38,7 +38,7 @@
                             <td>{{ partenariat.partenaireName }}</td>
                             <td>{{ partenariat.partenaireEmail }}</td>
                             <td>{{ partenariat.partenairePhone }}</td>
-                            <td>{{ partenariat.sentAt | date("d/m/Y à H:i") }}</td>
+                            <td>{{ partenariat.sentAt | date("d/m/Y à H:i") | replace({':': 'h'}) }}</td>
                             <td>
                                 {% if partenariat.partenaireMessage %}
                                     <a href="#"

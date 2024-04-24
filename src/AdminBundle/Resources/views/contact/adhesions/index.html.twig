@@ -38,7 +38,7 @@
                             <td>{{ adhesion.adherentName }}</td>
                             <td>{{ adhesion.adherentEmail }}</td>
                             <td>{{ adhesion.adherentPhone }}</td>
-                            <td>{{ adhesion.sentAt | date("d/m/Y à H:i") }}</td>
+                            <td>{{ adhesion.sentAt | date("d/m/Y à H:i") | replace({':': 'h'}) }}</td>
                             <td>
                                 {% if adhesion.adherentMessage %}
                                     <a href="#"

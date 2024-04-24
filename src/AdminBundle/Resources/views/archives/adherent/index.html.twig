@@ -47,7 +47,7 @@
                                 •
                                 <a href="#">Assurances</a>
                             </td>
-                            <td>{{ adherent.archivedAt | date("d/m/Y à H:i") }}</td>
+                            <td>{{ adherent.archivedAt | date("d/m/Y à H:i") | replace({':': 'h'}) }}</td>
                             <td>{{ adherent.archivedMotivation }}</td>
                             <td>
                                 <a href="{{ path('admin_archives_adherents_view', {'id': adherent.id}) }}"

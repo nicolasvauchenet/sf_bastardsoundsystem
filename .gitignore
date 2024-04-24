@@ -3,6 +3,10 @@
 .DS_Store
 bastardsoundsystem.crt
 bastardsoundsystem.key
+public/uploads/documents/*
+!public/uploads/documents/statuts.pdf
+!public/uploads/documents/pv-assemblee-generale-constitutive.pdf
+!public/uploads/documents/inscription-siren.pdf
 public/uploads/materiel/*
 !public/uploads/materiel/facture-4229922.pdf
 !public/uploads/materiel/facture-4311779.pdf
