@@ -11,16 +11,16 @@
             Adhérent
         </a>
 
-        <div class="submenu">
-            <a href="{{ path('front_office_adherent_visuels_et_communication') }}"
-               {% if app.request.get('_route') == 'front_office_adherent_visuels_et_communication' %}class="active"{% endif %}>
-                Visuels & Comm'
-            </a>
-            <a href="{{ path('front_office_adherent_contrats_et_dossiers') }}"
-               {% if app.request.get('_route') == 'front_office_adherent_contrats_et_dossiers' %}class="active"{% endif %}>
-                Contrats & Dossiers
-            </a>
-        </div>
+        {% if app_services.firstCategories('adherent') | length > 0 %}
+            <div class="submenu">
+                {% for category in app_services.firstCategories('adherent') %}
+                    <a href="{{ path('front_office_adherent_services', {'slug': category.slug}) }}"
+                       {% if app.request.attributes.get('_route') == 'front_office_adherent_services' and app.request.attributes.get('slug') == category.slug %}class="active"{% endif %}>
+                        {{ category.name }}
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
 
     <div class="menu-item">
@@ -29,16 +29,16 @@
             Partenaire
         </a>
 
-        <div class="submenu">
-            <a href="{{ path('front_office_partenaire_prestations_et_regie') }}"
-               {% if app.request.get('_route') == 'front_office_partenaire_prestations_et_regie' %}class="active"{% endif %}>
-                Prestations & Régie
-            </a>
-            <a href="{{ path('front_office_partenaire_organisation_et_formations') }}"
-               {% if app.request.get('_route') == 'front_office_partenaire_organisation_et_formations' %}class="active"{% endif %}>
-                Orga & Formations
-            </a>
-        </div>
+        {% if app_services.firstCategories('partenaire') | length > 0 %}
+            <div class="submenu">
+                {% for category in app_services.firstCategories('partenaire') %}
+                    <a href="{{ path('front_office_partenaire_services', {'slug': category.slug}) }}"
+                       {% if app.request.attributes.get('_route') == 'front_office_partenaire_services' and app.request.attributes.get('slug') == category.slug %}class="active"{% endif %}>
+                        {{ category.name }}
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
 
     <a href="{{ path('front_office_contact') }}"

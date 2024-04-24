@@ -3,16 +3,6 @@
 .DS_Store
 bastardsoundsystem.crt
 bastardsoundsystem.key
-public/uploads/documents/*
-!public/uploads/documents/statuts.pdf
-!public/uploads/documents/pv-assemblee-generale-constitutive.pdf
-!public/uploads/documents/inscription-siren.pdf
-public/uploads/materiel/*
-!public/uploads/materiel/facture-4229922.pdf
-!public/uploads/materiel/facture-4311779.pdf
-!public/uploads/materiel/facture-4343385.pdf
-!public/uploads/materiel/facture-61387907.pdf
-!public/uploads/materiel/facture-FR327JVSQAEUI.pdf
 ###< bastardsoundsystem/local-development ###
 
 ###> symfony/framework-bundle ###

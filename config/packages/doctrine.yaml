@@ -22,32 +22,39 @@ doctrine:
         dir: '%kernel.project_dir%/src/AppBundle/Entity'
         prefix: 'App\AppBundle\Entity'
         alias: App
-      AdherentBundle:
-        is_bundle: false
-        type: attribute
-        dir: '%kernel.project_dir%/src/AdherentBundle/Entity'
-        prefix: 'App\AdherentBundle\Entity'
-        alias: Adherent
-      AdminBundle:
-        is_bundle: false
-        type: attribute
-        dir: '%kernel.project_dir%/src/AdminBundle/Entity'
-        prefix: 'App\AdminBundle\Entity'
-        alias: Admin
-      FrontOfficeBundle:
-        is_bundle: false
-        type: attribute
-        dir: '%kernel.project_dir%/src/FrontOfficeBundle/Entity'
-        prefix: 'App\FrontOfficeBundle\Entity'
-        alias: FrontOffice
-      PartenaireBundle:
-        is_bundle: false
-        type: attribute
-        dir: '%kernel.project_dir%/src/PartenaireBundle/Entity'
-        prefix: 'App\PartenaireBundle\Entity'
-        alias: Partenaire
+#      AdherentBundle:
+#        is_bundle: false
+#        type: attribute
+#        dir: '%kernel.project_dir%/src/AdherentBundle/Entity'
+#        prefix: 'App\AdherentBundle\Entity'
+#        alias: Adherent
+#      AdminBundle:
+#        is_bundle: false
+#        type: attribute
+#        dir: '%kernel.project_dir%/src/AdminBundle/Entity'
+#        prefix: 'App\AdminBundle\Entity'
+#        alias: Admin
+#      FrontOfficeBundle:
+#        is_bundle: false
+#        type: attribute
+#        dir: '%kernel.project_dir%/src/FrontOfficeBundle/Entity'
+#        prefix: 'App\FrontOfficeBundle\Entity'
+#        alias: FrontOffice
+#      PartenaireBundle:
+#        is_bundle: false
+#        type: attribute
+#        dir: '%kernel.project_dir%/src/PartenaireBundle/Entity'
+#        prefix: 'App\PartenaireBundle\Entity'
+#        alias: Partenaire
     controller_resolver:
       auto_mapping: true
+    filters:
+      active_service_category:
+        class: App\ServiceBundle\Doctrine\ActiveServiceCategoryFilter
+        enabled: true
+      active_service:
+        class: App\ServiceBundle\Doctrine\ActiveServiceFilter
+        enabled: true
 
 when@test:
   doctrine:

@@ -12,6 +12,7 @@ twig:
     app_statistics_partenaire: '@App\AdminBundle\Service\Statistics\PartenaireService'
     app_gestion_cotisations: '@App\AdminBundle\Service\Gestion\CotisationService'
     app_informations: '@App\AppBundle\Service\InformationsService'
+    app_services: '@App\ServiceBundle\Service\ServicesService'
 
 when@test:
   twig:

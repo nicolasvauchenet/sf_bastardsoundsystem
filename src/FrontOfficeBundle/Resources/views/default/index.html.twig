@@ -23,38 +23,27 @@
                 </p>
 
                 <p>
-                    <a href="#" class="app-btn cta">J'adhère à BSS</a>
+                    <a href="{{ path('front_office_adhesion') }}" class="app-btn cta">J'adhère à BSS</a>
                 </p>
             </section>
 
-            <section class="app-section">
-                <div class="content">
-                    <img src="{{ asset('img/evenements.webp') }}" alt="Événements"/>
-                    <h2>Pour les Artistes & les Collectifs</h2>
+            {% if app_services.firstCategories('adherent') | length > 0 %}
+                <section class="app-section">
+                    <div class="content">
+                        <img src="{{ asset('img/evenements.webp') }}" alt="Événements"/>
+                        <h2>Pour les Artistes & les Collectifs</h2>
 
-                    <div class="sub">
-                        <img src="{{ asset('img/documents.webp') }}" alt="Visuels & Communication"/>
-                        <a href="{{ path('front_office_adherent_visuels_et_communication') }}">
-                            Visuels
-                            <br/>
-                            &
-                            <br/>
-                            Comm'
-                        </a>
+                        {% for category in app_services.firstCategories('adherent') %}
+                            <div class="sub">
+                                <img src="{{ asset('uploads/services/category/' ~ category.cover) }}" alt="{{ category.name }}"/>
+                                <a href="{{ path('front_office_adherent_services', {'slug': category.slug}) }}">
+                                    {{ category.name | replace({' ': '<br/>'}) | raw }}
+                                </a>
+                            </div>
+                        {% endfor %}
                     </div>
-
-                    <div class="sub">
-                        <img src="{{ asset('img/contrats.webp') }}" alt="Contrats & Dossiers"/>
-                        <a href="{{ path('front_office_adherent_contrats_et_dossiers') }}">
-                            Contrats
-                            <br/>
-                            &
-                            <br/>
-                            Dossiers
-                        </a>
-                    </div>
-                </div>
-            </section>
+                </section>
+            {% endif %}
         </div>
 
         <div class="grid-item">
@@ -69,38 +58,27 @@
                 </p>
 
                 <p>
-                    <a href="#" class="app-btn cta">Je deviens Partenaire</a>
+                    <a href="{{ path('front_office_partenariat') }}" class="app-btn cta">Je deviens Partenaire</a>
                 </p>
             </section>
 
-            <section class="app-section alt">
-                <div class="content">
-                    <img src="{{ asset('img/sonorisation.webp') }}" alt="Sonorisation"/>
-                    <h2>Pour le Live & le Studio</h2>
+            {% if app_services.firstCategories('partenaire') | length > 0 %}
+                <section class="app-section alt">
+                    <div class="content">
+                        <img src="{{ asset('img/sonorisation.webp') }}" alt="Sonorisation"/>
+                        <h2>Pour le Live & le Studio</h2>
 
-                    <div class="sub">
-                        <img src="{{ asset('img/live.webp') }}" alt="Prestations"/>
-                        <a href="{{ path('front_office_partenaire_prestations_et_regie') }}">
-                            Presta
-                            <br/>
-                            &
-                            <br/>
-                            Régie
-                        </a>
+                        {% for category in app_services.firstCategories('partenaire') %}
+                            <div class="sub">
+                                <img src="{{ asset('uploads/services/category/' ~ category.cover) }}" alt="{{ category.name }}"/>
+                                <a href="{{ path('front_office_partenaire_services', {'slug': category.slug}) }}">
+                                    {{ category.name | replace({' ': '<br/>'}) | raw }}
+                                </a>
+                            </div>
+                        {% endfor %}
                     </div>
-
-                    <div class="sub">
-                        <img src="{{ asset('img/orga.webp') }}" alt="Organisation & Formation"/>
-                        <a href="{{ path('front_office_partenaire_organisation_et_formations') }}">
-                            Orga
-                            <br/>
-                            &
-                            <br/>
-                            Cours
-                        </a>
-                    </div>
-                </div>
-            </section>
+                </section>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
