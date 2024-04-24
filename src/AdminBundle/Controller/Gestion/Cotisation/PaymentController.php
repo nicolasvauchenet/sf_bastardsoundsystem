@@ -1,8 +1,7 @@
 <?php
 
-namespace App\AdminBundle\Controller\Cotisation;
+namespace App\AdminBundle\Controller\Gestion\Cotisation;
 
-use App\AdherentBundle\Entity\Adherent;
 use App\AdminBundle\Entity\Cotisation;
 use App\AppBundle\Service\InformationsService;
 use App\AppBundle\Service\MailerService;

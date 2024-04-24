@@ -25,6 +25,7 @@
                         <th>Nom</th>
                         <th>Email</th>
                         <th>Téléphone</th>
+                        <th>Sujet du message</th>
                         <th>Date du message</th>
                         <th>&nbsp;</th>
                     </tr>
@@ -37,6 +38,7 @@
                             <td>{{ message.senderName }}</td>
                             <td>{{ message.senderEmail }}</td>
                             <td>{{ message.senderPhone }}</td>
+                            <td>{{ message.subject }}</td>
                             <td>{{ message.sentAt | date("d/m/Y à H:i") }}</td>
                             <td>
                                 <a href="#" class="success"
@@ -146,6 +148,7 @@
                     <th>Nom</th>
                     <th>Email</th>
                     <th>Téléphone</th>
+                    <th>Sujet du message</th>
                     <th>Date du message</th>
                     <th>&nbsp;</th>
                 </tr>
@@ -158,6 +161,7 @@
                         <td>{{ message.senderName }}</td>
                         <td>{{ message.senderEmail }}</td>
                         <td>{{ message.senderPhone }}</td>
+                        <td>{{ message.subject }}</td>
                         <td>{{ message.sentAt | date("d/m/Y à H:i") }}</td>
                         <td>
                             <a href="#" class="success"

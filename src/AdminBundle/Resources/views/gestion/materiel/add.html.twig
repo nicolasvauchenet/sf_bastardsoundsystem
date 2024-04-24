@@ -1,0 +1,107 @@
+{% extends '@Admin/index.html.twig' %}
+
+{% block title %}Nouveau Matériel - Administration Générale{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Nouveau Matériel</h1>
+    </section>
+
+    <section class="app-section">
+        {{ form_start(form, {'attr': {'class': 'app-form'}}) }}
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Infos du Matos</legend>
+
+            <div class="form-group">
+                <label for="{{ form.category.vars.id }}"
+                       class="form-label {% if form.category.vars.required %}required{% endif %}">
+                    {{ form.category.vars.label }}
+                </label>
+                {{ form_widget(form.category) }}
+                {{ form_errors(form.category) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.name.vars.id }}"
+                       class="form-label {% if form.name.vars.required %}required{% endif %}">
+                    {{ form.name.vars.label }}
+                </label>
+                {{ form_widget(form.name) }}
+                {{ form_errors(form.name) }}
+            </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Infos d'Achat</legend>
+
+            <div class="form-group">
+                <label for="{{ form.createdAt.vars.id }}"
+                       class="form-label {% if form.createdAt.vars.required %}required{% endif %}">
+                    {{ form.createdAt.vars.label }}
+                </label>
+                {{ form_widget(form.createdAt) }}
+                {{ form_errors(form.createdAt) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.purchasePrice.vars.id }}"
+                       class="form-label {% if form.purchasePrice.vars.required %}required{% endif %}">
+                    {{ form.purchasePrice.vars.label }}
+                </label>
+                {{ form_widget(form.purchasePrice) }}
+                {{ form_errors(form.purchasePrice) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.invoice.vars.id }}"
+                       class="form-label {% if form.invoice.vars.required %}required{% endif %}">
+                    {{ form.invoice.vars.label }}
+                </label>
+                {{ form_widget(form.invoice) }}
+                {{ form_errors(form.invoice) }}
+            </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Suivi du Matos</legend>
+
+            <div class="form-group">
+                <label for="{{ form.status.vars.id }}"
+                       class="form-label {% if form.status.vars.required %}required{% endif %}">
+                    {{ form.status.vars.label }}
+                </label>
+                {{ form_widget(form.status) }}
+                {{ form_errors(form.status) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.argusPrice.vars.id }}"
+                       class="form-label {% if form.argusPrice.vars.required %}required{% endif %}">
+                    {{ form.argusPrice.vars.label }}
+                </label>
+                {{ form_widget(form.argusPrice) }}
+                {{ form_errors(form.argusPrice) }}
+            </div>
+
+            {# <div class="form-group">
+                <label for="{{ form.rentPrice.vars.id }}"
+                       class="form-label {% if form.rentPrice.vars.required %}required{% endif %}">
+                    {{ form.rentPrice.vars.label }}
+                </label>
+                {{ form_widget(form.rentPrice) }}
+                {{ form_errors(form.rentPrice) }}
+            </div> #}
+        </fieldset>
+
+        <div class="form-group">
+            <a href="{{ path('admin_gestion_materiel_index') }}" class="app-btn">
+                <i class="fa-solid fa-hand-point-left"></i>
+                Retour
+            </a>
+            <button type="submit" class="form-submit app-btn cta">Ajoutez</button>
+        </div>
+
+        {{ form_widget(form._token) }}
+        {{ form_end(form, {'render_rest': false}) }}
+    </section>
+{% endblock %}

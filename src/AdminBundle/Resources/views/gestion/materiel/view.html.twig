@@ -1,0 +1,74 @@
+{% extends '@Admin/index.html.twig' %}
+
+{% block title %}Fiche Matériel : {{ materiel.name }} - Administration Générale{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Fiche Matériel : {{ materiel.name }}</h1>
+    </section>
+
+    <section class="app-section alt">
+        <div class="app-flex">
+            <div class="flex-item actions">
+                <a href="{{ path('admin_gestion_materiel_index') }}"
+                   class="primary"
+                   title="Retour à la liste">
+                    <i class="fa-solid fa-hand-point-left"></i>
+                </a>
+            </div>
+
+            <div class="flex-item">
+                <strong>Catégorie</strong>
+                {{ materiel.category.name }}
+            </div>
+
+            <div class="flex-item">
+                <strong>Prix d'achat</strong>
+                {{ materiel.purchasePrice | number_format('2', ',', ' ') }}€
+            </div>
+
+            <div class="flex-item">
+                <strong>Cote Argus</strong>
+                {{ materiel.argusPrice | number_format('2', ',', ' ') }}€
+            </div>
+
+            <div class="flex-item">
+                <strong>Date d'achat</strong>
+                {{ materiel.createdAt | date('d/m/Y') }}
+            </div>
+
+            {% if materiel.invoice %}
+                <div class="flex-item">
+                    <strong>Facture</strong>
+                    <a href="{{ asset('uploads/materiel/' ~ materiel.invoice) }}" target="_blank">
+                        {{ materiel.invoice }}
+                    </a>
+                </div>
+            {% endif %}
+
+            <div class="flex-item actions">
+                <a href="{{ path('admin_gestion_materiel_edit', {'id': materiel.id}) }}"
+                   class="info"
+                   title="Modifier la fiche matériel">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+
+                <a href="{{ path('admin_gestion_materiel_delete', {'id': materiel.id}) }}"
+                   class="danger"
+                   onclick="return window.confirm('Supprimer définitivement ce matériel ?')"
+                   title="Supprimer le matériel">
+                    <i class="fa-solid fa-trash-can"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    {% if materiel.status == 'Hors service' %}
+        <section class="app-alert warning">
+            <h3>
+                Hors service depuis le
+                {{ materiel.updatedAt | date('d/m/Y') }}
+            </h3>
+        </section>
+    {% endif %}
+{% endblock %}

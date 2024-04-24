@@ -16,7 +16,7 @@ class InformationsType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'required' => true,
-                'label' => 'Nom',
+                'label' => "Nom du contact de l'association",
                 'attr' => [
                     'class' => 'form-control',
                     'autofocus' => true,
@@ -24,21 +24,28 @@ class InformationsType extends AbstractType
             ])
             ->add('email', EmailType::class, [
                 'required' => true,
-                'label' => 'E-mail',
+                'label' => "E-mail de l'association",
                 'attr' => [
                     'class' => 'form-control',
                 ],
             ])
             ->add('phone', TextType::class, [
                 'required' => false,
-                'label' => 'Téléphone',
+                'label' => "Téléphone de l'association",
                 'attr' => [
                     'class' => 'form-control',
                 ],
             ])
             ->add('address', TextType::class, [
                 'required' => false,
-                'label' => 'Adresse',
+                'label' => "Siège social de l'association",
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+            ->add('cotisationAmount', TextType::class, [
+                'required' => true,
+                'label' => 'Montant de la cotisation',
                 'attr' => [
                     'class' => 'form-control',
                 ],

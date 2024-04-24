@@ -1,6 +1,6 @@
 <?php
 
-namespace App\AdminBundle\Controller\Cotisation;
+namespace App\AdminBundle\Controller\Gestion\Cotisation;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

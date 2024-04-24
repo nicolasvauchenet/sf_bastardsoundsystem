@@ -17,6 +17,25 @@ thead {
         border-top-right-radius: 0.25rem;
         border-bottom-right-radius: 0.25rem;
       }
+
+      &:has(a) {
+        background-color: $success;
+
+        a {
+          &:has(i),
+          &:has(svg) {
+            display: block;
+            flex: 1;
+            text-align: center;
+            color: $white;
+
+            i,
+            svg {
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
     }
   }
 }

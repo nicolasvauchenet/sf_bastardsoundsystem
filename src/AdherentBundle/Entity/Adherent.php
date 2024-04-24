@@ -47,7 +47,7 @@ class Adherent extends User
 
     public function addCotisation(Cotisation $cotisation): static
     {
-        if (!$this->cotisations->contains($cotisation)) {
+        if(!$this->cotisations->contains($cotisation)) {
             $this->cotisations->add($cotisation);
             $cotisation->setAdherent($this);
         }
@@ -57,13 +57,25 @@ class Adherent extends User
 
     public function removeCotisation(Cotisation $cotisation): static
     {
-        if ($this->cotisations->removeElement($cotisation)) {
+        if($this->cotisations->removeElement($cotisation)) {
             // set the owning side to null (unless already changed)
-            if ($cotisation->getAdherent() === $this) {
+            if($cotisation->getAdherent() === $this) {
                 $cotisation->setAdherent(null);
             }
         }
 
         return $this;
+    }
+
+    public function isUpToDate(): bool
+    {
+        $reminds = 0;
+        foreach($this->getCotisations() as $cotisation) {
+            if($cotisation->getReminded() > 0) {
+                $reminds++;
+            }
+        }
+
+        return !($reminds > 0);
     }
 }

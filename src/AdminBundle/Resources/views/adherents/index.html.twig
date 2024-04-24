@@ -32,8 +32,12 @@
                 <tbody>
                     {% for adherent in adherents %}
                         <tr>
-                            <td class="icon success">
-                                <i class="fa-solid fa-check"></i>
+                            <td class="icon {{ adherent.upToDate ? 'success' : 'danger' }}">
+                                {% if adherent.upToDate %}
+                                    <i class="fa-solid fa-check"></i>
+                                {% else %}
+                                    <i class="fa-solid fa-xmark"></i>
+                                {% endif %}
                             </td>
                             <td>{{ adherent.adherentType }}</td>
                             <td>{{ adherent.name }}</td>

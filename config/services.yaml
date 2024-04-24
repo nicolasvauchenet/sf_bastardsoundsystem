@@ -6,6 +6,7 @@
 parameters:
   app_locale: fr
   timezone: '%env(resolve:APP_TIMEZONE)%'
+  uploads_directory: '%kernel.project_dir%/public/uploads'
 
 services:
   # default configuration for services in *this* file
@@ -30,5 +31,9 @@ services:
     arguments: [ '@App\AdminBundle\Service\Gestion\CotisationService' ]
     tags:
       - { name: kernel.event_subscriber }
+
+  App\AppBundle\Service\FileUploaderService:
+    arguments:
+      $uploadsDirectory: '%uploads_directory%'
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones

@@ -77,9 +77,14 @@
             {% endif %}
         </a>
 
-        <a href="#" {% if 'admin_gestion_compte-rendus_' in app.request.get('_route') %} class="active"{% endif %}>
+        <a href="{{ path('admin_gestion_documents_index') }}" {% if 'admin_gestion_documents_' in app.request.get('_route') %} class="active"{% endif %}>
             <i class="fa-solid fa-book"></i>
-            Compte-rendus
+            Documents
+        </a>
+
+        <a href="{{ path('admin_gestion_materiel_index') }}" {% if 'admin_gestion_materiel_' in app.request.get('_route') %} class="active"{% endif %}>
+            <i class="fa-solid fa-server"></i>
+            Matériel
         </a>
     </div>
 

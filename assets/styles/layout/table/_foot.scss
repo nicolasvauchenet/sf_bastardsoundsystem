@@ -1,0 +1,21 @@
+tfoot {
+  tr {
+    th {
+      padding: 0.5rem;
+      font-weight: bold;
+      text-align: left;
+      color: $white;
+      background-color: rgba($secondary, 0.75);
+
+      &:first-child {
+        border-top-left-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+      }
+
+      &:last-child {
+        border-top-right-radius: 0.25rem;
+        border-bottom-right-radius: 0.25rem;
+      }
+    }
+  }
+}

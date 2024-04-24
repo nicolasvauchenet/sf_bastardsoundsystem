@@ -1,0 +1,165 @@
+{% extends '@Admin/index.html.twig' %}
+
+{% block title %}Le Matos - Administration Générale{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Le Matos de BSS</h1>
+    </section>
+
+    <section class="app-section">
+        {% if materielsOk | length > 0 %}
+            {% set purchaseTotal = 0 %}
+            {% set argusTotal = 0 %}
+            <table class="app-table">
+                <thead>
+                    <tr>
+                        <th>Catégorie</th>
+                        <th>Nom</th>
+                        <th>Prix d'achat</th>
+                        <th>Cote Argus</th>
+                        <th>Acheté le</th>
+                        <th>Facture</th>
+                        <th>
+                            <a href="{{ path('admin_gestion_materiel_add') }}" title="Nouveau matériel">
+                                <i class="fa-solid fa-circle-plus"></i>
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for materiel in materielsOk %}
+                        {% set purchaseTotal = purchaseTotal + materiel.purchasePrice %}
+                        {% set argusTotal = argusTotal + materiel.argusPrice %}
+
+                        <tr>
+                            <td>{{ materiel.category.name }}</td>
+                            <td>{{ materiel.name }}</td>
+                            <td>{{ materiel.purchasePrice | number_format('2', ',', ' ') }}€</td>
+                            <td>{{ materiel.argusPrice ? materiel.argusPrice | number_format('2', ',', ' ') ~ '€' : '' }}</td>
+                            <td>{{ materiel.createdAt | date("d/m/Y") }}</td>
+                            <td>
+                                {% if materiel.invoice %}
+                                    <a href="{{ asset('uploads/materiel/' ~ materiel.invoice) }}" target="_blank">
+                                        {{ materiel.invoice }}
+                                    </a>
+                                {% else %}
+                                    &nbsp;
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{{ path('admin_gestion_materiel_view', {'id': materiel.id}) }}"
+                                   class="primary"
+                                   title="Voir la fiche matériel">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+
+                                <a href="{{ path('admin_gestion_materiel_edit', {'id': materiel.id}) }}"
+                                   class="info"
+                                   title="Modifier le matériel">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+
+                                <a href="{{ path('admin_gestion_materiel_delete', {'id': materiel.id}) }}"
+                                   class="danger"
+                                   onclick="return window.confirm('Supprimer définitivement ce matériel ?')"
+                                   title="Supprimer le matériel">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="2">Total</th>
+                        <th>{{ purchaseTotal | number_format('2', ',', ' ') }}€</th>
+                        <th>{{ argusTotal | number_format('2', ',', ' ') }}€</th>
+                        <th colspan="3">&nbsp;</th>
+                    </tr>
+                </tfoot>
+            </table>
+        {% else %}
+            <p>Aucun matos disponible…</p>
+        {% endif %}
+    </section>
+
+    {% if materielsKo | length > 0 %}
+        <section class="app-section pagetitle">
+            <h1>Le Matos à réparer</h1>
+        </section>
+
+        {% set purchaseTotal = 0 %}
+        {% set argusTotal = 0 %}
+        <section class="app-section">
+            <table class="app-table">
+                <thead>
+                    <tr>
+                        <th>Catégorie</th>
+                        <th>Nom</th>
+                        <th>Prix d'achat</th>
+                        <th>Cote Argus</th>
+                        <th>Acheté le</th>
+                        <th>Modifié le</th>
+                        <th>Facture</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for materiel in materielsKo %}
+                        {% set purchaseTotal = purchaseTotal + materiel.purchasePrice %}
+                        {% set argusTotal = argusTotal + materiel.argusPrice %}
+
+                        <tr>
+                            <td>{{ materiel.category.name }}</td>
+                            <td>{{ materiel.name }}</td>
+                            <td>{{ materiel.purchasePrice | number_format('2', ',', ' ') }}€</td>
+                            <td>{{ materiel.argusPrice ? materiel.argusPrice | number_format('2', ',', ' ') ~ '€' : '' }}</td>
+                            <td>{{ materiel.createdAt | date("d/m/Y") }}</td>
+                            <td>{{ materiel.updatedAt | date("d/m/Y") }}</td>
+                            <td>
+                                {% if materiel.invoice %}
+                                    <a href="{{ asset('uploads/materiel/' ~ materiel.invoice) }}" target="_blank">
+                                        {{ materiel.invoice }}
+                                    </a>
+                                {% else %}
+                                    &nbsp;
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{{ path('admin_gestion_materiel_view', {'id': materiel.id}) }}"
+                                   class="primary"
+                                   title="Voir la fiche matériel">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+
+                                <a href="{{ path('admin_gestion_materiel_edit', {'id': materiel.id}) }}"
+                                   class="info"
+                                   title="Modifier le matériel">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+
+                                <a href="{{ path('admin_gestion_materiel_delete', {'id': materiel.id}) }}"
+                                   class="danger"
+                                   onclick="return window.confirm('Supprimer définitivement ce matériel ?')"
+                                   title="Supprimer le matériel">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="2">Total</th>
+                        <th>{{ purchaseTotal | number_format('2', ',', ' ') }}€</th>
+                        <th>{{ argusTotal | number_format('2', ',', ' ') }}€</th>
+                        <th colspan="4">&nbsp;</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+    {% endif %}
+{% endblock %}
