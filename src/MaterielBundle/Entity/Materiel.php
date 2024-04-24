@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Entity\Materiel;
+namespace App\MaterielBundle\Entity;
 
-use App\AdminBundle\Repository\Materiel\MaterielRepository;
+use App\MaterielBundle\Repository\MaterielRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 

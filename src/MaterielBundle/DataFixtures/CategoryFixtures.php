@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\DataFixtures\Materiel;
+namespace App\MaterielBundle\DataFixtures;
 
-use App\AdminBundle\Entity\Materiel\Category;
+use App\MaterielBundle\Entity\Category;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;

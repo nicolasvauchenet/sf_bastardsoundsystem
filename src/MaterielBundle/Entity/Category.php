@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Entity\Materiel;
+namespace App\MaterielBundle\Entity;
 
-use App\AdminBundle\Repository\Materiel\CategoryRepository;
+use App\MaterielBundle\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

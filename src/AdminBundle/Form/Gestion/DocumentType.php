@@ -2,8 +2,8 @@
 
 namespace App\AdminBundle\Form\Gestion;
 
-use App\AdminBundle\Entity\Document\Category;
-use App\AdminBundle\Entity\Document\Document;
+use App\DocumentBundle\Entity\Category;
+use App\DocumentBundle\Entity\Document;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;

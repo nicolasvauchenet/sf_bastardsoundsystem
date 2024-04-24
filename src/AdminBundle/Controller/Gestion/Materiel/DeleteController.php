@@ -2,8 +2,8 @@
 
 namespace App\AdminBundle\Controller\Gestion\Materiel;
 
-use App\AdminBundle\Entity\Materiel\Materiel;
 use App\AppBundle\Service\FileUploaderService;
+use App\MaterielBundle\Entity\Materiel;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

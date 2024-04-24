@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\Repository\Document;
+namespace App\DocumentBundle\Repository;
 
-use App\AdminBundle\Entity\Document\Document;
+use App\DocumentBundle\Entity\Document;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

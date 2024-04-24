@@ -1,8 +1,8 @@
 <?php
 
-namespace App\AdminBundle\DataFixtures\Document;
+namespace App\DocumentBundle\DataFixtures;
 
-use App\AdminBundle\Entity\Document\Document;
+use App\DocumentBundle\Entity\Document;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;

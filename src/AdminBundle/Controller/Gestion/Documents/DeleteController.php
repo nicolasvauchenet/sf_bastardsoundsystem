@@ -2,8 +2,8 @@
 
 namespace App\AdminBundle\Controller\Gestion\Documents;
 
-use App\AdminBundle\Entity\Document\Document;
 use App\AppBundle\Service\FileUploaderService;
+use App\DocumentBundle\Entity\Document;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

@@ -2,8 +2,8 @@
 
 namespace App\AdminBundle\Controller\Gestion\Documents;
 
-use App\AdminBundle\Entity\Document\Category;
-use App\AdminBundle\Entity\Document\Document;
+use App\DocumentBundle\Entity\Category;
+use App\DocumentBundle\Entity\Document;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
