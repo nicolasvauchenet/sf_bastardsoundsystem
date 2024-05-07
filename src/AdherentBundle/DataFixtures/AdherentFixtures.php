@@ -22,7 +22,7 @@ class AdherentFixtures extends Fixture implements OrderedFixtureInterface
     {
         $adherent = new Adherent();
         $adherent->setEmail('adherent@bastardsoundsystem.org')
-            ->setPassword($this->passwordHasher->hashPassword($adherent, 'adherent'))
+            ->setPassword($this->passwordHasher->hashPassword($adherent, '!bEb7RgDFJM?'))
             ->setRoles(['ROLE_ADHERENT'])
             ->setName('Adhérent Test')
             ->setPseudo('adherent')

@@ -22,7 +22,7 @@ class AdminFixtures extends Fixture implements OrderedFixtureInterface
     {
         $admin = new User();
         $admin->setEmail('admin@bastardsoundsystem.org')
-            ->setPassword($this->passwordHasher->hashPassword($admin, 'admin'))
+            ->setPassword($this->passwordHasher->hashPassword($admin, '!bEb7RgDFJM?'))
             ->setRoles(['ROLE_ADMIN'])
             ->setName('Administrateur BSS')
             ->setPseudo('admin')

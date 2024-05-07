@@ -22,7 +22,7 @@ class PartenaireFixtures extends Fixture implements OrderedFixtureInterface
     {
         $partenaire = new Partenaire();
         $partenaire->setEmail('partenaire@bastardsoundsystem.org')
-            ->setPassword($this->passwordHasher->hashPassword($partenaire, 'partenaire'))
+            ->setPassword($this->passwordHasher->hashPassword($partenaire, '!bEb7RgDFJM?'))
             ->setRoles(['ROLE_PARTENAIRE'])
             ->setName('Partenaire Test')
             ->setPseudo('partenaire')
