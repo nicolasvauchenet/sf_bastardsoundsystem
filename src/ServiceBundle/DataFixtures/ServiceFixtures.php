@@ -44,6 +44,15 @@ class ServiceFixtures extends Fixture implements OrderedFixtureInterface
             ->setSlug('medias-locaux')
             ->setDescription("Prêt à secouer les ondes de ton coin et bien au-delà ? On va pas seulement te caser des interviews, on organise une vraie invasion médiatique. On te décroche des places dans les médias locaux et régionaux, là où tout le monde pourra se régaler de tes mots et surtout, kiffer ce que tu débites. On travaille les angles, on te forge une histoire tellement captivante que les journalistes se battront pour diffuser ta zique. On fait en sorte que chaque passage à l'antenne soit un tremplin pour ta réputation, transformant chaque écoute en une opportunité de gagner des fans à ta cause. Avec nous dans ta team, prépare-toi à squatter les playlists et à retourner les crânes, car ta musique ne sera pas juste entendue ; elle sera vécue et ressentie jusqu'au tréfonds de l'âme !")
             ->setCover('medias-locaux.webp')
+            ->setActive(false);
+        $manager->persist($service);
+
+        $service = (new Service())
+            ->setCategory($this->getReference('category-communication'))
+            ->setName('Pressage de CD & Vinyles')
+            ->setSlug('pressage-cd-et-vinyles')
+            ->setDescription("Plonge dans l'antre de la création musicale où le rock rencontre l'acier—nous pressons tes vinyles et CDs avec une passion brute et une précision mécanique. Notre atelier bourdonne du son des presses qui transforment tes tracks en disques tangibles, gravant chaque note dans le vinyle et l'aluminium pour que chaque riff, chaque beat résonne à travers le temps. C'est ici que la magie de l'ancien monde rencontre l'innovation moderne, où chaque vinyle et CD sort de la presse prêt à faire battre les cœurs et à tourner les têtes. Embrasse la révolte du rock, laisse-nous donner à ta musique le trône de fer qu'elle mérite et regarde tes créations conquérir le monde, un tourne-disque et un lecteur CD à la fois.")
+            ->setCover('pressage-cd-et-vinyles.webp')
             ->setActive(true);
         $manager->persist($service);
 
@@ -62,7 +71,7 @@ class ServiceFixtures extends Fixture implements OrderedFixtureInterface
             ->setSlug('reseaux-sociaux')
             ->setDescription("Il est temps de foutre le feu sur les scènes virtuelles où la musique règne en maître, non ? On t'emmène sur les réseaux sociaux dédiés à la musique comme Bandcamp, SoundCloud, ou YouTube, là où les vrais amateurs et créateurs de musique se rencontrent. On peaufine ton profil, on charge tes meilleurs morceaux, et on crée du contenu qui capte l'essence de ton art. Avec des stratégies bien affûtées et des campagnes ciblées, on fait en sorte que ta musique ne soit pas juste en arrière-plan, mais qu'elle prenne sacrément la lumière. On booste les interactions, on multiplie les écoutes, et on transforme chaque follower en fanatique de toi. Enfile ta veste de rockstar, parce qu'avec nous aux commandes, tu vas pas seulement participer à la conversation musicale, tu vas la dominer. Prépare-toi à voir ton audience s'agrandir et ton influence exploser ! On te plonge dans une aventure digitale où tu seras plus qu'un simple artiste, tu seras une icône musicale qui marque les esprits et les playlists. Alors, t'es prêt à devenir la nouvelle obsession des mélomanes ? Laisse-nous t'élever au sommet de la scène virtuelle et faire de toi la légende que t'es destiné à être !")
             ->setCover('reseaux-sociaux.webp')
-            ->setActive(true);
+            ->setActive(false);
         $manager->persist($service);
 
         $service = (new Service())
@@ -116,7 +125,7 @@ class ServiceFixtures extends Fixture implements OrderedFixtureInterface
             ->setSlug('lights-et-video')
             ->setDescription("On met le feu à tes performances live et à tes clips avec des jeux de lumière et des effets vidéo qui déchirent tout. Pour tes concerts, on crée une ambiance d'enfer qui te plonge dedans avec des lumières qui bougent et des projections qui claquent à chaque note. Et pour tes clips, on balance de la créativité visuelle et une histoire qui tient en haleine, en utilisant des techniques de pointe pour donner vie à ta musique. Chacun de tes projet est une occasion de laisser une vraie trace, pour que ton show et que tes vidéos restent gravés dans les mémoires, à jamais.")
             ->setCover('lights-et-video.webp')
-            ->setActive(true);
+            ->setActive(false);
         $manager->persist($service);
 
         $service = (new Service())
@@ -134,7 +143,7 @@ class ServiceFixtures extends Fixture implements OrderedFixtureInterface
             ->setSlug('regie-generale')
             ->setDescription("Nous assurons la régie générale de tes événements, orchestrant avec précision chaque détail pour garantir un déroulement impeccable. Notre équipe coordonne tous les aspects logistiques, de la planification des horaires à la gestion des équipes sur le terrain, en passant par la supervision des installations techniques. Nous veillons à ce que les transitions soient fluides et que chaque élément de l'événement s'harmonise parfaitement, depuis l'accueil des artistes jusqu'au démontage final. Notre expertise en régie générale te permet de te concentrer pleinement sur ta performance, en sachant que l'organisation pratique est entre des mains expertes !")
             ->setCover('regie-generale.webp')
-            ->setActive(true);
+            ->setActive(false);
         $manager->persist($service);
 
         $service = (new Service())
@@ -152,7 +161,7 @@ class ServiceFixtures extends Fixture implements OrderedFixtureInterface
             ->setSlug('accueil-et-catering')
             ->setDescription("Nous orchestrons méticuleusement l'accueil, la billetterie et le catering de tes événements pour garantir une expérience mémorable dès l'entrée des invités. Notre équipe gère l'accueil avec professionnalisme, veillant à ce que chaque visiteur soit reçu chaleureusement et dirigé efficacement. La billetterie est opérée avec une précision sans faille, s'assurant que les flux de spectateurs soient fluides et que toutes les transactions se déroulent sans accroc. Quant au catering, nous proposons une sélection variée de nourriture et de boissons de qualité, préparées pour satisfaire tous les goûts et adaptées à l'événement. Chaque aspect est pensé pour enrichir l'expérience globale, faisant de ton événement un moment où chaque détail compte.")
             ->setCover('accueil-et-catering.webp')
-            ->setActive(true);
+            ->setActive(false);
         $manager->persist($service);
 
         $service = (new Service())
@@ -165,7 +174,7 @@ class ServiceFixtures extends Fixture implements OrderedFixtureInterface
         $manager->persist($service);
 
         $service = (new Service())
-            ->setCategory($this->getReference('category-organisation'))
+            ->setCategory($this->getReference('category-prestations'))
             ->setName('Enregistrement Live & Studio')
             ->setSlug('enregistrement-live-et-studio')
             ->setDescription("Nous maîtrisons l'art de l'enregistrement live et en studio, garantissant que chaque note et chaque nuance de ta performance soit capturée avec la plus haute fidélité. En live, nous déployons des technologies de pointe pour enregistrer le dynamisme et l'énergie de tes concerts, en préservant l'authenticité de l'expérience sonore pour que tes fans puissent revivre l'intensité de l'événement. En studio, notre approche est tout aussi méticuleuse : nous créons un environnement acoustiquement optimisé où chaque détail sonore peut être finement ajusté et maîtrisé. Que ce soit pour une prise unique ou pour une production complexe multi-pistes, notre équipe technique spécialisée assure que le produit final transcende les attentes, en te fournissant des enregistrements d'une qualité exceptionnelle qui résonnent avec ton public.")
@@ -188,7 +197,7 @@ class ServiceFixtures extends Fixture implements OrderedFixtureInterface
             ->setSlug('ateliers-regie')
             ->setDescription("Nous organisons également des ateliers de formation dédiés à la régie technique et générale, visant à former les futurs professionnels de l'industrie du spectacle. Ces sessions sont conçues pour transmettre des compétences essentielles en gestion de la production et de la logistique d'événements, de la sonorisation à l'éclairage, en passant par la coordination sur site. Nos formateurs, tous experts dans leur domaine, partagent leur savoir et leurs expériences pour préparer les participants à gérer efficacement tous les aspects techniques d'un spectacle ou d'un événement. Les ateliers combinent théorie et pratique, offrant aux stagiaires l'opportunité de travailler sur des projets réels et de développer une compréhension approfondie des défis et des solutions dans le monde de la production événementielle.")
             ->setCover('ateliers-regie.webp')
-            ->setActive(true);
+            ->setActive(false);
         $manager->persist($service);
 
         $service = (new Service())

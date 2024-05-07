@@ -141,7 +141,7 @@ class CategoryFixtures extends Fixture implements OrderedFixtureInterface
             ->setName('Prenez un crayon')
             ->setSlug('formation')
             ->setTitle('Pour les padawans')
-            ->setDescription("Décolle vers de nouveaux horizons avec nos ateliers de formation, parfaits pour toi, futur maître de la scène et du studio ! Que tu sois un beginner de la régie, de la sono, des lights, du plateau ou de l’organisation d’événements, nos sessions sont ta rampe de lancement. On t'initie aux secrets des pros pour que tu puisses piloter ton show comme un Jedi maîtrise la Force. Apprends à orchestrer les équipements, à illuminer les performances et à captiver les foules. Alors Enfile ta cape, rejoins la Team BSS et transforme ta passion en une carrière qui t'enverra vers les étoiles !")
+            ->setDescription("Décolle vers de nouveaux horizons avec nos ateliers de formation, parfaits pour toi, futur maître de la scène et du studio ! Que tu sois un beginner de la sono, du plateau ou de l’organisation d’événements, nos sessions sont ta rampe de lancement. On t'initie aux secrets des pros pour que tu puisses piloter ton show comme un Jedi maîtrise la Force. Apprends à orchestrer les équipements et à captiver les foules. Alors Enfile ta cape, rejoins la Team BSS et transforme ta passion en une carrière qui t'enverra vers les étoiles !")
             ->setCover('formation.webp')
             ->setActive(true);
         $manager->persist($category);

@@ -31,45 +31,16 @@
                                 <h2>{{ child.name }}</h2>
 
                                 {% for service in child.services %}
-                                    <div class="sub">
-                                        <img src="{{ asset('uploads/services/' ~ service.cover) }}"
-                                             alt="{{ service.name }}"/>
-                                        <a href="#"
-                                           data-controller="popup--index"
-                                           data-action="popup--index#open"
-                                           data-popupid="popup-{{ service.id }}">
-                                            {{ service.name | replace({' ': '<br/>'}) | raw }}
-                                        </a>
-                                        <div id="popup-{{ service.id }}" class="app-popup">
-                                            <div class="popup-body">
-                                                <div class="popup-header">
-                                                    <h2>{{ service.name }}</h2>
-                                                    <a href="#"
-                                                       class="close"
-                                                       data-controller="popup--index"
-                                                       data-action="popup--index#close"
-                                                       data-popupid="popup-{{ service.id }}">
-                                                        <i class="fa-solid fa-circle-xmark"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="popup-content">
-                                                    <img src="{{ asset('uploads/services/' ~ service.cover) }}"
-                                                         alt="{{ service.name }}"/>
-                                                    <p>{{ service.description }}</p>
-
-                                                    <p class="app-grid two">
-                                                        <a href="{{ path('front_office_contact') }}" class="app-btn">
-                                                            Je me renseigne
-                                                        </a>
-                                                        <a href="{{ path('front_office_adhesion') }}"
-                                                           class="app-btn cta">
-                                                            J'en veux !
-                                                        </a>
-                                                    </p>
-                                                </div>
+                                    {% if service.active %}
+                                        <div class="sub">
+                                            <img src="{{ asset('uploads/services/' ~ service.cover) }}"
+                                                 alt="{{ service.name }}"/>
+                                            <div class="subcontent">
+                                                <h3>{{ service.name }}</h3>
+                                                <p>{{ service.description }}</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                         </section>
