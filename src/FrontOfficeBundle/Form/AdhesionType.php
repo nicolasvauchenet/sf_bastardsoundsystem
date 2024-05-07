@@ -3,6 +3,8 @@
 namespace App\FrontOfficeBundle\Form;
 
 use App\FrontOfficeBundle\Entity\Adhesion;
+use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
+use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -77,6 +79,11 @@ class AdhesionType extends AbstractType
                         'message' => 'Vous devez accepter le montant de la cotisation !',
                     ]),
                 ],
+            ])
+            ->add('captcha', Recaptcha3Type::class, [
+                'constraints' => new Recaptcha3(),
+                'action_name' => 'adhesion',
+                'locale' => 'fr',
             ]);
     }
 

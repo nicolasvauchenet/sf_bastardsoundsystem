@@ -23,4 +23,5 @@ return [
     App\MaterielBundle\MaterielBundle::class => ['all' => true],
     App\PartenaireBundle\PartenaireBundle::class => ['all' => true],
     App\ServiceBundle\ServiceBundle::class => ['all' => true],
+    Karser\Recaptcha3Bundle\KarserRecaptcha3Bundle::class => ['all' => true],
 ];
