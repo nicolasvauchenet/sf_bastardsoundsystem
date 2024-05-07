@@ -3,6 +3,15 @@
 {% block title %}Contactons-nous{% endblock %}
 {% block body_class %}frontoffice form{% endblock %}
 
+{% block javascripts %}
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdGddQpAAAAAEYQMN7SG_sw4DkKmD-bdGSUrlFz"></script>
+    <script>
+        function onSubmit(token) {
+            document.querySelector('.app-form').submit()
+        }
+    </script>
+{% endblock %}
+
 {% block main %}
     <section class="app-section pagetitle">
         <h1>Contactons-nous&nbsp;!</h1>
@@ -28,8 +37,8 @@
         <dl>
             <dt>{{ app_informations.associationName }}</dt>
             <dd>
-                {#{{ app_informations.associationAddress }}
-                <br/>#}
+                {# {{ app_informations.associationAddress }}
+                <br/> #}
                 <a href="mailto:{{ app_informations.associationEmail }}">{{ app_informations.associationEmail }}</a>
                 <br/>
                 <a href="tel:{{ '+33' ~ app_informations.associationPhone | replace({'.': '', ' ': ''})|slice(1) }}">{{ app_informations.associationPhone }}</a>
@@ -103,7 +112,13 @@
 
         <div class="form-group">
             <span>&nbsp;</span>
-            <button type="submit" class="form-submit app-btn cta">Envoyez</button>
+            <button type="submit"
+                    class="form-submit app-btn cta g-recaptcha"
+                    data-sitekey="6LdGddQpAAAAAEYQMN7SG_sw4DkKmD-bdGSUrlFz"
+                    data-callback="onSubmit"
+                    data-action="submit">
+                Envoyez
+            </button>
         </div>
 
         {{ form_end(form) }}
