@@ -13,7 +13,7 @@ class DefaultController extends AbstractController
     #[Route('', name: 'index')]
     public function index(PartenaireService $partenaireService): Response
     {
-        return $this->render('@Admin/archives/partenaire/index.html.twig', [
+        return $this->render('@Admin/archive/partenaire/index.html.twig', [
             'partenaires' => $partenaireService->getArchivedPartenaires(),
         ]);
     }

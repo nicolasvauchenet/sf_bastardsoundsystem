@@ -13,7 +13,7 @@ class DefaultController extends AbstractController
     #[Route('', name: 'index')]
     public function index(AdherentService $adherentService): Response
     {
-        return $this->render('@Admin/archives/adherent/index.html.twig', [
+        return $this->render('@Admin/archive/adherent/index.html.twig', [
             'adherents' => $adherentService->getArchivedAdherents(),
         ]);
     }

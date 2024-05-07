@@ -36,7 +36,7 @@ class EditController extends AbstractController
             return $this->redirectToRoute('admin_archives_adherents_view', ['id' => $adherent->getId()], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('@Admin/archives/adherent/edit.html.twig', [
+        return $this->render('@Admin/archive/adherent/edit.html.twig', [
             'form' => $form->createView(),
             'adherent' => $adherent,
         ], new Response(null, $form->isSubmitted() && !$form->isValid() ? 422 : 200));

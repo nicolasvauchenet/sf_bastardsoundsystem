@@ -22,7 +22,7 @@
   .sub {
     @include displayGrid(repeat(2, 1fr));
 
-    a {
+    & > a {
       @include displayFlex(center, center);
       font-family: $font-secondary;
       font-size: 1.5rem;
@@ -35,19 +35,19 @@
     }
 
     &:hover {
-      a {
+      & > a {
         color: $white;
         background-color: $primary;
       }
     }
 
     &:nth-child(even) {
-      a {
+      & > a {
         grid-column: 1;
         grid-row: 1;
       }
 
-      img {
+      & > img {
         grid-column: 2;
         grid-row: 1;
       }

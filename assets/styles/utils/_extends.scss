@@ -15,6 +15,14 @@
 
 * {
   &:not(.app-alert) {
+    &.black {
+      color: $black !important;
+    }
+
+    &.white {
+      color: $white !important;
+    }
+
     &.info {
       color: $info !important;
     }
@@ -40,4 +48,8 @@
       pointer-events: none;
     }
   }
+}
+
+.bg-white {
+  background-color: $white !important;
 }

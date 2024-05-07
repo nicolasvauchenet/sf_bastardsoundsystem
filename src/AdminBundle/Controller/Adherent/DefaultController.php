@@ -14,7 +14,7 @@ class DefaultController extends AbstractController
     #[Route('', name: 'index')]
     public function index(EntityManagerInterface $entityManager): Response
     {
-        return $this->render('@Admin/adherents/index.html.twig', [
+        return $this->render('@Admin/adherent/index.html.twig', [
             'adherents' => $entityManager->getRepository(Adherent::class)->findBy(['archivedAt' => null], ['adherentType' => 'ASC', 'createdAt' => 'DESC']),
         ]);
     }

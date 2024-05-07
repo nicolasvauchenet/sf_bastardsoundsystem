@@ -87,4 +87,34 @@
             </div>
         </div>
     </section>
+
+    {% if not adherent.upToDate %}
+        {% set delai = date_diff('now', adherent.lastCotisation.nextAt) %}
+
+        {% if adherent.lastCotisation.reminded == 1 %}
+            <section class="app-alert success">
+                <h3 class="white">
+                    Cotisation à renouveler le
+                    {{ adherent.lastCotisation.nextAt | date('d/m/Y') }}
+                    <small>({{ delai }} jour{{ delai > 1 ? 's' : '' }})</small>
+                </h3>
+            </section>
+        {% elseif adherent.lastCotisation.reminded == 2 %}
+            <section class="app-alert warning">
+                <h3 class="white">
+                    Cotisation à renouveler le
+                    {{ adherent.lastCotisation.nextAt | date('d/m/Y') }}
+                    <small>({{ delai }} jour{{ delai > 1 ? 's' : '' }})</small>
+                </h3>
+            </section>
+        {% else %}
+            <section class="app-alert danger">
+                <h3 class="white">
+                    Cotisation en retard depuis le
+                    {{ adherent.lastCotisation.nextAt | date('d/m/Y') }}
+                    <small>({{ delai }} jour{{ delai > 1 ? 's' : '' }})</small>
+                </h3>
+            </section>
+        {% endif %}
+    {% endif %}
 {% endblock %}

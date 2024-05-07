@@ -14,8 +14,12 @@ class ServicesService
         $this->entityManager = $entityManager;
     }
 
-    public function getFirstCategories(string $type): array
+    public function getFirstCategories(?string $type = null): array
     {
-        return $this->entityManager->getRepository(Category::class)->findBy(['type' => $type, 'parent' => null], ['id' => 'ASC']);
+        if($type) {
+            return $this->entityManager->getRepository(Category::class)->findBy(['type' => $type, 'parent' => null], ['id' => 'ASC']);
+        }
+
+        return $this->entityManager->getRepository(Category::class)->findBy(['parent' => null], ['type' => 'ASC', 'id' => 'ASC']);
     }
 }

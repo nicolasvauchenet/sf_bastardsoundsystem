@@ -78,4 +78,9 @@ class Adherent extends User
 
         return !($reminds > 0);
     }
+
+    public function getLastCotisation()
+    {
+        return $this->cotisations->last();
+    }
 }

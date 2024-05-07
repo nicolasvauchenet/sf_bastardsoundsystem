@@ -1,0 +1,99 @@
+{% extends '@Admin/index.html.twig' %}
+
+{% block title %}Les Services {{ type }} - Administration Générale{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Les Services {{ type }}</h1>
+    </section>
+
+    <section class="app-section">
+        <table class="app-table">
+            <thead class="sticky">
+                <tr>
+                    <th>Catégorie</th>
+                    <th>Sous-Catégorie</th>
+                    <th>Service</th>
+                    <th>Visible</th>
+                    <th>
+                        <a href="#" title="Nouvelle catégorie">
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for category in categories %}
+                    <tr class="bg-alt">
+                        <td colspan="3">{{ category.name }}</td>
+                        <td class="icon {{ category.active ? 'success' : 'warning' }}">
+                            <i class="fa-solid {{ category.active ? 'fa-check' : 'fa-xmark' }}"></i>
+                        </td>
+                        <td>
+                            <a href="#"
+                               class="info"
+                               title="Modifier la catégorie">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+
+                            <a href="#"
+                               class="danger"
+                               onclick="return window.confirm('Supprimer définitivement cette catégorie ?')"
+                               title="Supprimer la catégorie">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% for child in category.children %}
+                        <tr class="bg-alt">
+                            <td class="bg-white">&nbsp;</td>
+                            <td colspan="2">{{ child.name }}</td>
+                            <td class="icon {{ child.active ? 'success' : 'warning' }}">
+                                <i class="fa-solid {{ child.active ? 'fa-check' : 'fa-xmark' }}"></i>
+                            </td>
+                            <td>
+                                <a href="#"
+                                   class="info"
+                                   title="Modifier la catégorie">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+
+                                <a href="#"
+                                   class="danger"
+                                   onclick="return window.confirm('Supprimer définitivement cette catégorie ?')"
+                                   title="Supprimer la catégorie">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                        {% for service in child.services %}
+                            <tr class="bg-alt">
+                                <td class="bg-white" colspan="2">&nbsp;</td>
+                                <td>{{ service.name }}</td>
+                                <td class="icon {{ service.active ? 'success' : 'warning' }}">
+                                    <i class="fa-solid {{ service.active ? 'fa-check' : 'fa-xmark' }}"></i>
+                                </td>
+                                <td>
+                                    <a href="#"
+                                       class="info"
+                                       title="Modifier le service">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+
+                                    <a href="#"
+                                       class="danger"
+                                       onclick="return window.confirm('Supprimer définitivement ce service ?')"
+                                       title="Supprimer le service">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+{% endblock %}

@@ -13,7 +13,7 @@ class ViewController extends AbstractController
     #[Route('/fiche/{id}', name: 'view')]
     public function view(Adherent $adherent): Response
     {
-        return $this->render('@Admin/adherents/view.html.twig', [
+        return $this->render('@Admin/adherent/view.html.twig', [
             'adherent' => $adherent,
         ]);
     }

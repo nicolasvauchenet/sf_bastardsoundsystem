@@ -70,5 +70,29 @@ tbody {
         background-color: rgba($third, 0.5);
       }
     }
+
+    &.bg-white {
+      td {
+        background-color: $white;
+      }
+
+      &:hover {
+        td {
+          background-color: rgba($third, 0.5);
+        }
+      }
+    }
+
+    &.bg-alt {
+      td {
+        background-color: rgba($secondary, 0.1);
+      }
+
+      &:hover {
+        td {
+          background-color: rgba($third, 0.5);
+        }
+      }
+    }
   }
 }
