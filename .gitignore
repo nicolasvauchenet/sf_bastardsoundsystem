@@ -1,3 +1,9 @@
+###> bastardsoundsystem/local-development ###
+.idea/
+.DS_Store
+bastardsoundsystem.crt
+bastardsoundsystem.key
+###< bastardsoundsystem/local-development ###
 
 ###> symfony/framework-bundle ###
 /.env.local
