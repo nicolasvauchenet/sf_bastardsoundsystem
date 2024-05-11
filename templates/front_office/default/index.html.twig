@@ -1,0 +1,138 @@
+{% extends 'front_office/_layout.html.twig' %}
+
+{% block title %}Quand chaque note devient une légende{% endblock %}
+{% block meta_description %}Découvrez Bastard Sound System, votre allié dans l'univers de la musique ! Nous offrons une gamme complète de services pour musiciens et organisateurs d'événements, incluant sonorisation de haute qualité, gestion technique, et création de fiches techniques et contrats d'engagement. Rejoignez-nous pour transformer chaque concert en une expérience légendaire. Ensemble, faisons vibrer la scène et créons des souvenirs inoubliables.{% endblock %}
+{% block body_class %}frontoffice home{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Amplifiez votre Talent et créez la Légende&nbsp;!</h1>
+    </section>
+
+    <section class="app-section">
+        <div class="app-grid two">
+            <div class="grid-item">
+                <div class="sub">
+                    <h2>Faites trembler les murs</h2>
+                    <p>
+                        Bienvenue chez Bastard Sound System, le sanctuaire des vrais déchaînés de la scène musicale&nbsp;!
+                        Si tu cherches un endroit où l'énergie explose et où le talent se déploie sans barrières, tu
+                        viens de frapper à la bonne porte. On ne fait pas dans la dentelle ici :
+                        <strong>sonorisation</strong> qui décoiffe, management de tes <strong>concerts</strong> et de
+                        tes tournées comme des pros, et une prod' qui fait vibrer les oreillettes. On gère tout ça pour
+                        que toi, l'Artiste, tu puisses te concentrer sur ce pour quoi tu es né&nbsp;:&nbsp;éblouir les
+                        foules et casser tous les codes.
+                    </p>
+                    <p>
+                        <a href="#" class="app-btn cta">On en discute ?</a>
+                    </p>
+                </div>
+                <img src="{{ asset('img/band.webp') }}" alt="Management"/>
+            </div>
+            <div class="grid-item">
+                <div class="sub">
+                    <h2>Oubliez la paperasse et jouez</h2>
+                    <p>
+                        Fini les nuits à stresser pour un contrat mal ficelé ou une promo qui tourne au vinaigre. Laisse
+                        ça aux Bastards&nbsp;! On s'occupe de toute la paperasse, des
+                        <strong>contrats d'engagement</strong>, et on te taille une <strong>visibilité</strong> aux
+                        petits oignons. On est les magiciens de l'ombre qui boostent ta carrière pendant que tu fais
+                        vibrer les scènes. Avec Bastard Sound System, tu n'es pas seulement entendu, tu es écouté.
+                        Alors, prêt à faire monter le son et à embraser les cœurs avec nous ? Rejoins la famille, le
+                        spectacle ne fait que commencer&nbsp;!
+                    </p>
+                    <p>
+                        <a href="#" class="app-btn cta">J'adhère à BSS !</a>
+                    </p>
+                </div>
+                <img src="{{ asset('img/events.webp') }}" alt="Organisation"/>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-section">
+        <div class="border top">
+            <h2>Pour faire simple</h2>
+        </div>
+
+        <div class="app-grid two">
+            <div class="app-grid two">
+                <div class="grid-item">
+                    <a class="imagebtn">
+                        <img src="{{ asset('img/prestations.webp') }}" alt="Prestations"/>
+                        <span>Des Prestas de ouf</span>
+                    </a>
+                </div>
+                <div class="grid-item">
+                    <a class="imagebtn">
+                        <img src="{{ asset('img/visuels.webp') }}" alt="Visuels"/>
+                        <span>Des Visuels qui se voient</span>
+                    </a>
+                </div>
+            </div>
+            <div class="app-grid two">
+                <div class="grid-item">
+                    <a class="imagebtn">
+                        <img src="{{ asset('img/concerts-et-tournees.webp') }}" alt="Organisation"/>
+                        <span>(co) Organisation</span>
+                    </a>
+                </div>
+                <div class="grid-item">
+                    <a class="imagebtn">
+                        <img src="{{ asset('img/production.webp') }}" alt="Production"/>
+                        <span>(co) Production</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-section pagetitle">
+        <h2>Travaillons main dans la main !</h2>
+    </section>
+
+    <section class="app-section">
+        <div class="app-grid two">
+            <div class="grid-item">
+                <div class="sub">
+                    <h2>On s'occupe de tout le micmac</h2>
+                    <p>
+                        Chez Bastard Sound System, on fait bien plus que simplement balancer du son de folie. On prend
+                        en charge l'intégralité de la scène et de la régie pour que ton
+                        événement se déroule sans le moindre accroc. Et ouais, on est totalement partants pour une
+                        <strong>co-organisation</strong> bien répartie, et on met tout en œuvre pour propulser chaque
+                        événement jusqu'au sommet ! Mais on ne s'arrête pas là : on est aussi passionnés par le partage
+                        de notre savoir-faire à travers des<strong>ateliers</strong> dynamiques qui te plongent
+                        directement dans les arcanes du spectacle. Que tu sois là pour éblouir ton public avec une
+                        performance inoubliable ou pour affiner tes compétences en coulisses, Bastard Sound System est
+                        le partenaire idéal pour faire de chaque moment un spectacle éblouissant.
+                    </p>
+                    <p>
+                        <a href="#" class="app-btn cta">Tu veux plus d'infos ?</a>
+                    </p>
+                </div>
+                <img src="{{ asset('img/co-organisation.webp') }}" alt="Co-Organisation"/>
+            </div>
+            <div class="grid-item">
+                <div class="sub">
+                    <h2>La co-prod en mode Bastard</h2>
+                    <p>
+                        Et puis on sait que la bonne musique ne s’arrête pas à la scène. C’est
+                        pourquoi on t’invite, toi et ta boîte, à venir secouer le cocotier avec nous dans le studio.
+                        <strong>Enregistrement live</strong> pour capturer l'énergie brute de chaque performance,
+                        <strong>mixage</strong> aux petits oignons pour affiner chaque note, <strong>pressage</strong>
+                        de qualité pour que chaque copie soit un collector – on gère toute la chaîne de production. Et
+                        pour que le monde entier vibre au rythme de nos beats, on déploie notre réseau de
+                        <strong>diffusion</strong> pour placer ta musique sur les radars internationaux. Alors, prêt à
+                        faire équipe pour que chaque riff compte ? Avec BSS, ton son prend de l'altitude et ton business
+                        aussi.
+                    </p>
+                    <p>
+                        <a href="#" class="app-btn cta">Je deviens Partenaire !</a>
+                    </p>
+                </div>
+                <img src="{{ asset('img/co-production.webp') }}" alt="Co-Production"/>
+            </div>
+        </div>
+    </section>
+{% endblock %}

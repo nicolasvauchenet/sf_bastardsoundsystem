@@ -1,0 +1,65 @@
+.app-btn {
+  @include displayFlex(center, center);
+  padding: 0.5rem 1rem;
+  font-family: $font-secondary;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $primary;
+  background-color: $third;
+  border: none;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.25rem 1rem rgba($black, 0.15),
+  0 0.5rem 1.25rem rgba($black, 0.1);
+  cursor: pointer;
+
+  &.cta {
+    padding: 1rem;
+    font-size: 1.5rem;
+    color: $white;
+    background-color: $primary;
+  }
+
+  i,
+  svg {
+    margin-right: 0.25rem;
+  }
+}
+
+.imagebtn {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 32dvh;
+
+  @include respondTo(md) {
+    height: 42dvh;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  span {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    right: 1rem;
+    transform: translateY(-50%);
+    display: block;
+    text-align: center;
+    font-family: $font-secondary;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $white;
+    text-shadow: 1px 1px 2px rgba($black, 0.75);
+  }
+}

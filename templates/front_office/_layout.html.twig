@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'front_office/_header.html.twig' %}
+
+    {% include 'front_office/_navigation.html.twig' %}
+
+    <main class="app-main">
+        {% block main %}{% endblock %}
+    </main>
+
+    {% include 'front_office/_footer.html.twig' %}
+{% endblock %}

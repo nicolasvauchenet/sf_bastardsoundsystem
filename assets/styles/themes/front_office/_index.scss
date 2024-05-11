@@ -1,0 +1,41 @@
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: $black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $primary;
+}
+
+html {
+  scroll-behavior: smooth;
+
+  .turbo-progress-bar {
+    height: 0.5rem;
+    background-color: $third;
+    border-bottom: 0.25rem solid $primary;
+    border-bottom-right-radius: 0.25rem;
+  }
+
+  body {
+    font-family: $font-primary;
+    font-size: 1.25rem;
+    min-height: 100dvh;
+    background-color: $primary;
+
+    @import "../../layout/front_office/header";
+
+    @import "../../layout/front_office/navigation";
+
+    @import "../../layout/front_office/main";
+
+    @import "../../layout/front_office/footer";
+  }
+}

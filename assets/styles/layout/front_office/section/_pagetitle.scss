@@ -1,0 +1,12 @@
+&.pagetitle {
+  padding: 1rem 0.5rem;
+  text-align: center;
+  color: $white;
+  background-color: $primary;
+
+  h1,
+  h2 {
+    color: white;
+    text-transform: uppercase;
+  }
+}

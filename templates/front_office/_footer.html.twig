@@ -1,0 +1,17 @@
+<footer class="app-footer">
+    <p class="copyrights">
+        &copy; {{ 'now' | date('Y') }} {{ app_parameters.appName }}. Tous droits réservés.
+    </p>
+
+    <p class="links">
+        <a href="#"
+           {% if app.request.get('_route') == 'front_office_mentions_legales' %}class="active"{% endif %}>
+            Mentions légales
+        </a>
+        •
+        <a href="#"
+           {% if app.request.get('_route') == 'front_office_politique_de_confidentialite' %}class="active"{% endif %}>
+            Politique de confidentialité
+        </a>
+    </p>
+</footer>

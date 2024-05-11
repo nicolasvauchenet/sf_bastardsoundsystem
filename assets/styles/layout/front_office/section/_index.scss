@@ -1,0 +1,45 @@
+.app-section {
+  @import "./pagetitle";
+
+  h2 {
+    margin: 1rem;
+    text-align: center;
+  }
+
+  .app-grid {
+    .grid-item {
+      @include displayFlex(null, center, null, column);
+      background-color: $white;
+
+      img {
+        width: 100%;
+        height: 32dvh;
+        object-fit: cover;
+
+        @include respondTo(md) {
+          height: 42dvh;
+        }
+      }
+
+      p {
+        padding: 1rem;
+      }
+
+      &:has(h2) {
+        p {
+          padding-top: 0;
+        }
+      }
+
+      &:nth-child(even) {
+        background-color: $third;
+
+        .sub {
+          @include respondTo(md) {
+            order: 2;
+          }
+        }
+      }
+    }
+  }
+}

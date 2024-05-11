@@ -1,0 +1,35 @@
+.app-footer {
+  display: none;
+  padding: 1rem 0.5rem;
+  color: $white;
+  background-color: $primary;
+
+  @include respondTo(md) {
+    @include displayFlex(space-between, center);
+  }
+
+  p {
+    margin-bottom: 0.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include respondTo(md) {
+      margin-bottom: 0;
+    }
+  }
+
+  .links {
+    a {
+      color: $white;
+      text-decoration: none;
+      transition: all 0.5s;
+
+      &:hover,
+      &.active {
+        color: $third;
+      }
+    }
+  }
+}
