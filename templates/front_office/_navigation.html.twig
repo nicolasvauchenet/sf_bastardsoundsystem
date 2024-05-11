@@ -1,13 +1,13 @@
 <nav class="app-navigation" data-controller="front-office--navigation">
     <a href="{{ path('app_front_office_home') }}"
        class="{% if app.request.get('_route') == 'app_front_office_home' %}active{% endif %}">
-        {{ ux_icon('clarity:house-solid', {'class': 'icon'}) }}
+        {{ ux_icon('ion:home', {'class': 'icon'}) }}
         Accueil
     </a>
 
     <div class="menu-item">
         <a href="#">
-            {{ ux_icon('bi:tools', {'class': 'icon'}) }}
+            {{ ux_icon('fa-solid:tools', {'class': 'icon'}) }}
             Technique
         </a>
 
@@ -28,7 +28,7 @@
 
     <div class="menu-item">
         <a href="#">
-            {{ ux_icon('mdi:anvil', {'class': 'icon'}) }}
+            {{ ux_icon('material-symbols:factory', {'class': 'icon'}) }}
             Management
         </a>
 
@@ -53,13 +53,13 @@
 
     <div class="menu-item">
         <a href="#">
-            {{ ux_icon('material-symbols:campaign', {'class': 'icon'}) }}
+            {{ ux_icon('mingcute:sound-line-fill', {'class': 'icon'}) }}
             Organisation
         </a>
 
         <div class="submenu">
             <a href="#">
-                Concerts & Spectacles
+                Concerts & Tournées
             </a>
 
             <a href="#">
@@ -67,15 +67,14 @@
             </a>
 
             <a href="#">
-                Co-organisation
+                Co-Organisation
             </a>
         </div>
     </div>
 
     <div class="menu-item">
         <a href="#">
-            {# {{ ux_icon('mdi:arm-flex', {'class': 'icon'}) }} #}
-            {{ ux_icon('mdi:glasses', {'class': 'icon'}) }}
+            {{ ux_icon('streamline:wifi-antenna-solid', {'class': 'icon'}) }}
             Production
         </a>
 
@@ -85,11 +84,11 @@
             </a>
 
             <a href="#">
-                Pressage
+                Pressage CD & Vinyles
             </a>
 
             <a href="#">
-                Diffusion
+                Diffusion multi-canaux
             </a>
 
             <a href="#">
@@ -100,7 +99,17 @@
 
     <div class="menu-item">
         <a href="#">
-            {{ ux_icon('mdi:alien', {'class': 'icon'}) }}
+            {% if app.user %}
+                {% if is_granted('ROLE_ADHERENT') %}
+                    {{ ux_icon('emojione-monotone:lion-face', {'class': 'icon'}) }}
+                {% elseif is_granted('ROLE_PARTENAIRE') %}
+                    {{ ux_icon('emojione-monotone:cowboy-hat-face', {'class': 'icon'}) }}
+                {% elseif is_granted('ROLE_ADMIN') %}
+                    {{ ux_icon('emojione-monotone:fox-face', {'class': 'icon'}) }}
+                {% endif %}
+            {% else %}
+                {{ ux_icon('mdi:alien', {'class': 'icon'}) }}
+            {% endif %}
             {{ app.user ? app.user.pseudo ? app.user.pseudo : app.user.name : 'Visiteur' }}
         </a>
 

@@ -39,6 +39,12 @@
             order: 2;
           }
         }
+
+        .imagebtn {
+          span {
+            background-color: rgba($third, 0.95);
+          }
+        }
       }
     }
   }
