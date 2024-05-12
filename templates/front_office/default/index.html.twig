@@ -24,7 +24,7 @@
                         foules et casser tous les codes.
                     </p>
                     <p>
-                        <a href="#" class="app-btn cta">On en discute ?</a>
+                        <a href="{{ path('app_front_office_contact') }}" class="app-btn cta">On en discute ?</a>
                     </p>
                 </div>
                 <img src="{{ asset('img/band.webp') }}" alt="Management"/>
@@ -42,7 +42,7 @@
                         le spectacle ne fait que commencer&nbsp;!
                     </p>
                     <p>
-                        <a href="#" class="app-btn cta">J'adhère à BSS !</a>
+                        <a href="{{ path('app_front_office_membership') }}" class="app-btn cta">J'adhère à BSS !</a>
                     </p>
                 </div>
                 <img src="{{ asset('img/events.webp') }}" alt="Organisation"/>
@@ -160,7 +160,7 @@
                         est le partenaire idéal pour faire de chaque moment un spectacle éblouissant.
                     </p>
                     <p>
-                        <a href="#" class="app-btn cta">Tu veux plus d'infos ?</a>
+                        <a href="{{ path('app_front_office_contact') }}" class="app-btn cta">Un peu plus d'infos ?</a>
                     </p>
                 </div>
                 <img src="{{ asset('img/co-organisation.webp') }}" alt="Co-Organisation"/>
@@ -180,7 +180,9 @@
                         business aussi.
                     </p>
                     <p>
-                        <a href="#" class="app-btn cta">Je deviens Partenaire !</a>
+                        <a href="{{ path('app_front_office_partnership') }}" class="app-btn cta">
+                            Je deviens Partenaire !
+                        </a>
                     </p>
                 </div>
                 <img src="{{ asset('img/co-production.webp') }}" alt="Co-Production"/>

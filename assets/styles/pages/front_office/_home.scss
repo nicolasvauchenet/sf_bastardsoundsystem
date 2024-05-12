@@ -6,6 +6,16 @@
       height: 50dvh;
     }
 
+    &.top {
+      @include respondTo(md) {
+        .app-logo {
+          img {
+            height: 12dvh;
+          }
+        }
+      }
+    }
+
     .app-logo {
       img {
         height: 28dvh;
