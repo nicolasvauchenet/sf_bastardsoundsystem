@@ -136,8 +136,8 @@
                    {% if app.request.get('_route') == 'app_login' %}class="active"{% endif %}>
                     Connexion
                 </a>
-                <a href="#"
-                   {% if app.request.get('_route') == 'front_office_adhesion' %}class="active"{% endif %}>
+                <a href="{{ path('app_front_office_membership') }}"
+                   {% if app.request.get('_route') == 'app_front_office_membership' %}class="active"{% endif %}>
                     Adhésion
                 </a>
                 <a href="#"

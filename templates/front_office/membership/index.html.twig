@@ -1,0 +1,113 @@
+{% extends 'front_office/_layout.html.twig' %}
+
+{% block title %}Adhérez à l'asso{% endblock %}
+{% block meta_description %}Rejoignez Bastard Sound System et devenez membre de notre communauté dynamique. Découvrez les avantages exclusifs, les opportunités de réseautage et les événements spéciaux réservés à nos membres. Soutenez et participez à la révolution musicale avec nous.{% endblock %}
+{% block body_class %}frontoffice form{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Adhérez à l'évolution&nbsp;!</h1>
+    </section>
+
+    <section class="app-section">
+        <div class="app-grid two border bottom">
+            <div class="grid-item">
+                <p>
+                    Rejoindre BSS, c'est plonger au cœur de la scène pour la transformer radicalement. En t'incrustant
+                    avec nous, t'as le pass VIP pour tout ce qu'on offre&nbsp;:&nbsp;des sonos qui dépotent, des réseaux
+                    de ouf, des ateliers qui boostent ta créa, sans oublier les contrats, les fiches techniques, les
+                    visuels exclusifs rien que pour toi. Et ce n’est que le début&nbsp;:&nbsp;tu rejoins aussi une
+                    famille de mordus et de pros prêts à booster et à porter chaque son, chaque rythme, chaque
+                    mouvement.
+                </p>
+            </div>
+            <div class="grid-item">
+                <h2>La Cotisation coûte 12€</h2>
+                <p>
+                    Ton adhésion à Bastard Sound System t'ouvre les portes d'un univers dément de privilèges qui
+                    déchirent&nbsp;! Chaque euro balancé dans ta cotis' c'est du pur carburant pour notre tribu, et ça
+                    te catapulte direct au cœur de l'action. Alors fonce, deviens membre et prends part à l'aventure qui
+                    redessine l'avenir de la scène&nbsp;!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-section form">
+        {{ form_start(form, {'attr': {'class': 'app-form'}}) }}
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Vos infos</legend>
+
+            <div class="form-group">
+                <label for="{{ form.memberName.vars.id }}"
+                       class="form-label {% if form.memberName.vars.required %}required{% endif %}">
+                    {{ form.memberName.vars.label }}
+                </label>
+                {{ form_widget(form.memberName) }}
+                {{ form_errors(form.memberName) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.memberEmail.vars.id }}"
+                       class="form-label {% if form.memberEmail.vars.required %}required{% endif %}">
+                    {{ form.memberEmail.vars.label }}
+                </label>
+                {{ form_widget(form.memberEmail) }}
+                {{ form_errors(form.memberEmail) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.memberPhone.vars.id }}"
+                       class="form-label {% if form.memberPhone.vars.required %}required{% endif %}">
+                    {{ form.memberPhone.vars.label }}
+                </label>
+                {{ form_widget(form.memberPhone) }}
+                {{ form_errors(form.memberPhone) }}
+            </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Votre adhésion</legend>
+
+            <div class="form-group">
+                <label for="{{ form.memberType.vars.id }}"
+                       class="form-label {% if form.memberType.vars.required %}required{% endif %}">
+                    {{ form.memberType.vars.label }}
+                </label>
+                {{ form_widget(form.memberType) }}
+                {{ form_errors(form.memberType) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.message.vars.id }}"
+                       class="form-label {% if form.message.vars.required %}required{% endif %}">
+                    {{ form.message.vars.label }}
+                </label>
+                {{ form_widget(form.message) }}
+                {{ form_errors(form.message) }}
+            </div>
+
+            <div class="form-group form-checkbox">
+                <span>&nbsp;</span>
+                <div class="group-content">
+                    <label for="{{ form.agree.vars.id }}"
+                           class="form-label {% if form.agree.vars.required %}required{% endif %}">
+                        {{ form_widget(form.agree) }}
+                        {{ form.agree.vars.label }}
+                        <a href="{{ asset('uploads/documents/statuts.pdf') }}" target="_blank">
+                            <small>(statuts)</small>
+                        </a>
+                    </label>
+                    {{ form_errors(form.agree) }}
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <span>&nbsp;</span>
+            <button type="submit" class="form-submit app-btn cta">Adhérez</button>
+        </div>
+
+        {{ form_end(form) }}
+    </section>
+{% endblock %}

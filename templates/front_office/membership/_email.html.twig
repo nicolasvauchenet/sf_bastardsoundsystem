@@ -23,16 +23,20 @@
         <h1>Salut, {{ mailData['to']['name'] }} !</h1>
 
         <p>
-            Nous avons reçu un nouveau message de la part de {{ mailData['from']['name'] }}
+            Nous avons reçu une nouvelle demande d'adhésion de la part de {{ mailData['from']['name'] }}, qui
+            voudrait rejoindre BSS
             {% if mailData['from']['type'] %}
-                , qui est {{ mailData['from']['type'] }}
+                en tant que {{ mailData['from']['type'] }}
             {% endif %}
-            :
+            !
         </p>
 
-        <blockquote>
-            {{ mailData['message'] }}
-        </blockquote>
+        {% if mailData['message'] %}
+            <p>Il nous a laissé un message aussi :</p>
+            <blockquote>
+                {{ mailData['message'] }}
+            </blockquote>
+        {% endif %}
 
         {% if mailData['from']['phone'] %}
             <p>
