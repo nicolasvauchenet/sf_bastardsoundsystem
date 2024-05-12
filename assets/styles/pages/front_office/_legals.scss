@@ -1,0 +1,17 @@
+&.legals {
+  .app-section {
+    &:not(.pagetitle) {
+      margin: 1rem auto;
+      padding: 1rem;
+
+      @include respondTo(md) {
+        width: 50dvw;
+      }
+
+      h2 {
+        margin: 0 0 1rem;
+        text-align: left;
+      }
+    }
+  }
+}

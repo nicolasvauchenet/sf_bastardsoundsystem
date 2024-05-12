@@ -4,13 +4,13 @@
     </p>
 
     <p class="links">
-        <a href="#"
-           {% if app.request.get('_route') == 'front_office_mentions_legales' %}class="active"{% endif %}>
+        <a href="{{ path('app_front_office_legals_mentions') }}"
+           {% if app.request.get('_route') == 'app_front_office_legals_mentions' %}class="active"{% endif %}>
             Mentions légales
         </a>
         •
-        <a href="#"
-           {% if app.request.get('_route') == 'front_office_politique_de_confidentialite' %}class="active"{% endif %}>
+        <a href="{{ path('app_front_office_legals_privacy') }}"
+           {% if app.request.get('_route') == 'app_front_office_legals_privacy' %}class="active"{% endif %}>
             Politique de confidentialité
         </a>
     </p>

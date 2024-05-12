@@ -1,5 +1,4 @@
 .app-footer {
-  display: none;
   padding: 1rem 0.5rem;
   color: $white;
   background-color: $primary;
@@ -10,6 +9,8 @@
 
   p {
     margin-bottom: 0.5rem;
+    font-size: 1rem;
+    text-align: center;
 
     &:last-child {
       margin-bottom: 0;

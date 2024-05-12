@@ -2,7 +2,7 @@
   height: 30dvh;
 
   @include respondTo(md) {
-    height: 45dvh;
+    height: 50dvh;
   }
 
   &:has(.bg-image) {

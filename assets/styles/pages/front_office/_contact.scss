@@ -1,0 +1,15 @@
+&.contact {
+  .app-header {
+    height: 20dvh;
+
+    @include respondTo(md) {
+      height: 28dvh;
+    }
+
+    .app-logo {
+      img {
+        height: 20dvh;
+      }
+    }
+  }
+}
