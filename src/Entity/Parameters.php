@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ParametersRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ParametersRepository::class)]
@@ -21,6 +22,9 @@ class Parameters
 
     #[ORM\Column(length: 255)]
     private ?string $appPhone = null;
+
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
+    private ?string $appMembershipFee = null;
 
     public function getId(): ?int
     {
@@ -59,6 +63,18 @@ class Parameters
     public function setAppPhone(string $appPhone): static
     {
         $this->appPhone = $appPhone;
+
+        return $this;
+    }
+
+    public function getAppMembershipFee(): ?string
+    {
+        return $this->appMembershipFee;
+    }
+
+    public function setAppMembershipFee(string $appMembershipFee): static
+    {
+        $this->appMembershipFee = $appMembershipFee;
 
         return $this;
     }

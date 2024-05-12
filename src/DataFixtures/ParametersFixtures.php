@@ -14,7 +14,8 @@ class ParametersFixtures extends Fixture implements OrderedFixtureInterface
         $parameters = (new Parameters())
             ->setAppName('Bastard Sound System')
             ->setAppEmail('contact@bastardsoundsystem.org')
-            ->setAppPhone('+33683573067');
+            ->setAppPhone('0683573067')
+            ->setAppMembershipFee(12);
         $manager->persist($parameters);
 
         $manager->flush();

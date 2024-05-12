@@ -69,7 +69,7 @@ class MembershipType extends AbstractType
             ])
             ->add('agree', CheckboxType::class, [
                 'required' => true,
-                'label' => "L'adhésion à Bastard Sound System coûte 12€. Je suis ok pour filer les sous afin de devenir adhérent",
+                'label' => "L'adhésion à Bastard Sound System est soumise au paiement de la cotisation. Je suis ok pour filer les sous afin de devenir adhérent",
                 'attr' => [
                     'class' => 'form-checkbox',
                 ],
@@ -81,7 +81,6 @@ class MembershipType extends AbstractType
                 ],
             ])
             ->add('captcha', Recaptcha3Type::class, [
-                /*'constraints' => new Recaptcha3(),*/
                 'constraints' => new Recaptcha3(['message' => 'There were problems with your captcha. Please try again or contact with support and provide following code(s): {{ errorCodes }}']),
                 'action_name' => 'membership',
                 'locale' => 'fr',

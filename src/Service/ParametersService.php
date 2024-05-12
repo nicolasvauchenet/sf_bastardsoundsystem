@@ -42,4 +42,11 @@ class ParametersService
 
         return $this->parameters->getAppPhone();
     }
+
+    public function getMembershipFee(): ?float
+    {
+        $this->loadParameters();
+
+        return $this->parameters->getAppMembershipFee();
+    }
 }

@@ -22,7 +22,7 @@
                 </p>
             </div>
             <div class="grid-item">
-                <h2>La Cotisation coûte 12€</h2>
+                <h2>La cotisation coûte {{ app_parameters.membershipFee | number_format('0', ',', ' ') }}€ /an</h2>
                 <p>
                     Ton adhésion à Bastard Sound System t'ouvre les portes d'un univers dément de privilèges qui
                     déchirent&nbsp;! Chaque euro balancé dans ta cotis' c'est du pur carburant pour notre tribu, et ça
@@ -95,7 +95,7 @@
                         {{ form_widget(form.agree) }}
                         {{ form.agree.vars.label }}
                         <a href="{{ asset('uploads/documents/statuts.pdf') }}" target="_blank">
-                            <small>(statuts)</small>
+                            <small>(voir les statuts)</small>
                         </a>
                     </label>
                     {{ form_errors(form.agree) }}
