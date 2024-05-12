@@ -1,0 +1,28 @@
+.app-alert {
+  padding: 1.5rem 1rem 1.25rem;
+  font-family: $font-secondary;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: $white;
+
+  &.info {
+    color: $white;
+    background-color: $info;
+  }
+
+  &.success {
+    color: $white;
+    background-color: $success;
+  }
+
+  &.warning {
+    color: $white;
+    background-color: $warning;
+  }
+
+  &.danger {
+    color: $white;
+    background-color: $danger;
+  }
+}

@@ -1,6 +1,10 @@
 .app-section {
   @import "./pagetitle";
 
+  @import "./form";
+
+  @import "../form";
+
   h2 {
     margin: 1rem;
     text-align: center;

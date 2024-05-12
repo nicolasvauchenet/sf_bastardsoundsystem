@@ -133,7 +133,8 @@
           font-size: 1.25rem;
         }
 
-        &:hover {
+        &:hover,
+        &.active {
           color: $white;
           background-color: $primary;
         }

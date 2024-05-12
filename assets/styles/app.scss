@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
-@import "utils/variables", "utils/mixins";
+@import "utils/variables", "utils/mixins", "utils/extends";
 
 @import "base/reset", "base/typography";
 
-@import "layout/grid";
+@import "layout/grid", "layout/alert";
 
 @import "components/button", "components/imagebtn";
 

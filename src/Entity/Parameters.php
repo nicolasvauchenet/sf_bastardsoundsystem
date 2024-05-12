@@ -19,6 +19,9 @@ class Parameters
     #[ORM\Column(length: 255)]
     private ?string $appEmail = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $appPhone = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +47,18 @@ class Parameters
     public function setAppEmail(string $appEmail): static
     {
         $this->appEmail = $appEmail;
+
+        return $this;
+    }
+
+    public function getAppPhone(): ?string
+    {
+        return $this->appPhone;
+    }
+
+    public function setAppPhone(string $appPhone): static
+    {
+        $this->appPhone = $appPhone;
 
         return $this;
     }

@@ -1,0 +1,115 @@
+{% extends 'front_office/_layout.html.twig' %}
+
+{% block title %}Contactons-nous{% endblock %}
+{% block meta_description %}Contactez Bastard Sound System pour explorer nos services de sonorisation, management et production musicale. Que vous soyez artiste, partenaire ou organisateur d'événements, découvrez comment nous pouvons collaborer pour amplifier votre projet.{% endblock %}
+{% block body_class %}frontoffice contact{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Contactons-nous&nbsp;!</h1>
+    </section>
+
+    <section class="app-section">
+        <div class="app-grid two border bottom">
+            <div class="grid-item">
+                <p>
+                    Tu as des questions&nbsp;? Envie de booster ton prochain gig ou de t'associer avec des pros&nbsp;?
+                    Frappe à notre porte&nbsp;! Que tu sois musicien en quête du son parfait, organisateur de festoches,
+                    ou juste curieux de capter nos vibes, lance-toi. On est là pour secouer ta scène avec du son et de
+                    la tech au top, gérer les backstages ou papoter de sessions de formation. Drop-nous un message avec
+                    les coordonnées qu'on t'a filées ou via le formulaire ci-dessous, et attends-toi à une réponse qui
+                    déchire, rapide et aux petits oignons. Chez Bastard Sound System, chaque question débouche sur de
+                    nouvelles aventures créatives et des collabs de feu&nbsp;!
+                </p>
+            </div>
+            <div class="grid-item text-center">
+                <h2>Bastard Sound System</h2>
+                <p>
+                    Nous sommes basés en Creuse, mais nous n'intervenons pas que chez nous&nbsp;!
+                    <br/>
+                    On est nombreux… et on est partout&nbsp;!
+                </p>
+                <dl>
+                    <dt>
+                        <a href="mailto:{{ app_parameters.appEmail }}">{{ app_parameters.appEmail }}</a>
+                    </dt>
+                    <dt>
+                        <a href="tel:{{ app_parameters.appPhone }}">{{ app_parameters.appPhone | format_phone }}</a>
+                    </dt>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-section form">
+        {{ form_start(form, {'attr': {'class': 'app-form'}}) }}
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Vous êtes qui ?</legend>
+
+            <div class="form-group">
+                <label for="{{ form.senderType.vars.id }}"
+                       class="form-label {% if form.senderType.vars.required %}required{% endif %}">
+                    {{ form.senderType.vars.label }}
+                </label>
+                {{ form_widget(form.senderType) }}
+                {{ form_errors(form.senderType) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.senderName.vars.id }}"
+                       class="form-label {% if form.senderName.vars.required %}required{% endif %}">
+                    {{ form.senderName.vars.label }}
+                </label>
+                {{ form_widget(form.senderName) }}
+                {{ form_errors(form.senderName) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.senderEmail.vars.id }}"
+                       class="form-label {% if form.senderEmail.vars.required %}required{% endif %}">
+                    {{ form.senderEmail.vars.label }}
+                </label>
+                {{ form_widget(form.senderEmail) }}
+                {{ form_errors(form.senderEmail) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.senderPhone.vars.id }}"
+                       class="form-label {% if form.senderPhone.vars.required %}required{% endif %}">
+                    {{ form.senderPhone.vars.label }}
+                </label>
+                {{ form_widget(form.senderPhone) }}
+                {{ form_errors(form.senderPhone) }}
+            </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Vous voulez quoi ?</legend>
+
+            <div class="form-group">
+                <label for="{{ form.subject.vars.id }}"
+                       class="form-label {% if form.subject.vars.required %}required{% endif %}">
+                    {{ form.subject.vars.label }}
+                </label>
+                {{ form_widget(form.subject) }}
+                {{ form_errors(form.subject) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.message.vars.id }}"
+                       class="form-label {% if form.message.vars.required %}required{% endif %}">
+                    {{ form.message.vars.label }}
+                </label>
+                {{ form_widget(form.message) }}
+                {{ form_errors(form.message) }}
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <span>&nbsp;</span>
+            <button type="submit" class="form-submit app-btn cta">Envoyez</button>
+        </div>
+
+        {{ form_end(form) }}
+    </section>
+{% endblock %}

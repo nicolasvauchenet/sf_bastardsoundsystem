@@ -1,0 +1,8 @@
+&.form {
+  .app-form {
+    @include respondTo(md) {
+      margin: 0 auto;
+      width: 50dvw;
+    }
+  }
+}

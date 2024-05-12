@@ -35,4 +35,11 @@ class ParametersService
 
         return $this->parameters->getAppEmail();
     }
+
+    public function getAppPhone(): ?string
+    {
+        $this->loadParameters();
+
+        return $this->parameters->getAppPhone();
+    }
 }
