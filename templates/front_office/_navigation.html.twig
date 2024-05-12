@@ -140,8 +140,8 @@
                    {% if app.request.get('_route') == 'app_front_office_membership' %}class="active"{% endif %}>
                     Adhésion
                 </a>
-                <a href="#"
-                   {% if app.request.get('_route') == 'front_office_partenariat' %}class="active"{% endif %}>
+                <a href="{{ path('app_front_office_partnership') }}"
+                   {% if app.request.get('_route') == 'app_front_office_partnership' %}class="active"{% endif %}>
                     Partenariat
                 </a>
             {% endif %}

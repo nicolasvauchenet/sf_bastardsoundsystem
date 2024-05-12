@@ -2,34 +2,30 @@
 
 namespace App\Form\FrontOffice;
 
-use App\Entity\Member\Membership;
+use App\Entity\Partner\Partnership;
 use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
 use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsTrue;
 
-class MembershipType extends AbstractType
+class PartnershipType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('memberType', ChoiceType::class, [
+            ->add('partnerType', ChoiceType::class, [
                 'required' => false,
                 'label' => 'Vous êtes',
                 'choices' => [
-                    'Musicien' => 'Musicien',
-                    'Groupe' => 'Groupe',
-                    'Comédien' => 'Comédien',
-                    'Compagnie' => 'Compagnie',
-                    "Autre Artiste" => 'Artiste',
-                    'Tout ça à la fois' => 'Artiste multi-disciplines',
+                    'Organisateur' => 'Organisateur',
+                    'Programmateur' => 'Programmateur',
+                    "Studio d'enregistrement" => 'Studio',
+                    'Tout ça à la fois' => 'Partenaire multi-tâches',
                     'Carrément autre chose' => 'Autre',
                 ],
                 'placeholder' => 'Choisissez dans la liste',
@@ -37,7 +33,7 @@ class MembershipType extends AbstractType
                     'class' => 'form-control',
                 ],
             ])
-            ->add('memberName', TextType::class, [
+            ->add('partnerName', TextType::class, [
                 'required' => true,
                 'label' => 'Votre nom',
                 'attr' => [
@@ -45,14 +41,14 @@ class MembershipType extends AbstractType
                     'autofocus' => true,
                 ],
             ])
-            ->add('memberEmail', EmailType::class, [
+            ->add('partnerEmail', EmailType::class, [
                 'required' => true,
                 'label' => 'Votre e-mail',
                 'attr' => [
                     'class' => 'form-control',
                 ],
             ])
-            ->add('memberPhone', TextType::class, [
+            ->add('partnerPhone', TextType::class, [
                 'required' => false,
                 'label' => 'Votre téléphone',
                 'attr' => [
@@ -67,22 +63,9 @@ class MembershipType extends AbstractType
                     'rows' => 7,
                 ],
             ])
-            ->add('agree', CheckboxType::class, [
-                'required' => true,
-                'label' => "L'adhésion à Bastard Sound System est soumise au paiement de la cotisation. Je suis ok pour filer les sous afin de devenir adhérent",
-                'attr' => [
-                    'class' => 'form-checkbox',
-                ],
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'Vous devez accepter le montant de la cotisation !',
-                    ]),
-                ],
-            ])
             ->add('captcha', Recaptcha3Type::class, [
                 'constraints' => new Recaptcha3(['message' => 'There were problems with your captcha. Please try again or contact with support and provide following code(s): {{ errorCodes }}']),
-                'action_name' => 'membership',
+                'action_name' => 'partnership',
                 'locale' => 'fr',
             ]);
     }
@@ -90,7 +73,7 @@ class MembershipType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Membership::class,
+            'data_class' => Partnership::class,
         ]);
     }
 }

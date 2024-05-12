@@ -1,40 +1,40 @@
 <?php
 
-namespace App\Repository\FrontOffice;
+namespace App\Repository\Partner;
 
-use App\Entity\FrontOffice\Membership;
+use App\Entity\Partner\Partnership;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Membership>
+ * @extends ServiceEntityRepository<Partnership>
  */
-class MembershipRepository extends ServiceEntityRepository
+class PartnershipRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Membership::class);
+        parent::__construct($registry, Partnership::class);
     }
 
     //    /**
-    //     * @return Membership[] Returns an array of Membership objects
+    //     * @return Partnership[] Returns an array of Partnership objects
     //     */
     //    public function findByExampleField($value): array
     //    {
-    //        return $this->createQueryBuilder('m')
-    //            ->andWhere('m.exampleField = :val')
+    //        return $this->createQueryBuilder('p')
+    //            ->andWhere('p.exampleField = :val')
     //            ->setParameter('val', $value)
-    //            ->orderBy('m.id', 'ASC')
+    //            ->orderBy('p.id', 'ASC')
     //            ->setMaxResults(10)
     //            ->getQuery()
     //            ->getResult()
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Membership
+    //    public function findOneBySomeField($value): ?Partnership
     //    {
-    //        return $this->createQueryBuilder('m')
-    //            ->andWhere('m.exampleField = :val')
+    //        return $this->createQueryBuilder('p')
+    //            ->andWhere('p.exampleField = :val')
     //            ->setParameter('val', $value)
     //            ->getQuery()
     //            ->getOneOrNullResult()

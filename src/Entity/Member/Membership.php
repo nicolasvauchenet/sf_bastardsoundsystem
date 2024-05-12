@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entity\FrontOffice;
+namespace App\Entity\Member;
 
-use App\Repository\FrontOffice\MembershipRepository;
+use App\Repository\Member\MembershipRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 

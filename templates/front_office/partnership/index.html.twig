@@ -1,0 +1,99 @@
+{% extends 'front_office/_layout.html.twig' %}
+
+{% block title %}Devenez Partenaire{% endblock %}
+{% block meta_description %}Devenez partenaire de Bastard Sound System et exploitez les avantages de collaborations innovantes. Joignez-vous à nous pour des opportunités uniques de co-organisation, co-production et de mise en réseau avec des professionnels de l'industrie musicale.{% endblock %}
+{% block body_class %}frontoffice form{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Devenons Partenaires&nbsp;!</h1>
+    </section>
+
+    <section class="app-section">
+        <div class="app-grid two border bottom">
+            <div class="grid-item">
+                <p>
+                    Chez BSS, on fait bien plus que balancer du son et de la lumière de folie. On gère toute la scène et
+                    la régie pour que ton event roule sans hics. Et ouais, on est aussi dans le coup pour co-organiser
+                    et booster chaque event jusqu’au max ! En plus, on est à fond dans le partage de nos trucs et
+                    astuces avec des ateliers qui te plongent dans les arcanes du spectacle. Que tu veuilles éblouir ton
+                    public ou peaufiner tes skills en backstage, Bastard Sound System, c'est le partner qu’il te faut
+                    pour faire briller chaque instant.
+                </p>
+            </div>
+            <div class="grid-item">
+                <h2>Le partenariat est gratuit&nbsp;!</h2>
+                <p>
+                    T'associer avec BSS ne te coûtera pas un rond, mais si t'as envie de balancer un peu de fric
+                    dans la machine pour booster le show, personne ne va te barrer la route&nbsp;! En clair, le
+                    partenariat est gratos, mais si tu veux pousser le volume à fond, ton coup de pouce financier est
+                    toujours le bienvenu. Alors, prêt à nous rejoindre et faire vibrer les enceintes ensemble&nbsp;?
+                    Lâche-toi, et faisons de ce rêve une réalité démente&nbsp;!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-section form">
+        {{ form_start(form, {'attr': {'class': 'app-form'}}) }}
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Vos infos</legend>
+
+            <div class="form-group">
+                <label for="{{ form.partnerName.vars.id }}"
+                       class="form-label {% if form.partnerName.vars.required %}required{% endif %}">
+                    {{ form.partnerName.vars.label }}
+                </label>
+                {{ form_widget(form.partnerName) }}
+                {{ form_errors(form.partnerName) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.partnerEmail.vars.id }}"
+                       class="form-label {% if form.partnerEmail.vars.required %}required{% endif %}">
+                    {{ form.partnerEmail.vars.label }}
+                </label>
+                {{ form_widget(form.partnerEmail) }}
+                {{ form_errors(form.partnerEmail) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.partnerPhone.vars.id }}"
+                       class="form-label {% if form.partnerPhone.vars.required %}required{% endif %}">
+                    {{ form.partnerPhone.vars.label }}
+                </label>
+                {{ form_widget(form.partnerPhone) }}
+                {{ form_errors(form.partnerPhone) }}
+            </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Notre partenariat</legend>
+
+            <div class="form-group">
+                <label for="{{ form.partnerType.vars.id }}"
+                       class="form-label {% if form.partnerType.vars.required %}required{% endif %}">
+                    {{ form.partnerType.vars.label }}
+                </label>
+                {{ form_widget(form.partnerType) }}
+                {{ form_errors(form.partnerType) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.message.vars.id }}"
+                       class="form-label {% if form.message.vars.required %}required{% endif %}">
+                    {{ form.message.vars.label }}
+                </label>
+                {{ form_widget(form.message) }}
+                {{ form_errors(form.message) }}
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <span>&nbsp;</span>
+            <button type="submit" class="form-submit app-btn cta">Envoyez</button>
+        </div>
+
+        {{ form_end(form) }}
+    </section>
+{% endblock %}
