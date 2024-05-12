@@ -1,14 +1,14 @@
-&.contact {
+&.home {
   .app-header {
-    height: 20dvh;
+    height: 30dvh;
 
     @include respondTo(md) {
-      height: 28dvh;
+      height: 50dvh;
     }
 
     .app-logo {
       img {
-        height: 20dvh;
+        height: 28dvh;
       }
     }
   }
