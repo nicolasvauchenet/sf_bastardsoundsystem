@@ -7,4 +7,8 @@
       @include displayGrid(repeat(2, 1fr));
     }
   }
+
+  .grid-item {
+    @include displayFlex(center, null, null, column);
+  }
 }

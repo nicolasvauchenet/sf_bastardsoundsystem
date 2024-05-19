@@ -22,4 +22,12 @@
       }
     }
   }
+
+  .app-section {
+    .app-grid {
+      .grid-item {
+        justify-content: flex-start;
+      }
+    }
+  }
 }

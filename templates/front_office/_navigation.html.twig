@@ -5,97 +5,77 @@
         Accueil
     </a>
 
-    <div class="menu-item">
-        <a href="#">
-            {{ ux_icon('fa-solid:tools', {'class': 'icon'}) }}
-            Technique
-        </a>
-
-        <div class="submenu">
+    {% if app_services.servicesByCategory('Technique') | length > 0 %}
+        <div class="menu-item">
             <a href="#">
-                Sonorisation
+                {{ ux_icon('fa-solid:tools', {'class': 'icon'}) }}
+                Technique
             </a>
 
-            <a href="#">
-                Plateau
-            </a>
-
-            <a href="#">
-                Dossier Technique
-            </a>
+            <div class="submenu">
+                {% for service in app_services.servicesByCategory('Technique') %}
+                    <a href="{{ path('app_front_office_service', {'slug': service.slug}) }}"
+                       {% if app.request.get('_route') == 'app_front_office_service' and app.request.attributes.get('slug') == service.slug %}class="active"{% endif %}>
+                        {{ service.name }}
+                    </a>
+                {% endfor %}
+            </div>
         </div>
-    </div>
+    {% endif %}
 
-    <div class="menu-item">
-        <a href="#">
-            {{ ux_icon('material-symbols:factory', {'class': 'icon'}) }}
-            Management
-        </a>
-
-        <div class="submenu">
+    {% if app_services.servicesByCategory('Management') | length > 0 %}
+        <div class="menu-item">
             <a href="#">
-                Visuels & Presse
+                {{ ux_icon('material-symbols:factory', {'class': 'icon'}) }}
+                Management
             </a>
 
-            <a href="#">
-                Merchandising
-            </a>
-
-            <a href="#">
-                Contrats d'engagement
-            </a>
-
-            <a href="#">
-                Déclarations & Assurances
-            </a>
+            <div class="submenu">
+                {% for service in app_services.servicesByCategory('Management') %}
+                    <a href="{{ path('app_front_office_service', {'slug': service.slug}) }}"
+                       {% if app.request.get('_route') == 'app_front_office_service' and app.request.attributes.get('slug') == service.slug %}class="active"{% endif %}>
+                        {{ service.name }}
+                    </a>
+                {% endfor %}
+            </div>
         </div>
-    </div>
+    {% endif %}
 
-    <div class="menu-item">
-        <a href="#">
-            {{ ux_icon('mingcute:sound-line-fill', {'class': 'icon'}) }}
-            Organisation
-        </a>
-
-        <div class="submenu">
+    {% if app_services.servicesByCategory('Organisation') | length > 0 %}
+        <div class="menu-item">
             <a href="#">
-                Concerts & Tournées
+                {{ ux_icon('mingcute:sound-line-fill', {'class': 'icon'}) }}
+                Organisation
             </a>
 
-            <a href="#">
-                Régie technique
-            </a>
-
-            <a href="#">
-                Co-Organisation
-            </a>
+            <div class="submenu">
+                {% for service in app_services.servicesByCategory('Organisation') %}
+                    <a href="{{ path('app_front_office_service', {'slug': service.slug}) }}"
+                       {% if app.request.get('_route') == 'app_front_office_service' and app.request.attributes.get('slug') == service.slug %}class="active"{% endif %}>
+                        {{ service.name }}
+                    </a>
+                {% endfor %}
+            </div>
         </div>
-    </div>
+    {% endif %}
 
-    <div class="menu-item">
-        <a href="#">
-            {{ ux_icon('streamline:wifi-antenna-solid', {'class': 'icon'}) }}
-            Production
-        </a>
-
-        <div class="submenu">
+    {% if app_services.servicesByCategory('Production') | length > 0 %}
+        <div class="menu-item">
             <a href="#">
-                Live recording
+                {{ ux_icon('streamline:wifi-antenna-solid', {'class': 'icon'}) }}
+                Production
             </a>
 
-            <a href="#">
-                Pressage CD & Vinyles
-            </a>
-
-            <a href="#">
-                Diffusion multi-canaux
-            </a>
-
-            <a href="#">
-                Co-Production
-            </a>
+            <div class="submenu">
+                {% for service in app_services.servicesByCategory('Production') %}
+                    <a href="{{ path('app_front_office_service', {'slug': service.slug}) }}"
+                       {% if app.request.get('_route') == 'app_front_office_service' and app.request.attributes.get('slug') == service.slug %}class="active"{% endif %}>
+                        {{ service.name }}
+                    </a>
+                {% endfor %}
+            </div>
         </div>
-    </div>
+    {% endif %}
 
     <div class="menu-item">
         <a href="#">
