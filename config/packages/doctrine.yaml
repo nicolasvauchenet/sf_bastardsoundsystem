@@ -24,7 +24,10 @@ doctrine:
         alias: App
     controller_resolver:
       auto_mapping: true
-
+    filters:
+      active_service_filter:
+        class: App\Doctrine\Filter\ActiveServiceFilter
+        enabled: true
 when@test:
   doctrine:
     dbal:
