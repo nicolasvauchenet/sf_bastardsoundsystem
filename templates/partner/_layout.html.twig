@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'partner/_header.html.twig' %}
+
+    {% include 'partner/_navigation.html.twig' %}
+
+    <main class="app-main">
+        {% include '_alert.html.twig' %}
+
+        {% block main %}{% endblock %}
+    </main>
+
+    {% include 'partner/_footer.html.twig' %}
+{% endblock %}

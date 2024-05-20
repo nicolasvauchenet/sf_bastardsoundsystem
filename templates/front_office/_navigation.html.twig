@@ -80,9 +80,9 @@
     <div class="menu-item">
         <a href="#">
             {% if app.user %}
-                {% if is_granted('ROLE_ADHERENT') %}
+                {% if is_granted('ROLE_MEMBER') %}
                     {{ ux_icon('emojione-monotone:lion-face', {'class': 'icon'}) }}
-                {% elseif is_granted('ROLE_PARTENAIRE') %}
+                {% elseif is_granted('ROLE_PARTNER') %}
                     {{ ux_icon('emojione-monotone:cowboy-hat-face', {'class': 'icon'}) }}
                 {% elseif is_granted('ROLE_ADMIN') %}
                     {{ ux_icon('emojione-monotone:fox-face', {'class': 'icon'}) }}
@@ -90,32 +90,35 @@
             {% else %}
                 {{ ux_icon('mdi:alien', {'class': 'icon'}) }}
             {% endif %}
-            {{ app.user ? app.user.pseudo ? app.user.pseudo : app.user.name : 'Visiteur' }}
+            {{ app.user ? app.user.pseudo ? app.user.pseudo : app.user.fullname : 'Visiteur' }}
         </a>
 
         <div class="submenu">
+            <a href="{{ path('app_front_office_contact') }}"
+               {% if app.request.get('_route') == 'app_front_office_contact' %}class="active"{% endif %}>
+                Contact
+            </a>
+
             {% if app.user %}
-                {% if is_granted('ROLE_ADHERENT') %}
-                    <a href="#">
+                {% if is_granted('ROLE_MEMBER') %}
+                    <a href="{{ path('app_member_home') }}">
                         Mon Espace Adhérent
                     </a>
-                {% elseif is_granted('ROLE_PARTENAIRE') %}
-                    <a href="#">
+                {% elseif is_granted('ROLE_PARTNER') %}
+                    <a href="{{ path('app_partner_home') }}">
                         Mon Espace Partenaire
                     </a>
                 {% elseif is_granted('ROLE_ADMIN') %}
-                    <a href="#">
+                    <a href="{{ path('app_back_office_home') }}">
                         Administration BSS
                     </a>
                 {% endif %}
-                <a href="#" onclick="return window.confirm('Vous partez déjà ?')">
+                <a href="{{ path('app_logout') }}"
+                   class="text-danger"
+                   onclick="return window.confirm('Vous partez déjà ?')">
                     Déconnexion
                 </a>
             {% else %}
-                <a href="#"
-                   {% if app.request.get('_route') == 'app_login' %}class="active"{% endif %}>
-                    Connexion
-                </a>
                 <a href="{{ path('app_front_office_membership') }}"
                    {% if app.request.get('_route') == 'app_front_office_membership' %}class="active"{% endif %}>
                     Adhésion
@@ -124,11 +127,11 @@
                    {% if app.request.get('_route') == 'app_front_office_partnership' %}class="active"{% endif %}>
                     Partenariat
                 </a>
+                <a href="{{ path('app_login') }}"
+                   {% if app.request.get('_route') == 'app_login' %}class="active"{% endif %}>
+                    Connexion
+                </a>
             {% endif %}
-            <a href="{{ path('app_front_office_contact') }}"
-               {% if app.request.get('_route') == 'app_front_office_contact' %}class="active"{% endif %}>
-                Contact
-            </a>
         </div>
     </div>
 </nav>

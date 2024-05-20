@@ -1,0 +1,31 @@
+<nav class="app-navigation" data-controller="front-office--navigation">
+    <a href="{{ path('app_partner_home') }}"
+       class="{% if app.request.get('_route') == 'app_front_office_home' %}active{% endif %}">
+        {{ ux_icon('ion:home', {'class': 'icon'}) }}
+        Accueil
+    </a>
+
+    <div class="menu-item">
+        <a href="#">
+            {{ ux_icon('emojione-monotone:cowboy-hat-face', {'class': 'icon'}) }}
+            {{ app.user.pseudo ? app.user.pseudo : app.user.fullname }}
+        </a>
+
+        <div class="submenu">
+            <a href="{{ path('app_front_office_contact') }}"
+               {% if app.request.get('_route') == 'app_front_office_contact' %}class="active"{% endif %}>
+                Contact
+            </a>
+
+            <a href="{{ path('app_front_office_home') }}">
+                Espace Public
+            </a>
+
+            <a href="{{ path('app_logout') }}"
+               class="text-danger"
+               onclick="return window.confirm('Vous partez déjà ?')">
+                Déconnexion
+            </a>
+        </div>
+    </div>
+</nav>

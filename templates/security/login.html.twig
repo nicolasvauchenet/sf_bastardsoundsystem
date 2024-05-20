@@ -1,0 +1,84 @@
+{% extends 'front_office/_layout.html.twig' %}
+
+{% block title %}Connectez-vous{% endblock %}
+{% block meta_description %}{% endblock %}
+{% block body_class %}frontoffice form{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Connectez-vous&nbsp;!</h1>
+    </section>
+
+    <section class="app-section">
+        <div class="app-grid two border bottom">
+            <div class="grid-item">
+                <p>
+                    Welcome dans la zone VIP, l'endroit où tout se passe&nbsp;! Connecte-toi à ton espace perso et
+                    plonge direct dans le vif du sujet chez BSS. C'est ici que tu gères tes infos, que tu demandes ou
+                    que tu retrouves tes documents, que tu déniches des bons plans exclusifs et que tu restes branché
+                    sur les dernières vibrations de la scène. Que tu sois adhérent ou partenaire, c’est ton QG pour
+                    prendre le pouls de la communauté et booster ta présence sur la scène. Alors, prêt à vivre dans la
+                    vraie réalité augmentée&nbsp;? Connecte-toi et que la fête commence&nbsp;!
+                </p>
+            </div>
+            <div class="grid-item text-center">
+                <h2>Mon Espace Perso</h2>
+                <p>
+                    Ne cherche pas l'endroit où créer ton compte, y'en a pas&nbsp;! Si t'en veux un, tu dois d'abord
+                    devenir
+                    <a href="{{ path('app_front_office_membership') }}">adhérent</a>
+                    ou
+                    <a href="{{ path('app_front_office_partnership') }}">partenaire</a>
+                    de BSS. L'espace perso te donne accès à tous les services que l'asso propose.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-section form">
+        <form method="post" class="app-form">
+            <fieldset class="form-fieldset">
+                <legend class="form-legend">Vos identifiants</legend>
+
+                <div class="form-group">
+                    <label for="username" class="form-label required">Votre e-mail</label>
+                    <input type="email"
+                           value="{{ last_username }}"
+                           name="_username"
+                           id="username"
+                           class="form-control"
+                           autocomplete="email"
+                           required
+                           autofocus/>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label required">Votre mot de passe</label>
+                    <input type="password"
+                           name="_password"
+                           id="password"
+                           class="form-control"
+                           autocomplete="current-password"
+                           required/>
+                </div>
+            </fieldset>
+
+            {#
+            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+            See https://symfony.com/doc/current/security/remember_me.html
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Remember me
+                </label>
+            </div>
+            #}
+
+            <div class="form-group">
+                <span>&nbsp;</span>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+                <button type="submit" class="form-submit app-btn cta">Connexion</button>
+            </div>
+        </form>
+    </section>
+{% endblock %}
