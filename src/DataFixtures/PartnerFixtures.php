@@ -26,8 +26,9 @@ class PartnerFixtures extends Fixture implements OrderedFixtureInterface
             ->setFirstname('Partenaire')
             ->setLastname('BSS')
             ->setPseudo('partenaire')
+            ->setPhone('01.02.03.04.05')
             ->setCreatedAt(new \DateTimeImmutable())
-            ->setPartnerType('Salle de spectacles')
+            ->setPartnerType('Organisateur')
             ->setActive(true);
         $manager->persist($partner);
 

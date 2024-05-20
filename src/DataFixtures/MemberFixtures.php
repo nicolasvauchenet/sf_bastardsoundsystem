@@ -26,6 +26,7 @@ class MemberFixtures extends Fixture implements OrderedFixtureInterface
             ->setFirstname('Adhérent')
             ->setLastname('BSS')
             ->setPseudo('adhérent')
+            ->setPhone('01 02 03 04 05')
             ->setCreatedAt(new \DateTimeImmutable())
             ->setMemberType('Musicien')
             ->setActive(true);

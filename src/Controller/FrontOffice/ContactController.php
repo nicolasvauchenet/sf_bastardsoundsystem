@@ -6,6 +6,7 @@ use App\Entity\FrontOffice\Contact;
 use App\Form\FrontOffice\ContactType;
 use App\Service\MailerService;
 use App\Service\ParametersService;
+use App\Twig\Filters\PhoneFilter;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,9 +23,22 @@ class ContactController extends AbstractController
     public function index(Request                $request,
                           MailerService          $mailerService,
                           ParametersService      $parametersService,
-                          EntityManagerInterface $entityManager): Response
+                          EntityManagerInterface $entityManager,
+                          PhoneFilter            $phoneFilter): Response
     {
         $contact = new Contact();
+        if($user = $this->getUser()) {
+            if($this->isGranted('ROLE_MEMBER')) {
+                $contact->setSenderType($user->getMemberType())
+                    ->setSenderPhone($phoneFilter->formatPhone($user->getPhone()));
+            } else if($this->isGranted('ROLE_PARTNER')) {
+                $contact->setSenderType($user->getPartnerType())
+                    ->setSenderPhone($phoneFilter->formatPhone($user->getPhone()));
+            }
+            $contact->setSenderName($user->getFullname())
+                ->setSenderEmail($user->getUserIdentifier());
+        }
+
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
