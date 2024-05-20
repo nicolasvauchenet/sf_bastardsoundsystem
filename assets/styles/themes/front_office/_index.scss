@@ -25,6 +25,7 @@ html {
   }
 
   body {
+    @include displayFlex(null, null, null, column);
     font-family: $font-primary;
     font-size: 1.25rem;
     min-height: 100dvh;

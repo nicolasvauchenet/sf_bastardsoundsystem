@@ -8,6 +8,12 @@
     }
   }
 
+  &.three {
+    @include respondTo(md) {
+      @include displayGrid(repeat(3, 1fr));
+    }
+  }
+
   .grid-item {
     @include displayFlex(center, null, null, column);
   }

@@ -1,8 +1,6 @@
 .app-main {
-  background-color: $white;
-
-  @include respondTo(xs) {
-    margin-bottom: 4rem;
+  @include respondTo(md) {
+    flex: 1;
   }
 
   @import "./section";
