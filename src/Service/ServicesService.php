@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use App\Repository\ServiceRepository;
+use App\Repository\Service\ServiceRepository;
 
 class ServicesService
 {
