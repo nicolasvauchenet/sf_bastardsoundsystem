@@ -35,7 +35,7 @@ class ActiveServiceFilterSubscriber implements EventSubscriberInterface
         $filter = $this->em->getFilters()->enable('active_service_filter');
 
         if($this->security->isGranted('ROLE_ADMIN')) {
-            $this->em->getFilters()->disable('active_service');
+            $this->em->getFilters()->disable('active_service_filter');
         }
     }
 }
