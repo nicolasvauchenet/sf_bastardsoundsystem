@@ -3,7 +3,7 @@
 namespace App\Controller\FrontOffice;
 
 use App\Entity\Partner\Partnership;
-use App\Form\FrontOffice\PartnershipType;
+use App\Form\Partner\PartnershipType;
 use App\Service\MailerService;
 use App\Service\ParametersService;
 use Doctrine\ORM\EntityManagerInterface;

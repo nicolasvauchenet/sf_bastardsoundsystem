@@ -3,7 +3,7 @@
 namespace App\Controller\FrontOffice;
 
 use App\Entity\Member\Membership;
-use App\Form\FrontOffice\MembershipType;
+use App\Form\Member\MembershipType;
 use App\Service\MailerService;
 use App\Service\ParametersService;
 use Doctrine\ORM\EntityManagerInterface;

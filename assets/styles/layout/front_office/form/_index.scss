@@ -78,13 +78,23 @@
     ul {
       grid-column: 2/3;
       list-style: none;
+      margin-top: 0.25rem;
 
       li {
+        padding-right: 0.5rem;
         font-size: 1rem;
         font-weight: bold;
         text-align: right;
         color: $danger;
       }
+    }
+
+    .help-text {
+      grid-column: 2/3;
+      padding-right: 0.5rem;
+      margin-top: 0.25rem;
+      font-size: 1rem;
+      text-align: right;
     }
 
     span {

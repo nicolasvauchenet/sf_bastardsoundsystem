@@ -17,6 +17,11 @@
                 Contact
             </a>
 
+            <a href="{{ path('app_profile') }}"
+               class="{% if app.request.get('_route') == 'app_profile' %}active{% endif %}">
+                Mon Compte
+            </a>
+
             <a href="{{ path('app_front_office_home') }}">
                 Espace Public
             </a>

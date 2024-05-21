@@ -1,9 +1,97 @@
 <nav class="app-navigation" data-controller="front-office--navigation">
     <a href="{{ path('app_back_office_home') }}"
-       class="{% if app.request.get('_route') == 'app_front_office_home' %}active{% endif %}">
-        {{ ux_icon('ion:home', {'class': 'icon'}) }}
+       class="{% if app.request.get('_route') == 'app_back_office_home' %}active{% endif %}">
+        {{ ux_icon('zondicons:dashboard', {'class': 'icon'}) }}
         Accueil
     </a>
+
+    <div class="menu-item">
+        <a href="#">
+            {{ ux_icon('fluent:people-team-20-filled', {'class': 'icon'}) }}
+            Crew
+        </a>
+
+        <div class="submenu">
+            <a href="#">
+                Adhérents
+            </a>
+
+            <a href="#">
+                Partenaires
+            </a>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <a href="#">
+            {{ ux_icon('ri:service-fill', {'class': 'icon'}) }}
+            Services
+        </a>
+
+        <div class="submenu">
+            <a href="#">
+                Technique
+            </a>
+
+            <a href="#">
+                Management
+            </a>
+
+            <a href="#">
+                Organisation
+            </a>
+
+            <a href="#">
+                Production
+            </a>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <a href="#">
+            {{ ux_icon('eos-icons:cluster-management', {'class': 'icon'}) }}
+            Gestion
+        </a>
+
+        <div class="submenu">
+            <a href="#">
+                Infos Générales
+            </a>
+
+            <a href="#">
+                Cotisations
+            </a>
+
+            <a href="#">
+                Documents Officiels
+            </a>
+
+            <a href="#">
+                Matériel
+            </a>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <a href="#">
+            {{ ux_icon('fa6-solid:comment-dots', {'class': 'icon'}) }}
+            Contacts
+        </a>
+
+        <div class="submenu">
+            <a href="#">
+                Demandes d'Adhésion
+            </a>
+
+            <a href="#">
+                Demandes de Partenariat
+            </a>
+
+            <a href="#">
+                Messages reçus
+            </a>
+        </div>
+    </div>
 
     <div class="menu-item">
         <a href="#">
@@ -12,6 +100,11 @@
         </a>
 
         <div class="submenu">
+            <a href="{{ path('app_profile') }}"
+               class="{% if app.request.get('_route') == 'app_profile' %}active{% endif %}">
+                Mon Compte
+            </a>
+
             <a href="{{ path('app_front_office_home') }}">
                 Espace Public
             </a>

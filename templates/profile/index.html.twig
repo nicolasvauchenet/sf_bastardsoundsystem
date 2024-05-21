@@ -1,0 +1,190 @@
+{% set domain = 'front_office' %}
+{% if is_granted('ROLE_ADMIN') %}
+    {% set domain = 'back_office' %}
+{% elseif is_granted('ROLE_MEMBER') %}
+    {% set domain = 'member' %}
+{% elseif is_granted('ROLE_PARTNER') %}
+    {% set domain = 'partner' %}
+{% endif %}
+{% extends domain ~ '/_layout.html.twig' %}
+
+{% block title %}Mon Compte{% endblock %}
+{% block meta_description %}{% endblock %}
+{% block body_class %}frontoffice form{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>
+            Mon Compte
+            {% if is_granted('ROLE_ADMIN') %}
+                Administrateur
+            {% elseif is_granted('ROLE_MEMBER') %}
+                Adhérent
+            {% elseif is_granted('ROLE_PARTNER') %}
+                Partenaire
+            {% endif %}
+        </h1>
+    </section>
+
+    <section class="app-section form">
+        {{ form_start(form, {'attr': {'class': 'app-form'}}) }}
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Vos infos perso</legend>
+
+            <div class="form-group">
+                <label for="{{ form.gender.vars.id }}"
+                       class="form-label {% if form.gender.vars.required %}required{% endif %}">
+                    {{ form.gender.vars.label }}
+                </label>
+                {{ form_widget(form.gender) }}
+                {{ form_errors(form.gender) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.firstname.vars.id }}"
+                       class="form-label {% if form.firstname.vars.required %}required{% endif %}">
+                    {{ form.firstname.vars.label }}
+                </label>
+                {{ form_widget(form.firstname) }}
+                {{ form_errors(form.firstname) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.lastname.vars.id }}"
+                       class="form-label {% if form.lastname.vars.required %}required{% endif %}">
+                    {{ form.lastname.vars.label }}
+                </label>
+                {{ form_widget(form.lastname) }}
+                {{ form_errors(form.lastname) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.pseudo.vars.id }}"
+                       class="form-label {% if form.pseudo.vars.required %}required{% endif %}">
+                    {{ form.pseudo.vars.label }}
+                </label>
+                {{ form_widget(form.pseudo) }}
+                {{ form_errors(form.pseudo) }}
+            </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Votre compte chez BSS</legend>
+
+            {% if is_granted('ROLE_MEMBER') %}
+                <div class="form-group">
+                    <label for="{{ form.memberType.vars.id }}"
+                           class="form-label {% if form.memberType.vars.required %}required{% endif %}">
+                        {{ form.memberType.vars.label }}
+                    </label>
+                    {{ form_widget(form.memberType) }}
+                    {{ form_errors(form.memberType) }}
+                </div>
+            {% elseif is_granted('ROLE_PARTNER') %}
+                <div class="form-group">
+                    <label for="{{ form.partnerType.vars.id }}"
+                           class="form-label {% if form.partnerType.vars.required %}required{% endif %}">
+                        {{ form.partnerType.vars.label }}
+                    </label>
+                    {{ form_widget(form.partnerType) }}
+                    {{ form_errors(form.partnerType) }}
+                </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label for="{{ form.email.vars.id }}"
+                       class="form-label {% if form.email.vars.required %}required{% endif %}">
+                    {{ form.email.vars.label }}
+                </label>
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.plainPassword.vars.id }}"
+                       class="form-label {% if form.plainPassword.vars.required %}required{% endif %}">
+                    {{ form.plainPassword.vars.label }}
+                </label>
+                {{ form_widget(form.plainPassword) }}
+                {{ form_help(form.plainPassword) }}
+                {{ form_errors(form.plainPassword) }}
+            </div>
+        </fieldset>
+
+        {% if not is_granted('ROLE_ADMIN') %}
+            <fieldset class="form-fieldset">
+                <legend class="form-legend">Vos coordonnées</legend>
+
+                <div class="form-group">
+                    <label for="{{ form.address1.vars.id }}"
+                           class="form-label {% if form.address1.vars.required %}required{% endif %}">
+                        {{ form.address1.vars.label }}
+                    </label>
+                    {{ form_widget(form.address1) }}
+                    {{ form_errors(form.address1) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.address2.vars.id }}"
+                           class="form-label {% if form.address2.vars.required %}required{% endif %}">
+                        {{ form.address2.vars.label }}
+                    </label>
+                    {{ form_widget(form.address2) }}
+                    {{ form_errors(form.address2) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.address3.vars.id }}"
+                           class="form-label {% if form.address3.vars.required %}required{% endif %}">
+                        {{ form.address3.vars.label }}
+                    </label>
+                    {{ form_widget(form.address3) }}
+                    {{ form_errors(form.address3) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.zipcode.vars.id }}"
+                           class="form-label {% if form.zipcode.vars.required %}required{% endif %}">
+                        {{ form.zipcode.vars.label }}
+                    </label>
+                    {{ form_widget(form.zipcode) }}
+                    {{ form_errors(form.zipcode) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.city.vars.id }}"
+                           class="form-label {% if form.city.vars.required %}required{% endif %}">
+                        {{ form.city.vars.label }}
+                    </label>
+                    {{ form_widget(form.city) }}
+                    {{ form_errors(form.city) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.country.vars.id }}"
+                           class="form-label {% if form.country.vars.required %}required{% endif %}">
+                        {{ form.country.vars.label }}
+                    </label>
+                    {{ form_widget(form.country) }}
+                    {{ form_errors(form.country) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.phone.vars.id }}"
+                           class="form-label {% if form.phone.vars.required %}required{% endif %}">
+                        {{ form.phone.vars.label }}
+                    </label>
+                    {{ form_widget(form.phone) }}
+                    {{ form_errors(form.phone) }}
+                </div>
+            </fieldset>
+        {% endif %}
+
+        <div class="form-group">
+            <span>&nbsp;</span>
+            <button type="submit" class="form-submit app-btn cta">Enregistrez</button>
+        </div>
+
+        {{ form_end(form) }}
+    </section>
+{% endblock %}
