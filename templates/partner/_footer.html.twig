@@ -4,6 +4,11 @@
     </p>
 
     <p class="links">
+        <a href="{{ path('app_front_office_contact') }}"
+           {% if app.request.get('_route') == 'app_front_office_contact' %}class="active"{% endif %}>
+            Contactez BSS
+        </a>
+        •
         <a href="{{ path('app_front_office_legals_mentions') }}"
            {% if app.request.get('_route') == 'app_front_office_legals_mentions' %}class="active"{% endif %}>
             Mentions légales

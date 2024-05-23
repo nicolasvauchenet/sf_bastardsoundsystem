@@ -94,13 +94,6 @@
         </a>
 
         <div class="submenu">
-            {% if not is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('app_front_office_contact') }}"
-                   {% if app.request.get('_route') == 'app_front_office_contact' %}class="active"{% endif %}>
-                    Contact
-                </a>
-            {% endif %}
-
             {% if app.user %}
                 <a href="{{ path('app_profile') }}"
                    {% if app.request.get('_route') == 'app_profile' %}class="active"{% endif %}>
