@@ -2,6 +2,33 @@
   text-align: center;
 }
 
+.text-success {
+  color: $success !important;
+}
+
+.text-info {
+  color: $info !important;
+}
+
 .text-danger {
   color: $danger !important;
+}
+
+.icon {
+  width: 1.75rem;
+}
+
+.nobg {
+  background: none !important;
+}
+
+.full-width {
+  box-sizing: border-box;
+  width: 100% !important;
+}
+
+.img {
+  &.contain {
+    object-fit: contain !important;
+  }
 }

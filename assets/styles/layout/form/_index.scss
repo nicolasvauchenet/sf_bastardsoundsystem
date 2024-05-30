@@ -114,6 +114,12 @@
       }
     }
 
+    &:has(button[type="submit"]) {
+      @include respondTo(xs) {
+        @include displayGrid(1fr, 1rem);
+      }
+    }
+
     @include respondTo(md) {
       @include displayGrid(3fr 7fr, 0.5rem);
       align-items: center;

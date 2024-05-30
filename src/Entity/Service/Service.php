@@ -5,6 +5,7 @@ namespace App\Entity\Service;
 use App\Repository\Service\ServiceRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: ServiceRepository::class)]
 class Service
@@ -21,6 +22,7 @@ class Service
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
+    #[Gedmo\Slug(fields: ['category', 'name'])]
     private ?string $slug = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]

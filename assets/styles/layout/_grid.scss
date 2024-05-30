@@ -14,7 +14,25 @@
     }
   }
 
+  &.four {
+    @include respondTo(md) {
+      @include displayGrid(repeat(4, 1fr));
+    }
+  }
+
+  &.third-reverse {
+    @include displayGrid(9fr 1fr);
+  }
+
+  &:has(.app-card) {
+    padding: 0.5rem 0;
+  }
+
   .grid-item {
     @include displayFlex(center, null, null, column);
+
+    .actions {
+      @include displayFlex(center, null, 1rem);
+    }
   }
 }

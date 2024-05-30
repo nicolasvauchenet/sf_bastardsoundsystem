@@ -1,6 +1,6 @@
 <nav class="app-navigation" data-controller="front-office--navigation">
     <a href="{{ path('app_back_office_home') }}"
-       class="{% if app.request.get('_route') == 'app_back_office_home' %}active{% endif %}">
+       {% if app.request.get('_route') == 'app_back_office_home' %}class="active"{% endif %}>
         {{ ux_icon('zondicons:dashboard', {'class': 'icon'}) }}
         Accueil
     </a>
@@ -66,7 +66,8 @@
                 Documents Officiels
             </a>
 
-            <a href="#">
+            <a href="{{ path('app_back_office_equipment_home') }}"
+               {% if 'app_back_office_equipment_' in app.request.get('_route') %}class="active"{% endif %}>
                 Matériel
             </a>
         </div>
