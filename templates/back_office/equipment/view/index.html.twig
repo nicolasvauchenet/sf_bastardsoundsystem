@@ -26,9 +26,9 @@
             </div>
             <div class="grid-item">
                 {% if equipment.status == 'KO' %}
-                    <h3 class="text-danger">Hors Service</h3>
+                    <h3 class="status text-danger">Hors Service</h3>
                 {% else %}
-                    <h3 class="text-success">Disponible</h3>
+                    <h3 class="status text-success">Disponible</h3>
                 {% endif %}
 
                 <p>{{ equipment.description | raw }}</p>

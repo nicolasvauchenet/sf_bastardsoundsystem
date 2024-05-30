@@ -31,6 +31,10 @@
   .grid-item {
     @include displayFlex(center, null, null, column);
 
+    .status {
+      margin-top: 1rem;
+    }
+
     .actions {
       @include displayFlex(center, null, 1rem);
     }

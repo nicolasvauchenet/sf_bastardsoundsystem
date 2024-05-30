@@ -27,7 +27,7 @@
                         <a href="{{ asset('uploads/equipment/' ~ equipment.image) }}"
                            target="_blank"
                            class="grid-item nobg">
-                            {{ equipment.image }}
+                            <small>{{ equipment.image }}</small>
                         </a>
                         <a href="{{ path('app_back_office_equipment_image_delete', {'id': equipment.id}) }}"
                            class="grid-item nobg text-danger"
@@ -93,7 +93,7 @@
                         <a href="{{ asset('uploads/invoices/' ~ equipment.invoice) }}"
                            target="_blank"
                            class="grid-item nobg">
-                            {{ equipment.invoice }}
+                            <small>{{ equipment.invoice }}</small>
                         </a>
                         <a href="{{ path('app_back_office_equipment_invoice_delete', {'id': equipment.id}) }}"
                            class="grid-item nobg text-danger"
