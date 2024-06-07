@@ -21,7 +21,7 @@ class MemberFixtures extends Fixture implements OrderedFixtureInterface
     {
         $member = new Member();
         $member->setEmail('member@bastardsoundsystem.org')
-            ->setPassword($this->passwordHasher->hashPassword($member, 'member'))
+            ->setPassword($this->passwordHasher->hashPassword($member, '!bEb7RgDFJM?'))
             ->setRoles(['ROLE_MEMBER'])
             ->setFirstname('Adhérent')
             ->setLastname('BSS')

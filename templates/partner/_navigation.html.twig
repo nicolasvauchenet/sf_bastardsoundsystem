@@ -21,6 +21,11 @@
                 Espace Public
             </a>
 
+            <a href="{{ path('app_front_office_contact') }}"
+               {% if app.request.get('_route') == 'app_front_office_contact' %}class="active"{% endif %}>
+                Contactez BSS
+            </a>
+
             <a href="{{ path('app_logout') }}"
                class="text-danger"
                onclick="return window.confirm('Vous partez déjà ?')">

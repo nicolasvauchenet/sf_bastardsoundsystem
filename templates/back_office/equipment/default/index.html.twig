@@ -49,6 +49,17 @@
                                 </figure>
 
                                 <h3 class="card-title">{{ equipment.name }}</h3>
+                                {% if equipment.status == 'KO' %}
+                                    <h4 class="text-danger">
+                                        <strong>
+                                            Hors Service
+                                            <small>
+                                                depuis le
+                                                {{ equipment.updatedAt | date('d/m/Y') }}
+                                            </small>
+                                        </strong>
+                                    </h4>
+                                {% endif %}
 
                                 <p class="description">{{ equipment.description }}</p>
                             </div>

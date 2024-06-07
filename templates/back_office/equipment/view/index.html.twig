@@ -26,7 +26,13 @@
             </div>
             <div class="grid-item">
                 {% if equipment.status == 'KO' %}
-                    <h3 class="status text-danger">Hors Service</h3>
+                    <h3 class="status text-danger">
+                        Hors Service
+                        <small>
+                            depuis le
+                            {{ equipment.updatedAt | date('d/m/Y') }}
+                        </small>
+                    </h3>
                 {% else %}
                     <h3 class="status text-success">Disponible</h3>
                 {% endif %}

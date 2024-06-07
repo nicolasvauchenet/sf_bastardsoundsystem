@@ -21,7 +21,7 @@ class UserFixtures extends Fixture implements OrderedFixtureInterface
     {
         $user = new User();
         $user->setEmail('admin@bastardsoundsystem.org')
-            ->setPassword($this->passwordHasher->hashPassword($user, 'admin'))
+            ->setPassword($this->passwordHasher->hashPassword($user, '!bEb7RgDFJM?'))
             ->setRoles(['ROLE_ADMIN'])
             ->setFirstname('Administrateur')
             ->setLastname('BSS')

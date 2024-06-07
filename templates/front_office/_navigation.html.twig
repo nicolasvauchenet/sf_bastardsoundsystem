@@ -113,6 +113,14 @@
                         Administration BSS
                     </a>
                 {% endif %}
+
+                {% if not is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('app_front_office_contact') }}"
+                       {% if app.request.get('_route') == 'app_front_office_contact' %}class="active"{% endif %}>
+                        Contactez BSS
+                    </a>
+                {% endif %}
+
                 <a href="{{ path('app_logout') }}"
                    class="text-danger"
                    onclick="return window.confirm('Vous partez déjà ?')">
@@ -127,6 +135,14 @@
                    {% if app.request.get('_route') == 'app_front_office_partnership' %}class="active"{% endif %}>
                     Partenariat
                 </a>
+
+                {% if not is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('app_front_office_contact') }}"
+                       {% if app.request.get('_route') == 'app_front_office_contact' %}class="active"{% endif %}>
+                        Contactez BSS
+                    </a>
+                {% endif %}
+
                 <a href="{{ path('app_login') }}"
                    {% if app.request.get('_route') == 'app_login' %}class="active"{% endif %}>
                     Connexion

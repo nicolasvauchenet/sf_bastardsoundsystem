@@ -20,10 +20,14 @@ class EditController extends AbstractController
                          FileUploaderService    $fileUploaderService,
                          Equipment              $equipment): Response
     {
+        $equipmentInitialStatus = $equipment->getStatus();
         $form = $this->createForm(EquipmentType::class, $equipment);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            if($equipment->getStatus() !== $equipmentInitialStatus) {
+                $equipment->setUpdatedAt(new \DateTimeImmutable());
+            }
             $entityManager->persist($equipment);
             $entityManager->flush();
 
