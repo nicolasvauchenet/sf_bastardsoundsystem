@@ -17,7 +17,8 @@
                 Adhérents
             </a>
 
-            <a href="#">
+            <a href="{{ path('app_back_office_crew_partner_home') }}"
+               {% if 'app_back_office_crew_partner_' in app.request.get('_route') %}class="active"{% endif %}>
                 Partenaires
             </a>
         </div>

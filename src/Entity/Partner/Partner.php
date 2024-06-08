@@ -139,6 +139,19 @@ class Partner extends User
         return $this;
     }
 
+    public function getFullAddress(): ?string
+    {
+        $parts = array_filter([
+            $this->address1,
+            $this->address2,
+            $this->address3,
+            trim(($this->zipcode ? $this->zipcode . ' ' : '') . ($this->city ?? '')),
+            $this->country,
+        ]);
+
+        return implode(', ', $parts);
+    }
+
     public function isActive(): ?bool
     {
         return $this->active;

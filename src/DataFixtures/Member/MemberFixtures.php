@@ -20,19 +20,17 @@ class MemberFixtures extends Fixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $member = new Member();
-        $member->setEmail('member@bastardsoundsystem.org')
+        $member->setEmail('feelarsen.production@gmail.com')
             ->setPassword($this->passwordHasher->hashPassword($member, '!bEb7RgDFJM?'))
             ->setRoles(['ROLE_MEMBER'])
-            ->setFirstname('Adhérent')
-            ->setLastname('BSS')
-            ->setPseudo('adhérent')
-            ->setPhone('01 02 03 04 05')
-            ->setAddress1('1, rue des bobs')
-            ->setZipcode('12345')
-            ->setCity('Bobville')
+            ->setFirstname('Féelarsen')
+            ->setPseudo('Jeff')
+            ->setPhone('06 31 24 90 65')
+            ->setZipcode('87000')
+            ->setCity('Limoges')
             ->setCountry('France')
             ->setCreatedAt(new \DateTimeImmutable())
-            ->setMemberType('Musicien')
+            ->setMemberType('Groupe')
             ->setActive(true);
         $manager->persist($member);
 
@@ -40,15 +38,15 @@ class MemberFixtures extends Fixture implements OrderedFixtureInterface
         $member->setEmail('member2@bastardsoundsystem.org')
             ->setPassword($this->passwordHasher->hashPassword($member, '!bEb7RgDFJM?'))
             ->setRoles(['ROLE_MEMBER'])
-            ->setFirstname('Adhérent')
-            ->setLastname('Archivé')
-            ->setPseudo('archivé')
+            ->setFirstname('Johnny')
+            ->setLastname('Halliday')
+            ->setPseudo('Johnny')
             ->setPhone('01 02 03 04 05')
             ->setCreatedAt(new \DateTimeImmutable())
             ->setMemberType('Musicien')
             ->setActive(false)
             ->setArchivedAt(new \DateTimeImmutable())
-            ->setArchivedCause('Test');
+            ->setArchivedCause('Décédé');
         $manager->persist($member);
 
         $manager->flush();

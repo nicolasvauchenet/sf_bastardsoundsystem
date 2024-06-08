@@ -38,7 +38,7 @@
                                     </a>
                                 </div>
 
-                                <img src="{{ asset('img/member.png') }}"
+                                <img src="{{ asset('uploads/adherent/feelarsen.jpg') }}"
                                      class="card-image"
                                      alt="{{ member.fullname }}"/>
 
@@ -56,6 +56,7 @@
                                 {% if member.phone %}
                                     <br/>
                                     <a href="tel:{{ member.phone | format_phone('compact') }}">
+                                        <strong>{{ member.pseudo }} :</strong>
                                         {{ member.phone | format_phone }}
                                     </a>
                                 {% endif %}
@@ -129,7 +130,11 @@
 
                         <div class="card-body">
                             {% if member.archivedCause %}
-                                <p>{{ member.archivedCause }}</p>
+                                <p>
+                                    <strong>Pourquoi ?</strong>
+                                    <br/>
+                                    {{ member.archivedCause }}
+                                </p>
                             {% endif %}
 
                             <p>
@@ -137,6 +142,7 @@
                                 {% if member.phone %}
                                     <br/>
                                     <a href="tel:{{ member.phone | format_phone('compact') }}">
+                                        <strong>{{ member.pseudo }} :</strong>
                                         {{ member.phone | format_phone }}
                                     </a>
                                 {% endif %}

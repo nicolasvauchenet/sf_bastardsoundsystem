@@ -1,0 +1,174 @@
+{% extends 'back_office/_layout.html.twig' %}
+
+{% block title %}Gestion des Partenaires{% endblock %}
+{% block body_class %}backoffice partner{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Les Partenaires de BSS</h1>
+    </section>
+
+    {% if activePartners | length > 0 %}
+        <section class="app-section">
+            <h2>
+                {{ activePartners | length }}
+                Partenaire{{ activePartners | length > 1 ? 's' : '' }}
+                actif{{ activePartners | length > 1 ? 's' : '' }}
+                <a href="#"
+                   class="text-success">{{ ux_icon('subway:add', {'class': 'icon'}) }}</a>
+            </h2>
+
+            <div class="app-grid four">
+                {% for partner in activePartners %}
+                    <div class="grid-item app-card">
+                        <div class="card-header">
+                            <figure>
+                                <div class="card-actions">
+                                    <a href="#">
+                                        {{ ux_icon('fa6-solid:eye', {'class': 'icon'}) }}
+                                    </a>
+
+                                    <a href="#">
+                                        {{ ux_icon('fa6-solid:pen-to-square', {'class': 'icon text-info'}) }}
+                                    </a>
+
+                                    <a href="#"
+                                       onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir archiver ce partenaire ?')">
+                                        {{ ux_icon('fa6-solid:box-archive', {'class': 'icon text-warning'}) }}
+                                    </a>
+                                </div>
+
+                                <img src="{{ asset('img/partner.png') }}"
+                                     class="card-image"
+                                     alt="{{ partner.fullname }}"/>
+
+                                {% if not partner.active %}
+                                    {{ ux_icon('fluent-emoji-high-contrast:cross-mark', {'class': 'card-icon text-danger'}) }}
+                                {% endif %}
+                            </figure>
+
+                            <h3 class="card-title">{{ partner.fullname }}</h3>
+                        </div>
+
+                        <div class="card-body">
+                            <p>
+                                <a href="mailto:{{ partner.email }}">{{ partner.email }}</a>
+                                {% if partner.phone %}
+                                    <br/>
+                                    <a href="tel:{{ partner.phone | format_phone('compact') }}">
+                                        {{ partner.phone | format_phone }}
+                                    </a>
+                                {% endif %}
+                            </p>
+
+                            {% if partner.fullAddress %}
+                                <p>{{ partner.fullAddress }}</p>
+                            {% endif %}
+
+                            <div class="content app-grid two">
+                                <p>
+                                    <strong>Depuis le</strong>
+                                    <br/>
+                                    {{ partner.createdAt | date('d/m/Y') }}
+                                </p>
+
+                                {% if partner.partnerType %}
+                                    <p>
+                                        <strong>Type</strong>
+                                        <br/>
+                                        {{ partner.partnerType }}
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+
+    {% if inactivePartners | length > 0 %}
+        <section class="app-section">
+            <h2>
+                {{ inactivePartners | length }}
+                Partenaire{{ inactivePartners | length > 1 ? 's' : '' }}
+                archivé{{ inactivePartners | length > 1 ? 's' : '' }}
+            </h2>
+
+            <div class="app-grid four">
+                {% for partner in inactivePartners %}
+                    <div class="grid-item app-card">
+                        <div class="card-header">
+                            <figure>
+                                <div class="card-actions">
+                                    <a href="#">
+                                        {{ ux_icon('fa6-solid:eye', {'class': 'icon'}) }}
+                                    </a>
+
+                                    <a href="#">
+                                        {{ ux_icon('fa6-solid:pen-to-square', {'class': 'icon text-info'}) }}
+                                    </a>
+
+                                    <a href="#"
+                                       onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir supprimer définitivement ce partenaire ?')">
+                                        {{ ux_icon('fa6-solid:trash-can', {'class': 'icon text-danger'}) }}
+                                    </a>
+                                </div>
+
+                                <img src="{{ asset('img/partner_archived.png') }}"
+                                     class="card-image"
+                                     alt="{{ partner.fullname }}"/>
+
+                                {% if not partner.active %}
+                                    {{ ux_icon('fluent-emoji-high-contrast:cross-mark', {'class': 'card-icon text-danger'}) }}
+                                {% endif %}
+                            </figure>
+
+                            <h3 class="card-title">{{ partner.fullname }}</h3>
+                        </div>
+
+                        <div class="card-body">
+                            {% if partner.archivedCause %}
+                                <p>
+                                    <strong>Pourquoi ?</strong>
+                                    <br/>
+                                    {{ partner.archivedCause }}
+                                </p>
+                            {% endif %}
+
+                            <p>
+                                <a href="mailto:{{ partner.email }}">{{ partner.email }}</a>
+                                {% if partner.phone %}
+                                    <br/>
+                                    <a href="tel:{{ partner.phone | format_phone('compact') }}">
+                                        {{ partner.phone | format_phone }}
+                                    </a>
+                                {% endif %}
+                            </p>
+
+                            {% if partner.fullAddress %}
+                                <p>{{ partner.fullAddress }}</p>
+                            {% endif %}
+
+                            <div class="content app-grid two">
+                                <p>
+                                    <strong>Archivé le</strong>
+                                    <br/>
+                                    {{ partner.archivedAt | date('d/m/Y') }}
+                                </p>
+
+                                {% if partner.partnerType %}
+                                    <p>
+                                        <strong>Type</strong>
+                                        <br/>
+                                        {{ partner.partnerType }}
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}
