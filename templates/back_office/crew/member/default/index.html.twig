@@ -1,0 +1,170 @@
+{% extends 'back_office/_layout.html.twig' %}
+
+{% block title %}Gestion des Adhérents{% endblock %}
+{% block body_class %}backoffice member{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Les Adhérents de BSS</h1>
+    </section>
+
+    {% if activeMembers | length > 0 %}
+        <section class="app-section">
+            <h2>
+                {{ activeMembers | length }}
+                Adhérent{{ activeMembers | length > 1 ? 's' : '' }}
+                actif{{ activeMembers | length > 1 ? 's' : '' }}
+                <a href="#"
+                   class="text-success">{{ ux_icon('subway:add', {'class': 'icon'}) }}</a>
+            </h2>
+
+            <div class="app-grid four">
+                {% for member in activeMembers %}
+                    <div class="grid-item app-card">
+                        <div class="card-header">
+                            <figure>
+                                <div class="card-actions">
+                                    <a href="#">
+                                        {{ ux_icon('fa6-solid:eye', {'class': 'icon'}) }}
+                                    </a>
+
+                                    <a href="#">
+                                        {{ ux_icon('fa6-solid:pen-to-square', {'class': 'icon text-info'}) }}
+                                    </a>
+
+                                    <a href="#"
+                                       onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir archiver cet adhérent ?')">
+                                        {{ ux_icon('fa6-solid:box-archive', {'class': 'icon text-warning'}) }}
+                                    </a>
+                                </div>
+
+                                <img src="{{ asset('img/member.png') }}"
+                                     class="card-image"
+                                     alt="{{ member.fullname }}"/>
+
+                                {% if not member.active %}
+                                    {{ ux_icon('fluent-emoji-high-contrast:cross-mark', {'class': 'card-icon text-danger'}) }}
+                                {% endif %}
+                            </figure>
+
+                            <h3 class="card-title">{{ member.fullname }}</h3>
+                        </div>
+
+                        <div class="card-body">
+                            <p>
+                                <a href="mailto:{{ member.email }}">{{ member.email }}</a>
+                                {% if member.phone %}
+                                    <br/>
+                                    <a href="tel:{{ member.phone | format_phone('compact') }}">
+                                        {{ member.phone | format_phone }}
+                                    </a>
+                                {% endif %}
+                            </p>
+
+                            {% if member.fullAddress %}
+                                <p>{{ member.fullAddress }}</p>
+                            {% endif %}
+
+                            <div class="content app-grid two">
+                                <p>
+                                    <strong>Depuis le</strong>
+                                    <br/>
+                                    {{ member.createdAt | date('d/m/Y') }}
+                                </p>
+
+                                {% if member.memberType %}
+                                    <p>
+                                        <strong>Type</strong>
+                                        <br/>
+                                        {{ member.memberType }}
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+
+    {% if inactiveMembers | length > 0 %}
+        <section class="app-section">
+            <h2>
+                {{ inactiveMembers | length }}
+                Adhérent{{ inactiveMembers | length > 1 ? 's' : '' }}
+                archivé{{ inactiveMembers | length > 1 ? 's' : '' }}
+            </h2>
+
+            <div class="app-grid four">
+                {% for member in inactiveMembers %}
+                    <div class="grid-item app-card">
+                        <div class="card-header">
+                            <figure>
+                                <div class="card-actions">
+                                    <a href="#">
+                                        {{ ux_icon('fa6-solid:eye', {'class': 'icon'}) }}
+                                    </a>
+
+                                    <a href="#">
+                                        {{ ux_icon('fa6-solid:pen-to-square', {'class': 'icon text-info'}) }}
+                                    </a>
+
+                                    <a href="#"
+                                       onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir supprimer définitivement cet adhérent ?')">
+                                        {{ ux_icon('fa6-solid:trash-can', {'class': 'icon text-danger'}) }}
+                                    </a>
+                                </div>
+
+                                <img src="{{ asset('img/member_archived.png') }}"
+                                     class="card-image"
+                                     alt="{{ member.fullname }}"/>
+
+                                {% if not member.active %}
+                                    {{ ux_icon('fluent-emoji-high-contrast:cross-mark', {'class': 'card-icon text-danger'}) }}
+                                {% endif %}
+                            </figure>
+
+                            <h3 class="card-title">{{ member.fullname }}</h3>
+                        </div>
+
+                        <div class="card-body">
+                            {% if member.archivedCause %}
+                                <p>{{ member.archivedCause }}</p>
+                            {% endif %}
+
+                            <p>
+                                <a href="mailto:{{ member.email }}">{{ member.email }}</a>
+                                {% if member.phone %}
+                                    <br/>
+                                    <a href="tel:{{ member.phone | format_phone('compact') }}">
+                                        {{ member.phone | format_phone }}
+                                    </a>
+                                {% endif %}
+                            </p>
+
+                            {% if member.fullAddress %}
+                                <p>{{ member.fullAddress }}</p>
+                            {% endif %}
+
+                            <div class="content app-grid two">
+                                <p>
+                                    <strong>Archivé le</strong>
+                                    <br/>
+                                    {{ member.archivedAt | date('d/m/Y') }}
+                                </p>
+
+                                {% if member.memberType %}
+                                    <p>
+                                        <strong>Type</strong>
+                                        <br/>
+                                        {{ member.memberType }}
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}

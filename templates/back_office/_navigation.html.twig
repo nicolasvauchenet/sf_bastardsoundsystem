@@ -12,7 +12,8 @@
         </a>
 
         <div class="submenu">
-            <a href="#">
+            <a href="{{ path('app_back_office_crew_member_home') }}"
+               {% if 'app_back_office_crew_member_' in app.request.get('_route') %}class="active"{% endif %}>
                 Adhérents
             </a>
 
@@ -50,7 +51,7 @@
     <div class="menu-item">
         <a href="#">
             {{ ux_icon('eos-icons:cluster-management', {'class': 'icon'}) }}
-            Gestion
+            Administration
         </a>
 
         <div class="submenu">
@@ -63,11 +64,11 @@
             </a>
 
             <a href="#">
-                Documents Officiels
+                Documents BSS
             </a>
 
-            <a href="{{ path('app_back_office_equipment_home') }}"
-               {% if 'app_back_office_equipment_' in app.request.get('_route') %}class="active"{% endif %}>
+            <a href="{{ path('app_back_office_administration_equipment_home') }}"
+               {% if 'app_back_office_administration_equipment_' in app.request.get('_route') %}class="active"{% endif %}>
                 Matériel
             </a>
         </div>
