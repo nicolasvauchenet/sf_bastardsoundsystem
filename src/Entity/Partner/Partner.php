@@ -14,6 +14,9 @@ class Partner extends User
     private ?string $partnerType = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    private ?string $logo = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $phone = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -51,6 +54,18 @@ class Partner extends User
     public function setPartnerType(?string $partnerType): static
     {
         $this->partnerType = $partnerType;
+
+        return $this;
+    }
+
+    public function getLogo(): ?string
+    {
+        return $this->logo;
+    }
+
+    public function setLogo(?string $logo): static
+    {
+        $this->logo = $logo;
 
         return $this;
     }

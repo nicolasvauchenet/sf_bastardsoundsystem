@@ -1,0 +1,83 @@
+{% extends 'back_office/_layout.html.twig' %}
+
+{% block title %}Fiche Adhérent : {{ member.fullname }}{% endblock %}
+{% block meta_description %}{% endblock %}
+{% block body_class %}backoffice member{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Fiche Adhérent : {{ member.fullname }}</h1>
+    </section>
+
+    <section class="app-section">
+        <div class="border bottom">
+            <h2>{{ member.memberType }}</h2>
+        </div>
+
+        <div class="app-grid two">
+            <div class="grid-item">
+                <p>
+                    {% if member.logo %}
+                        <img src="{{ asset('uploads/member/' ~ member.logo) }}"
+                             class="card-image img contain {% if not member.active %}greyscale{% endif %}"
+                             alt="{{ member.fullname }}"/>
+                    {% else %}
+                        <img src="{{ asset('img/member.png') }}"
+                             class="card-image img contain {% if not member.active %}greyscale{% endif %}"
+                             alt="{{ member.fullname }}"/>
+                    {% endif %}
+                </p>
+            </div>
+            <div class="grid-item">
+                {% if not member.active %}
+                    <h3 class="status text-center text-danger">
+                        Archivé
+                        <small>
+                            depuis le
+                            {{ member.archivedAt | date('d/m/Y') }}
+                        </small>
+                        <br/>
+                        <small class="text-black">
+                            {{ member.archivedCause }}
+                        </small>
+                    </h3>
+                {% endif %}
+
+                <p class="text-center">
+                    <a href="mailto:{{ member.email }}">{{ member.email }}</a>
+                    {% if member.phone %}
+                        <br/>
+                        <a href="tel:{{ member.phone | format_phone('compact') }}">{{ member.phone | format_phone }}</a>
+                    {% endif %}
+                </p>
+
+                {% if member.fullAddress %}
+                    <p class="text-center">{{ member.fullAddress }}</p>
+                {% endif %}
+
+                <p class="actions">
+                    <a href="{{ path('app_back_office_crew_member_home') }}" class="app-btn">
+                        {{ ux_icon('fa6-solid:backward-step', {'class': 'icon'}) }}
+                    </a>
+                    <a href="#"
+                       class="app-btn text-info">
+                        {{ ux_icon('fa6-solid:pen-to-square', {'class': 'icon'}) }}
+                    </a>
+                    {% if member.active %}
+                        <a href="#"
+                           class="app-btn text-warning"
+                           onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir archiver cet adhérent ?')">
+                            {{ ux_icon('fa6-solid:box-archive', {'class': 'icon'}) }}
+                        </a>
+                    {% else %}
+                        <a href="#"
+                           class="app-btn text-danger"
+                           onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir supprimer définitivement cet adhérent ?')">
+                            {{ ux_icon('fa6-solid:trash-can', {'class': 'icon'}) }}
+                        </a>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

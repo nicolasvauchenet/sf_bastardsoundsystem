@@ -5,13 +5,16 @@ namespace App\Controller\FrontOffice;
 use App\Entity\Partner\Partnership;
 use App\Form\Partner\PartnershipType;
 use App\Service\BackOffice\Administration\ParametersService;
+use App\Service\FileUploaderService;
 use App\Service\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class PartnershipController extends AbstractController
 {
@@ -20,6 +23,8 @@ class PartnershipController extends AbstractController
      */
     #[Route('/devenez-partenaire', name: 'app_front_office_partnership')]
     public function index(Request                $request,
+                          FileUploaderService    $fileUploaderService,
+                          SluggerInterface       $slugger,
                           MailerService          $mailerService,
                           ParametersService      $parametersService,
                           EntityManagerInterface $entityManager): Response
@@ -29,6 +34,13 @@ class PartnershipController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $logoFile */
+            $logoFile = $form->get('logo')->getData();
+            if($logoFile) {
+                $logoFileName = $fileUploaderService->upload($logoFile, 'partner', strtolower($slugger->slug($partnership->getPartnerName())));
+                $partnership->setLogo($logoFileName);
+            }
+
             $mailerService->sendEmail([
                 'from' => [
                     'type' => $form->get('partnerType')->getData(),

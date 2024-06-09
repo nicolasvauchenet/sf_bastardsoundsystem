@@ -14,6 +14,9 @@ class Member extends User
     private ?string $memberType = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    private ?string $logo = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $phone = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -51,6 +54,18 @@ class Member extends User
     public function setMemberType(?string $memberType): static
     {
         $this->memberType = $memberType;
+
+        return $this;
+    }
+
+    public function getLogo(): ?string
+    {
+        return $this->logo;
+    }
+
+    public function setLogo(?string $logo): static
+    {
+        $this->logo = $logo;
 
         return $this;
     }

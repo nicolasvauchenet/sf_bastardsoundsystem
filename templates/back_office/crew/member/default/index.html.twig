@@ -24,7 +24,7 @@
                         <div class="card-header">
                             <figure>
                                 <div class="card-actions">
-                                    <a href="#">
+                                    <a href="{{ path('app_back_office_crew_member_view', {'id': member.id}) }}">
                                         {{ ux_icon('fa6-solid:eye', {'class': 'icon'}) }}
                                     </a>
 
@@ -38,9 +38,15 @@
                                     </a>
                                 </div>
 
-                                <img src="{{ asset('uploads/adherent/feelarsen.jpg') }}"
-                                     class="card-image"
-                                     alt="{{ member.fullname }}"/>
+                                {% if member.logo %}
+                                    <img src="{{ asset('uploads/member/' ~ member.logo) }}"
+                                         class="card-image"
+                                         alt="{{ member.fullname }}"/>
+                                {% else %}
+                                    <img src="{{ asset('img/member.png') }}"
+                                         class="card-image"
+                                         alt="{{ member.fullname }}"/>
+                                {% endif %}
 
                                 {% if not member.active %}
                                     {{ ux_icon('fluent-emoji-high-contrast:cross-mark', {'class': 'card-icon text-danger'}) }}
@@ -102,7 +108,7 @@
                         <div class="card-header">
                             <figure>
                                 <div class="card-actions">
-                                    <a href="#">
+                                    <a href="{{ path('app_back_office_crew_member_view', {'id': member.id}) }}">
                                         {{ ux_icon('fa6-solid:eye', {'class': 'icon'}) }}
                                     </a>
 
@@ -116,9 +122,15 @@
                                     </a>
                                 </div>
 
-                                <img src="{{ asset('img/member_archived.png') }}"
-                                     class="card-image"
-                                     alt="{{ member.fullname }}"/>
+                                {% if member.logo %}
+                                    <img src="{{ asset('uploads/member/' ~ member.logo) }}"
+                                         class="card-image img greyscale"
+                                         alt="{{ member.fullname }}"/>
+                                {% else %}
+                                    <img src="{{ asset('img/member.png') }}"
+                                         class="card-image img greyscale"
+                                         alt="{{ member.fullname }}"/>
+                                {% endif %}
 
                                 {% if not member.active %}
                                     {{ ux_icon('fluent-emoji-high-contrast:cross-mark', {'class': 'card-icon text-danger'}) }}

@@ -9,10 +9,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\IsTrue;
 
 class MembershipType extends AbstractType
@@ -33,6 +35,9 @@ class MembershipType extends AbstractType
                     'Carrément autre chose' => 'Autre',
                 ],
                 'placeholder' => 'Choisissez dans la liste',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                 ],
@@ -40,6 +45,9 @@ class MembershipType extends AbstractType
             ->add('memberName', TextType::class, [
                 'required' => true,
                 'label' => 'Votre nom',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                     'autofocus' => true,
@@ -48,6 +56,9 @@ class MembershipType extends AbstractType
             ->add('memberEmail', EmailType::class, [
                 'required' => true,
                 'label' => 'Votre e-mail',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                 ],
@@ -55,13 +66,41 @@ class MembershipType extends AbstractType
             ->add('memberPhone', TextType::class, [
                 'required' => false,
                 'label' => 'Votre téléphone',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
+                ],
+            ])
+            ->add('logo', FileType::class, [
+                'mapped' => false,
+                'required' => false,
+                'label' => 'Votre logo',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
+                'attr' => [
+                    'class' => 'form-file',
+                ],
+                'constraints' => [
+                    new File([
+                        'maxSize' => '2048k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/webp',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez choisir une image JPG, PNG ou WebP',
+                    ]),
                 ],
             ])
             ->add('message', TextareaType::class, [
                 'required' => false,
                 'label' => 'Un truc à nous dire ?',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                     'rows' => 7,
@@ -70,6 +109,9 @@ class MembershipType extends AbstractType
             ->add('agree', CheckboxType::class, [
                 'required' => true,
                 'label' => "L'adhésion à Bastard Sound System est soumise au paiement de la cotisation. Je suis ok pour filer les sous afin de devenir adhérent",
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-checkbox',
                 ],

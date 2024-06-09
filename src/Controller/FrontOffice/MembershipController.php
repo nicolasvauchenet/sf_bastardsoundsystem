@@ -5,13 +5,16 @@ namespace App\Controller\FrontOffice;
 use App\Entity\Member\Membership;
 use App\Form\Member\MembershipType;
 use App\Service\BackOffice\Administration\ParametersService;
+use App\Service\FileUploaderService;
 use App\Service\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class MembershipController extends AbstractController
 {
@@ -20,6 +23,8 @@ class MembershipController extends AbstractController
      */
     #[Route('/adherez', name: 'app_front_office_membership')]
     public function index(Request                $request,
+                          FileUploaderService    $fileUploaderService,
+                          SluggerInterface       $slugger,
                           MailerService          $mailerService,
                           ParametersService      $parametersService,
                           EntityManagerInterface $entityManager): Response
@@ -29,6 +34,13 @@ class MembershipController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $logoFile */
+            $logoFile = $form->get('logo')->getData();
+            if($logoFile) {
+                $logoFileName = $fileUploaderService->upload($logoFile, 'member', strtolower($slugger->slug($membership->getMemberName())));
+                $membership->setLogo($logoFileName);
+            }
+
             $mailerService->sendEmail([
                 'from' => [
                     'type' => $form->get('memberType')->getData(),

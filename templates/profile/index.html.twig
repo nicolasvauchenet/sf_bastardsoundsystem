@@ -32,40 +32,74 @@
             <legend class="form-legend">Vos infos perso</legend>
 
             <div class="form-group">
-                <label for="{{ form.gender.vars.id }}"
-                       class="form-label {% if form.gender.vars.required %}required{% endif %}">
-                    {{ form.gender.vars.label }}
-                </label>
+                {{ form_label(form.gender) }}
                 {{ form_widget(form.gender) }}
                 {{ form_errors(form.gender) }}
             </div>
 
             <div class="form-group">
-                <label for="{{ form.firstname.vars.id }}"
-                       class="form-label {% if form.firstname.vars.required %}required{% endif %}">
-                    {{ form.firstname.vars.label }}
-                </label>
+                {{ form_label(form.firstname) }}
                 {{ form_widget(form.firstname) }}
                 {{ form_errors(form.firstname) }}
             </div>
 
             <div class="form-group">
-                <label for="{{ form.lastname.vars.id }}"
-                       class="form-label {% if form.lastname.vars.required %}required{% endif %}">
-                    {{ form.lastname.vars.label }}
-                </label>
+                {{ form_label(form.lastname) }}
                 {{ form_widget(form.lastname) }}
                 {{ form_errors(form.lastname) }}
             </div>
 
             <div class="form-group">
-                <label for="{{ form.pseudo.vars.id }}"
-                       class="form-label {% if form.pseudo.vars.required %}required{% endif %}">
-                    {{ form.pseudo.vars.label }}
-                </label>
+                {{ form_label(form.pseudo) }}
                 {{ form_widget(form.pseudo) }}
                 {{ form_errors(form.pseudo) }}
             </div>
+
+            {% if not is_granted('ROLE_ADMIN') %}
+                <div class="form-group">
+                    {{ form_label(form.logo) }}
+                    {% if app.user.logo is defined and app.user.logo %}
+                        <div class="app-grid two nobg">
+                            <div class="grid-item nobg">
+                                {{ form_widget(form.logo) }}
+                                {{ form_errors(form.logo) }}
+                            </div>
+                            <div class="grid-item nobg">
+                                {% if app.user.memberType is defined %}
+                                    <div class="app-grid third-reverse nobg">
+                                        <a href="{{ asset('uploads/member/' ~ app.user.logo) }}"
+                                           target="_blank"
+                                           class="grid-item nobg">
+                                            <small>{{ app.user.logo }}</small>
+                                        </a>
+                                        <a href="{{ path('app_profile_logo_delete') }}"
+                                           class="grid-item nobg text-danger"
+                                           onclick="return window.confirm('Êtes-vous sûr de vouloir supprimer votre logo ?')">
+                                            {{ ux_icon('fa6-solid:trash-can', {'class': 'icon text-danger'}) }}
+                                        </a>
+                                    </div>
+                                {% elseif app.user.partnerType is defined %}
+                                    <div class="app-grid third-reverse nobg">
+                                        <a href="{{ asset('uploads/partner/' ~ app.user.logo) }}"
+                                           target="_blank"
+                                           class="grid-item nobg">
+                                            <small>{{ app.user.logo }}</small>
+                                        </a>
+                                        <a href="{{ path('app_profile_logo_delete') }}"
+                                           class="grid-item nobg text-danger"
+                                           onclick="return window.confirm('Êtes-vous sûr de vouloir supprimer votre logo ?')">
+                                            {{ ux_icon('fa6-solid:trash-can', {'class': 'icon text-danger'}) }}
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% else %}
+                        {{ form_widget(form.logo) }}
+                        {{ form_errors(form.logo) }}
+                    {% endif %}
+                </div>
+            {% endif %}
         </fieldset>
 
         <fieldset class="form-fieldset">
@@ -73,38 +107,26 @@
 
             {% if is_granted('ROLE_MEMBER') %}
                 <div class="form-group">
-                    <label for="{{ form.memberType.vars.id }}"
-                           class="form-label {% if form.memberType.vars.required %}required{% endif %}">
-                        {{ form.memberType.vars.label }}
-                    </label>
+                    {{ form_label(form.memberType) }}
                     {{ form_widget(form.memberType) }}
                     {{ form_errors(form.memberType) }}
                 </div>
             {% elseif is_granted('ROLE_PARTNER') %}
                 <div class="form-group">
-                    <label for="{{ form.partnerType.vars.id }}"
-                           class="form-label {% if form.partnerType.vars.required %}required{% endif %}">
-                        {{ form.partnerType.vars.label }}
-                    </label>
+                    {{ form_label(form.partnerType) }}
                     {{ form_widget(form.partnerType) }}
                     {{ form_errors(form.partnerType) }}
                 </div>
             {% endif %}
 
             <div class="form-group">
-                <label for="{{ form.email.vars.id }}"
-                       class="form-label {% if form.email.vars.required %}required{% endif %}">
-                    {{ form.email.vars.label }}
-                </label>
+                {{ form_label(form.email) }}
                 {{ form_widget(form.email) }}
                 {{ form_errors(form.email) }}
             </div>
 
             <div class="form-group">
-                <label for="{{ form.plainPassword.vars.id }}"
-                       class="form-label {% if form.plainPassword.vars.required %}required{% endif %}">
-                    {{ form.plainPassword.vars.label }}
-                </label>
+                {{ form_label(form.plainPassword) }}
                 {{ form_widget(form.plainPassword) }}
                 {{ form_help(form.plainPassword) }}
                 {{ form_errors(form.plainPassword) }}
@@ -116,64 +138,43 @@
                 <legend class="form-legend">Vos coordonnées</legend>
 
                 <div class="form-group">
-                    <label for="{{ form.address1.vars.id }}"
-                           class="form-label {% if form.address1.vars.required %}required{% endif %}">
-                        {{ form.address1.vars.label }}
-                    </label>
+                    {{ form_label(form.address1) }}
                     {{ form_widget(form.address1) }}
                     {{ form_errors(form.address1) }}
                 </div>
 
                 <div class="form-group">
-                    <label for="{{ form.address2.vars.id }}"
-                           class="form-label {% if form.address2.vars.required %}required{% endif %}">
-                        {{ form.address2.vars.label }}
-                    </label>
+                    {{ form_label(form.address2) }}
                     {{ form_widget(form.address2) }}
                     {{ form_errors(form.address2) }}
                 </div>
 
                 <div class="form-group">
-                    <label for="{{ form.address3.vars.id }}"
-                           class="form-label {% if form.address3.vars.required %}required{% endif %}">
-                        {{ form.address3.vars.label }}
-                    </label>
+                    {{ form_label(form.address3) }}
                     {{ form_widget(form.address3) }}
                     {{ form_errors(form.address3) }}
                 </div>
 
                 <div class="form-group">
-                    <label for="{{ form.zipcode.vars.id }}"
-                           class="form-label {% if form.zipcode.vars.required %}required{% endif %}">
-                        {{ form.zipcode.vars.label }}
-                    </label>
+                    {{ form_label(form.zipcode) }}
                     {{ form_widget(form.zipcode) }}
                     {{ form_errors(form.zipcode) }}
                 </div>
 
                 <div class="form-group">
-                    <label for="{{ form.city.vars.id }}"
-                           class="form-label {% if form.city.vars.required %}required{% endif %}">
-                        {{ form.city.vars.label }}
-                    </label>
+                    {{ form_label(form.city) }}
                     {{ form_widget(form.city) }}
                     {{ form_errors(form.city) }}
                 </div>
 
                 <div class="form-group">
-                    <label for="{{ form.country.vars.id }}"
-                           class="form-label {% if form.country.vars.required %}required{% endif %}">
-                        {{ form.country.vars.label }}
-                    </label>
+                    {{ form_label(form.country) }}
                     {{ form_widget(form.country) }}
                     {{ form_errors(form.country) }}
                 </div>
 
                 <div class="form-group">
-                    <label for="{{ form.phone.vars.id }}"
-                           class="form-label {% if form.phone.vars.required %}required{% endif %}">
-                        {{ form.phone.vars.label }}
-                    </label>
+                    {{ form_label(form.phone) }}
                     {{ form_widget(form.phone) }}
                     {{ form_errors(form.phone) }}
                 </div>

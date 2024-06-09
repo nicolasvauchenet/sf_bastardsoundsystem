@@ -6,10 +6,12 @@ use App\Entity\Member\Member;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class ProfileType extends AbstractType
 {
@@ -19,6 +21,9 @@ class ProfileType extends AbstractType
             ->add('email', EmailType::class, [
                 'required' => true,
                 'label' => 'Votre e-mail',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                 ],
@@ -27,6 +32,9 @@ class ProfileType extends AbstractType
                 'required' => false,
                 'label' => 'Votre mot de passe',
                 'mapped' => false,
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                 ],
@@ -39,6 +47,9 @@ class ProfileType extends AbstractType
                     'Madame' => 'mme',
                     'Monsieur' => 'mr',
                 ],
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                 ],
@@ -46,6 +57,9 @@ class ProfileType extends AbstractType
             ->add('firstname', TextType::class, [
                 'required' => false,
                 'label' => 'Votre prénom',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                     'autofocus' => true,
@@ -54,6 +68,9 @@ class ProfileType extends AbstractType
             ->add('lastname', TextType::class, [
                 'required' => false,
                 'label' => 'Votre nom',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                 ],
@@ -61,8 +78,33 @@ class ProfileType extends AbstractType
             ->add('pseudo', TextType::class, [
                 'required' => false,
                 'label' => 'Votre pseudo',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
+                ],
+            ])
+            ->add('logo', FileType::class, [
+                'mapped' => false,
+                'required' => false,
+                'label' => 'Votre logo',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
+                'attr' => [
+                    'class' => 'form-file',
+                ],
+                'constraints' => [
+                    new File([
+                        'maxSize' => '2048k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/webp',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez choisir une image JPG, PNG ou WebP',
+                    ]),
                 ],
             ])
             ->add('memberType', ChoiceType::class, [
@@ -78,6 +120,9 @@ class ProfileType extends AbstractType
                     'Carrément autre chose' => 'Autre',
                 ],
                 'placeholder' => 'Choisissez dans la liste',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                 ],
@@ -85,6 +130,9 @@ class ProfileType extends AbstractType
             ->add('phone', TextType::class, [
                 'required' => false,
                 'label' => 'Votre téléphone',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                 ],
@@ -92,6 +140,9 @@ class ProfileType extends AbstractType
             ->add('address1', TextType::class, [
                 'required' => false,
                 'label' => 'Votre adresse',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                 ],
@@ -99,6 +150,9 @@ class ProfileType extends AbstractType
             ->add('address2', TextType::class, [
                 'required' => false,
                 'label' => "Complément d'adresse",
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                 ],
@@ -106,6 +160,9 @@ class ProfileType extends AbstractType
             ->add('address3', TextType::class, [
                 'required' => false,
                 'label' => "Complément d'adresse",
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                 ],
@@ -113,6 +170,9 @@ class ProfileType extends AbstractType
             ->add('zipcode', TextType::class, [
                 'required' => false,
                 'label' => 'Votre code postal',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                 ],
@@ -120,6 +180,9 @@ class ProfileType extends AbstractType
             ->add('city', TextType::class, [
                 'required' => false,
                 'label' => 'Votre ville',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                 ],
@@ -127,6 +190,9 @@ class ProfileType extends AbstractType
             ->add('country', TextType::class, [
                 'required' => false,
                 'label' => 'Votre pays',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                 ],

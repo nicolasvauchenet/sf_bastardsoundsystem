@@ -21,7 +21,7 @@ final class Version20240520083252 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SEQUENCE partner_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE TABLE partner (id INT NOT NULL, partner_type VARCHAR(255) DEFAULT NULL, phone VARCHAR(255) DEFAULT NULL, address1 VARCHAR(255) DEFAULT NULL, address2 VARCHAR(255) DEFAULT NULL, address3 VARCHAR(255) DEFAULT NULL, zipcode VARCHAR(255) DEFAULT NULL, city VARCHAR(255) DEFAULT NULL, country VARCHAR(255) DEFAULT NULL, active BOOLEAN NOT NULL, archived_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, archived_cause TEXT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE partner (id INT NOT NULL, partner_type VARCHAR(255) DEFAULT NULL, logo VARCHAR(255) DEFAULT NULL, phone VARCHAR(255) DEFAULT NULL, address1 VARCHAR(255) DEFAULT NULL, address2 VARCHAR(255) DEFAULT NULL, address3 VARCHAR(255) DEFAULT NULL, zipcode VARCHAR(255) DEFAULT NULL, city VARCHAR(255) DEFAULT NULL, country VARCHAR(255) DEFAULT NULL, active BOOLEAN NOT NULL, archived_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, archived_cause TEXT DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('COMMENT ON COLUMN partner.archived_at IS \'(DC2Type:datetime_immutable)\'');
     }
 

@@ -1,0 +1,83 @@
+{% extends 'back_office/_layout.html.twig' %}
+
+{% block title %}Fiche Partenaire : {{ partner.fullname }}{% endblock %}
+{% block meta_description %}{% endblock %}
+{% block body_class %}backoffice partner{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Fiche Partenaire : {{ partner.fullname }}</h1>
+    </section>
+
+    <section class="app-section">
+        <div class="border bottom">
+            <h2>{{ partner.partnerType }}</h2>
+        </div>
+
+        <div class="app-grid two">
+            <div class="grid-item">
+                <p>
+                    {% if partner.logo %}
+                        <img src="{{ asset('uploads/partner/' ~ partner.logo) }}"
+                             class="card-image img contain {% if not partner.active %}greyscale{% endif %}"
+                             alt="{{ partner.fullname }}"/>
+                    {% else %}
+                        <img src="{{ asset('img/partner.png') }}"
+                             class="card-image img contain {% if not partner.active %}greyscale{% endif %}"
+                             alt="{{ partner.fullname }}"/>
+                    {% endif %}
+                </p>
+            </div>
+            <div class="grid-item">
+                {% if not partner.active %}
+                    <h3 class="status text-center text-danger">
+                        Archivé
+                        <small>
+                            depuis le
+                            {{ partner.archivedAt | date('d/m/Y') }}
+                        </small>
+                        <br/>
+                        <small class="text-black">
+                            {{ partner.archivedCause }}
+                        </small>
+                    </h3>
+                {% endif %}
+
+                <p class="text-center">
+                    <a href="mailto:{{ partner.email }}">{{ partner.email }}</a>
+                    {% if partner.phone %}
+                        <br/>
+                        <a href="tel:{{ partner.phone | format_phone('compact') }}">{{ partner.phone | format_phone }}</a>
+                    {% endif %}
+                </p>
+
+                {% if partner.fullAddress %}
+                    <p class="text-center">{{ partner.fullAddress }}</p>
+                {% endif %}
+
+                <p class="actions">
+                    <a href="{{ path('app_back_office_crew_partner_home') }}" class="app-btn">
+                        {{ ux_icon('fa6-solid:backward-step', {'class': 'icon'}) }}
+                    </a>
+                    <a href="#"
+                       class="app-btn text-info">
+                        {{ ux_icon('fa6-solid:pen-to-square', {'class': 'icon'}) }}
+                    </a>
+                    {% if partner.active %}
+                        <a href="#"
+                           class="app-btn text-warning"
+                           onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir archiver ce partenaire ?')">
+                            {{ ux_icon('fa6-solid:box-archive', {'class': 'icon'}) }}
+                        </a>
+                    {% else %}
+                        <a href="#"
+                           class="app-btn text-danger"
+                           onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir supprimer définitivement ce partenaire ?')">
+                            {{ ux_icon('fa6-solid:trash-can', {'class': 'icon'}) }}
+                        </a>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

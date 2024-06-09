@@ -39,30 +39,27 @@
             <legend class="form-legend">Vos infos</legend>
 
             <div class="form-group">
-                <label for="{{ form.memberName.vars.id }}"
-                       class="form-label {% if form.memberName.vars.required %}required{% endif %}">
-                    {{ form.memberName.vars.label }}
-                </label>
+                {{ form_label(form.memberName) }}
                 {{ form_widget(form.memberName) }}
                 {{ form_errors(form.memberName) }}
             </div>
 
             <div class="form-group">
-                <label for="{{ form.memberEmail.vars.id }}"
-                       class="form-label {% if form.memberEmail.vars.required %}required{% endif %}">
-                    {{ form.memberEmail.vars.label }}
-                </label>
+                {{ form_label(form.memberEmail) }}
                 {{ form_widget(form.memberEmail) }}
                 {{ form_errors(form.memberEmail) }}
             </div>
 
             <div class="form-group">
-                <label for="{{ form.memberPhone.vars.id }}"
-                       class="form-label {% if form.memberPhone.vars.required %}required{% endif %}">
-                    {{ form.memberPhone.vars.label }}
-                </label>
+                {{ form_label(form.memberPhone) }}
                 {{ form_widget(form.memberPhone) }}
                 {{ form_errors(form.memberPhone) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.logo) }}
+                {{ form_widget(form.logo) }}
+                {{ form_errors(form.logo) }}
             </div>
         </fieldset>
 
@@ -70,19 +67,13 @@
             <legend class="form-legend">Votre adhésion</legend>
 
             <div class="form-group">
-                <label for="{{ form.memberType.vars.id }}"
-                       class="form-label {% if form.memberType.vars.required %}required{% endif %}">
-                    {{ form.memberType.vars.label }}
-                </label>
+                {{ form_label(form.memberType) }}
                 {{ form_widget(form.memberType) }}
                 {{ form_errors(form.memberType) }}
             </div>
 
             <div class="form-group">
-                <label for="{{ form.message.vars.id }}"
-                       class="form-label {% if form.message.vars.required %}required{% endif %}">
-                    {{ form.message.vars.label }}
-                </label>
+                {{ form_label(form.message) }}
                 {{ form_widget(form.message) }}
                 {{ form_errors(form.message) }}
             </div>
