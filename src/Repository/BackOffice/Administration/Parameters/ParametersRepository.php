@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\BackOffice\Administration\Parameters;
 
-use App\Entity\Parameters;
+use App\Entity\BackOffice\Administration\Parameters\Parameters;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

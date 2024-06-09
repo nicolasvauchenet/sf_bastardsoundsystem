@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Service;
+namespace App\Service\BackOffice\Administration;
 
-use App\Entity\Parameters;
-use App\Repository\ParametersRepository;
+use App\Entity\BackOffice\Administration\Parameters\Parameters;
+use App\Repository\BackOffice\Administration\Parameters\ParametersRepository;
 
 class ParametersService
 {

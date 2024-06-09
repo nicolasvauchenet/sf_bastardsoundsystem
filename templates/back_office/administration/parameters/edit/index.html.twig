@@ -1,0 +1,53 @@
+{% extends 'back_office/_layout.html.twig' %}
+
+{% block title %}Paramètres de l'application{% endblock %}
+{% block meta_description %}{% endblock %}
+{% block body_class %}backoffice form{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Modifier les paramètres de l'application</h1>
+    </section>
+
+    <section class="app-section form">
+        {{ form_start(form, {'attr': {'class': 'app-form'}}) }}
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Informations de l'Association</legend>
+
+            <div class="form-group">
+                {{ form_label(form.appName) }}
+                {{ form_widget(form.appName) }}
+                {{ form_errors(form.appName) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.appEmail) }}
+                {{ form_widget(form.appEmail) }}
+                {{ form_errors(form.appEmail) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.appPhone) }}
+                {{ form_widget(form.appPhone) }}
+                {{ form_errors(form.appPhone) }}
+            </div>
+        </fieldset>
+
+        <fieldset class="form-fieldset">
+            <legend class="form-legend">Fonctionnement de l'Association</legend>
+
+            <div class="form-group">
+                {{ form_label(form.appMembershipFee) }}
+                {{ form_widget(form.appMembershipFee) }}
+                {{ form_errors(form.appMembershipFee) }}
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <span>&nbsp;</span>
+            <button type="submit" class="form-submit app-btn cta">Sauvegarder</button>
+        </div>
+
+        {{ form_end(form) }}
+    </section>
+{% endblock %}

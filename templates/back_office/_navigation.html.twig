@@ -57,10 +57,6 @@
 
         <div class="submenu">
             <a href="#">
-                Infos Générales
-            </a>
-
-            <a href="#">
                 Cotisations
             </a>
 
@@ -71,6 +67,11 @@
             <a href="{{ path('app_back_office_administration_equipment_home') }}"
                {% if 'app_back_office_administration_equipment_' in app.request.get('_route') %}class="active"{% endif %}>
                 Matériel
+            </a>
+
+            <a href="{{ path('app_back_office_administration_parameters_edit') }}"
+               {% if 'app_back_office_administration_parameters_' in app.request.get('_route') %}class="active"{% endif %}>
+                Paramètres
             </a>
         </div>
     </div>

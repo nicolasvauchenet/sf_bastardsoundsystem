@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\BackOffice\Administration\Parameters;
 
-use App\Repository\ParametersRepository;
+use App\Repository\BackOffice\Administration\Parameters\ParametersRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 

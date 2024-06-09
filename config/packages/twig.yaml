@@ -2,8 +2,8 @@ twig:
   file_name_pattern: '*.twig'
   globals:
     app_locale: '%app_locale%'
-    app_parameters: '@App\Service\ParametersService'
-    app_services: '@App\Service\ServicesService'
+    app_parameters: '@App\Service\BackOffice\Administration\ParametersService'
+    app_services: '@App\Service\Service\ServicesService'
 
 when@test:
   twig:

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entity\Administration\Equipment;
+namespace App\Entity\BackOffice\Administration\Equipment;
 
-use App\Repository\Administration\Equipment\CategoryRepository;
+use App\Repository\BackOffice\Administration\Equipment\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

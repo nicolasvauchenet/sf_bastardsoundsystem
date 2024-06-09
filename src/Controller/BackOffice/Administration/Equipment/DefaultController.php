@@ -2,7 +2,7 @@
 
 namespace App\Controller\BackOffice\Administration\Equipment;
 
-use App\Repository\Administration\Equipment\CategoryRepository;
+use App\Repository\BackOffice\Administration\Equipment\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;

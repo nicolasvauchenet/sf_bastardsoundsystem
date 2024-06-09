@@ -4,8 +4,8 @@ namespace App\Controller\FrontOffice;
 
 use App\Entity\Partner\Partnership;
 use App\Form\Partner\PartnershipType;
+use App\Service\BackOffice\Administration\ParametersService;
 use App\Service\MailerService;
-use App\Service\ParametersService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures\Administration\Equipment;
 
-use App\Entity\Administration\Equipment\Equipment;
+use App\Entity\BackOffice\Administration\Equipment\Equipment;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;

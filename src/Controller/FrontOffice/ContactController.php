@@ -4,8 +4,8 @@ namespace App\Controller\FrontOffice;
 
 use App\Entity\FrontOffice\Contact;
 use App\Form\FrontOffice\ContactType;
+use App\Service\BackOffice\Administration\ParametersService;
 use App\Service\MailerService;
-use App\Service\ParametersService;
 use App\Twig\Filters\PhoneFilter;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

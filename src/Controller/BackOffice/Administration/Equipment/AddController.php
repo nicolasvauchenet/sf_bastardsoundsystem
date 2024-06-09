@@ -2,9 +2,9 @@
 
 namespace App\Controller\BackOffice\Administration\Equipment;
 
-use App\Entity\Administration\Equipment\Category;
-use App\Entity\Administration\Equipment\Equipment;
-use App\Form\Administration\Equipment\EquipmentType;
+use App\Entity\BackOffice\Administration\Equipment\Category;
+use App\Entity\BackOffice\Administration\Equipment\Equipment;
+use App\Form\BackOffice\Administration\Equipment\EquipmentType;
 use App\Service\FileUploaderService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
