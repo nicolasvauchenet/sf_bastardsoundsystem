@@ -37,15 +37,17 @@
                                         </a>
                                     </div>
 
-                                    {% if equipment.image %}
-                                        <img src="{{ asset('uploads/equipment/' ~ equipment.image) }}"
-                                             class="card-image"
-                                             alt="{{ equipment.name }}"/>
-                                    {% endif %}
+                                    <a href="{{ path('app_back_office_administration_equipment_view', {'slug': equipment.slug}) }}">
+                                        {% if equipment.image %}
+                                            <img src="{{ asset('uploads/equipment/' ~ equipment.image) }}"
+                                                 class="card-image"
+                                                 alt="{{ equipment.name }}"/>
+                                        {% endif %}
 
-                                    {% if equipment.status == 'KO' %}
-                                        {{ ux_icon('fluent-emoji-high-contrast:cross-mark', {'class': 'card-icon text-danger'}) }}
-                                    {% endif %}
+                                        {% if equipment.status == 'KO' %}
+                                            {{ ux_icon('fluent-emoji-high-contrast:cross-mark', {'class': 'card-icon text-danger'}) }}
+                                        {% endif %}
+                                    </a>
                                 </figure>
 
                                 <h3 class="card-title">{{ equipment.name }}</h3>

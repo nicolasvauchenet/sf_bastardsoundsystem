@@ -59,7 +59,7 @@
                     <a href="{{ path('app_back_office_crew_member_home') }}" class="app-btn">
                         {{ ux_icon('fa6-solid:backward-step', {'class': 'icon'}) }}
                     </a>
-                    <a href="#"
+                    <a href="{{ path('app_back_office_crew_member_edit', {'id': member.id}) }}"
                        class="app-btn text-info">
                         {{ ux_icon('fa6-solid:pen-to-square', {'class': 'icon'}) }}
                     </a>
@@ -71,11 +71,16 @@
                         </a>
                     {% else %}
                         <a href="#"
-                           class="app-btn text-danger"
-                           onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir supprimer définitivement cet adhérent ?')">
-                            {{ ux_icon('fa6-solid:trash-can', {'class': 'icon'}) }}
+                           class="app-btn text-success"
+                           onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir réintégrer cet adhérent ?')">
+                            {{ ux_icon('fa6-solid:child-reaching', {'class': 'icon'}) }}
                         </a>
                     {% endif %}
+                    <a href="{{ path('app_back_office_crew_member_delete', {'id': member.id}) }}"
+                       class="app-btn text-danger"
+                       onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir supprimer définitivement cet adhérent ?')">
+                        {{ ux_icon('fa6-solid:trash-can', {'class': 'icon'}) }}
+                    </a>
                 </p>
             </div>
         </div>

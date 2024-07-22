@@ -1,0 +1,15 @@
+{% extends 'back_office/_layout.html.twig' %}
+
+{% block title %}Modifier l'Adhérent : {{ member.fullname }}{% endblock %}
+{% block meta_description %}{% endblock %}
+{% block body_class %}backoffice form{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Modifier l'Adhérent : {{ member.fullname }}</h1>
+    </section>
+
+    <section class="app-section form">
+        {% include 'back_office/crew/member/_form.html.twig' with {'button_label': 'Modifiez', 'user': 'member'} %}
+    </section>
+{% endblock %}

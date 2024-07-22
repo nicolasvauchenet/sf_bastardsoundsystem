@@ -38,15 +38,17 @@
                                     </a>
                                 </div>
 
-                                {% if partner.logo %}
-                                    <img src="{{ asset('uploads/partner/' ~ partner.logo) }}"
-                                         class="card-image"
-                                         alt="{{ partner.fullname }}"/>
-                                {% else %}
-                                    <img src="{{ asset('img/partner.png') }}"
-                                         class="card-image"
-                                         alt="{{ partner.fullname }}"/>
-                                {% endif %}
+                                <a href="{{ path('app_back_office_crew_partner_view', {'id': partner.id}) }}">
+                                    {% if partner.logo %}
+                                        <img src="{{ asset('uploads/partner/' ~ partner.logo) }}"
+                                             class="card-image"
+                                             alt="{{ partner.fullname }}"/>
+                                    {% else %}
+                                        <img src="{{ asset('img/partner.png') }}"
+                                             class="card-image"
+                                             alt="{{ partner.fullname }}"/>
+                                    {% endif %}
+                                </a>
 
                                 {% if not partner.active %}
                                     {{ ux_icon('fluent-emoji-high-contrast:cross-mark', {'class': 'card-icon text-danger'}) }}
@@ -121,15 +123,17 @@
                                     </a>
                                 </div>
 
-                                {% if partner.logo %}
-                                    <img src="{{ asset('uploads/partner/' ~ partner.logo) }}"
-                                         class="card-image img greyscale"
-                                         alt="{{ partner.fullname }}"/>
-                                {% else %}
-                                    <img src="{{ asset('img/partner.png') }}"
-                                         class="card-image img greyscale"
-                                         alt="{{ partner.fullname }}"/>
-                                {% endif %}
+                                <a href="{{ path('app_back_office_crew_partner_view', {'id': partner.id}) }}">
+                                    {% if partner.logo %}
+                                        <img src="{{ asset('uploads/partner/' ~ partner.logo) }}"
+                                             class="card-image img greyscale"
+                                             alt="{{ partner.fullname }}"/>
+                                    {% else %}
+                                        <img src="{{ asset('img/partner.png') }}"
+                                             class="card-image img greyscale"
+                                             alt="{{ partner.fullname }}"/>
+                                    {% endif %}
+                                </a>
 
                                 {% if not partner.active %}
                                     {{ ux_icon('fluent-emoji-high-contrast:cross-mark', {'class': 'card-icon text-danger'}) }}

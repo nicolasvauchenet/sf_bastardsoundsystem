@@ -14,7 +14,7 @@
                 {{ activeMembers | length }}
                 Adhérent{{ activeMembers | length > 1 ? 's' : '' }}
                 actif{{ activeMembers | length > 1 ? 's' : '' }}
-                <a href="#"
+                <a href="{{ path('app_back_office_crew_member_add') }}"
                    class="text-success">{{ ux_icon('subway:add', {'class': 'icon'}) }}</a>
             </h2>
 
@@ -28,7 +28,7 @@
                                         {{ ux_icon('fa6-solid:eye', {'class': 'icon'}) }}
                                     </a>
 
-                                    <a href="#">
+                                    <a href="{{ path('app_back_office_crew_member_edit', {'id': member.id}) }}">
                                         {{ ux_icon('fa6-solid:pen-to-square', {'class': 'icon text-info'}) }}
                                     </a>
 
@@ -36,17 +36,24 @@
                                        onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir archiver cet adhérent ?')">
                                         {{ ux_icon('fa6-solid:box-archive', {'class': 'icon text-warning'}) }}
                                     </a>
+
+                                    <a href="{{ path('app_back_office_crew_member_delete', {'id': member.id}) }}"
+                                       onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir supprimer définitivement cet adhérent ?')">
+                                        {{ ux_icon('fa6-solid:trash-can', {'class': 'icon text-danger'}) }}
+                                    </a>
                                 </div>
 
-                                {% if member.logo %}
-                                    <img src="{{ asset('uploads/member/' ~ member.logo) }}"
-                                         class="card-image"
-                                         alt="{{ member.fullname }}"/>
-                                {% else %}
-                                    <img src="{{ asset('img/member.png') }}"
-                                         class="card-image"
-                                         alt="{{ member.fullname }}"/>
-                                {% endif %}
+                                <a href="{{ path('app_back_office_crew_member_view', {'id': member.id}) }}">
+                                    {% if member.logo %}
+                                        <img src="{{ asset('uploads/member/' ~ member.logo) }}"
+                                             class="card-image"
+                                             alt="{{ member.fullname }}"/>
+                                    {% else %}
+                                        <img src="{{ asset('img/member.png') }}"
+                                             class="card-image"
+                                             alt="{{ member.fullname }}"/>
+                                    {% endif %}
+                                </a>
 
                                 {% if not member.active %}
                                     {{ ux_icon('fluent-emoji-high-contrast:cross-mark', {'class': 'card-icon text-danger'}) }}
@@ -112,29 +119,34 @@
                                         {{ ux_icon('fa6-solid:eye', {'class': 'icon'}) }}
                                     </a>
 
-                                    <a href="#">
+                                    <a href="{{ path('app_back_office_crew_member_edit', {'id': member.id}) }}">
                                         {{ ux_icon('fa6-solid:pen-to-square', {'class': 'icon text-info'}) }}
                                     </a>
 
                                     <a href="#"
+                                       onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir réintégrer cet adhérent ?')">
+                                        {{ ux_icon('fa6-solid:child-reaching', {'class': 'icon text-success'}) }}
+                                    </a>
+
+                                    <a href="{{ path('app_back_office_crew_member_delete', {'id': member.id}) }}"
                                        onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir supprimer définitivement cet adhérent ?')">
                                         {{ ux_icon('fa6-solid:trash-can', {'class': 'icon text-danger'}) }}
                                     </a>
                                 </div>
 
-                                {% if member.logo %}
-                                    <img src="{{ asset('uploads/member/' ~ member.logo) }}"
-                                         class="card-image img greyscale"
-                                         alt="{{ member.fullname }}"/>
-                                {% else %}
-                                    <img src="{{ asset('img/member.png') }}"
-                                         class="card-image img greyscale"
-                                         alt="{{ member.fullname }}"/>
-                                {% endif %}
+                                <a href="{{ path('app_back_office_crew_member_view', {'id': member.id}) }}">
+                                    {% if member.logo %}
+                                        <img src="{{ asset('uploads/member/' ~ member.logo) }}"
+                                             class="card-image img greyscale"
+                                             alt="{{ member.fullname }}"/>
+                                    {% else %}
+                                        <img src="{{ asset('img/member.png') }}"
+                                             class="card-image img greyscale"
+                                             alt="{{ member.fullname }}"/>
+                                    {% endif %}
+                                </a>
 
-                                {% if not member.active %}
-                                    {{ ux_icon('fluent-emoji-high-contrast:cross-mark', {'class': 'card-icon text-danger'}) }}
-                                {% endif %}
+                                {{ ux_icon('fluent-emoji-high-contrast:cross-mark', {'class': 'card-icon text-danger'}) }}
                             </figure>
 
                             <h3 class="card-title">{{ member.fullname }}</h3>
