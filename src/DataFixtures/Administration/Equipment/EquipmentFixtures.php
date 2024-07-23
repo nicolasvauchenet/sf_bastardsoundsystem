@@ -176,6 +176,18 @@ class EquipmentFixtures extends Fixture implements OrderedFixtureInterface
         $manager->persist($equipment);
 
         $equipment = (new Equipment())
+            ->setCategory($this->getReference('category-microphones'))
+            ->setName('AKG D112')
+            ->setImage('akg-d112.jpg')
+            ->setDescription("Microphone dynamique spécialement conçu pour capter les sons de basse fréquence, comme les grosses caisses de batterie et les amplificateurs de basse. Il est doté d'une grande capsule dynamique et d'une large membrane, capable de gérer des niveaux de pression sonore extrêmement élevés, allant jusqu'à 160 dB SPL, sans distorsion. Le D112 offre une réponse en fréquence de 20 Hz à 17 kHz, avec un pic de présence à 4 kHz qui aide à percer les mixages denses et les environnements de scène bruyants. Sa construction robuste et sa grille métallique assurent une durabilité exceptionnelle. Le D112 intègre également une bobine de compensation des ronflements pour réduire le bruit électrique indésirable.")
+            ->setPurchasePrice(201.52)
+            ->setArgusPrice(88)
+            ->setPurchasedAt(new \DateTimeImmutable('2006-10-09'))
+            ->setStatus('OK')
+            ->setActive(true);
+        $manager->persist($equipment);
+
+        $equipment = (new Equipment())
             ->setCategory($this->getReference('category-mixage-et-effets'))
             ->setName('ALLEN & HEATH QU-16 Chrome Edition')
             ->setImage('allen-and-heath-qu-16-chrome-edition.png')
@@ -220,9 +232,8 @@ class EquipmentFixtures extends Fixture implements OrderedFixtureInterface
             ->setPurchasePrice(800)
             ->setArgusPrice(850)
             ->setPurchasedAt(new \DateTimeImmutable('2022-08-16'))
-            ->setUpdatedAt(new \DateTimeImmutable('2024-04-23'))
-            ->setStatus('KO')
-            ->setActive(false);
+            ->setStatus('OK')
+            ->setActive(true);
         $manager->persist($equipment);
 
         $equipment = (new Equipment())
@@ -235,7 +246,46 @@ class EquipmentFixtures extends Fixture implements OrderedFixtureInterface
             ->setPurchasedAt(new \DateTimeImmutable('2023/10/01'))
             ->setInvoice('k-m-25900-stand.pdf')
             ->setStatus('OK')
-            ->setActive(false);
+            ->setActive(true);
+        $manager->persist($equipment);
+
+        $equipment = (new Equipment())
+            ->setCategory($this->getReference('category-stands-microphone'))
+            ->setName('GRAVITY MAMH 01')
+            ->setImage('gravity-mamh-01.jpg')
+            ->setDescription("Support de microphone en acier poudré noir, conçu pour être fixé sur des poteaux de pied de microphone ou de support de musique jusqu'à 30 mm de diamètre. Il dispose d'une vis de montage de clip de microphone de 3/8\" intégrée (le clip de microphone n'est pas inclus) et est équipé d'un gros bouton de vis de fixation pour une manipulation facile. Ce support est robuste, résistant à l'usure, et comprend des anneaux de couleur interchangeables pour personnaliser l'apparence.")
+            ->setPurchasePrice(8.70)
+            ->setArgusPrice(5)
+            ->setPurchasedAt(new \DateTimeImmutable('2024/07/15'))
+            ->setInvoice('gravity-mamh-01.pdf')
+            ->setStatus('OK')
+            ->setActive(true);
+        $manager->persist($equipment);
+
+        $equipment = (new Equipment())
+            ->setCategory($this->getReference('category-stands-microphone'))
+            ->setName('GRAVITY MAMH 01')
+            ->setImage('gravity-mamh-01-1.jpg')
+            ->setDescription("Support de microphone en acier poudré noir, conçu pour être fixé sur des poteaux de pied de microphone ou de support de musique jusqu'à 30 mm de diamètre. Il dispose d'une vis de montage de clip de microphone de 3/8\" intégrée (le clip de microphone n'est pas inclus) et est équipé d'un gros bouton de vis de fixation pour une manipulation facile. Ce support est robuste, résistant à l'usure, et comprend des anneaux de couleur interchangeables pour personnaliser l'apparence.")
+            ->setPurchasePrice(8.70)
+            ->setArgusPrice(5)
+            ->setPurchasedAt(new \DateTimeImmutable('2024/07/15'))
+            ->setInvoice('gravity-mamh-01.pdf')
+            ->setStatus('OK')
+            ->setActive(true);
+        $manager->persist($equipment);
+
+        $equipment = (new Equipment())
+            ->setCategory($this->getReference('category-stands-microphone'))
+            ->setName('AUDIO-TECHNICA AT 8665')
+            ->setImage('audio-technica-at-8665.jpg')
+            ->setDescription("Support de microphone conçu spécifiquement pour être monté sur des fûts de batterie, en particulier les toms et les caisses claires. Il dispose d'un filetage de 5/8\" et se fixe facilement sur le bord du tambour, offrant une grande flexibilité de positionnement pour le microphone selon les préférences du batteur. Fabriqué en acier robuste avec une finition en poudre, ce support est idéal pour les sessions d'enregistrement et les performances en direct dans des lieux de capacité moyenne.")
+            ->setPurchasePrice(8.90)
+            ->setArgusPrice(5)
+            ->setPurchasedAt(new \DateTimeImmutable('2024/07/15'))
+            ->setInvoice('audio-technica-at-8665.pdf')
+            ->setStatus('OK')
+            ->setActive(true);
         $manager->persist($equipment);
 
         $equipment = (new Equipment())

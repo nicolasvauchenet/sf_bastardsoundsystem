@@ -35,6 +35,36 @@ class MemberFixtures extends Fixture implements OrderedFixtureInterface
         $manager->persist($member);
 
         $member = new Member();
+        $member->setEmail('forevermadame@bastardsoundsystem.org')
+            ->setPassword($this->passwordHasher->hashPassword($member, '!bEb7RgDFJM?'))
+            ->setRoles(['ROLE_MEMBER'])
+            ->setPseudo('Forever Madame')
+            ->setLogo('forever-madame.jpg')
+            ->setPhone('06 84 16 43 83')
+            ->setZipcode('87000')
+            ->setCity('Limoges')
+            ->setCountry('France')
+            ->setCreatedAt(new \DateTimeImmutable())
+            ->setMemberType('Groupe')
+            ->setActive(true);
+        $manager->persist($member);
+
+        $member = new Member();
+        $member->setEmail('titellealex23@gmail.com')
+            ->setPassword($this->passwordHasher->hashPassword($member, '!bEb7RgDFJM?'))
+            ->setRoles(['ROLE_MEMBER'])
+            ->setPseudo('Zanaly')
+            ->setLogo('zanaly.png')
+            ->setPhone('06 23 63 21 96')
+            ->setZipcode('23000')
+            ->setCity('Guéret')
+            ->setCountry('France')
+            ->setCreatedAt(new \DateTimeImmutable())
+            ->setMemberType('Groupe')
+            ->setActive(true);
+        $manager->persist($member);
+
+        $member = new Member();
         $member->setEmail('member2@bastardsoundsystem.org')
             ->setPassword($this->passwordHasher->hashPassword($member, '!bEb7RgDFJM?'))
             ->setRoles(['ROLE_MEMBER'])
