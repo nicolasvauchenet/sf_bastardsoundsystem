@@ -31,6 +31,10 @@ html {
     min-height: 100dvh;
     background-color: $primary;
 
+    &:has(.app-modal.is-active) {
+      overflow: hidden;
+    }
+
     @import "../../layout/front_office/header";
 
     @import "../../layout/front_office/navigation";

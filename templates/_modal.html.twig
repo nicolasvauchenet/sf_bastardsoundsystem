@@ -1,0 +1,14 @@
+<div class="app-modal" data-modal--index-target="modal" data-action="click->modal--index#close">
+    <div class="modal-background" data-modal--index-target="background"></div>
+    <div class="modal-content">
+        <button class="modal-close is-large" aria-label="close" data-action="click->modal--index#close">
+            {{ ux_icon('fa:close', {'class': 'icon'}) }}
+        </button>
+
+        <p>
+            {% if content_type == 'image' %}
+                <img src="{{ content_url }}" alt="{{ content_alt }}"/>
+            {% endif %}
+        </p>
+    </div>
+</div>

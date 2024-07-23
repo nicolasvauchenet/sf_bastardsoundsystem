@@ -23,10 +23,10 @@
             </div>
             <div class="grid-item nobg">
                 {% if button_label is defined and equipment.image %}
-                    <div class="app-grid third-reverse nobg">
-                        <a href="{{ asset('uploads/equipment/' ~ equipment.image) }}"
-                           target="_blank"
-                           class="grid-item nobg">
+                    <div class="app-grid third-reverse nobg" data-controller="modal--index">
+                        <a href="#"
+                           class="grid-item nobg"
+                           data-action="click->modal--index#open">
                             <small>{{ equipment.image }}</small>
                         </a>
                         <a href="{{ path('app_back_office_administration_equipment_image_delete', {'id': equipment.id}) }}"
@@ -34,6 +34,7 @@
                            onclick="return window.confirm('Êtes-vous sûr de vouloir supprimer l\'image de ce Matériel ?')">
                             {{ ux_icon('fa6-solid:trash-can', {'class': 'icon text-danger'}) }}
                         </a>
+                        {% include '_modal.html.twig' with {'content_type': 'image', 'content_url': asset('uploads/equipment/' ~ equipment.image), 'content_alt': equipment.name } %}
                     </div>
                 {% endif %}
             </div>
