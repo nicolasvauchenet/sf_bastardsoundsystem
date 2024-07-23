@@ -1,0 +1,40 @@
+.app-sidenavigation {
+  @include displayFlex(center, null, null, column);
+  padding: 1rem 0.5rem;
+  background-color: $third;
+
+  @include respondTo(md) {
+    display: block;
+  }
+
+  a {
+    display: block;
+    padding: 0.5rem;
+    font-family: $font-secondary;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: $secondary;
+    transition: all 0.5s;
+    border-radius: 0.25rem;
+
+    @include respondTo(md) {
+      margin-bottom: 0.5rem;
+      text-align: left;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &:hover {
+      color: $primary;
+    }
+
+    &.active {
+      color: $white;
+      background-color: $primary;
+    }
+  }
+}

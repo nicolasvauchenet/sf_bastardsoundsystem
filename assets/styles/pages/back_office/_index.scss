@@ -1,0 +1,11 @@
+&.backoffice {
+  .app-main {
+    .app-section {
+      h2 {
+        background-color: $third;
+      }
+    }
+  }
+
+  @import "./services";
+}

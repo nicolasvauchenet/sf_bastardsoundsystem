@@ -31,7 +31,8 @@
         </a>
 
         <div class="submenu">
-            <a href="#">
+            <a href="{{ path('app_back_office_services_technical_home') }}"
+               {% if 'app_back_office_services_technical_' in app.request.get('_route') %}class="active"{% endif %}>
                 Technique
             </a>
 

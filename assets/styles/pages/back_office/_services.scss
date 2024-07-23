@@ -1,0 +1,7 @@
+&.services {
+  .app-main {
+    @include respondTo(md) {
+      @include displayGrid(20dvw 1fr);
+    }
+  }
+}

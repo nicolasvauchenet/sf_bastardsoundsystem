@@ -1,0 +1,16 @@
+<nav class="app-sidenavigation">
+    <a href="#"
+       {% if 'app_back_office_services_technical_sound_' in app.request.get('_route') %}class="active"{% endif %}>
+        Sonorisation
+    </a>
+
+    <a href="#"
+       {% if 'app_back_office_services_technical_stage_' in app.request.get('_route') %}class="active"{% endif %}>
+        Plateau
+    </a>
+
+    <a href="{{ path('app_back_office_services_technical_technical_file_view') }}"
+       {% if 'app_back_office_services_technical_technical_file_' in app.request.get('_route') %}class="active"{% endif %}>
+        Dossier Technique
+    </a>
+</nav>
