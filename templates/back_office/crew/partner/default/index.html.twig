@@ -14,7 +14,7 @@
                 {{ activePartners | length }}
                 Partenaire{{ activePartners | length > 1 ? 's' : '' }}
                 actif{{ activePartners | length > 1 ? 's' : '' }}
-                <a href="#"
+                <a href="{{ path('app_back_office_crew_partner_add') }}"
                    class="text-success">{{ ux_icon('subway:add', {'class': 'icon'}) }}</a>
             </h2>
 
@@ -28,13 +28,18 @@
                                         {{ ux_icon('fa6-solid:eye', {'class': 'icon'}) }}
                                     </a>
 
-                                    <a href="#">
+                                    <a href="{{ path('app_back_office_crew_partner_edit', {'id': partner.id}) }}">
                                         {{ ux_icon('fa6-solid:pen-to-square', {'class': 'icon text-info'}) }}
                                     </a>
 
-                                    <a href="#"
+                                    <a href="{{ path('app_back_office_crew_partner_archive', {'id': partner.id}) }}"
                                        onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir archiver ce partenaire ?')">
                                         {{ ux_icon('fa6-solid:box-archive', {'class': 'icon text-warning'}) }}
+                                    </a>
+
+                                    <a href="{{ path('app_back_office_crew_partner_delete', {'id': partner.id}) }}"
+                                       onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir supprimer définitivement ce partenaire ?')">
+                                        {{ ux_icon('fa6-solid:trash-can', {'class': 'icon text-danger'}) }}
                                     </a>
                                 </div>
 
@@ -49,10 +54,6 @@
                                              alt="{{ partner.fullname }}"/>
                                     {% endif %}
                                 </a>
-
-                                {% if not partner.active %}
-                                    {{ ux_icon('fluent-emoji-high-contrast:cross-mark', {'class': 'card-icon text-danger'}) }}
-                                {% endif %}
                             </figure>
 
                             <h3 class="card-title">{{ partner.fullname }}</h3>
@@ -113,11 +114,16 @@
                                         {{ ux_icon('fa6-solid:eye', {'class': 'icon'}) }}
                                     </a>
 
-                                    <a href="#">
+                                    <a href="{{ path('app_back_office_crew_partner_edit', {'id': partner.id}) }}">
                                         {{ ux_icon('fa6-solid:pen-to-square', {'class': 'icon text-info'}) }}
                                     </a>
 
-                                    <a href="#"
+                                    <a href="{{ path('app_back_office_crew_partner_unarchive', {'id': partner.id}) }}"
+                                       onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir réintégrer ce partenaire ?')">
+                                        {{ ux_icon('fa6-solid:child-reaching', {'class': 'icon text-success'}) }}
+                                    </a>
+
+                                    <a href="{{ path('app_back_office_crew_partner_delete', {'id': partner.id}) }}"
                                        onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir supprimer définitivement ce partenaire ?')">
                                         {{ ux_icon('fa6-solid:trash-can', {'class': 'icon text-danger'}) }}
                                     </a>
@@ -133,11 +139,9 @@
                                              class="card-image img greyscale"
                                              alt="{{ partner.fullname }}"/>
                                     {% endif %}
-                                </a>
 
-                                {% if not partner.active %}
                                     {{ ux_icon('fluent-emoji-high-contrast:cross-mark', {'class': 'card-icon text-danger'}) }}
-                                {% endif %}
+                                </a>
                             </figure>
 
                             <h3 class="card-title">{{ partner.fullname }}</h3>

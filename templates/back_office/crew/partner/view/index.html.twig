@@ -59,23 +59,28 @@
                     <a href="{{ path('app_back_office_crew_partner_home') }}" class="app-btn">
                         {{ ux_icon('fa6-solid:backward-step', {'class': 'icon'}) }}
                     </a>
-                    <a href="#"
+                    <a href="{{ path('app_back_office_crew_partner_edit', {'id': partner.id}) }}"
                        class="app-btn text-info">
                         {{ ux_icon('fa6-solid:pen-to-square', {'class': 'icon'}) }}
                     </a>
                     {% if partner.active %}
-                        <a href="#"
+                        <a href="{{ path('app_back_office_crew_partner_archive', {'id': partner.id}) }}"
                            class="app-btn text-warning"
                            onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir archiver ce partenaire ?')">
                             {{ ux_icon('fa6-solid:box-archive', {'class': 'icon'}) }}
                         </a>
                     {% else %}
-                        <a href="#"
-                           class="app-btn text-danger"
-                           onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir supprimer définitivement ce partenaire ?')">
-                            {{ ux_icon('fa6-solid:trash-can', {'class': 'icon'}) }}
+                        <a href="{{ path('app_back_office_crew_partner_unarchive', {'id': partner.id}) }}"
+                           class="app-btn text-success"
+                           onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir réintégrer ce partenaire ?')">
+                            {{ ux_icon('fa6-solid:child-reaching', {'class': 'icon'}) }}
                         </a>
                     {% endif %}
+                    <a href="{{ path('app_back_office_crew_partner_delete', {'id': partner.id}) }}"
+                       class="app-btn text-danger"
+                       onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir supprimer définitivement ce partenaire ?')">
+                        {{ ux_icon('fa6-solid:trash-can', {'class': 'icon text-danger'}) }}
+                    </a>
                 </p>
             </div>
         </div>

@@ -1,11 +1,11 @@
 {{ form_start(form, {'attr': {'class': 'app-form'}}) }}
 <fieldset class="form-fieldset">
-    <legend class="form-legend">Son compte Adhérent</legend>
+    <legend class="form-legend">Son compte Partenaire</legend>
 
     <div class="form-group">
-        {{ form_label(form.memberType) }}
-        {{ form_widget(form.memberType) }}
-        {{ form_errors(form.memberType) }}
+        {{ form_label(form.partnerType) }}
+        {{ form_widget(form.partnerType) }}
+        {{ form_errors(form.partnerType) }}
     </div>
 
     <div class="form-group">
@@ -58,7 +58,7 @@
 
     <div class="form-group">
         {{ form_label(form.logo) }}
-        {% if button_label is defined and member.logo %}
+        {% if button_label is defined and partner.logo %}
             <div class="app-grid two nobg">
                 <div class="grid-item nobg">
                     {{ form_widget(form.logo) }}
@@ -66,14 +66,14 @@
                 </div>
                 <div class="grid-item nobg">
                     <div class="app-grid third-reverse nobg">
-                        <a href="{{ asset('uploads/member/' ~ member.logo) }}"
+                        <a href="{{ asset('uploads/partner/' ~ partner.logo) }}"
                            target="_blank"
                            class="grid-item nobg">
-                            <small>{{ member.logo }}</small>
+                            <small>{{ partner.logo }}</small>
                         </a>
-                        <a href="{{ path('app_back_office_crew_member_logo_delete', {'id': member.id}) }}"
+                        <a href="{{ path('app_back_office_crew_partner_logo_delete', {'id': partner.id}) }}"
                            class="grid-item nobg text-danger"
-                           onclick="return window.confirm('Êtes-vous sûr de vouloir supprimer le logo de cet adhérent ?')">
+                           onclick="return window.confirm('Êtes-vous sûr de vouloir supprimer le logo de ce partenaire ?')">
                             {{ ux_icon('fa6-solid:trash-can', {'class': 'icon text-danger'}) }}
                         </a>
                     </div>
@@ -134,11 +134,11 @@
 
 <div class="form-group">
     {% if button_label is defined %}
-        <a href="{{ path('app_back_office_crew_member_view', {'id': member.id}) }}" class="app-btn">
+        <a href="{{ path('app_back_office_crew_partner_view', {'id': partner.id}) }}" class="app-btn">
             Retour
         </a>
     {% else %}
-        <a href="{{ path('app_back_office_crew_member_home') }}" class="app-btn">
+        <a href="{{ path('app_back_office_crew_partner_home') }}" class="app-btn">
             Retour
         </a>
     {% endif %}

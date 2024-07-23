@@ -1,15 +1,15 @@
 {% extends 'back_office/_layout.html.twig' %}
 
-{% block title %}Ajouter un Adhérent{% endblock %}
+{% block title %}Modifier le Partenaire : {{ partner.fullname }}{% endblock %}
 {% block meta_description %}{% endblock %}
 {% block body_class %}backoffice form{% endblock %}
 
 {% block main %}
     <section class="app-section pagetitle">
-        <h1>Ajouter un Adhérent</h1>
+        <h1>Modifier le Partenaire : {{ partner.fullname }}</h1>
     </section>
 
     <section class="app-section form">
-        {% include 'back_office/crew/member/_form.html.twig' %}
+        {% include 'back_office/crew/partner/_form.html.twig' with {'button_label': 'Modifiez'} %}
     </section>
 {% endblock %}
