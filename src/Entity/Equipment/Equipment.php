@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entity\BackOffice\Administration\Equipment;
+namespace App\Entity\Equipment;
 
-use App\Repository\BackOffice\Administration\Equipment\EquipmentRepository;
+use App\Repository\Equipment\EquipmentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;

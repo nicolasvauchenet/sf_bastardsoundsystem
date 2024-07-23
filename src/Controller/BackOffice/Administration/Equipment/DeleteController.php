@@ -2,7 +2,7 @@
 
 namespace App\Controller\BackOffice\Administration\Equipment;
 
-use App\Entity\BackOffice\Administration\Equipment\Equipment;
+use App\Entity\Equipment\Equipment;
 use App\Service\FileUploaderService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

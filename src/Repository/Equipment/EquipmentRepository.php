@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository\BackOffice\Administration\Equipment;
+namespace App\Repository\Equipment;
 
-use App\Entity\BackOffice\Administration\Equipment\Equipment;
+use App\Entity\Equipment\Equipment;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

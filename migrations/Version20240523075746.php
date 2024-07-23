@@ -25,13 +25,17 @@ final class Version20240523075746 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_D338D58312469DE2 ON equipment (category_id)');
         $this->addSql('COMMENT ON COLUMN equipment.purchased_at IS \'(DC2Type:datetime_immutable)\'');
         $this->addSql('COMMENT ON COLUMN equipment.updated_at IS \'(DC2Type:datetime_immutable)\'');
-        $this->addSql('ALTER TABLE equipment ADD CONSTRAINT FK_D338D58312469DE2 FOREIGN KEY (category_id) REFERENCES category (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE equipment ADD CONSTRAINT FK_D338D58312469DE2 FOREIGN KEY (category_id) REFERENCES equipment_category (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SCHEMA public');
+        $this->addSql('ALTER TABLE service DROP CONSTRAINT FK_E19D9AD212469DE2');
+        $this->addSql('DROP SEQUENCE "service_category_id_seq" CASCADE');
+        $this->addSql('DROP TABLE "service_category"');
+        $this->addSql('DROP INDEX IDX_E19D9AD212469DE2');
         $this->addSql('DROP SEQUENCE equipment_id_seq CASCADE');
         $this->addSql('ALTER TABLE equipment DROP CONSTRAINT FK_D338D58312469DE2');
         $this->addSql('DROP TABLE equipment');

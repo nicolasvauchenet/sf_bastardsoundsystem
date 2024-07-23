@@ -5,15 +5,15 @@
         Accueil
     </a>
 
-    {% if app_services.servicesByCategory('Technique') | length > 0 %}
+    {% for category in app_services.getCategories %}
         <div class="menu-item">
             <a href="#">
-                {{ ux_icon('fa-solid:tools', {'class': 'icon'}) }}
-                Technique
+                {{ ux_icon(category.icon, {'class': 'icon'}) }}
+                {{ category.name }}
             </a>
 
             <div class="submenu">
-                {% for service in app_services.servicesByCategory('Technique') %}
+                {% for service in category.services %}
                     <a href="{{ path('app_front_office_service', {'slug': service.slug}) }}"
                        {% if app.request.get('_route') == 'app_front_office_service' and app.request.attributes.get('slug') == service.slug %}class="active"{% endif %}>
                         {{ service.name }}
@@ -21,61 +21,7 @@
                 {% endfor %}
             </div>
         </div>
-    {% endif %}
-
-    {% if app_services.servicesByCategory('Management') | length > 0 %}
-        <div class="menu-item">
-            <a href="#">
-                {{ ux_icon('eos-icons:subscription-management', {'class': 'icon'}) }}
-                Management
-            </a>
-
-            <div class="submenu">
-                {% for service in app_services.servicesByCategory('Management') %}
-                    <a href="{{ path('app_front_office_service', {'slug': service.slug}) }}"
-                       {% if app.request.get('_route') == 'app_front_office_service' and app.request.attributes.get('slug') == service.slug %}class="active"{% endif %}>
-                        {{ service.name }}
-                    </a>
-                {% endfor %}
-            </div>
-        </div>
-    {% endif %}
-
-    {% if app_services.servicesByCategory('Organisation') | length > 0 %}
-        <div class="menu-item">
-            <a href="#">
-                {{ ux_icon('clarity:organization-solid', {'class': 'icon'}) }}
-                Organisation
-            </a>
-
-            <div class="submenu">
-                {% for service in app_services.servicesByCategory('Organisation') %}
-                    <a href="{{ path('app_front_office_service', {'slug': service.slug}) }}"
-                       {% if app.request.get('_route') == 'app_front_office_service' and app.request.attributes.get('slug') == service.slug %}class="active"{% endif %}>
-                        {{ service.name }}
-                    </a>
-                {% endfor %}
-            </div>
-        </div>
-    {% endif %}
-
-    {% if app_services.servicesByCategory('Production') | length > 0 %}
-        <div class="menu-item">
-            <a href="#">
-                {{ ux_icon('streamline:wifi-antenna-solid', {'class': 'icon'}) }}
-                Production
-            </a>
-
-            <div class="submenu">
-                {% for service in app_services.servicesByCategory('Production') %}
-                    <a href="{{ path('app_front_office_service', {'slug': service.slug}) }}"
-                       {% if app.request.get('_route') == 'app_front_office_service' and app.request.attributes.get('slug') == service.slug %}class="active"{% endif %}>
-                        {{ service.name }}
-                    </a>
-                {% endfor %}
-            </div>
-        </div>
-    {% endif %}
+    {% endfor %}
 
     <div class="menu-item">
         <a href="#">

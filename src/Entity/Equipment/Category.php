@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Entity\BackOffice\Administration\Equipment;
+namespace App\Entity\Equipment;
 
-use App\Repository\BackOffice\Administration\Equipment\CategoryRepository;
+use App\Repository\Equipment\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
+#[ORM\Table(name: '`equipment_category`')]
 class Category
 {
     #[ORM\Id]

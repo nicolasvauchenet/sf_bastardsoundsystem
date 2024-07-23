@@ -2,8 +2,8 @@
 
 namespace App\Form\BackOffice\Administration\Equipment;
 
-use App\Entity\BackOffice\Administration\Equipment\Category;
-use App\Entity\BackOffice\Administration\Equipment\Equipment;
+use App\Entity\Equipment\Category;
+use App\Entity\Equipment\Equipment;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
