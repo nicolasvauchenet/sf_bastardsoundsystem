@@ -32,7 +32,7 @@
                                         {{ ux_icon('fa6-solid:pen-to-square', {'class': 'icon text-info'}) }}
                                     </a>
 
-                                    <a href="#"
+                                    <a href="{{ path('app_back_office_crew_member_archive', {'id': member.id}) }}"
                                        onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir archiver cet adhérent ?')">
                                         {{ ux_icon('fa6-solid:box-archive', {'class': 'icon text-warning'}) }}
                                     </a>
@@ -123,7 +123,7 @@
                                         {{ ux_icon('fa6-solid:pen-to-square', {'class': 'icon text-info'}) }}
                                     </a>
 
-                                    <a href="#"
+                                    <a href="{{ path('app_back_office_crew_member_unarchive', {'id': member.id}) }}"
                                        onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir réintégrer cet adhérent ?')">
                                         {{ ux_icon('fa6-solid:child-reaching', {'class': 'icon text-success'}) }}
                                     </a>
@@ -144,9 +144,9 @@
                                              class="card-image img greyscale"
                                              alt="{{ member.fullname }}"/>
                                     {% endif %}
-                                </a>
 
-                                {{ ux_icon('fluent-emoji-high-contrast:cross-mark', {'class': 'card-icon text-danger'}) }}
+                                    {{ ux_icon('fluent-emoji-high-contrast:cross-mark', {'class': 'card-icon text-danger'}) }}
+                                </a>
                             </figure>
 
                             <h3 class="card-title">{{ member.fullname }}</h3>

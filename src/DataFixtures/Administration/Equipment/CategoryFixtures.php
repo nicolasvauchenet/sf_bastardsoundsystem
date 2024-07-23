@@ -12,32 +12,32 @@ class CategoryFixtures extends Fixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $category = (new Category())
-            ->setName('Sonorisation FOH')
+            ->setName('Microphones')
             ->setPosition(1)
+            ->setActive(true);
+        $manager->persist($category);
+        $this->addReference('category-microphones', $category);
+
+        $category = (new Category())
+            ->setName('Sonorisation FOH')
+            ->setPosition(2)
             ->setActive(true);
         $manager->persist($category);
         $this->addReference('category-sonorisation-foh', $category);
 
         $category = (new Category())
-            ->setName('Sonorisation Plateau')
-            ->setPosition(2)
-            ->setActive(true);
-        $manager->persist($category);
-        $this->addReference('category-sonorisation-plateau', $category);
-
-        $category = (new Category())
-            ->setName('Mixage & Effets')
+            ->setName('Équipement Plateau')
             ->setPosition(3)
             ->setActive(true);
         $manager->persist($category);
-        $this->addReference('category-mixage-et-effets', $category);
+        $this->addReference('category-equipement-plateau', $category);
 
         $category = (new Category())
-            ->setName('Microphones')
+            ->setName('Mixage & Effets')
             ->setPosition(4)
             ->setActive(true);
         $manager->persist($category);
-        $this->addReference('category-microphones', $category);
+        $this->addReference('category-mixage-et-effets', $category);
 
         $category = (new Category())
             ->setName('Stands Microphone')

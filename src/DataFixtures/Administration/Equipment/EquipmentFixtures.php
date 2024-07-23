@@ -301,7 +301,7 @@ class EquipmentFixtures extends Fixture implements OrderedFixtureInterface
         $manager->persist($equipment);
 
         $equipment = (new Equipment())
-            ->setCategory($this->getReference('category-sonorisation-plateau'))
+            ->setCategory($this->getReference('category-equipement-plateau'))
             ->setName('THE SSSNAKE MC164')
             ->setImage('the-sssnake-mc164.png')
             ->setDescription("Multipaire 16/4, avec 16 connecteurs XLR femelles et 4 connecteurs XLR mâles, idéal pour les applications de scène et de studio. Le MC164 est long de 30 mètres et est connu pour sa robustesse et sa flexibilité. Il est équipé d'une boîte de scène compacte mesurant 33,5 x 18 x 7 cm et d'un diamètre de câble de 15 mm. Ce câble est particulièrement apprécié pour sa capacité à gérer plusieurs connexions XLR de manière efficace, bien que certains utilisateurs aient noté des problèmes de marquage et de fragilité des connecteurs après une utilisation intensive.")
