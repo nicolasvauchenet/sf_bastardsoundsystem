@@ -28,6 +28,9 @@ doctrine:
       active_service_filter:
         class: App\Doctrine\Filter\ActiveServiceFilter
         enabled: true
+      active_document_filter:
+        class: App\Doctrine\Filter\ActiveDocumentFilter
+        enabled: true
 when@test:
   doctrine:
     dbal:

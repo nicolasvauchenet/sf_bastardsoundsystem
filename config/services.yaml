@@ -24,7 +24,11 @@ services:
       - '../src/Entity/'
       - '../src/Kernel.php'
 
-  App\EventSubscriber\Service\ActiveServiceFilterSubscriber:
+  App\EventSubscriber\ActiveServiceFilterSubscriber:
+    tags:
+      - { name: 'doctrine.event_subscriber' }
+
+  App\EventSubscriber\ActiveDocumentFilterSubscriber:
     tags:
       - { name: 'doctrine.event_subscriber' }
 

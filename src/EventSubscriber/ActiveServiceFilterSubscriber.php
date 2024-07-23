@@ -1,6 +1,6 @@
 <?php
 
-namespace App\EventSubscriber\Service;
+namespace App\EventSubscriber;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\SecurityBundle\Security;

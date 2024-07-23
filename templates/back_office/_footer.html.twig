@@ -13,5 +13,10 @@
            {% if app.request.get('_route') == 'app_front_office_legals_privacy' %}class="active"{% endif %}>
             Politique de confidentialité
         </a>
+        •
+        <a href="{{ path('app_front_office_documents') }}"
+           {% if app.request.get('_route') == 'app_front_office_documents' %}class="active"{% endif %}>
+            Documents légaux
+        </a>
     </p>
 </footer>

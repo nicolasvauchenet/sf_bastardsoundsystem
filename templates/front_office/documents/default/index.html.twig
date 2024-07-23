@@ -1,0 +1,38 @@
+{% extends 'front_office/_layout.html.twig' %}
+
+{% block title %}Les Documents de BSS{% endblock %}
+{% block body_class %}frontoffice document{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Les Documents de BSS</h1>
+    </section>
+
+    {% for category in categories %}
+        {% if category.documents | length > 0 %}
+            <section class="app-section">
+                <h2>
+                    {{ category.name }}
+                </h2>
+
+                <div class="app-grid four">
+                    {% for document in category.documents %}
+                        <div class="grid-item app-card">
+                            <div class="card-header">
+                                <figure>
+                                    <a href="{{ asset('uploads/documents/' ~ document.filename) }}" target="_blank">
+                                        <img src="{{ asset('img/document.png') }}"
+                                             class="card-image {% if not document.active %}img greyscale{% endif %}"
+                                             alt="{{ document.name }}"/>
+                                    </a>
+                                </figure>
+
+                                <h3 class="card-title">{{ document.name }}</h3>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
