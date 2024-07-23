@@ -65,10 +65,10 @@
                     {{ form_errors(form.logo) }}
                 </div>
                 <div class="grid-item nobg">
-                    <div class="app-grid third-reverse nobg">
-                        <a href="{{ asset('uploads/partner/' ~ partner.logo) }}"
-                           target="_blank"
-                           class="grid-item nobg">
+                    <div class="app-grid third-reverse nobg" data-controller="modal--index">
+                        <a href="#"
+                           class="grid-item nobg"
+                           data-action="click->modal--index#open">
                             <small>{{ partner.logo }}</small>
                         </a>
                         <a href="{{ path('app_back_office_crew_partner_logo_delete', {'id': partner.id}) }}"
@@ -76,6 +76,7 @@
                            onclick="return window.confirm('Êtes-vous sûr de vouloir supprimer le logo de ce partenaire ?')">
                             {{ ux_icon('fa6-solid:trash-can', {'class': 'icon text-danger'}) }}
                         </a>
+                        {% include '_modal.html.twig' with {'content_type': 'image', 'content_url': asset('uploads/partner/' ~ partner.logo), 'content_alt': partner.fullname } %}
                     </div>
                 </div>
             </div>

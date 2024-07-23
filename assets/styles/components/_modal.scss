@@ -24,12 +24,16 @@
   .modal-content {
     position: relative;
     z-index: 9999;
-    margin: 0.5rem;
+    margin: 2rem 2rem 0.5rem 0.5rem;
     background-color: $third;
     border: 0.5rem solid $primary;
     border-radius: 0.5rem;
     box-shadow: 0 0.25rem 1rem rgba($black, 0.5),
     0 0.5rem 1.25rem rgba($black, 0.1);
+
+    @include respondTo(md) {
+      margin: 2.5rem;
+    }
 
     p {
       padding: 0 !important;
@@ -43,16 +47,16 @@
 
   .modal-close {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
+    top: -2.25rem;
+    right: -2.25rem;
     z-index: 9999;
     @include displayFlex(center, center);
-    padding: 0.5rem;
+    padding: 0.25rem;
     width: 2.5rem;
     height: 2.5rem;
     color: $primary;
     background-color: $white;
-    border: 0.25rem solid $primary;
+    border: 0.5rem solid $primary;
     border-radius: 50%;
     transition: all 0.5s;
     cursor: pointer;
