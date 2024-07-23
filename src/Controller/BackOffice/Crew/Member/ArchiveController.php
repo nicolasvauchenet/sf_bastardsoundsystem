@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class ArchiveController extends AbstractController
 {
-    #[Route('/administration/membres/archiver/{id}', name: 'app_back_office_crew_member_archive')]
+    #[Route('/administration/adherents/archiver/{id}', name: 'app_back_office_crew_member_archive')]
     public function archive(EntityManagerInterface $entityManager,
                             Member                 $member): Response
     {
@@ -24,7 +24,7 @@ class ArchiveController extends AbstractController
         return $this->redirectToRoute('app_back_office_crew_member_home', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/administration/membres/desarchiver/{id}', name: 'app_back_office_crew_member_unarchive')]
+    #[Route('/administration/adherents/desarchiver/{id}', name: 'app_back_office_crew_member_unarchive')]
     public function unarchive(EntityManagerInterface $entityManager,
                               Member                 $member): Response
     {

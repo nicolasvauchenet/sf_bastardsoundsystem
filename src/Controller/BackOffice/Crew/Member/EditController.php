@@ -16,7 +16,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class EditController extends AbstractController
 {
-    #[Route('/administration/membres/modifier/{id}', name: 'app_back_office_crew_member_edit')]
+    #[Route('/administration/adherents/modifier/{id}', name: 'app_back_office_crew_member_edit')]
     public function edit(Request                     $request,
                          EntityManagerInterface      $entityManager,
                          FileUploaderService         $fileUploaderService,

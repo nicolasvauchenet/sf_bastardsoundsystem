@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class ViewController extends AbstractController
 {
-    #[Route('/administration/membres/details/{id}', name: 'app_back_office_crew_member_view')]
+    #[Route('/administration/adherents/details/{id}', name: 'app_back_office_crew_member_view')]
     public function index(Member $member): Response
     {
         return $this->render('back_office/crew/member/view/index.html.twig', [

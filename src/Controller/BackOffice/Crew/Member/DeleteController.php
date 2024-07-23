@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class DeleteController extends AbstractController
 {
-    #[Route('/administration/membres/supprimer/{id}', name: 'app_back_office_crew_member_delete')]
+    #[Route('/administration/adherents/supprimer/{id}', name: 'app_back_office_crew_member_delete')]
     public function delete(FileUploaderService    $fileUploaderService,
                            EntityManagerInterface $entityManager,
                            Member                 $member): Response
@@ -28,7 +28,7 @@ class DeleteController extends AbstractController
         return $this->redirectToRoute('app_back_office_crew_member_home');
     }
 
-    #[Route('/administration/membres/logo/supprimer/{id}', name: 'app_back_office_crew_member_logo_delete')]
+    #[Route('/administration/adherents/logo/supprimer/{id}', name: 'app_back_office_crew_member_logo_delete')]
     public function imageDelete(FileUploaderService    $fileUploaderService,
                                 EntityManagerInterface $entityManager,
                                 Member                 $member): Response

@@ -16,7 +16,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AddController extends AbstractController
 {
-    #[Route('/administration/membres/ajouter', name: 'app_back_office_crew_member_add')]
+    #[Route('/administration/adherents/ajouter', name: 'app_back_office_crew_member_add')]
     public function add(Request                     $request,
                         EntityManagerInterface      $entityManager,
                         FileUploaderService         $fileUploaderService,

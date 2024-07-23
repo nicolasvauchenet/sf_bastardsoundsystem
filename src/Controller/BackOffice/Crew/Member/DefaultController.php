@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class DefaultController extends AbstractController
 {
-    #[Route('/administration/membres', name: 'app_back_office_crew_member_home')]
+    #[Route('/administration/adherents', name: 'app_back_office_crew_member_home')]
     public function index(MemberRepository $memberRepository): Response
     {
         return $this->render('back_office/crew/member/default/index.html.twig', [
