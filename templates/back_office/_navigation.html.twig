@@ -61,7 +61,8 @@
                 Cotisations
             </a>
 
-            <a href="#">
+            <a href="{{ path('app_back_office_administration_document_home') }}"
+               {% if 'app_back_office_administration_document_' in app.request.get('_route') %}class="active"{% endif %}>
                 Documents BSS
             </a>
 

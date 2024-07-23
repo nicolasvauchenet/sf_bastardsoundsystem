@@ -1,0 +1,55 @@
+{% extends 'back_office/_layout.html.twig' %}
+
+{% block title %}Gestion des Documents{% endblock %}
+{% block body_class %}backoffice document{% endblock %}
+
+{% block main %}
+    <section class="app-section pagetitle">
+        <h1>Les Documents de BSS</h1>
+    </section>
+
+    {% for category in categories %}
+        {% if category.documents | length > 0 %}
+            <section class="app-section">
+                <h2>
+                    {{ category.name }}
+                    <a href="{{ path('app_back_office_administration_document_add', {'slug': category.slug}) }}"
+                       class="text-success">{{ ux_icon('subway:add', {'class': 'icon'}) }}</a>
+                </h2>
+
+                <div class="app-grid four">
+                    {% for document in category.documents %}
+                        <div class="grid-item app-card">
+                            <div class="card-header">
+                                <figure>
+                                    <div class="card-actions">
+                                        <a href="{{ asset('uploads/documents/' ~ document.filename) }}" target="_blank">
+                                            {{ ux_icon('fa6-solid:eye', {'class': 'icon'}) }}
+                                        </a>
+
+                                        <a href="{{ path('app_back_office_administration_document_edit', {'slug': document.slug}) }}">
+                                            {{ ux_icon('fa6-solid:pen-to-square', {'class': 'icon text-info'}) }}
+                                        </a>
+
+                                        <a href="{{ path('app_back_office_administration_document_delete', {'id': document.id}) }}"
+                                           onclick="return window.confirm('Êtes-vous vraiment sûr de vouloir supprimer définitivement ce document ?')">
+                                            {{ ux_icon('fa6-solid:trash-can', {'class': 'icon text-danger'}) }}
+                                        </a>
+                                    </div>
+
+                                    <a href="{{ asset('uploads/documents/' ~ document.filename) }}" target="_blank">
+                                        <img src="{{ asset('img/document.png') }}"
+                                             class="card-image {% if not document.active %}img greyscale{% endif %}"
+                                             alt="{{ document.name }}"/>
+                                    </a>
+                                </figure>
+
+                                <h3 class="card-title">{{ document.name }}</h3>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

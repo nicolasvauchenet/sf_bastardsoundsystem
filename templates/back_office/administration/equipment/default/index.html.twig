@@ -40,7 +40,7 @@
                                     <a href="{{ path('app_back_office_administration_equipment_view', {'slug': equipment.slug}) }}">
                                         {% if equipment.image %}
                                             <img src="{{ asset('uploads/equipment/' ~ equipment.image) }}"
-                                                 class="card-image"
+                                                 class="card-image {% if not equipment.active %}img greyscale{% endif %}"
                                                  alt="{{ equipment.name }}"/>
                                         {% endif %}
 

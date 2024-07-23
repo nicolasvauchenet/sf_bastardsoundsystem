@@ -1,0 +1,56 @@
+{{ form_start(form, {'attr': {'class': 'app-form'}}) }}
+<fieldset class="form-fieldset">
+    <legend class="form-legend">Détails du Document</legend>
+
+    <div class="form-group">
+        {{ form_label(form.category) }}
+        {{ form_widget(form.category) }}
+        {{ form_errors(form.category) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name) }}
+        {{ form_errors(form.name) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.filename) }}
+        <div class="app-grid two nobg">
+            <div class="grid-item nobg">
+                {{ form_widget(form.filename) }}
+                {{ form_errors(form.filename) }}
+            </div>
+            <div class="grid-item nobg">
+                {% if button_label is defined %}
+                    <div class="app-grid third-reverse nobg">
+                        <a href="{{ asset('uploads/documents/' ~ document.filename) }}"
+                           target="_blank"
+                           class="grid-item nobg">
+                            <small>{{ document.filename }}</small>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset class="form-fieldset">
+    <legend class="form-legend">Suivi du Document</legend>
+
+    <div class="form-group">
+        {{ form_label(form.active) }}
+        {{ form_widget(form.active) }}
+        {{ form_errors(form.active) }}
+    </div>
+</fieldset>
+
+<div class="form-group">
+    <a href="{{ path('app_back_office_administration_document_home') }}" class="app-btn">
+        Retour
+    </a>
+    <button type="submit" class="form-submit app-btn cta">{{ button_label | default('Ajoutez') }}</button>
+</div>
+
+{{ form_end(form) }}

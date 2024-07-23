@@ -19,7 +19,7 @@
                 <p>
                     {% if equipment.image %}
                         <img src="{{ asset('uploads/equipment/' ~ equipment.image) }}"
-                             class="img contain"
+                             class="img contain {% if not equipment.active %}greyscale{% endif %}"
                              alt="{{ equipment.name }}"/>
                     {% endif %}
                 </p>
