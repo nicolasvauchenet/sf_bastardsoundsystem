@@ -16,7 +16,7 @@ class DeleteController extends AbstractController
                            EntityManagerInterface $entityManager,
                            Document               $document): Response
     {
-        $fileUploaderService->remove('document', $document->getFilename());
+        $fileUploaderService->remove('documents', $document->getFilename());
 
         $entityManager->remove($document);
         $entityManager->flush();

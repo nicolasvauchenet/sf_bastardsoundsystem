@@ -14,21 +14,21 @@ class DocumentFixtures extends Fixture implements OrderedFixtureInterface
         $document = (new Document())
             ->setCategory($this->getReference('document-category-legaux'))
             ->setName("Procès-Verbal de l'Assemblée Générale Constitutive")
-            ->setFilename('pv-assemblee-generale-constitutive.pdf')
+            ->setFilename('proces-verbal-de-lassemblee-generale-constitutive.pdf')
             ->setActive(true);
         $manager->persist($document);
 
         $document = (new Document())
             ->setCategory($this->getReference('document-category-legaux'))
             ->setName("Statuts de l'association")
-            ->setFilename('statuts.pdf')
+            ->setFilename('statuts-de-lassociation.pdf')
             ->setActive(true);
         $manager->persist($document);
 
         $document = (new Document())
             ->setCategory($this->getReference('document-category-legaux'))
             ->setName("Attestation d'inscription au répertoire SIREN")
-            ->setFilename('inscription-siren.pdf')
+            ->setFilename('attestation-dinscription-au-repertoire-siren.pdf')
             ->setActive(true);
         $manager->persist($document);
 
