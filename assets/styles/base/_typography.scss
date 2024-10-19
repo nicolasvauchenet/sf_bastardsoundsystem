@@ -1,0 +1,30 @@
+h1,
+h2,
+h3 {
+  font-family: $font-secondary;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  color: $third;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  color: $primary;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: $black;
+}
+
+a {
+  text-decoration: none;
+  color: $third;
+  transition: all 0.4s;
+
+  &:hover {
+    color: rgba($white, 0.75);
+  }
+}

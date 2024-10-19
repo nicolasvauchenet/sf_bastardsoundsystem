@@ -1,0 +1,63 @@
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 9997;
+  @include displayFlex(space-between, center, 0.5rem);
+  background-color: $primary;
+  border-bottom: 0.5rem solid $third;
+
+  @include respondTo(md) {
+    @include displayFlex(center, normal, null);
+    box-shadow: 0 0.25rem 0.5rem rgba($black, 0.5);
+  }
+
+  .app-logo {
+    display: block;
+
+    img {
+      display: block;
+      height: 12dvh;
+      transform: rotate(0deg);
+      transform-origin: center center;
+      filter: drop-shadow(0 0.25rem 0.5rem rgba($black, 0.5));
+      transition: all 0.9s;
+    }
+
+    &:hover {
+      img {
+        transform: rotate(360deg);
+      }
+    }
+
+    &:active {
+      img {
+        transform: rotate(358deg);
+      }
+    }
+
+    @include respondTo(md) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9998;
+
+      img {
+        margin-left: 0.5rem;
+        height: 20dvh;
+      }
+    }
+  }
+
+  .app-slogan {
+    margin-bottom: 0;
+    font-family: $font-secondary;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $third;
+
+    @include respondTo(md) {
+      display: none;
+    }
+  }
+}

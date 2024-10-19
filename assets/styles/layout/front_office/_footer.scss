@@ -1,0 +1,67 @@
+.app-footer {
+  padding: 1.5rem 1rem;
+  margin-bottom: 4.25rem;
+  color: $white;
+  background-color: $primary;
+
+  @include respondTo(md) {
+    margin-bottom: 0;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: $third;
+  }
+
+  a {
+    color: $white;
+
+    &:hover {
+      color: $third;
+    }
+
+    &.active {
+      font-weight: bold;
+      color: $third;
+    }
+  }
+
+  .footer-about {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    text-align: justify;
+  }
+
+  .footer-links {
+    ul {
+      li {
+        line-height: 1.5rem;
+        text-align: center;
+      }
+    }
+  }
+
+  .footer-social {
+    a {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .footer-contact {
+    ul {
+      li {
+        line-height: 1.5rem;
+        text-align: center;
+      }
+    }
+  }
+
+  .footer-credits {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    text-align: center;
+  }
+}

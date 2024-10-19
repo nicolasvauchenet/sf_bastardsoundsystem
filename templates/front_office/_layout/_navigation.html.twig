@@ -1,0 +1,199 @@
+<nav class="app-navigation">
+    <div class="app-dropdownmenu">
+        <a href="#" onclick="return false;"
+           class="{% if 'app_front_office_label_' in app.request.get('_route') %}active{% endif %}">
+            {{ ux_icon('icon-park-solid:label', {'class': 'app-icon medium'}) }}
+            Label
+        </a>
+
+        <div class="dropdown-content">
+            <div class="dropdown-item">
+                <img src="{{ asset('img/label/navigation.webp') }}" alt="Label"/>
+            </div>
+            <div class="dropdown-item">
+                <div class="app-grid three">
+                    <div class="grid-item">
+                        <strong>Découvre BSS</strong>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_label_index' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Le label BSS
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_label_goals' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Objectifs & valeurs
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_label_operation' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Fonctionnement
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <strong>Management</strong>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_management_career' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Stratégie de carrière
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_management_communication' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Conseils en com'
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_management_documents' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Documents & visuels
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <strong>Booking</strong>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_booking_gig' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Booking concerts
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_booking_tour' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Logistique de tournées
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_booking_contracts' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Contrats & assurances
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="bg-secondary">
+        {{ ux_icon('el:group', {'class': 'app-icon medium'}) }}
+        Artistes
+    </a>
+
+    <div class="app-dropdownmenu">
+        <a href="#" onclick="return false;"
+           class="{% if 'app_front_office_label_' in app.request.get('_route') %}active{% endif %}">
+            {{ ux_icon('emojione-monotone:top-hat', {'class': 'app-icon medium'}) }}
+            Production
+        </a>
+
+        <div class="dropdown-content">
+            <div class="dropdown-item">
+                <img src="{{ asset('img/production/navigation.webp') }}" alt="Label"/>
+            </div>
+            <div class="dropdown-item">
+                <div class="app-grid three">
+                    <div class="grid-item">
+                        <strong>Production musicale</strong>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_recording_live' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Enregistrement Live
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_recording_studio' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Enregistrement Studio
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_recording_mastering' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Mastering
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <strong>Diffusion</strong>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_diffusion_pressing' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Pressage CD et vinyle
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_diffusion_streaming' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Services de streaming
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_diffusion_merchandising' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Albums et merchandising
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <strong>Partenariat</strong>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_collaboration_coorganization' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Co-organisation
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_collaboration_coproduction' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Co-production
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_collaboration_engagement' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Engager un groupe
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-dropdownmenu">
+        <a href="#" onclick="return false;"
+           class="{% if 'app_front_office_label_' in app.request.get('_route') %}active{% endif %}">
+            {{ ux_icon('fa-solid:tools', {'class': 'app-icon medium'}) }}
+            Technique
+        </a>
+
+        <div class="dropdown-content">
+            <div class="dropdown-item">
+                <img src="{{ asset('img/technics/navigation.webp') }}" alt="Label"/>
+            </div>
+            <div class="dropdown-item">
+                <div class="app-grid two">
+                    <div class="grid-item">
+                        <strong>Technique Live</strong>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_technics_stagemanagement' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Régie technique
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_technics_sound' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Sonorisation
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <strong>Captations</strong>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_technics_photos' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Photos live
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_technics_videos' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Vidéos et clips
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#">
+        {{ ux_icon('bi:envelope-fill', {'class': 'app-icon medium'}) }}
+        Contact
+    </a>
+</nav>

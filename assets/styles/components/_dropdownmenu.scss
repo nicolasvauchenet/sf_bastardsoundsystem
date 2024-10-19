@@ -1,0 +1,158 @@
+.app-dropdownmenu {
+  @include displayFlex(center, null);
+  flex: 1;
+
+  & > a {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-family: $font-secondary;
+    font-size: 0.5rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: $third;
+    transition: all 0.4s;
+
+    @include respondTo(md) {
+      @include displayFlex(center, center);
+      font-size: 2rem;
+      height: calc(100% - 1.5rem);
+    }
+
+    .app-icon {
+      display: block;
+      margin: 0 auto 0.25rem;
+
+      @include respondTo(md) {
+        display: none;
+      }
+    }
+  }
+
+  .dropdown-content {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 4.75rem;
+    overflow: hidden;
+    z-index: 9997;
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: all 0.3s;
+    will-change: transform, opacity;
+    @include displayFlex;
+    border-top: 0.5rem solid $third;
+
+    @include respondTo(md) {
+      left: 21dvh;
+      top: 3.5rem;
+      bottom: initial;
+      transform-origin: top;
+      gap: 0.5rem;
+      background-color: $third;
+      border: 0.5rem solid $third;
+      border-bottom-left-radius: 0.25rem;
+      box-shadow: 0.25rem 0.25rem 0.5rem rgba($black, 0.5);
+    }
+
+    .dropdown-item {
+      &:not(:first-child) {
+        flex: 1;
+      }
+
+      & > img {
+        width: 16dvh;
+        height: 100%;
+        object-fit: cover;
+
+        @include respondTo(md) {
+          width: 20dvh;
+        }
+      }
+
+      .app-grid {
+        grid-gap: 0;
+
+        .grid-item {
+          background-color: $white;
+
+          &:hover {
+            strong {
+              color: $white;
+            }
+          }
+
+          strong {
+            display: block;
+            padding: 1rem 0.5rem 0.75rem;
+            margin-bottom: 1rem;
+            font-family: $font-secondary;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            color: $third;
+            background-color: $primary;
+            transition: all 0.4s;
+
+            @include respondTo(md) {
+              padding: 1rem 1.5rem 0.75rem 2.25rem;
+            }
+          }
+
+          a {
+            @include displayFlex(null, center, 0.5rem);
+            padding: 0.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: $primary;
+
+            @include respondTo(md) {
+              padding: 0.75rem 1.5rem;
+              font-size: 1.25rem;
+            }
+
+            &:hover {
+              color: $third;
+            }
+
+            img {
+              height: 2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &:hover {
+    & > a {
+      color: $white;
+    }
+
+    .dropdown-content {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+  }
+
+  &:has(.app-grid.two) {
+    .dropdown-content {
+      @include respondTo(md) {
+        left: initial;
+        width: 45dvw;
+      }
+
+      .dropdown-item {
+        & > img {
+          width: 15dvh;
+        }
+      }
+    }
+  }
+
+  &:has(>.active) {
+    color: $primary;
+    background-color: $third;
+  }
+}

@@ -1,0 +1,39 @@
+<nav class="app-account">
+    <div class="app-dropdownmenu">
+        <a href="#" onclick="return false;"
+           class="{% if 'app_front_office_label_' in app.request.get('_route') %}active{% endif %}">
+            {{ ux_icon('ic:sharp-account-circle', {'class': 'app-icon'}) }}
+        </a>
+
+        <div class="dropdown-content">
+            <div class="dropdown-item">
+                <img src="{{ asset('img/account/navigation.webp') }}" alt="Label"/>
+            </div>
+            <div class="dropdown-item">
+                <div class="app-grid two">
+                    <div class="grid-item">
+                        <strong>Rejoins BSS</strong>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_membership' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Adhère au label
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_partnership' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Deviens partenaire
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <strong>Non connecté</strong>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_login' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Connecte-toi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

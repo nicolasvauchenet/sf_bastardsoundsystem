@@ -1,0 +1,26 @@
+.app-account {
+  .app-dropdownmenu {
+    & > a {
+      padding: 0.5rem 1rem 0.25rem;
+
+      .app-icon {
+        display: block;
+        width: 2.5rem;
+      }
+    }
+
+    .dropdown-content {
+      top: 6.8rem;
+      bottom: initial;
+      transform-origin: top;
+      border-top: none;
+      border-bottom: 0.5rem solid $third;
+      box-shadow: 0 0.25rem 0.5rem rgba($black, 0.5);
+
+      @include respondTo(md) {
+        top: 3.5rem;
+        border-top: 0.5rem solid $third;
+      }
+    }
+  }
+}

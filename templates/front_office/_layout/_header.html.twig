@@ -1,0 +1,15 @@
+<header class="app-header">
+    <a href="{{ path('app_front_office_home') }}" class="app-logo">
+        <img src="{{ asset('img/sitelogo.png') }}" alt="Bastard Sound System"/>
+    </a>
+
+    <p class="app-slogan">
+        Quand chaque note
+        <br/>
+        devient une légende
+    </p>
+
+    {% include 'front_office/_layout/_navigation.html.twig' %}
+
+    {% include 'front_office/_layout/_account.html.twig' %}
+</header>

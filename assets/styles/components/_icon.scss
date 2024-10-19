@@ -1,0 +1,43 @@
+.app-icon {
+  width: 1.5rem;
+
+  &.medium {
+    width: 2.5rem;
+  }
+
+  &.large {
+    width: 4rem;
+  }
+
+  &.facebook {
+    color: $facebook;
+  }
+
+  &.bandcamp {
+    color: $bandcamp;
+  }
+
+  &.dailymotion {
+    color: $dailymotion;
+  }
+
+  &.youtube {
+    color: $youtube;
+  }
+
+  &.instagram {
+    color: $instagram;
+  }
+
+  &.spotify {
+    color: $spotify;
+  }
+
+  &.deezer {
+    color: $deezer;
+  }
+
+  &.apple-music {
+    color: $apple-music;
+  }
+}

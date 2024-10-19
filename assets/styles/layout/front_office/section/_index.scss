@@ -1,0 +1,15 @@
+.app-section {
+  padding: 3rem 1rem;
+  margin: 0 0.5rem 3rem;
+  background-color: $white;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.25rem 0.5rem rgba($black, 0.5);
+
+  @include respondTo(md) {
+    margin: 0 auto 3rem;
+    width: 1200px;
+  }
+
+  @import "./cover";
+  @import "./post-figure";
+}

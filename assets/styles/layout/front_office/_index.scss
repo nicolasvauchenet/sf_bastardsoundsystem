@@ -1,0 +1,43 @@
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: $primary;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $third;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $third;
+}
+
+html {
+  scroll-behavior: smooth;
+
+  .turbo-progress-bar {
+    height: 0.5rem;
+    background-color: $third;
+    border-bottom: 0.25rem solid $primary;
+    border-bottom-right-radius: 0.25rem;
+  }
+
+  body {
+    @include displayFlex(space-between, null, null, column);
+    min-height: 100dvh;
+    font-family: $font-primary;
+    font-size: 1.25rem;
+    color: $black;
+    background-color: $primary;
+
+    @import "./header";
+    @import "./navigation";
+    @import "./account";
+    @import "./main";
+    @import "./footer";
+
+    @import "../../pages/front_office";
+  }
+}
