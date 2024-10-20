@@ -1,0 +1,49 @@
+.form-fieldset {
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+  background-color: $third;
+  border-radius: 0.25rem;
+  box-shadow: 0.25rem 0.25rem 0.5rem rgba($black, 0.5);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .form-legend {
+    padding: 0.5rem 1rem;
+    font-family: $font-secondary;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $white;
+    background-color: $secondary;
+    border-radius: 0.25rem;
+    box-shadow: 0.25rem 0.25rem 0.75rem rgba($black, 0.5);
+  }
+
+  &.controls {
+    @include displayFlex(null, null, 1.5rem, column);
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+
+    @include respondTo(md) {
+      @include displayGrid(repeat(2, 1fr), 1.5rem);
+      align-items: center;
+    }
+
+    .buttons {
+      @include respondTo(xs) {
+        order: 2;
+      }
+    }
+
+    .form-submit {
+      width: 100%;
+
+      @include respondTo(xs) {
+        order: 1;
+      }
+    }
+  }
+}

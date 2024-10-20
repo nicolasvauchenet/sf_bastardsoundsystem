@@ -11,4 +11,34 @@
   p {
     text-align: justify;
   }
+
+  &.info {
+    @include displayFlex(null, center, 1.5rem, row);
+    padding: 1rem;
+    margin-bottom: 3rem;
+    background-color: rgba($third, 0.25);
+    border-radius: 0.25rem;
+
+    @include respondTo(md) {
+      padding: 1.5rem;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+
+    .icon {
+      width: 10dvw;
+      text-align: center;
+    }
+
+    p {
+      a {
+        color: $primary;
+
+        &:hover {
+          color: $secondary;
+        }
+      }
+    }
+  }
 }

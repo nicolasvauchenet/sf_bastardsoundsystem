@@ -24,20 +24,31 @@
                         </a>
                     </div>
                     <div class="grid-item">
-                        <strong>Non connecté</strong>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_login' %}active{% endif %}">
-                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
-                            Connecte-toi
-                        </a>
+                        {% if app.user %}
+                            <strong>{{ app.user.name }}</strong>
+                            <a href="{{ path('app_logout') }}"
+                               class="text-warning"
+                               onclick="return window.confirm('Tu pars déjà ?')">
+                                <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                                Déconnecte-toi
+                            </a>
+                        {% else %}
+                            <strong>Non connecté</strong>
+                            <a href="{{ path('app_login') }}"
+                               class="{% if app.request.get('_route') == 'app_login' %}active{% endif %}">
+                                <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                                Connecte-toi
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
                 <p>
-                    Welcome dans la <strong>zone VIP</strong>, l'endroit où tout se passe&nbsp;! Connecte-toi à ton
-                    <strong>espace perso</strong> et plonge direct dans le vif du sujet chez BSS. C'est ici que tu
-                    <strong>gères tes infos</strong>, que tu demandes ou que tu retrouves tes <strong>documents</strong>,
-                    que tu déniches des <strong>bons plans</strong> exclusifs et que tu restes branché sur les
-                    dernières vibrations de la scène.
+                    Welcome dans la <strong>zone VIP</strong>, l'endroit où tout se passe&nbsp;!
+                    <a href="{{ path('app_login') }}">Connecte-toi</a> à ton <strong>espace perso</strong> et plonge
+                    direct dans le vif du sujet chez BSS. C'est ici que tu <strong>gères tes infos</strong>, que tu
+                    demandes ou que tu retrouves tes <strong>documents</strong>, que tu déniches des
+                    <strong>bons plans</strong> exclusifs et que tu restes branché sur les dernières vibrations de la
+                    scène.
                 </p>
             </div>
         </div>

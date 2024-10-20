@@ -166,7 +166,7 @@
     .dropdown-content {
       @include respondTo(md) {
         left: initial;
-        width: 45dvw;
+        width: 50dvw;
       }
     }
   }

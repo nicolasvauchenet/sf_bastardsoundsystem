@@ -1,0 +1,75 @@
+{% extends 'front_office/_layout/_index.html.twig' %}
+
+{% block title %}Connecte-toi{% endblock %}
+{% block meta_description %}{% endblock %}
+
+{% block body_class %}front-office{% endblock %}
+
+{% block main %}
+    <section class="app-section cover">
+        <img src="{{ asset('img/sitecover.webp') }}" alt="Bastard Sound System"/>
+
+        <div class="content">
+            <h1>Connecte-toi à ton espace privé</h1>
+            <p>Bastard Sound System is the place to be</p>
+        </div>
+    </section>
+
+    <section class="app-section post-figure">
+        <h2>Ton espace perso chez BSS</h2>
+
+        <div class="app-text info">
+            <div class="icon">
+                {{ ux_icon('fontisto:info', {'class': 'app-icon medium text-info'}) }}
+            </div>
+
+            <p class="text-justify small">
+                Ne cherche pas l'endroit où <strong>créer ton compte</strong>, y'en a pas&nbsp;! Si t'en veux un, tu
+                dois d'abord <a href="#">devenir adhérent</a> ou <a href="#">partenaire</a> de <strong>BSS</strong>.
+                L'<strong>espace perso</strong> te donne accès à tous les <strong>services</strong> que l'asso propose à
+                tous ses <strong>adhérents</strong>.
+            </p>
+        </div>
+
+        <form method="post" class="app-form">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <fieldset class="form-fieldset">
+                <legend class="form-legend">Tes identifiants ici</legend>
+
+                <div class="app-grid two">
+                    <div class="form-group">
+                        <label for="username" class="form-label required">Ton adresse e-mail</label>
+                        <input type="email"
+                               value="{{ last_username }}"
+                               name="_username"
+                               id="username"
+                               class="form-control"
+                               autocomplete="email"
+                               required
+                               autofocus/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label required">Ton mot de passe</label>
+                        <input type="password"
+                               name="_password"
+                               id="password"
+                               class="form-control"
+                               autocomplete="current-password"
+                               required/>
+                    </div>
+                </div>
+            </fieldset>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+
+            <fieldset class="form-fieldset controls">
+                <a href="#" class="app-button outline">Mot de passe oublié&nbsp;?</a>
+                <button class="form-submit app-button cta" type="submit">Connexion&nbsp;!</button>
+            </fieldset>
+        </form>
+    </section>
+{% endblock %}
