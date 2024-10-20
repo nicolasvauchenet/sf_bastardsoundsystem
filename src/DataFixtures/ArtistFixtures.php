@@ -31,7 +31,7 @@ class ArtistFixtures extends Fixture implements OrderedFixtureInterface
             ->setZipcode('87000')
             ->setCity('Limoges')
             ->setCountry('France')
-            ->setLogo('feelarsen-logo.png')
+            ->setLogo('feelarsen-logo.jpg')
             ->setDescription("Féelarsen est un groupe de rock basé à Limoges, influencé par Noir Désir, Starshooter, et les Wampas. Leurs compositions originales et en français abordent des thèmes sombres et ironiques avec des paroles incisives et des riffs mordants.")
             ->setGenre('Rock alternatif')
             ->setWebsite('https://feelarsen.fr')
