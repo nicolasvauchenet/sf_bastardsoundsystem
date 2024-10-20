@@ -1,0 +1,146 @@
+{% extends 'front_office/_layout/_index.html.twig' %}
+
+{% block title %}Le partenariat - Engager un groupe{% endblock %}
+{% block meta_description %}{% endblock %}
+
+{% block body_class %}front-office{% endblock %}
+
+{% block main %}
+    <section class="app-section cover">
+        <img src="{{ asset('img/sitecover.webp') }}" alt="Bastard Sound System"/>
+
+        <div class="content">
+            <h1>Besoin d'un groupe&nbsp;?</h1>
+            <p>Le partenariat avec BSS</p>
+        </div>
+    </section>
+
+    <section class="app-section post-figure">
+        <h2>C'est simple et direct</h2>
+
+        <p class="text-justify small">
+            Engager un groupe chez <strong>Bastard Sound System</strong>, c'est un jeu d'enfant. On a tout simplifié
+            pour que tu puisses organiser ton <strong>événement</strong> en un clin d'œil. Voici la marche à suivre,
+            étape par étape, pour faire de ta <strong>soirée</strong> un moment unique.
+        </p>
+    </section>
+
+    <figure class="app-image">
+        <img src="{{ asset('img/production/collaboration/engagement1.webp') }}" alt="Catalogue de groupes"/>
+    </figure>
+
+    <section class="app-section post-figure">
+        <h2>Les étapes pour engager un groupe</h2>
+
+        <div class="app-grid three">
+            <div class="grid-item app-text small">
+                <div class="content">
+                    <h3>1. Repère un groupe dans le catalogue</h3>
+                    <p>
+                        Parcours notre
+                        <a href="#">catalogue</a>
+                        et trouve le groupe qui te plaît parmi notre sélection de <strong>groupes de rock</strong> et
+                        d'autres
+                        styles !
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid-item app-text small">
+                <div class="content">
+                    <h3>2. Clique sur "Engager"</h3>
+                    <p>
+                        Une fois ton groupe choisi, clique sur le bouton <em>"Engager"</em> qui se trouve sur la page du
+                        groupe.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid-item app-text small">
+                <div class="content">
+                    <h3>3. Remplis le formulaire</h3>
+                    <p>
+                        Un formulaire te permettra de te présenter et d’expliquer en quelques mots ton
+                        <strong>projet</strong>
+                        d’événement, que ce soit un <strong>concert</strong>, un <strong>festival</strong> ou autre.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid-item app-text small">
+                <div class="content">
+                    <h3>4. On te contacte</h3>
+                    <p>
+                        On prend ensuite <strong>contact</strong> avec toi pour discuter de ton projet
+                        <strong>de vive voix</strong>. On aime les échanges directs et fluides pour bien comprendre ton
+                        besoin.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid-item app-text small">
+                <div class="content">
+                    <h3>5. Accord sur le prix et les conditions</h3>
+                    <p>
+                        Une fois que tout est clair, on se met d’accord sur le <strong>tarif</strong> et les
+                        <strong>conditions</strong> de la prestation.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid-item app-text small">
+                <div class="content">
+                    <h3>6. Signature du contrat</h3>
+                    <p>
+                        Enfin, on formalise tout ça avec un <strong>contrat de cession de prestation</strong> (car on
+                        est
+                        aussi
+                        <strong>producteur</strong>).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <figure class="app-image large">
+        <img src="{{ asset('img/production/collaboration/engagement2.webp') }}" alt="Engager un groupe"/>
+    </figure>
+
+    <section class="app-section post-figure">
+        <h2>Besoin de plus&nbsp;?</h2>
+
+        <div class="app-grid two">
+            <div class="grid-item app-text small">
+                <div class="content mb-1">
+                    <p>
+                        Tu peux aussi nous confier toute la <strong>logistique</strong>, on peut venir avec le
+                        <strong>matériel</strong> et les <strong>techniciens</strong>, et s'occuper de
+                        l'<strong>installation</strong>, des <strong>réglages</strong>, de la
+                        <strong>prestation</strong>,
+                        du <strong>merchandising</strong>, etc. Tout est prêt pour que le show soit parfait.
+                    </p>
+                </div>
+
+                <a href="#" class="app-button cta">Nos services techniques</a>
+            </div>
+
+            <div class="grid-item app-text small">
+                <div class="content mb-1">
+                    <p>
+                        On peut aussi co-produire ton <strong>événement</strong> avec toi : concert dans ton bar, prise
+                        en
+                        charge d'une partie de l'orga, etc. Va jeter un œil à notre page qui te détaille la
+                        <a href="{{ path('app_front_office_production_collaboration_coproduction') }}">Co-Production</a>
+                        ou
+                        la
+                        <a href="{{ path('app_front_office_production_collaboration_coorganization') }}">Co-Organisation</a>
+                        si tu veux
+                        qu'on t'<strong>accompagne</strong> dans l'organisation de ta soirée !
+                    </p>
+                </div>
+
+                <a href="#" class="app-button cta">Va voir les groupes&nbsp;!</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -15,8 +15,10 @@ h2 {
 }
 
 h3 {
-  font-size: 1.5rem;
-  color: $black;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  text-align: left;
+  color: $primary;
 }
 
 a {
@@ -25,6 +27,6 @@ a {
   transition: all 0.4s;
 
   &:hover {
-    color: rgba($white, 0.75);
+    color: $secondary;
   }
 }

@@ -1,3 +1,14 @@
 .app-text {
   @include displayFlex(space-between, null, null, column);
+
+  .content {
+    padding: 1.5rem;
+    height: calc(100% - 3rem);
+    background-color: rgba($third, 0.15);
+    border-radius: 0.25rem;
+  }
+
+  p {
+    text-align: justify;
+  }
 }

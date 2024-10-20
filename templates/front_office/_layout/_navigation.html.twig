@@ -1,7 +1,6 @@
 <nav class="app-navigation">
     <div class="app-dropdownmenu">
-        <a href="#" onclick="return false;"
-           class="{% if 'app_front_office_label_' in app.request.get('_route') %}active{% endif %}">
+        <a href="#" onclick="return false;">
             {{ ux_icon('icon-park-solid:label', {'class': 'app-icon medium'}) }}
             Label
         </a>
@@ -14,17 +13,17 @@
                 <div class="app-grid three">
                     <div class="grid-item">
                         <strong>Découvre BSS</strong>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_label_index' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_label_about') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_label_about' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Le label BSS
                         </a>
-                        <a href="#"
+                        <a href="{{ path('app_front_office_label_goals') }}"
                            class="{% if app.request.get('_route') == 'app_front_office_label_goals' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Objectifs & valeurs
                         </a>
-                        <a href="#"
+                        <a href="{{ path('app_front_office_label_operation') }}"
                            class="{% if app.request.get('_route') == 'app_front_office_label_operation' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Fonctionnement
@@ -32,38 +31,38 @@
                     </div>
                     <div class="grid-item">
                         <strong>Management</strong>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_management_career' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_label_management_career') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_label_management_career' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Stratégie de carrière
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_management_communication' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_label_management_communication') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_label_management_communication' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Conseils en com'
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_management_documents' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_label_management_documents') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_label_management_documents' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
-                            Documents & visuels
+                            Documents et visuels
                         </a>
                     </div>
                     <div class="grid-item">
                         <strong>Booking</strong>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_booking_gig' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_label_booking_gig') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_label_booking_gig' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Booking concerts
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_booking_tour' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_label_booking_tour') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_label_booking_tour' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Logistique de tournées
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_booking_contracts' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_label_booking_contracts') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_label_booking_contracts' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
-                            Contrats & assurances
+                            Contrats et assurances
                         </a>
                     </div>
                 </div>
@@ -87,8 +86,7 @@
     </a>
 
     <div class="app-dropdownmenu">
-        <a href="#" onclick="return false;"
-           class="{% if 'app_front_office_label_' in app.request.get('_route') %}active{% endif %}">
+        <a href="#" onclick="return false;">
             {{ ux_icon('emojione-monotone:top-hat', {'class': 'app-icon medium'}) }}
             Production
         </a>
@@ -101,54 +99,54 @@
                 <div class="app-grid three">
                     <div class="grid-item">
                         <strong>Production musicale</strong>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_recording_live' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_production_music_recording_live') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_production_music_recording_live' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Enregistrement Live
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_recording_studio' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_production_music_recording_studio') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_production_music_recording_studio' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Enregistrement Studio
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_recording_mastering' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_production_music_mastering') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_production_music_mastering' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Mastering
                         </a>
                     </div>
                     <div class="grid-item">
                         <strong>Diffusion</strong>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_diffusion_pressing' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_production_diffusion_pressing') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_production_diffusion_pressing' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Pressage CD et vinyle
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_diffusion_streaming' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_production_diffusion_streaming') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_production_diffusion_streaming' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Services de streaming
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_diffusion_merchandising' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_production_diffusion_merchandising') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_production_diffusion_merchandising' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Albums et merchandising
                         </a>
                     </div>
                     <div class="grid-item">
                         <strong>Partenariat</strong>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_collaboration_coorganization' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_production_collaboration_coorganization') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_production_collaboration_coorganization' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Co-organisation
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_collaboration_coproduction' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_production_collaboration_coproduction') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_production_collaboration_coproduction' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Co-production
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_collaboration_engagement' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_production_collaboration_engagement') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_production_collaboration_engagement' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Engager un groupe
                         </a>
@@ -174,8 +172,7 @@
     </div>
 
     <div class="app-dropdownmenu">
-        <a href="#" onclick="return false;"
-           class="{% if 'app_front_office_label_' in app.request.get('_route') %}active{% endif %}">
+        <a href="#" onclick="return false;">
             {{ ux_icon('fa-solid:tools', {'class': 'app-icon medium'}) }}
             Technique
         </a>
@@ -188,36 +185,36 @@
                 <div class="app-grid two">
                     <div class="grid-item">
                         <strong>Technique Live</strong>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_technics_stagemanagement' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_technics_live_management') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_technics_live_management' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Régie technique
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_technics_sound' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_technics_live_sound') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_technics_live_sound' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Sonorisation
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_technics_stage' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_technics_live_stage') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_technics_live_stage' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Plateau
                         </a>
                     </div>
                     <div class="grid-item">
                         <strong>Captations</strong>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_technics_photos' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_technics_capture_photo') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_technics_capture_photo' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Photos live
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_technics_videos' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_technics_capture_video') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_technics_capture_video' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Vidéos live
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_technics_clips' %}active{% endif %}">
+                        <a href="{{ path('app_front_office_technics_capture_clip') }}"
+                           class="{% if app.request.get('_route') == 'app_front_office_technics_capture_clip' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Clips vidéos
                         </a>
