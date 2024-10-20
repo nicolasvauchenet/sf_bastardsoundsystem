@@ -1,0 +1,48 @@
+{% extends 'front_office/_layout/_index.html.twig' %}
+
+{% block title %}Deviens partenaire{% endblock %}
+{% block meta_description %}{% endblock %}
+
+{% block body_class %}front-office{% endblock %}
+
+{% block main %}
+    <section class="app-section cover">
+        <img src="{{ asset('img/sitecover.webp') }}" alt="Bastard Sound System"/>
+
+        <div class="content">
+            <h1>deviens partenaire de BSS</h1>
+            <p>Construisons ensemble&nbsp;!</p>
+        </div>
+    </section>
+
+    <section class="app-section post-figure">
+        <h2>Tu veux bosser avec nous&nbsp;?</h2>
+
+        <div class="app-text info">
+            <div class="icon">
+                {{ ux_icon('fontisto:info', {'class': 'app-icon medium text-info'}) }}
+            </div>
+            <p class="text-justify small">
+                Tu cherches des <strong>alliés</strong> pour dynamiter ta <strong>prod</strong>,
+                <strong>organiser</strong>
+                des <strong>concerts</strong> de malade ou t'<strong>associer</strong> avec des pros du
+                <strong>son</strong>
+                qui envoient du lourd&nbsp;? Bastard Sound System est ton <strong>partenaire</strong> idéal&nbsp;! On ne
+                fait pas dans la demi-mesure : avec nous, c'est du son brut, une <strong>technique</strong>
+                irréprochable et
+                des <strong>collabs</strong> qui dépotent. Que tu sois <strong>organisateur</strong> de
+                <strong>festival</strong>, <strong>producteur</strong>, ou <strong>studio</strong>, on te propose des
+                partenariats sur-mesure, taillés pour secouer la <strong>scène</strong> et propulser tes
+                <strong>projets</strong> encore plus loin. Viens parler de tes <strong>ambitions</strong> avec nous, et
+                prépare-toi à des <strong>collaborations</strong> qui vont faire du bruit. Contacte-nous via les infos
+                en
+                bas de page ou le formulaire ci-dessous, et on lance la machine. Chez Bastard Sound System, chaque
+                projet
+                devient une <strong>expérience</strong> inoubliable&nbsp;! Ah oui et au fait, juste au cas où tu te
+                demanderais&nbsp;:&nbsp; aucune cotisation, y'a pas de frais cachés, on est des gens honnêtes&nbsp;!
+            </p>
+        </div>
+
+        {% include 'front_office/partnership/_form.html.twig' %}
+    </section>
+{% endblock %}

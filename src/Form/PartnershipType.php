@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Membership;
+use App\Entity\Partnership;
 use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
 use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
 use Symfony\Component\Form\AbstractType;
@@ -13,18 +13,19 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class MembershipType extends AbstractType
+class PartnershipType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('memberType', ChoiceType::class, [
+            ->add('partnerType', ChoiceType::class, [
                 'required' => true,
                 'label' => 'Tu es',
                 'choices' => [
-                    'Un musicien tout seul' => 'Musicien',
-                    'Un groupe de musique' => 'Groupe',
-                    "Un autre genre d'artiste" => 'Artiste',
+                    'Un organisateur' => 'Organisateur',
+                    'Un programmateur' => 'Programmateur',
+                    "Un studio d'enregistrement" => 'Studio',
+                    'Tout ça à la fois' => 'Multi-tâches',
                     'Carrément autre chose' => 'Autre',
                     'Juste un passant' => 'Visiteur',
                 ],
@@ -89,7 +90,7 @@ class MembershipType extends AbstractType
             ])
             ->add('status', ChoiceType::class, [
                 'required' => false,
-                'label' => 'État de la demande',
+                'label' => 'État de la proposition',
                 'choices' => [
                     'Nouvelle demande' => 'Nouvelle',
                     'Demande acceptée' => 'Acceptée',
@@ -110,7 +111,7 @@ class MembershipType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Membership::class,
+            'data_class' => Partnership::class,
         ]);
     }
 }
