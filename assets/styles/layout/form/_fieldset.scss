@@ -32,6 +32,12 @@
       align-items: center;
     }
 
+    span {
+      @include respondTo(xs) {
+        display: none;
+      }
+    }
+
     .buttons {
       @include respondTo(xs) {
         order: 2;
@@ -45,5 +51,17 @@
         order: 1;
       }
     }
+  }
+}
+
+.app-grid {
+  &:has(.form-fieldset) {
+    @include respondTo(xs) {
+      grid-gap: 3rem;
+    }
+  }
+
+  .form-fieldset {
+    margin-bottom: 0;
   }
 }
