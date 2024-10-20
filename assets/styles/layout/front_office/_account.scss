@@ -21,6 +21,12 @@
         top: 3.5rem;
         border-top: 0.5rem solid $third;
       }
+
+      .dropdown-item {
+        & > img {
+          width: 15dvh;
+        }
+      }
     }
   }
 }

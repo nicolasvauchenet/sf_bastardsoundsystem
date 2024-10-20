@@ -112,12 +112,19 @@
               font-size: 1.25rem;
             }
 
-            &:hover {
+            &:hover,
+            &.active {
               color: $third;
+
+              img {
+                transform: rotate(360deg);
+                filter: sepia(200%) saturate(200%) brightness(2.5);
+              }
             }
 
             img {
-              height: 2rem;
+              height: 2.5rem;
+              transition: all 0.6s;
             }
           }
         }
@@ -142,17 +149,13 @@
         left: initial;
         width: 45dvw;
       }
-
-      .dropdown-item {
-        & > img {
-          width: 15dvh;
-        }
-      }
     }
   }
 
-  &:has(>.active) {
-    color: $primary;
-    background-color: $third;
+  &:has(.active) {
+    & > a {
+      color: $primary;
+      background-color: $third;
+    }
   }
 }

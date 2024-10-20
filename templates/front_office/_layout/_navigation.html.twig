@@ -173,6 +173,11 @@
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Sonorisation
                         </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_technics_stage' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Plateau
+                        </a>
                     </div>
                     <div class="grid-item">
                         <strong>Captations</strong>
@@ -184,7 +189,12 @@
                         <a href="#"
                            class="{% if app.request.get('_route') == 'app_front_office_technics_videos' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
-                            Vidéos et clips
+                            Vidéos live
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_front_office_technics_clips' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Clips vidéos
                         </a>
                     </div>
                 </div>

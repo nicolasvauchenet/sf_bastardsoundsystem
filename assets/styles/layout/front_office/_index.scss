@@ -3,15 +3,15 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: $primary;
+  background: $third;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $third;
+  background: $primary;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: $third;
+  background: $primary;
 }
 
 html {

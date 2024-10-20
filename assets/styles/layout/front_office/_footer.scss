@@ -3,6 +3,7 @@
   margin-bottom: 4.25rem;
   color: $white;
   background-color: $primary;
+  border-top: 0.5rem solid $third;
 
   @include respondTo(md) {
     margin-bottom: 0;
