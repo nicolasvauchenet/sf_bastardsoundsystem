@@ -40,6 +40,24 @@ class ArtistFixtures extends Fixture implements OrderedFixtureInterface
         $manager->persist($artist);
         $this->addReference('user-feelarsen', $artist);
 
+        $artist = new Artist();
+        $artist->setEmail('forevermadame@bastardsoundsystem.org')
+            ->setPassword($this->passwordHasher->hashPassword($artist, '!bEb7RgDFJM?'))
+            ->setRoles(['ROLE_ARTIST'])
+            ->setName('Forever Madame')
+            ->setType('artist')
+            ->setActive(false)
+            ->setStatus('Attente de cotisation')
+            ->setZipcode('87000')
+            ->setCity('Limoges')
+            ->setCountry('France')
+            ->setLogo('forever-madame-logo.png')
+            ->setGenre('Rock progressif')
+            ->setPhotoLive('forever-madame-live.jpg')
+            ->setPhotoBand('forever-madame-band.jpg');
+        $manager->persist($artist);
+        $this->addReference('user-forever-madame', $artist);
+
         $manager->flush();
     }
 
