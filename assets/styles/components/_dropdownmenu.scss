@@ -61,6 +61,25 @@
         flex: 1;
       }
 
+      & > p {
+        display: none;
+
+        @include respondTo(md) {
+          display: block;
+          margin: 0.5rem 0.5rem 0;
+          font-size: 0.9rem;
+          text-align: justify;
+        }
+
+        a {
+          color: $primary;
+
+          &:hover {
+            color: $secondary;
+          }
+        }
+      }
+
       & > img {
         width: 16dvh;
         height: 100%;

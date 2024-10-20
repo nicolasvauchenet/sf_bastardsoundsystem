@@ -1,0 +1,22 @@
+.app-button {
+  display: block;
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  font-family: $font-secondary;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  color: $primary;
+  background-color: $third;
+  border: none;
+  border-radius: 0.25rem;
+  box-shadow: 0.25rem 0.25rem 0.5rem rgba($black, 0.5);
+  transition: all 0.4s;
+  cursor: pointer;
+
+  &:hover {
+    color: $white;
+    background-color: $secondary;
+  }
+}

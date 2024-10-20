@@ -1,0 +1,3 @@
+.app-text {
+  @include displayFlex(space-between, null, null, column);
+}
