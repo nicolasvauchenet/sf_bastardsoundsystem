@@ -1,0 +1,94 @@
+{% extends 'front_office/_layout/_index.html.twig' %}
+{% block meta_description %}Politique de confidentialité de Bastard Sound System{% endblock %}
+
+{% block body_class %}front-office{% endblock %}
+
+{% block title %}Politique de confidentialité{% endblock %}
+
+{% block main %}
+    <section class="app-section cover">
+        <img src="{{ asset('img/sitecover.webp') }}" alt="Bastard Sound System"/>
+        <div class="content">
+            <h1>Politique de confidentialité</h1>
+            <p>Bastard Sound System</p>
+        </div>
+    </section>
+
+    <section class="app-section post-figure">
+        <h2>Introduction</h2>
+
+        <p>
+            La présente Politique de Confidentialité décrit comment Bastard Sound System collecte, utilise et protège
+            vos données personnelles, conformément au Règlement Général sur la Protection des Données (RGPD).
+        </p>
+    </section>
+
+    <section class="app-section">
+        <h2>Données Collectées</h2>
+
+        <p>Nous collectons les informations suivantes lorsque vous interagissez avec notre site :</p>
+        <ul>
+            <li><strong>Données d'identification :</strong> nom, prénom, email</li>
+            <li><strong>Données de contact :</strong> adresse, numéro de téléphone</li>
+            <li><strong>Informations sur votre utilisation du site :</strong> cookies, logs</li>
+        </ul>
+    </section>
+
+    <section class="app-section">
+        <h2>Utilisation des Données</h2>
+
+        <p>Les données que nous collectons sont utilisées pour :</p>
+        <ul>
+            <li><strong>Gérer</strong> votre adhésion et votre contact avec l'association</li>
+            <li>Vous <strong>envoyer</strong> des informations relatives à nos événements</li>
+            <li><strong>Améliorer</strong> notre site et nos services</li>
+        </ul>
+    </section>
+
+    <section class="app-section">
+        <h2>Conservation des Données</h2>
+
+        <p>
+            Vos données personnelles sont conservées uniquement aussi longtemps que nécessaire pour atteindre les
+            objectifs pour lesquels elles ont été collectées.
+        </p>
+    </section>
+
+    <section class="app-section">
+        <h2>Droits des Utilisateurs</h2>
+
+        <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+        <ul>
+            <li>
+                <strong>Droit d'accès :</strong>
+                Vous pouvez <a href="{{ path('app_front_office_contact') }}">demander une copie des données</a>
+                que nous détenons sur vous.
+            </li>
+            <li>
+                <strong>Droit de rectification :</strong>
+                Vous avez le droit de
+                <a href="{{ path('app_front_office_contact') }}">demander la correction de vos données</a> si elles sont
+                inexactes ou incomplètes.
+            </li>
+            <li>
+                <strong>Droit d'effacement :</strong>
+                Vous pouvez demander la <a href="{{ path('app_front_office_contact') }}">suppression de vos données</a>
+                sur le site de BSS et dans ses fichiers.
+            </li>
+            <li>
+                <strong>Droit de portabilité :</strong>
+                Vous avez le droit de recevoir vos données dans un format structuré, couramment utilisé et lisible.
+            </li>
+        </ul>
+    </section>
+
+    <section class="app-section">
+        <h2>Contact</h2>
+
+        <p>
+            Pour toute question concernant la Politique de Confidentialité ou pour exercer vos droits, veuillez nous
+            contacter à l'adresse email suivante :
+            <a href="mailto:contact@bastardsoundsystem.org">contact@bastardsoundsystem.org</a>.
+        </p>
+    </section>
+{% endblock %}

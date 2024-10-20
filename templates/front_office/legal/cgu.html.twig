@@ -1,0 +1,93 @@
+{% extends 'front_office/_layout/_index.html.twig' %}
+
+{% block title %}Conditions Générales d'Utilisation{% endblock %}
+{% block meta_description %}{% endblock %}
+
+{% block body_class %}front-office{% endblock %}
+
+{% block main %}
+    <section class="app-section cover">
+        <img src="{{ asset('img/sitecover.webp') }}" alt="Bastard Sound System"/>
+        <div class="content">
+            <h1>Conditions Générales d'Utilisation</h1>
+            <p>Bastard Sound System</p>
+        </div>
+    </section>
+
+    <section class="app-section post-figure">
+        <h2>Préambule</h2>
+
+        <p>
+            Les présentes Conditions Générales d'Utilisation (CGU) régissent l'accès et l'utilisation du site de Bastard
+            Sound System. En utilisant ce site, vous acceptez ces conditions sans réserve.
+        </p>
+    </section>
+
+    <section class="app-section">
+        <h2>Adhésion</h2>
+
+        <p>
+            L'adhésion à Bastard Sound System est ouverte à toute personne intéressée par la musique rock et ses
+            activités. Pour devenir membre, vous devez remplir un formulaire d'adhésion disponible sur notre site, et
+            vous acquitter d'une cotisation forfaitaire annuelle.
+        </p>
+    </section>
+
+    <section class="app-section">
+        <h2>Droits et Obligations des Membres</h2>
+
+        <p>En tant que membre, vous vous engagez à :</p>
+        <ul>
+            <li><strong>Respecter</strong> les statuts de l'association</li>
+            <li><strong>Participer</strong> activement aux activités de l'association</li>
+            <li><strong>Régler</strong> votre cotisation dans les délais impartis</li>
+        </ul>
+    </section>
+
+    <section class="app-section">
+        <h2>Téléchargement des Documents légaux</h2>
+
+        <p>
+            Les documents officiels de l'association peuvent être téléchargés en format PDF en cliquant sur les liens
+            suivants :
+        </p>
+        <ul>
+            <li>
+                <a href="{{ asset('uploads/document/statuts-de-lassociation.pdf') }}" target="_blank">
+                    Statuts de l'association
+                </a>
+            </li>
+            <li>
+                <a href="{{ asset('uploads/document/proces-verbal-de-lassemblee-generale-constitutive.pdf') }}"
+                   target="_blank">
+                    PV de l'Assemblée Générale Constitutive
+                </a>
+            </li>
+            <li>
+                <a href="{{ asset('uploads/document/attestation-dinscription-au-repertoire-siren.pdf') }}"
+                   target="_blank">
+                    Attestation d'inscription au répertoire SIREN
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <section class="app-section">
+        <h2>Modification des CGU</h2>
+
+        <p>
+            Bastard Sound System se réserve le droit de modifier ces Conditions Générales d'Utilisation à tout moment.
+            Les membres seront informés de ces modifications par email ou via une notification sur le site.
+        </p>
+    </section>
+
+    <section class="app-section">
+        <h2>Contact</h2>
+
+        <p>
+            Pour toute question relative aux présentes Conditions Générales d'Utilisation, veuillez nous contacter à
+            l'adresse email suivante :
+            <a href="mailto:contact@bastardsoundsystem.org">contact@bastardsoundsystem.org</a>.
+        </p>
+    </section>
+{% endblock %}

@@ -20,19 +20,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="{{ path('app_front_office_legal_mentions') }}"
                        class="{% if app.request.get('_route') == 'app_front_office_legal_mentions' %}active{% endif %}">
                         Mentions légales
                     </a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="{{ path('app_front_office_legal_privacy') }}"
                        class="{% if app.request.get('_route') == 'app_front_office_legal_privacy' %}active{% endif %}">
                         Politique de confidentialité
                     </a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="{{ path('app_front_office_legal_cgu') }}"
                        class="{% if app.request.get('_route') == 'app_front_office_legal_cgu' %}active{% endif %}">
                         Conditions Générales d'Utilisation
                     </a>

@@ -3,6 +3,8 @@
 .DS_Store
 bastardsoundsystem.crt
 bastardsoundsystem.key
+/public/uploads/document/*
+!/public/uploads/document/.gitkeep
 ###< bastardsoundsystem/local-development ###
 
 ###> symfony/framework-bundle ###
