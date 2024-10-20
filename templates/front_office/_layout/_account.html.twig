@@ -11,17 +11,21 @@
             <div class="dropdown-item">
                 <div class="app-grid two">
                     <div class="grid-item">
-                        <strong>Rejoins BSS</strong>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_membership' %}active{% endif %}">
-                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
-                            Adhère au label
-                        </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_front_office_partnership' %}active{% endif %}">
-                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
-                            Deviens partenaire
-                        </a>
+                        {% if app.user %}
+
+                        {% else %}
+                            <strong>Rejoins BSS</strong>
+                            <a href="{{ path('app_front_office_membership') }}"
+                               class="{% if app.request.get('_route') == 'app_front_office_membership' %}active{% endif %}">
+                                <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                                Adhère au label
+                            </a>
+                            <a href="#"
+                               class="{% if app.request.get('_route') == 'app_front_office_partnership' %}active{% endif %}">
+                                <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                                Deviens partenaire
+                            </a>
+                        {% endif %}
                     </div>
                     <div class="grid-item">
                         {% if app.user %}

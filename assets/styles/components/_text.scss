@@ -13,13 +13,14 @@
   }
 
   &.info {
-    @include displayFlex(null, center, 1.5rem, row);
+    @include displayFlex(null, center, 1.5rem);
     padding: 1rem;
     margin-bottom: 3rem;
     background-color: rgba($third, 0.25);
     border-radius: 0.25rem;
 
     @include respondTo(md) {
+      flex-direction: row;
       padding: 1.5rem;
       margin-left: auto;
       margin-right: auto;
@@ -27,11 +28,26 @@
     }
 
     .icon {
-      width: 10dvw;
+      width: 100%;
       text-align: center;
+
+      @include respondTo(md) {
+        width: 10dvw;
+      }
+
+      .app-icon {
+        display: block;
+        margin: 0 auto;
+
+        &.text-warning {
+          width: 6rem;
+        }
+      }
     }
 
     p {
+      flex: 1;
+
       a {
         color: $primary;
 

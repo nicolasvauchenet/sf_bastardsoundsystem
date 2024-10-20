@@ -1,0 +1,59 @@
+{% extends 'front_office/_layout/_index.html.twig' %}
+
+{% block title %}Rejoins-nous{% endblock %}
+{% block meta_description %}{% endblock %}
+
+{% block body_class %}front-office{% endblock %}
+
+{% block main %}
+    <section class="app-section cover">
+        <img src="{{ asset('img/sitecover.webp') }}" alt="Bastard Sound System"/>
+
+        <div class="content">
+            <h1>Adhère à BSS</h1>
+            <p>Bastard Sound System is the place to be&nbsp;!</p>
+        </div>
+    </section>
+
+    <section class="app-section post-figure">
+        <h2>Tu veux profiter de tout ça&nbsp;?</h2>
+
+        <div class="app-text info">
+            <div class="icon">
+                {{ ux_icon('fontisto:info', {'class': 'app-icon medium text-info'}) }}
+            </div>
+            <p class="text-justify small">
+                Tu veux faire passer ton <strong>son</strong> à la <strong>vitesse supérieure</strong>&nbsp;? T’as envie
+                de
+                <strong>signer</strong> avec des passionnés qui ont la même hargne que toi pour la
+                <strong>musique</strong>&nbsp;? Rejoins le <strong>label</strong> Bastard Sound System ! Que tu sois un
+                <strong>groupe</strong> prêt à mettre le feu à la scène ou un <strong>artiste solo</strong> qui veut
+                marquer
+                les esprits, on est là pour te filer le coup de boost que tu cherches. On te propose du
+                <strong>management</strong> aux petits oignons, des <strong>concerts</strong> qui claquent,
+                des <strong>enregistrements</strong> qui envoient du lourd, et tout ce qu’il faut pour que ton
+                <strong>talent</strong> explose. Fonce, prends contact avec nous via les infos en bas de page ou le
+                formulaire. On attend qu’une chose : te faire entrer dans la famille Bastard Sound System et te faire
+                kiffer
+                la scène comme jamais&nbsp;!
+            </p>
+        </div>
+
+        <div class="app-text info">
+            <div class="icon">
+                {{ ux_icon('typcn:warning', {'class': 'app-icon medium text-warning'}) }}
+            </div>
+            <p class="text-justify small">
+                Pour <strong>devenir adhérent</strong>, comme dans beaucoup d'assos, il y a une
+                <strong>cotisation annuelle</strong> à régler. Chez nous elle est à <strong>12€</strong>. C'est pas
+                beaucoup et ça paye principalement les
+                <strong>frais</strong> de <strong>gestion</strong> et d'<strong>organisation</strong>.
+                <br/>
+                Et puis ça nous aide à grandir et à proposer des <strong>services</strong> de qualité à nos
+                <strong>musiciens</strong>&nbsp;! On est sûrs que tu seras d'accord avec ça&nbsp;:)
+            </p>
+        </div>
+
+        {% include 'front_office/membership/_form.html.twig' %}
+    </section>
+{% endblock %}
