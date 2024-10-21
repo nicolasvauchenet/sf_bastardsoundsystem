@@ -78,7 +78,8 @@
             <div class="app-grid two mb-3" data-loading="addClass(loading)">
                 {% for artist in artists %}
                     <div class="app-card">
-                        <a href="#" title="Voir la fiche de {{ artist.name }}">
+                        <a href="{{ path('app_front_office_artist_details', {'slug': artist.slug}) }}"
+                           title="Voir la fiche de {{ artist.name }}">
                             <div class="card-header">
                                 <img src="{{ asset('uploads/artist/' ~ artist.slug ~ '/' ~ artist.photoLive) }}"
                                      alt="{{ artist.name }}"/>
@@ -93,11 +94,14 @@
                         </a>
                         <div class="card-footer">
                             {% if artist.website %}
-                                <a href="#" title="Voir le site de {{ artist.name }}" target="_blank">
+                                <a href="{{ artist.website }}"
+                                   title="Voir le site de {{ artist.name }}"
+                                   target="_blank">
                                     {{ ux_icon('mdi:web', {'class': 'app-icon medium text-primary'}) }}
                                 </a>
                             {% endif %}
-                            <a href="#" title="Voir la fiche de {{ artist.name }}">
+                            <a href="{{ path('app_front_office_artist_details', {'slug': artist.slug}) }}"
+                               title="Voir la fiche de {{ artist.name }}">
                                 {{ ux_icon('akar-icons:info-fill', {'class': 'app-icon medium text-info'}) }}
                             </a>
                             <a href="#" title="Engager {{ artist.name }}">

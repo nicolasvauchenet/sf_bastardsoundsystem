@@ -1,0 +1,123 @@
+{% extends 'front_office/_layout/_index.html.twig' %}
+
+{% block title %}Le catalogue - {{ artist.name }}{% endblock %}
+{% block meta_description %}{% endblock %}
+
+{% block body_class %}front-office artist{% endblock %}
+
+{% block main %}
+    <section class="app-section cover">
+        {% if artist.photoBand %}
+            <img src="{{ asset('uploads/artist/' ~ artist.slug ~ '/' ~ artist.photoBand) }}" alt="{{ artist.name }}"/>
+        {% else %}
+            <img src="{{ asset('img/sitecover.webp') }}" alt="{{ artist.name }}"/>
+        {% endif %}
+
+        <div class="content">
+            <h1>{{ artist.name }}</h1>
+            <p>{{ artist.genre }}</p>
+        </div>
+    </section>
+
+    <section class="app-section">
+        <h2>
+            <a href="{{ path('app_front_office_artist_home') }}">
+                {{ ux_icon('ph:skip-back-fill', {'class': 'app-icon large'}) }}
+                Catalogue
+            </a>
+            Les infos de {{ artist.name }}
+        </h2>
+
+        <div class="app-grid-container mb-1">
+            <div class="app-grid-logo">
+                <img src="{{ asset('uploads/artist/' ~ artist.slug ~ '/' ~ artist.logo) }}" alt="{{ artist.name }}"/>
+            </div>
+
+            <div class="app-grid-content">
+                {% if artist.description %}
+                    <div class="app-description app-text info">
+                        <p class="text-justify small">{{ artist.description | raw }}</p>
+                    </div>
+                {% endif %}
+
+                <div class="app-info-grid">
+                    <div class="grid-item app-text small">
+                        <div class="content">
+                            <h3 class="text-center">Ville</h3>
+                            <p class="text-center">{{ artist.city }}&nbsp;({{ artist.zipcode | slice(0, 2) }})</p>
+                        </div>
+                    </div>
+                    <div class="grid-item app-text small">
+                        <div class="content">
+                            <h3 class="text-center">Line-up</h3>
+                            <p class="text-center">
+                                {{ artist.bandmates }} musicien{{ artist.bandmates > 1 ? 's' : '' }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid-item app-text small">
+                        <div class="content">
+                            <h3 class="text-center">Tarif</h3>
+                            <p class="text-center">Contacte-nous</p>
+                        </div>
+                    </div>
+                    <div class="grid-item app-text small">
+                        <div class="content">
+                            <h3 class="text-center">Backline</h3>
+                            <p class="text-center">
+                                {{ ux_icon('formkit:check', {'class': 'app-icon text-success'}) }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="socials">
+            {% if artist.website %}
+                <a href="{{ artist.website }}" title="Voir le site de {{ artist.name }}" target="_blank">
+                    {{ ux_icon('mdi:web', {'class': 'app-icon large text-primary'}) }}
+                </a>
+            {% endif %}
+            <a href="#" title="Engager {{ artist.name }}">
+                {{ ux_icon('fa6-solid:handshake', {'class': 'app-icon large text-success'}) }}
+            </a>
+        </div>
+    </section>
+
+    <figure class="app-image large">
+        {% if artist.photoLive %}
+            <img src="{{ asset('uploads/artist/' ~ artist.slug ~ '/' ~ artist.photoLive) }}" alt="{{ artist.name }}"/>
+        {% else %}
+            <img src="{{ asset('img/label/about/about1.webp') }}" alt="{{ artist.name }}"/>
+        {% endif %}
+    </figure>
+
+    <section class="app-section post-figure">
+        <h2>{{ artist.name }} vient jouer chez toi&nbsp;!</h2>
+
+        <p class="text-justify small">
+            Engager <strong>{{ artist.name }}</strong>, c’est simple et direct avec <strong>Bastard Sound
+                                                                                            System</strong>. Une fois
+            sur cette page, clique simplement sur le bouton
+            {{ ux_icon('fa6-solid:handshake', {'class': 'app-icon text-success'}) }} ou sur celui juste là-dessous pour
+            commencer. Tu auras alors
+            accès à un formulaire où tu pourras nous en dire plus sur ton <strong>événement</strong> : un <strong>concert</strong>,
+            un <strong>festival</strong>, ou tout autre projet. Nous te contacterons rapidement pour discuter des
+            détails, fixer les <strong>conditions</strong> et le <strong>tarif</strong>, et finaliser l’accord avec un
+            <strong>contrat de prestation</strong>.
+        </p>
+
+        <p class="text-justify small">
+            Besoin de plus&nbsp;? Si tu le souhaites, notre équipe peut s’occuper de la <strong>logistique</strong>, du
+            <strong>matériel</strong> et des <strong>techniciens</strong>, pour garantir un show impeccable. Tu peux
+            aussi envisager une <strong>co-production</strong> ou une <strong>co-organisation</strong> de ton <strong>événement</strong>
+            avec nous, afin de profiter de notre expertise et faire de ta <strong>soirée</strong> un moment unique.
+        </p>
+
+        <div class="app-grid two">
+            <a href="{{ path('app_front_office_contact') }}" class="app-button">Je contacte BSS</a>
+            <a href="#" class="app-button cta">J'engage {{ artist.name }}&nbsp;!</a>
+        </div>
+    </section>
+{% endblock %}

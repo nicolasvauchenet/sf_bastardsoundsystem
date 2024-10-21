@@ -12,6 +12,25 @@ h3 {
 h2 {
   margin-bottom: 1.5rem;
   color: $primary;
+
+  &:has(.app-icon) {
+    @include displayGrid(1fr, 1.5rem);
+
+    @include respondTo(md) {
+      @include displayGrid(1fr 2fr, 1.5rem);
+      align-items: center;
+    }
+
+    a {
+      display: block;
+      text-align: center;
+
+      .app-icon {
+        transition: none;
+        transform: translateY(-0.25rem);
+      }
+    }
+  }
 }
 
 h3 {
