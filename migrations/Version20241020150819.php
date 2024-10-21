@@ -20,7 +20,7 @@ final class Version20241020150819 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE artist (id INT NOT NULL, bandmates INT NOT NULL, logo VARCHAR(255) DEFAULT NULL, description TEXT DEFAULT NULL, genre VARCHAR(255) NOT NULL, website VARCHAR(255) DEFAULT NULL, photo_live VARCHAR(255) DEFAULT NULL, photo_band VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE artist (id INT NOT NULL, bandmates INT NOT NULL, logo VARCHAR(255) DEFAULT NULL, description TEXT DEFAULT NULL, genre VARCHAR(255) NOT NULL, style VARCHAR(255) DEFAULT NULL, website VARCHAR(255) DEFAULT NULL, photo_live VARCHAR(255) DEFAULT NULL, photo_band VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE member (id INT NOT NULL, phone VARCHAR(255) DEFAULT NULL, address VARCHAR(255) DEFAULT NULL, address2 VARCHAR(255) DEFAULT NULL, address3 VARCHAR(255) DEFAULT NULL, zipcode VARCHAR(255) DEFAULT NULL, city VARCHAR(255) DEFAULT NULL, country VARCHAR(255) DEFAULT NULL, status VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE "user" (id SERIAL NOT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, active BOOLEAN NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, connected_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, discriminator VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_IDENTIFIER_EMAIL ON "user" (email)');

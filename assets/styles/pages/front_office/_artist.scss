@@ -22,7 +22,8 @@
         .app-grid-logo {
           @include displayFlex(center, center);
           padding: 1rem;
-          background-color: rgba($third, 0.15);
+          /*background-color: rgba($third, 0.15);*/
+          border: 0.25rem solid rgba($third, 0.15);
           border-radius: 0.25rem;
 
           img {

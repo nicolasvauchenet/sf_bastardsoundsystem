@@ -15,7 +15,7 @@
 
         <div class="content">
             <h1>{{ artist.name }}</h1>
-            <p>{{ artist.genre }}</p>
+            <p>{{ artist.genre }} {{ artist.style }}</p>
         </div>
     </section>
 
@@ -75,11 +75,11 @@
 
         <div class="socials">
             {% if artist.website %}
-                <a href="{{ artist.website }}" title="Voir le site de {{ artist.name }}" target="_blank">
+                <a href="{{ artist.website }}" title="Vas voir le site de {{ artist.name }}" target="_blank">
                     {{ ux_icon('mdi:web', {'class': 'app-icon large text-primary'}) }}
                 </a>
             {% endif %}
-            <a href="#" title="Engager {{ artist.name }}">
+            <a href="#" title="Engage {{ artist.name }} !">
                 {{ ux_icon('fa6-solid:handshake', {'class': 'app-icon large text-success'}) }}
             </a>
         </div>

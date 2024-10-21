@@ -48,11 +48,13 @@
                     {% set bandmates = app_artistService.bandmates %}
                     {% if bandmates | length > 1 %}
                         <div class="filter-group">
-                            <label for="bandmates" class="filter-label">Membres</label>
+                            <label for="bandmates" class="filter-label">Line-up</label>
                             <select name="bandmates" id="bandmates" class="filter-control" data-model="bandmates">
                                 <option value="">Toutes les formations</option>
                                 {% for bandmate in bandmates %}
-                                    <option value="{{ bandmate }}">{{ bandmate }}</option>
+                                    <option value="{{ bandmate }}">
+                                        {{ bandmate }} musicien{{ bandmate > 1 ? 's' : '' }}
+                                    </option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -86,7 +88,7 @@
                             </div>
                             <div class="card-body">
                                 <h3 class="card-title">{{ artist.name }}</h3>
-                                <p class="card-subtitle">{{ artist.genre }}</p>
+                                <p class="card-subtitle">{{ artist.genre }} {{ artist.style }}</p>
                                 <p>
                                     <strong>{{ artist.city }}&nbsp;({{ artist.zipcode | slice(0,2) }})</strong>
                                 </p>
@@ -95,16 +97,16 @@
                         <div class="card-footer">
                             {% if artist.website %}
                                 <a href="{{ artist.website }}"
-                                   title="Voir le site de {{ artist.name }}"
+                                   title="Vas voir le site de {{ artist.name }}"
                                    target="_blank">
                                     {{ ux_icon('mdi:web', {'class': 'app-icon medium text-primary'}) }}
                                 </a>
                             {% endif %}
                             <a href="{{ path('app_front_office_artist_details', {'slug': artist.slug}) }}"
-                               title="Voir la fiche de {{ artist.name }}">
+                               title="La fiche de {{ artist.name }}">
                                 {{ ux_icon('akar-icons:info-fill', {'class': 'app-icon medium text-info'}) }}
                             </a>
-                            <a href="#" title="Engager {{ artist.name }}">
+                            <a href="#" title="Engage {{ artist.name }} !">
                                 {{ ux_icon('fa6-solid:handshake', {'class': 'app-icon medium text-success'}) }}
                             </a>
                         </div>

@@ -22,6 +22,9 @@ class Artist extends Member
     private ?string $genre = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    private ?string $style = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $website = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -74,6 +77,18 @@ class Artist extends Member
     public function setGenre(string $genre): static
     {
         $this->genre = $genre;
+
+        return $this;
+    }
+
+    public function getStyle(): ?string
+    {
+        return $this->style;
+    }
+
+    public function setStyle(?string $style): static
+    {
+        $this->style = $style;
 
         return $this;
     }
