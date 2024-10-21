@@ -24,7 +24,6 @@ class UserFixtures extends Fixture implements OrderedFixtureInterface
             ->setPassword($this->passwordHasher->hashPassword($user, '!bEb7RgDFJM?'))
             ->setRoles(['ROLE_ADMIN'])
             ->setName('Administrateur BSS')
-            ->setType('admin')
             ->setActive(true);
         $manager->persist($user);
         $this->addReference('user-bss', $user);

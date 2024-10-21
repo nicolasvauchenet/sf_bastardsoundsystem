@@ -11,6 +11,20 @@
     width: 1200px;
   }
 
+  &:has(.app-filters) {
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+
+    .app-text {
+      width: 85%;
+      background-color: $third;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      box-shadow: 0 0.25rem 0.5rem rgba($black, 0.5);
+    }
+  }
+
   @import "./cover";
   @import "./post-figure";
 }

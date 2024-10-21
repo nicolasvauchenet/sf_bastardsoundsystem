@@ -16,28 +16,61 @@ class ArtistRepository extends ServiceEntityRepository
         parent::__construct($registry, Artist::class);
     }
 
-    //    /**
-    //     * @return Artist[] Returns an array of Artist objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('a')
-    //            ->andWhere('a.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('a.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    public function findAllGenres(): array
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->select('DISTINCT a.genre')
+            ->orderBy('a.genre', 'ASC');
 
-    //    public function findOneBySomeField($value): ?Artist
-    //    {
-    //        return $this->createQueryBuilder('a')
-    //            ->andWhere('a.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+        $results = $qb->getQuery()->getResult();
+
+        return array_column($results, 'genre');
+    }
+
+    public function findAllDepartments(): array
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->select('DISTINCT SUBSTRING(a.zipcode, 1, 2) AS department')
+            ->orderBy('department', 'ASC');
+
+        $results = $qb->getQuery()->getResult();
+
+        return array_column($results, 'department');
+    }
+
+    public function findAllCities(): array
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->select('DISTINCT a.city')
+            ->orderBy('a.city', 'ASC');
+
+        $results = $qb->getQuery()->getResult();
+
+        return array_column($results, 'city');
+    }
+
+    public function findByFilters(?string $genre = null, ?string $department = null, ?string $city = null): array
+    {
+        $qb = $this->createQueryBuilder('a');
+
+        if($genre) {
+            $qb->andWhere('a.genre = :genre')
+                ->setParameter('genre', $genre);
+        }
+
+        if($department) {
+            $qb->andWhere('SUBSTRING(a.zipcode, 1, 2) = :department')
+                ->setParameter('department', $department);
+        }
+
+        if($city) {
+            $qb->andWhere('a.city = :city')
+                ->setParameter('city', $city);
+        }
+
+        $qb->andWhere('a.active = true')
+            ->orderBy('a.name', 'ASC');
+
+        return $qb->getQuery()->getResult();
+    }
 }

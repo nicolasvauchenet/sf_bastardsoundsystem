@@ -1,0 +1,105 @@
+<div {{ attributes }}>
+    {% if app_artistService.allArtists | length > 1 %}
+        <section class="app-section post-figure">
+            <div class="app-text info mb-0">
+                <div class="icon">
+                    {{ ux_icon('mage:filter', {'class': 'app-icon medium text-primary'}) }}
+                </div>
+                <div class="app-filters">
+                    {% set genres = app_artistService.genres %}
+                    {% if genres | length > 1 %}
+                        <div class="filter-group">
+                            <label for="genre" class="filter-label">Genre</label>
+                            <select name="genre" id="genre" class="filter-control" data-model="genre">
+                                <option value="">Tous les genres</option>
+                                {% for genre in genres %}
+                                    <option value="{{ genre }}">{{ genre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% endif %}
+
+                    {% set departments = app_artistService.departments %}
+                    {% if departments | length > 1 %}
+                        <div class="filter-group">
+                            <label for="department" class="filter-label">Département</label>
+                            <select name="department" id="department" class="filter-control" data-model="department">
+                                <option value="">Tous les départements</option>
+                                {% for department in departments %}
+                                    <option value="{{ department }}">{{ department }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% endif %}
+
+                    {% set cities = app_artistService.cities %}
+                    {% if cities | length > 1 %}
+                        <div class="filter-group">
+                            <label for="city" class="filter-label">Ville</label>
+                            <select name="city" id="city" class="filter-control" data-model="city">
+                                <option value="">Toutes les villes</option>
+                                {% for city in cities %}
+                                    <option value="{{ city }}">{{ city }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {% set artists = computed.artists %}
+    {% if artists %}
+        <section class="app-section">
+            <h2 class="mb-3">
+                {% if artists | length > 1 %}
+                    Bravo&nbsp;! Tu as trouvé {{ this.artists | length }} artistes&nbsp;!
+                {% elseif artists | length > 0 %}
+                    Bravo&nbsp;! Tu as trouvé {{ this.artists | length }} artiste&nbsp;!
+                {% else %}
+                    Hélas&nbsp;! Tu n'as pas trouvé d'artiste :(
+                {% endif %}
+            </h2>
+
+            <div class="app-grid two mb-3" data-loading="addClass(loading)">
+                {% for artist in artists %}
+                    <div class="app-card">
+                        <a href="#" title="Voir la fiche de {{ artist.name }}">
+                            <div class="card-header">
+                                <img src="{{ asset('uploads/artist/' ~ artist.slug ~ '/' ~ artist.photoLive) }}"
+                                     alt="{{ artist.name }}"/>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">{{ artist.name }}</h3>
+                                <p class="card-subtitle">{{ artist.genre }}</p>
+                                <p>
+                                    <strong>{{ artist.city }}&nbsp;({{ artist.zipcode | slice(0,2) }})</strong>
+                                </p>
+                            </div>
+                        </a>
+                        <div class="card-footer">
+                            {% if artist.website %}
+                                <a href="#" title="Voir le site de {{ artist.name }}" target="_blank">
+                                    {{ ux_icon('mdi:web', {'class': 'app-icon medium text-primary'}) }}
+                                </a>
+                            {% endif %}
+                            <a href="#" title="Voir la fiche de {{ artist.name }}">
+                                {{ ux_icon('akar-icons:info-fill', {'class': 'app-icon medium text-info'}) }}
+                            </a>
+                            <a href="#" title="Engager {{ artist.name }}">
+                                {{ ux_icon('fa6-solid:handshake', {'class': 'app-icon medium text-success'}) }}
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% else %}
+        <section class="app-section">
+            <p class="text-center">
+                <strong>Aucun artiste trouvé… Modifie tes filtres&nbsp;!</strong>
+            </p>
+        </section>
+    {% endif %}
+</div>

@@ -39,7 +39,8 @@
         display: block;
         margin: 0 auto;
 
-        &.text-warning {
+        &.text-warning,
+        &.text-primary {
           width: 6rem;
         }
       }

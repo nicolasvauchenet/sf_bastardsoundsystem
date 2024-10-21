@@ -43,6 +43,17 @@
       background-color: $third;
     }
 
+    &.bg-secondary {
+      &:hover{
+        color: $third !important;
+      }
+
+      &.active {
+        color: $secondary !important;
+        background-color: $third !important;
+      }
+    }
+
     .app-icon {
       display: block;
       margin: 0 auto 0.25rem;

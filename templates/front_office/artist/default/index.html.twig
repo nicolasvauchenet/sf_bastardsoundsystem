@@ -1,0 +1,46 @@
+{% extends 'front_office/_layout/_index.html.twig' %}
+
+{% block title %}Le catalogue - Artistes du label{% endblock %}
+{% block meta_description %}{% endblock %}
+
+{% block body_class %}front-office{% endblock %}
+
+{% block main %}
+    <section class="app-section cover">
+        <img src="{{ asset('img/sitecover.webp') }}" alt="Bastard Sound System"/>
+
+        <div class="content">
+            <h1>Les Artistes du label BSS</h1>
+            <p>Un Éventail de Styles et d'Influences</p>
+        </div>
+    </section>
+
+    {{ component('FilterArtists') }}
+
+    <figure class="app-image">
+        <img src="{{ asset('img/label/about/about1.webp') }}" alt="On bosse pour les Groupes"/>
+    </figure>
+
+    <section class="app-section post-figure">
+        <h2>Le Catalogue des Artistes de Bastard Sound System</h2>
+
+        <p class="text-justify small">
+            Chez <strong>Bastard Sound System</strong>, on ne fait pas dans la dentelle&nbsp;: notre
+            <strong>catalogue</strong> regroupe des <strong>artistes</strong> et des <strong>groupes</strong> qui
+            envoient
+            du lourd, des talents bruts qui ont choisi de casser les codes et de faire vibrer les scènes. De la nouvelle
+            garde prête à renverser la <strong>scène rock</strong> aux vétérans aguerris qui enflamment les salles,
+            chaque
+            artiste que nous soutenons a son propre <strong>univers musical</strong> et son propre
+            <strong>style</strong>,
+            mais tous partagent la même <strong>énergie</strong>, celle de ne jamais rien lâcher.
+        </p>
+
+        <div class="app-grid two">
+            <a href="{{ path('app_front_office_production_collaboration_engagement') }}" class="app-button">
+                Comment engager un groupe&nbsp;?
+            </a>
+            <a href="{{ path('app_front_office_membership') }}" class="app-button cta">Rejoins-nous&nbsp;!</a>
+        </div>
+    </section>
+{% endblock %}

@@ -80,7 +80,8 @@
         </div>
     </div>
 
-    <a href="#" class="bg-secondary">
+    <a href="{{ path('app_front_office_artist_home') }}"
+       class="bg-secondary {% if app.request.get('_route') == 'app_front_office_artist_home' %}active{% endif %}">
         {{ ux_icon('el:group', {'class': 'app-icon medium'}) }}
         Artistes
     </a>

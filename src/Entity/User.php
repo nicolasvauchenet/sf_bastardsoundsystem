@@ -14,7 +14,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 #[UniqueEntity(fields: ['email'], message: 'Cette adresse e-mail est déjà utilisée !')]
 #[ORM\InheritanceType('JOINED')]
-#[ORM\DiscriminatorColumn(name: 'type', type: 'string')]
+#[ORM\DiscriminatorColumn(name: 'discriminator', type: 'string')]
 #[ORM\DiscriminatorMap(['admin' => 'App\Entity\User', 'adherent' => 'App\Entity\Member', 'artist' => 'App\Entity\Artist'])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -150,18 +150,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
-
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): static
-    {
-        $this->type = $type;
 
         return $this;
     }

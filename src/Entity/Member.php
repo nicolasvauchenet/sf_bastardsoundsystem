@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MemberRepository::class)]
 #[ORM\InheritanceType('JOINED')]
+#[ORM\DiscriminatorColumn(name: 'discriminator', type: 'string')]
+#[ORM\DiscriminatorMap(['adherent' => 'App\Entity\Member', 'artist' => 'App\Entity\Artist'])]
 class Member extends User
 {
     #[ORM\Column(length: 255, nullable: true)]

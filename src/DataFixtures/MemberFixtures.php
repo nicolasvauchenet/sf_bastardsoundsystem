@@ -24,7 +24,6 @@ class MemberFixtures extends Fixture implements OrderedFixtureInterface
             ->setPassword($this->passwordHasher->hashPassword($member, '!bEb7RgDFJM?'))
             ->setRoles(['ROLE_MEMBER'])
             ->setName('Rudy Billiet')
-            ->setType('adherent')
             ->setActive(true)
             ->setCountry('France')
             ->setStatus('Attente de cotisation');

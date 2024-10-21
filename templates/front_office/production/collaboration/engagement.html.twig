@@ -38,20 +38,22 @@
                     <h3>1. Repère un groupe dans le catalogue</h3>
                     <p>
                         Parcours notre
-                        <a href="#">catalogue</a>
+                        <a href="{{ path('app_front_office_artist_home') }}">catalogue</a>
                         et trouve le groupe qui te plaît parmi notre sélection de <strong>groupes de rock</strong> et
-                        d'autres
-                        styles !
+                        d'autres styles !
                     </p>
                 </div>
             </div>
 
             <div class="grid-item app-text small">
                 <div class="content">
-                    <h3>2. Clique sur "Engager"</h3>
+                    <h3>
+                        2. Clique sur le bouton
+                        {{ ux_icon('fa6-solid:handshake', {'class': 'app-icon medium text-success'}) }}
+                    </h3>
                     <p>
-                        Une fois ton groupe choisi, clique sur le bouton <em>"Engager"</em> qui se trouve sur la page du
-                        groupe.
+                        Une fois ton groupe choisi, clique sur le bouton <strong>Engager</strong> qui se trouve sur la
+                        vignette ou sur la page du groupe (sur les deux en fait).
                     </p>
                 </div>
             </div>

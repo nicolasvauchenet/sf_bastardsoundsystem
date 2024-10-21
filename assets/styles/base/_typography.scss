@@ -19,6 +19,10 @@ h3 {
   font-size: 1.25rem;
   text-align: left;
   color: $primary;
+
+  &:has(.app-icon) {
+    @include displayFlex(null, center, 0.5rem);
+  }
 }
 
 a {
