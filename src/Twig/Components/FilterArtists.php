@@ -23,6 +23,9 @@ class FilterArtists
     #[LiveProp(writable: true)]
     public string $city = '';
 
+    #[LiveProp(writable: true)]
+    public int $bandmates = 0;
+
     public function __construct(ArtistRepository $artistRepository)
     {
         $this->artistRepository = $artistRepository;
@@ -30,10 +33,10 @@ class FilterArtists
 
     public function getArtists(): array
     {
-        if($this->genre === '' && $this->department === '' && $this->city === '') {
+        if($this->genre === '' && $this->department === '' && $this->city === '' && $this->bandmates === '') {
             return $this->artistRepository->findBy(['active' => true]);
         }
 
-        return $this->artistRepository->findByFilters($this->genre, $this->department, $this->city);
+        return $this->artistRepository->findByFilters($this->genre, $this->department, $this->city, $this->bandmates);
     }
 }

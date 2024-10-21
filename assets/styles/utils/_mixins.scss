@@ -7,7 +7,7 @@
 }
 
 @mixin displayGrid($columns: 1fr, $gap: null, $rows: null) {
-  display: grid;
+  display: grid !important;
   grid-template-columns: $columns;
   grid-template-rows: $rows;
   grid-gap: $gap;

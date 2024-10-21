@@ -1,6 +1,6 @@
 .app-filters {
   @include displayFlex(center, center, 1.5rem);
-  flex: 1;
+  width: 100%;
 
   .filter-group {
     flex: 1;

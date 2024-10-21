@@ -6,12 +6,14 @@ use App\Entity\Membership;
 use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
 use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\IsTrue;
 
 class MembershipType extends AbstractType
 {
@@ -84,7 +86,23 @@ class MembershipType extends AbstractType
                 ],
                 'attr' => [
                     'class' => 'form-control',
-                    'rows' => 16,
+                    'rows' => 11,
+                ],
+            ])
+            ->add('agree', CheckboxType::class, [
+                'required' => true,
+                'label' => "L'adhésion à BSS est soumise au paiement d'une cotisation de 12€. Je suis ok pour filer les sous avant de devenir adhérent",
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
+                'attr' => [
+                    'class' => 'form-checkbox',
+                ],
+                'mapped' => false,
+                'constraints' => [
+                    new IsTrue([
+                        'message' => "Tu n'acceptes pas de payer la cotisation ?",
+                    ]),
                 ],
             ])
             ->add('status', ChoiceType::class, [

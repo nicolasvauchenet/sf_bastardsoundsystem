@@ -5,7 +5,7 @@
                 <div class="icon">
                     {{ ux_icon('mage:filter', {'class': 'app-icon medium text-primary'}) }}
                 </div>
-                <div class="app-filters">
+                <div class="app-filters app-grid two">
                     {% set genres = app_artistService.genres %}
                     {% if genres | length > 1 %}
                         <div class="filter-group">
@@ -44,6 +44,19 @@
                             </select>
                         </div>
                     {% endif %}
+
+                    {% set bandmates = app_artistService.bandmates %}
+                    {% if bandmates | length > 1 %}
+                        <div class="filter-group">
+                            <label for="bandmates" class="filter-label">Membres</label>
+                            <select name="bandmates" id="bandmates" class="filter-control" data-model="bandmates">
+                                <option value="">Toutes les formations</option>
+                                {% for bandmate in bandmates %}
+                                    <option value="{{ bandmate }}">{{ bandmate }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </section>
@@ -54,9 +67,9 @@
         <section class="app-section">
             <h2 class="mb-3">
                 {% if artists | length > 1 %}
-                    Bravo&nbsp;! Tu as trouvé {{ this.artists | length }} artistes&nbsp;!
+                    Bravo&nbsp;! Tu as trouvé {{ this.artists | length }} artistes&nbsp;:
                 {% elseif artists | length > 0 %}
-                    Bravo&nbsp;! Tu as trouvé {{ this.artists | length }} artiste&nbsp;!
+                    Bravo&nbsp;! Tu as trouvé {{ this.artists | length }} artiste&nbsp;:
                 {% else %}
                     Hélas&nbsp;! Tu n'as pas trouvé d'artiste :(
                 {% endif %}

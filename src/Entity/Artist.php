@@ -9,6 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ArtistRepository::class)]
 class Artist extends Member
 {
+    #[ORM\Column]
+    private ?int $bandmates = null;
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $logo = null;
 
@@ -26,6 +29,18 @@ class Artist extends Member
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $photoBand = null;
+
+    public function getBandmates(): ?int
+    {
+        return $this->bandmates;
+    }
+
+    public function setBandmates(int $bandmates): static
+    {
+        $this->bandmates = $bandmates;
+
+        return $this;
+    }
 
     public function getLogo(): ?string
     {

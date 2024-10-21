@@ -85,7 +85,7 @@ class PartnershipType extends AbstractType
                 ],
                 'attr' => [
                     'class' => 'form-control',
-                    'rows' => 16,
+                    'rows' => 14,
                 ],
             ])
             ->add('status', ChoiceType::class, [

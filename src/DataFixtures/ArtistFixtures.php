@@ -30,6 +30,7 @@ class ArtistFixtures extends Fixture implements OrderedFixtureInterface
             ->setZipcode('87000')
             ->setCity('Limoges')
             ->setCountry('France')
+            ->setBandmates(3)
             ->setLogo('feelarsen-logo.jpg')
             ->setDescription("Féelarsen est un groupe de rock basé à Limoges, influencé par Noir Désir, Starshooter, et les Wampas. Leurs compositions originales et en français abordent des thèmes sombres et ironiques avec des paroles incisives et des riffs mordants.")
             ->setGenre('Rock alternatif')
@@ -44,17 +45,54 @@ class ArtistFixtures extends Fixture implements OrderedFixtureInterface
             ->setPassword($this->passwordHasher->hashPassword($artist, '!bEb7RgDFJM?'))
             ->setRoles(['ROLE_ARTIST'])
             ->setName('Forever Madame')
-            ->setActive(false)
+            ->setActive(true)
             ->setStatus('Attente de cotisation')
             ->setZipcode('87000')
             ->setCity('Limoges')
             ->setCountry('France')
+            ->setBandmates(5)
             ->setLogo('forever-madame-logo.png')
             ->setGenre('Rock progressif')
             ->setPhotoLive('forever-madame-live.jpg')
             ->setPhotoBand('forever-madame-band.jpg');
         $manager->persist($artist);
         $this->addReference('user-forever-madame', $artist);
+
+        $artist = new Artist();
+        $artist->setEmail('truman@bastardsoundsystem.org')
+            ->setPassword($this->passwordHasher->hashPassword($artist, '!bEb7RgDFJM?'))
+            ->setRoles(['ROLE_ARTIST'])
+            ->setName('Truman')
+            ->setActive(true)
+            ->setStatus('Attente de cotisation')
+            ->setZipcode('87000')
+            ->setCity('Limoges')
+            ->setCountry('France')
+            ->setBandmates(2)
+            ->setLogo('truman-logo.png')
+            ->setGenre('Rock poétique')
+            ->setPhotoLive('truman-live.jpg')
+            ->setPhotoBand('truman-band.jpg');
+        $manager->persist($artist);
+        $this->addReference('user-truman', $artist);
+
+        $artist = new Artist();
+        $artist->setEmail('zanaly@bastardsoundsystem.org')
+            ->setPassword($this->passwordHasher->hashPassword($artist, '!bEb7RgDFJM?'))
+            ->setRoles(['ROLE_ARTIST'])
+            ->setName('Zanaly')
+            ->setActive(true)
+            ->setStatus('Attente de cotisation')
+            ->setZipcode('23000')
+            ->setCity('Guéret')
+            ->setCountry('France')
+            ->setBandmates(4)
+            ->setLogo('zanaly-logo.png')
+            ->setGenre('Métal progressif')
+            ->setPhotoLive('zanaly-live.jpg')
+            ->setPhotoBand('zanaly-band.jpg');
+        $manager->persist($artist);
+        $this->addReference('user-zanaly', $artist);
 
         $manager->flush();
     }

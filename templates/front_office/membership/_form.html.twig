@@ -35,13 +35,35 @@
     </fieldset>
 
     <fieldset class="form-fieldset">
-        <legend class="form-legend">autre chose&nbsp;?</legend>
+        <legend class="form-legend">autre chose&nbsp;:</legend>
 
         <div class="form-group">
             {{ form_label(form.message) }}
             {{ form_widget(form.message) }}
             {{ form_errors(form.message) }}
         </div>
+
+        <div class="form-group form-checkbox">
+            <span>&nbsp;</span>
+            <div class="group-content">
+                <label for="{{ form.agree.vars.id }}"
+                       class="form-label small {% if form.agree.vars.required %}required{% endif %}">
+                    {{ form_widget(form.agree) }}
+                    {{ form.agree.vars.label }}
+                </label>
+                {{ form_errors(form.agree) }}
+            </div>
+        </div>
+
+        <p class="text-center">
+            <a href="{{ asset('uploads/document/statuts-de-lassociation.pdf') }}"
+               class="text-secondary"
+               target="_blank">
+                <strong>
+                    <small>Tu peux aller lire les statuts de l'association en cliquant là</small>
+                </strong>
+            </a>
+        </p>
     </fieldset>
 </div>
 

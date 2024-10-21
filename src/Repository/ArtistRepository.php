@@ -49,7 +49,18 @@ class ArtistRepository extends ServiceEntityRepository
         return array_column($results, 'city');
     }
 
-    public function findByFilters(?string $genre = null, ?string $department = null, ?string $city = null): array
+    public function findAllBandmates(): array
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->select('DISTINCT a.bandmates')
+            ->orderBy('a.bandmates', 'ASC');
+
+        $results = $qb->getQuery()->getResult();
+
+        return array_column($results, 'bandmates');
+    }
+
+    public function findByFilters(?string $genre = null, ?string $department = null, ?string $city = null, ?int $bandmates = null): array
     {
         $qb = $this->createQueryBuilder('a');
 
@@ -66,6 +77,11 @@ class ArtistRepository extends ServiceEntityRepository
         if($city) {
             $qb->andWhere('a.city = :city')
                 ->setParameter('city', $city);
+        }
+
+        if($bandmates) {
+            $qb->andWhere('a.bandmates = :bandmates')
+                ->setParameter('bandmates', $bandmates);
         }
 
         $qb->andWhere('a.active = true')

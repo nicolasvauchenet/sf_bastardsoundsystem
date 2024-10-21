@@ -32,4 +32,9 @@ class ArtistService
     {
         return $this->artistRepository->findAllCities();
     }
+
+    public function getBandmates(): array
+    {
+        return $this->artistRepository->findAllBandmates();
+    }
 }
