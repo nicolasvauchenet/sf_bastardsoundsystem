@@ -1,4 +1,4 @@
-&.artist {
+&.partner {
   .app-main {
     .app-section {
       &.cover {
@@ -74,6 +74,13 @@
           padding: 0.5rem 1rem;
           text-align: center;
           border-radius: 0.25rem;
+
+          &:last-child {
+            @include respondTo(xs) {
+              justify-self: center;
+              grid-column: 1 / -1;
+            }
+          }
 
           &:hover {
             background-color: $secondary;

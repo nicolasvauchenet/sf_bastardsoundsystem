@@ -26,6 +26,21 @@
         object-fit: cover;
       }
     }
+
+    &.contain {
+      img {
+        margin: 1.5rem;
+        width: calc(100% - 3rem);
+
+        @include respondTo(md) {
+          margin: 1.5rem;
+          width: calc(100% - 3rem);
+          height: 30dvh;
+          object-fit: contain;
+          border-radius: 0.25rem;
+        }
+      }
+    }
   }
 
   .card-body {

@@ -2,7 +2,6 @@
 
 namespace App\Controller\FrontOffice\Artist;
 
-use App\Repository\ArtistRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -11,7 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class DefaultController extends AbstractController
 {
     #[Route('', name: 'home')]
-    public function index(ArtistRepository $artistRepository): Response
+    public function index(): Response
     {
         return $this->render('front_office/artist/default/index.html.twig');
     }

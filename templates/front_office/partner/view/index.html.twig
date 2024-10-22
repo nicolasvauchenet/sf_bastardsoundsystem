@@ -1,0 +1,103 @@
+{% extends 'front_office/_layout/_index.html.twig' %}
+
+{% block title %}Nos partenaires - {{ partner.name }}{% endblock %}
+{% block meta_description %}{% endblock %}
+
+{% block body_class %}front-office partner{% endblock %}
+
+{% block main %}
+    <section class="app-section cover">
+        {% if partner.photoTeam %}
+            <img src="{{ asset('uploads/partner/' ~ partner.slug ~ '/' ~ partner.photoTeam) }}"
+                 alt="{{ partner.name }}"/>
+        {% else %}
+            <img src="{{ asset('img/sitecover.webp') }}" alt="{{ partner.name }}"/>
+        {% endif %}
+
+        <div class="content">
+            <h1>{{ partner.name }}</h1>
+            <p>{{ partner.type }} {{ partner.specialties }}</p>
+        </div>
+    </section>
+
+    <section class="app-section">
+        <h2>
+            <a href="{{ path('app_front_office_partner_home') }}">
+                {{ ux_icon('ph:skip-back-fill', {'class': 'app-icon large'}) }}
+                Partenaires
+            </a>
+            Les infos de {{ partner.name }}
+        </h2>
+
+        <div class="app-grid-container mb-3">
+            <div class="app-grid-logo">
+                <img src="{{ asset('uploads/partner/' ~ partner.slug ~ '/' ~ partner.logo) }}"
+                     alt="{{ partner.name }}"/>
+            </div>
+
+            <div class="app-grid-content">
+                {% if partner.description %}
+                    <div class="app-description app-text info">
+                        <p class="text-justify small">{{ partner.description | raw }}</p>
+                    </div>
+                {% endif %}
+
+                <div class="app-info-grid">
+                    <div class="grid-item app-text small">
+                        <div class="content">
+                            <h3 class="text-center">Ville</h3>
+                            <p class="text-center">{{ partner.city }}&nbsp;({{ partner.zipcode | slice(0, 2) }})</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="app-socials">
+            {% for social in app_socialService.byUser(partner.slug) %}
+                <a href="{{ social.url }}"
+                   title="{{ social.title }}"
+                   target="_blank">
+                    {{ ux_icon(social.icon, {'class': 'app-icon medium ' ~ social.class}) }}
+                </a>
+            {% endfor %}
+            {% if partner.website %}
+                <a href="{{ partner.website }}" title="Va voir le site de {{ partner.name }}" target="_blank">
+                    {{ ux_icon('mdi:web', {'class': 'app-icon medium text-primary'}) }}
+                </a>
+            {% endif %}
+        </div>
+    </section>
+
+    <figure class="app-image large">
+        {% if partner.photoLive %}
+            <img src="{{ asset('uploads/partner/' ~ partner.slug ~ '/' ~ partner.photoLive) }}"
+                 alt="{{ partner.name }}"/>
+        {% else %}
+            <img src="{{ asset('img/production/navigation.webp') }}" alt="On bosse mieux ensemble"/>
+        {% endif %}
+    </figure>
+
+    <section class="app-section post-figure">
+        <h2>Nos Partenaires chez Bastard Sound System</h2>
+
+        <p class="text-justify small">
+            Chez <strong>Bastard Sound System</strong>, on croit au pouvoir de la collaboration. Nos
+            <strong>partenaires</strong> sont des acteurs incontournables de la <strong>scène musicale</strong>, des
+            professionnels passionnés qui partagent notre vision de casser les codes et de propulser la musique là où
+            elle doit être : au cœur des foules. Qu’il s’agisse de <strong>studios d’enregistrement</strong>, de
+            <strong>festivals</strong>, de <strong>videastes</strong> ou de <strong>techniciens</strong>, chaque
+            partenaire joue un rôle clé pour accompagner les <strong>artistes</strong> dans leur développement et offrir
+            des prestations de qualité à chaque événement.
+        </p>
+
+        <div class="app-grid two">
+            <a href="{{ path('app_front_office_production_collaboration_coorganization') }}" class="app-button">
+                Ce qu'on peut faire ensemble
+            </a>
+            <a href="{{ path('app_front_office_partnership') }}" class="app-button cta">
+                Deviens notre Partenaire&nbsp;!
+            </a>
+        </div>
+    </section>
+{% endblock %}

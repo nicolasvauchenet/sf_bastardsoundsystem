@@ -1,0 +1,106 @@
+<div {{ attributes }}>
+    {% if app_partnerService.allPartners | length > 1 %}
+        <section class="app-section post-figure">
+            <div class="app-text info mb-0">
+                <div class="icon">
+                    {{ ux_icon('mage:filter', {'class': 'app-icon medium text-primary'}) }}
+                </div>
+                <div class="app-filters app-grid two">
+                    {% set specialties = app_partnerService.specialties %}
+                    {% if specialties | length > 1 %}
+                        <div class="filter-group">
+                            <label for="specialty" class="filter-label">Prestation</label>
+                            <select name="specialty" id="specialty" class="filter-control" data-model="specialty">
+                                <option value="">Toutes les prestations</option>
+                                {% for specialty in specialties %}
+                                    <option value="{{ specialty }}">{{ specialty }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% endif %}
+
+                    {% set departments = app_partnerService.departments %}
+                    {% if departments | length > 1 %}
+                        <div class="filter-group">
+                            <label for="department" class="filter-label">Département</label>
+                            <select name="department" id="department" class="filter-control" data-model="department">
+                                <option value="">Tous les départements</option>
+                                {% for department in departments %}
+                                    <option value="{{ department }}">{{ department }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% endif %}
+
+                    {% set cities = app_partnerService.cities %}
+                    {% if cities | length > 1 %}
+                        <div class="filter-group">
+                            <label for="city" class="filter-label">Ville</label>
+                            <select name="city" id="city" class="filter-control" data-model="city">
+                                <option value="">Toutes les villes</option>
+                                {% for city in cities %}
+                                    <option value="{{ city }}">{{ city }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {% set partners = computed.partners %}
+    {% if partners %}
+        <section class="app-section">
+            <h2 class="mb-3">
+                {% if partners | length > 1 %}
+                    Bravo&nbsp;! Tu as trouvé {{ this.partners | length }} partenaires&nbsp;:
+                {% elseif partners | length > 0 %}
+                    Bravo&nbsp;! Tu as trouvé {{ this.partners | length }} partenaire&nbsp;:
+                {% else %}
+                    Hélas&nbsp;! Tu n'as pas trouvé de partenaire :(
+                {% endif %}
+            </h2>
+
+            <div class="app-grid two mb-3" data-loading="addClass(loading)">
+                {% for partner in partners %}
+                    <div class="app-card">
+                        <a href="{{ path('app_front_office_partner_details', {'slug': partner.slug}) }}"
+                           title="Voir la fiche de {{ partner.name }}">
+                            <div class="card-header contain">
+                                <img src="{{ asset('uploads/partner/' ~ partner.slug ~ '/' ~ partner.logo) }}"
+                                     alt="{{ partner.name }}"/>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">{{ partner.name }}</h3>
+                                <p class="card-subtitle">{{ partner.type }} {{ partner.specialties }}</p>
+                                <p>
+                                    <strong>{{ partner.city }}&nbsp;({{ partner.zipcode | slice(0,2) }})</strong>
+                                </p>
+                            </div>
+                        </a>
+                        <div class="card-footer app-socials">
+                            <a href="{{ path('app_front_office_partner_details', {'slug': partner.slug}) }}"
+                               title="La fiche de {{ partner.name }}">
+                                {{ ux_icon('akar-icons:info-fill', {'class': 'app-icon medium text-info'}) }}
+                            </a>
+                            {% if partner.website %}
+                                <a href="{{ partner.website }}"
+                                   title="Va voir le site de {{ partner.name }}"
+                                   target="_blank">
+                                    {{ ux_icon('mdi:web', {'class': 'app-icon medium text-primary'}) }}
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% else %}
+        <section class="app-section">
+            <p class="text-center">
+                <strong>Aucun partenaire trouvé… Modifie tes filtres&nbsp;!</strong>
+            </p>
+        </section>
+    {% endif %}
+</div>

@@ -1,6 +1,6 @@
 {% extends 'front_office/_layout/_index.html.twig' %}
 
-{% block title %}Les partenaires{% endblock %}
+{% block title %}Nos partenaires{% endblock %}
 {% block meta_description %}{% endblock %}
 
 {% block body_class %}front-office{% endblock %}
@@ -15,7 +15,32 @@
         </div>
     </section>
 
+    {{ component('FilterPartners') }}
+
+    <figure class="app-image">
+        <img src="{{ asset('img/production/navigation.webp') }}" alt="On bosse mieux ensemble"/>
+    </figure>
+
     <section class="app-section post-figure">
-        <p class="text-center">[LIVE COMPONENT - PARTNERS]</p>
+        <h2>Nos Partenaires chez Bastard Sound System</h2>
+
+        <p class="text-justify small">
+            Chez <strong>Bastard Sound System</strong>, on croit au pouvoir de la collaboration. Nos
+            <strong>partenaires</strong> sont des acteurs incontournables de la <strong>scène musicale</strong>, des
+            professionnels passionnés qui partagent notre vision de casser les codes et de propulser la musique là où
+            elle doit être : au cœur des foules. Qu’il s’agisse de <strong>studios d’enregistrement</strong>, de
+            <strong>festivals</strong>, de <strong>videastes</strong> ou de <strong>techniciens</strong>, chaque
+            partenaire joue un rôle clé pour accompagner les <strong>artistes</strong> dans leur développement et offrir
+            des prestations de qualité à chaque événement.
+        </p>
+
+        <div class="app-grid two">
+            <a href="{{ path('app_front_office_production_collaboration_coorganization') }}" class="app-button">
+                Ce qu'on peut faire ensemble
+            </a>
+            <a href="{{ path('app_front_office_partnership') }}" class="app-button cta">
+                Deviens notre Partenaire&nbsp;!
+            </a>
+        </div>
     </section>
 {% endblock %}

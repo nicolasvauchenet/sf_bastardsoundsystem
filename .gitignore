@@ -7,6 +7,8 @@ bastardsoundsystem.key
 !/public/uploads/artist/.gitkeep
 /public/uploads/document/*
 !/public/uploads/document/.gitkeep
+/public/uploads/partner/*
+!/public/uploads/partner/.gitkeep
 ###< bastardsoundsystem/local-development ###
 
 ###> symfony/framework-bundle ###

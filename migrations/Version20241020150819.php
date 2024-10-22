@@ -21,6 +21,7 @@ final class Version20241020150819 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE artist (id INT NOT NULL, bandmates INT NOT NULL, logo VARCHAR(255) DEFAULT NULL, description TEXT DEFAULT NULL, genre VARCHAR(255) NOT NULL, style VARCHAR(255) DEFAULT NULL, website VARCHAR(255) DEFAULT NULL, photo_live VARCHAR(255) DEFAULT NULL, photo_band VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE partner (id INT NOT NULL, logo VARCHAR(255) DEFAULT NULL, description TEXT DEFAULT NULL, type VARCHAR(255) NOT NULL, specialties VARCHAR(255) DEFAULT NULL, website VARCHAR(255) DEFAULT NULL, photo_live VARCHAR(255) DEFAULT NULL, photo_team VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE member (id INT NOT NULL, phone VARCHAR(255) DEFAULT NULL, address VARCHAR(255) DEFAULT NULL, address2 VARCHAR(255) DEFAULT NULL, address3 VARCHAR(255) DEFAULT NULL, zipcode VARCHAR(255) DEFAULT NULL, city VARCHAR(255) DEFAULT NULL, country VARCHAR(255) DEFAULT NULL, status VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE "user" (id SERIAL NOT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, active BOOLEAN NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, connected_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, discriminator VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_IDENTIFIER_EMAIL ON "user" (email)');
@@ -42,6 +43,7 @@ final class Version20241020150819 extends AbstractMigration
         $this->addSql('DROP TRIGGER IF EXISTS notify_trigger ON messenger_messages;');
         $this->addSql('CREATE TRIGGER notify_trigger AFTER INSERT OR UPDATE ON messenger_messages FOR EACH ROW EXECUTE PROCEDURE notify_messenger_messages();');
         $this->addSql('ALTER TABLE artist ADD CONSTRAINT FK_1599687BF396750 FOREIGN KEY (id) REFERENCES "user" (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE partner ADD CONSTRAINT FK_312B3E16BF396750 FOREIGN KEY (id) REFERENCES "user" (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE member ADD CONSTRAINT FK_70E4FA78BF396750 FOREIGN KEY (id) REFERENCES "user" (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
     }
 
@@ -50,8 +52,10 @@ final class Version20241020150819 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SCHEMA public');
         $this->addSql('ALTER TABLE artist DROP CONSTRAINT FK_1599687BF396750');
+        $this->addSql('ALTER TABLE partner DROP CONSTRAINT FK_312B3E16BF396750');
         $this->addSql('ALTER TABLE member DROP CONSTRAINT FK_70E4FA78BF396750');
         $this->addSql('DROP TABLE artist');
+        $this->addSql('DROP TABLE partner');
         $this->addSql('DROP TABLE member');
         $this->addSql('DROP TABLE "user"');
         $this->addSql('DROP TABLE messenger_messages');

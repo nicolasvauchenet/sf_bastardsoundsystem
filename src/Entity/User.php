@@ -17,7 +17,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 #[UniqueEntity(fields: ['email'], message: 'Cette adresse e-mail est déjà utilisée !')]
 #[ORM\InheritanceType('JOINED')]
 #[ORM\DiscriminatorColumn(name: 'discriminator', type: 'string')]
-#[ORM\DiscriminatorMap(['admin' => 'App\Entity\User', 'adherent' => 'App\Entity\Member', 'artist' => 'App\Entity\Artist'])]
+#[ORM\DiscriminatorMap(['admin' => 'App\Entity\User', 'adherent' => 'App\Entity\Member', 'artist' => 'App\Entity\Artist', 'partner' => 'App\Entity\Partner'])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]

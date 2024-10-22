@@ -187,7 +187,6 @@ class SocialFixtures extends Fixture implements OrderedFixtureInterface
             ->setActive(true);
         $manager->persist($social);
 
-        /*
         // Laeti D. Photos partner socials
         $social = (new Social())
             ->setName('Instagram')
@@ -271,13 +270,12 @@ class SocialFixtures extends Fixture implements OrderedFixtureInterface
             ->setOwner($this->getReference('user-philae-studio'))
             ->setActive(true);
         $manager->persist($social);
-        */
 
         $manager->flush();
     }
 
     public function getOrder(): int
     {
-        return 4;
+        return 5;
     }
 }
