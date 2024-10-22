@@ -48,6 +48,7 @@
 
   .card-footer {
     @include displayFlex(center, center);
+    gap: 0;
     width: 100%;
     background-color: $third;
 

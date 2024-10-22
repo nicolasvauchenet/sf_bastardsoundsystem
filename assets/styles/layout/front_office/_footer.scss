@@ -44,10 +44,16 @@
   }
 
   .footer-social {
-    a {
-      display: block;
-      width: 100%;
-      text-align: center;
+    .app-socials {
+      @include respondTo(md) {
+        height: calc(100% - 3.5rem);
+      }
+
+      a {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
     }
   }
 
