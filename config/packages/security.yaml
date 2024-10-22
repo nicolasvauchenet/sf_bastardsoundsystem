@@ -20,6 +20,7 @@ security:
         login_path: app_login
         check_path: app_login
         enable_csrf: true
+        success_handler: App\Security\LoginSuccessHandler
       logout:
         path: app_logout
         # where to redirect after logout
@@ -41,6 +42,7 @@ security:
     ROLE_ADMIN: ROLE_USER
     ROLE_MEMBER: ROLE_USER
     ROLE_ARTIST: ROLE_MEMBER
+    ROLE_PARTNER: ROLE_MEMBER
 
   access_denied_url: /
 

@@ -32,12 +32,13 @@ html {
     color: $black;
     background-color: $primary;
 
-    @import "./header";
-    @import "./navigation";
-    @import "./account";
-    @import "./main";
-    @import "./footer";
+    @import "header";
+    @import "navigation";
+    @import "account";
+    @import "main";
+    @import "footer";
 
-    @import "../../pages/front_office";
+    @import "../pages/front_office";
+    @import "../pages/back_office";
   }
 }

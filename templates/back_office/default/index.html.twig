@@ -1,0 +1,22 @@
+{% extends 'back_office/_layout/_index.html.twig' %}
+
+{% block title %}Administration du site{% endblock %}
+
+{% block body_class %}back-office home{% endblock %}
+
+{% block main %}
+    <section class="app-section cover">
+        <img src="{{ asset('img/admincover.webp') }}" alt="Administration BSS"/>
+
+        <div class="content">
+            <h1>Administration générale</h1>
+            <p>Bastard Sound System</p>
+        </div>
+    </section>
+
+    <section class="app-section post-figure">
+        <h2>Voici l'état global&nbsp;:</h2>
+
+        [ GRAPHS ]
+    </section>
+{% endblock %}

@@ -1,0 +1,103 @@
+<footer class="app-footer">
+    <div class="app-grid four">
+        <div class="footer-about">
+            <h2>
+                À Propos de BSS
+                <a href="#">
+                    {{ ux_icon('fa6-solid:gear', {'class': 'app-icon'}) }}
+                </a>
+            </h2>
+            <p>
+                Bastard Sound System, c'est bien plus qu'un simple <strong>label</strong>, c'est une véritable
+                passion
+                pour le <strong>rock</strong>, un <strong>accompagnement</strong> fidèle et un
+                <strong>engagement</strong> sans faille pour soutenir les <strong>musiciens</strong> et les
+                <strong>groupes</strong> dans leur quête de succès et de <strong>professionnalisation</strong>.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <h2>
+                Liens Utiles
+                <a href="#">
+                    {{ ux_icon('fa6-solid:gear', {'class': 'app-icon'}) }}
+                </a>
+            </h2>
+            <ul>
+                <li>
+                    <a href="{{ path('app_front_office_partner_home') }}"
+                       class="{% if app.request.get('_route') == 'app_front_office_partner_home' %}active{% endif %}">
+                        Nos Partenaires
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('app_front_office_legal_mentions') }}"
+                       class="{% if app.request.get('_route') == 'app_front_office_legal_mentions' %}active{% endif %}">
+                        Mentions légales
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('app_front_office_legal_privacy') }}"
+                       class="{% if app.request.get('_route') == 'app_front_office_legal_privacy' %}active{% endif %}">
+                        Politique de confidentialité
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('app_front_office_legal_cgu') }}"
+                       class="{% if app.request.get('_route') == 'app_front_office_legal_cgu' %}active{% endif %}">
+                        Conditions Générales d'Utilisation
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="footer-social">
+            <h2>
+                Réseaux Sociaux
+                <a href="#">
+                    {{ ux_icon('fa6-solid:gear', {'class': 'app-icon'}) }}
+                </a>
+            </h2>
+            <div class="app-socials">
+                {% for social in app_socialService.byUser('bss') %}
+                    <a href="{{ social.url }}"
+                       title="{{ social.title }}"
+                       target="_blank">
+                        {{ ux_icon(social.icon, {'class': 'app-icon medium ' ~ social.class}) }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="footer-contact">
+            <h2>
+                Contact
+                <a href="#">
+                    {{ ux_icon('fa6-solid:gear', {'class': 'app-icon'}) }}
+                </a>
+            </h2>
+            <ul>
+                <li>
+                    <strong>Bastard Sound System</strong>
+                </li>
+                <li>
+                    <a href="tel:+33683573067">+33 6 83 57 30 67</a>
+                </li>
+                <li>
+                    <a href="mailto:contact@bastardsoundsystem.org">contact@bastardsoundsystem.org</a>
+                </li>
+                <li>
+                    <a href="https://bastardsoundsystem.org">www.bastardsoundsystem.org</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-credits">
+        <p>
+            &copy; {{ 'now' | date('Y') }} Bastard Sound System. Tous droits réservés.
+            Crédits Photos&nbsp;:
+            <a href="#">Cédric Carré</a>, ChatGPT.
+        </p>
+    </div>
+</footer>

@@ -1,0 +1,14 @@
+&.home {
+  .app-main {
+    .app-section {
+      &.cover {
+        img {
+          @include respondTo(md) {
+            height: 70dvh;
+            object-position: center bottom;
+          }
+        }
+      }
+    }
+  }
+}

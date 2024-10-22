@@ -1,7 +1,17 @@
 <nav class="app-account">
     <div class="app-dropdownmenu">
         <a href="#" onclick="return false;">
-            {{ ux_icon('ic:sharp-account-circle', {'class': 'app-icon'}) }}
+            {% if not app.user %}
+                {{ ux_icon('ic:sharp-account-circle', {'class': 'app-icon'}) }}
+            {% elseif is_granted('ROLE_ADMIN') %}
+                {{ ux_icon('ic:baseline-account-balance', {'class': 'app-icon'}) }}
+            {% elseif is_granted('ROLE_ARTIST') %}
+                {{ ux_icon('ic:baseline-outlet', {'class': 'app-icon'}) }}
+            {% elseif is_granted('ROLE_PARTNER') %}
+                {{ ux_icon('ic:baseline-face', {'class': 'app-icon'}) }}
+            {% else %}
+                {{ ux_icon('ic:baseline-accessibility-new', {'class': 'app-icon'}) }}
+            {% endif %}
         </a>
 
         <div class="dropdown-content">
@@ -12,7 +22,27 @@
                 <div class="app-grid two">
                     <div class="grid-item">
                         {% if app.user %}
-
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <strong>Administration</strong>
+                                {% if 'app_back_office_' not in app.request.get('_route') %}
+                                    <a href="{{ path('app_back_office_home') }}">
+                                        <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                                        Administration du site
+                                    </a>
+                                {% endif %}
+                            {% elseif is_granted('ROLE_ARTIST') %}
+                                <strong>Artiste</strong>
+                            {% elseif is_granted('ROLE_PARTNER') %}
+                                <strong>Partenaire</strong>
+                            {% else %}
+                                <strong>Adhérent</strong>
+                            {% endif %}
+                            {% if 'app_front_office_' not in app.request.get('_route') %}
+                                <a href="{{ path('app_front_office_home') }}">
+                                    <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                                    Retour au site
+                                </a>
+                            {% endif %}
                         {% else %}
                             <strong>Rejoins BSS</strong>
                             <a href="{{ path('app_front_office_membership') }}"
@@ -29,7 +59,7 @@
                     </div>
                     <div class="grid-item">
                         {% if app.user %}
-                            <strong>{{ app.user.name }}</strong>
+                            <strong>{% if is_granted('ROLE_ADMIN') %}Admin {% endif %}{{ app.user.name }}</strong>
                             <a href="{{ path('app_logout') }}"
                                class="text-warning"
                                onclick="return window.confirm('Tu pars déjà ?')">
