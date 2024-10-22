@@ -23,6 +23,29 @@ class ContactController extends AbstractController
                           MailerService          $mailerService): Response
     {
         $message = new Message();
+        if($user = $this->getUser()) {
+            $message->setSenderName($user->getName())
+                ->setSenderEmail($user->getEmail());
+
+            if($this->isGranted('ROLE_ARTIST')) {
+                if($user->getBandmates() === 1) {
+                    $message->setSenderType('Musicien');
+                } else {
+                    $message->setSenderType('Groupe');
+                }
+            } else if($this->isGranted('ROLE_PARTNER')) {
+                $message->setSenderType($user->getType());
+            } else if($this->isGranted('ROLE_MEMBER')) {
+                $message->setSenderType('Adhérent');
+            } else if($this->isGranted('ROLE_ADMIN')) {
+                $message->setSenderType('Organisation');
+            }
+
+            if(!$this->isGranted('ROLE_ADMIN')) {
+                $message->setSenderPhone($user->getPhone());
+            }
+        }
+
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
 

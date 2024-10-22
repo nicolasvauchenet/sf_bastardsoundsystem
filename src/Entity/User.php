@@ -213,7 +213,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function addSocial(Social $social): static
     {
-        if (!$this->socials->contains($social)) {
+        if(!$this->socials->contains($social)) {
             $this->socials->add($social);
             $social->setOwner($this);
         }
@@ -223,13 +223,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function removeSocial(Social $social): static
     {
-        if ($this->socials->removeElement($social)) {
+        if($this->socials->removeElement($social)) {
             // set the owning side to null (unless already changed)
-            if ($social->getOwner() === $this) {
+            if($social->getOwner() === $this) {
                 $social->setOwner(null);
             }
         }
 
         return $this;
+    }
+
+    public function getUsertype(): string
+    {
+        return $this->discriminator;
     }
 }

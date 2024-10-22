@@ -1,3 +1,72 @@
 <nav class="app-navigation">
+    <div class="app-dropdownmenu">
+        <a href="#" onclick="return false;">
+            {{ ux_icon('bi:envelope-fill', {'class': 'app-icon medium'}) }}
+            Contacts
+        </a>
 
+        <div class="dropdown-content">
+            <div class="dropdown-item">
+                <img src="{{ asset('img/account/navigation.webp') }}" alt="Contacts"/>
+            </div>
+            <div class="dropdown-item">
+                <div class="app-grid three">
+                    <div class="grid-item">
+                        <strong>Adhésions</strong>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_back_office_membership_home' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Nouvelles demandes
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_back_office_membership_wait' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Demandes en attente
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_back_office_membership_archive' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Demandes archivées
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <strong>Partenariats</strong>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_back_office_partnership_home' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Nouvelles propositions
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_back_office_partnership_wait' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Propositions en attente
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_back_office_partnership_archive' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Propositions archivées
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <strong>Messages</strong>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_back_office_message_home' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Nouveaux messages
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_back_office_message_wait' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Messages en attente
+                        </a>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_back_office_message_archive' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Messages archivés
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </nav>
