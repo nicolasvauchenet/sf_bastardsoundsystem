@@ -61,7 +61,7 @@
                         {% if app.user %}
                             <strong>{% if is_granted('ROLE_ADMIN') %}Admin {% endif %}{{ app.user.name }}</strong>
                             <a href="{{ path('app_logout') }}"
-                               class="text-warning"
+                               class="text-danger"
                                onclick="return window.confirm('Tu pars déjà ?')">
                                 <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                                 Déconnecte-toi

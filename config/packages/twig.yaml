@@ -5,6 +5,9 @@ twig:
     app_artistService: '@App\Service\ArtistService'
     app_partnerService: '@App\Service\PartnerService'
     app_socialService: '@App\Service\SocialService'
+    app_messageService: '@App\Service\BackOffice\MessageService'
+    app_membershipService: '@App\Service\BackOffice\MembershipService'
+    app_partnershipService: '@App\Service\BackOffice\PartnershipService'
 
 when@test:
   twig:
