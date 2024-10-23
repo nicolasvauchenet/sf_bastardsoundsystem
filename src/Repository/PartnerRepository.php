@@ -24,7 +24,20 @@ class PartnerRepository extends ServiceEntityRepository
 
         $results = $qb->getQuery()->getResult();
 
-        return array_column($results, 'specialties');
+        $activities = [];
+        foreach($results as $result) {
+            $specialties = explode(',', $result['specialties']);
+            foreach($specialties as $specialty) {
+                $activity = trim($specialty);
+                if(!in_array($activity, $activities)) {
+                    $activities[] = $activity;
+                }
+            }
+        }
+
+        sort($activities);
+
+        return $activities;
     }
 
     public function findAllDepartments(): array
@@ -54,7 +67,7 @@ class PartnerRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('p');
 
         if($specialties) {
-            $qb->andWhere('p.specialties LIKE :specialties')
+            $qb->andWhere('LOWER(p.specialties) LIKE LOWER(:specialties)')
                 ->setParameter('specialties', '%' . $specialties . '%');
         }
 
@@ -64,7 +77,7 @@ class PartnerRepository extends ServiceEntityRepository
         }
 
         if($city) {
-            $qb->andWhere('p.city = :city')
+            $qb->andWhere('LOWER(p.city) = LOWER(:city)')
                 ->setParameter('city', $city);
         }
 

@@ -9,11 +9,11 @@
                     {% set specialties = app_partnerService.specialties %}
                     {% if specialties | length > 1 %}
                         <div class="filter-group">
-                            <label for="specialty" class="filter-label">Prestation</label>
+                            <label for="specialty" class="filter-label">Activité</label>
                             <select name="specialty" id="specialty" class="filter-control" data-model="specialty">
-                                <option value="">Toutes les prestations</option>
+                                <option value="">Toutes les activités</option>
                                 {% for specialty in specialties %}
-                                    <option value="{{ specialty }}">{{ specialty }}</option>
+                                    <option value="{{ specialty | lower }}">{{ specialty }}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -39,7 +39,7 @@
                             <select name="city" id="city" class="filter-control" data-model="city">
                                 <option value="">Toutes les villes</option>
                                 {% for city in cities %}
-                                    <option value="{{ city }}">{{ city }}</option>
+                                    <option value="{{ city | lower }}">{{ city }}</option>
                                 {% endfor %}
                             </select>
                         </div>

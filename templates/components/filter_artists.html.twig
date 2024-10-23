@@ -13,7 +13,7 @@
                             <select name="genre" id="genre" class="filter-control" data-model="genre">
                                 <option value="">Tous les genres</option>
                                 {% for genre in genres %}
-                                    <option value="{{ genre }}">{{ genre }}</option>
+                                    <option value="{{ genre | lower }}">{{ genre }}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -39,7 +39,7 @@
                             <select name="city" id="city" class="filter-control" data-model="city">
                                 <option value="">Toutes les villes</option>
                                 {% for city in cities %}
-                                    <option value="{{ city }}">{{ city }}</option>
+                                    <option value="{{ city | lower }}">{{ city }}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -95,13 +95,13 @@
                             </div>
                         </a>
                         <div class="card-footer app-socials">
-                            {#{% for social in app_socialService.byUser(artist.slug) %}
+                            {# {% for social in app_socialService.byUser(artist.slug) %}
                                 <a href="{{ social.url }}"
                                    title="{{ social.title }}"
                                    target="_blank">
                                     {{ ux_icon(social.icon, {'class': 'app-icon ' ~ social.class}) }}
                                 </a>
-                            {% endfor %}#}
+                            {% endfor %} #}
                             <a href="{{ path('app_front_office_artist_details', {'slug': artist.slug}) }}"
                                title="La fiche de {{ artist.name }}">
                                 {{ ux_icon('akar-icons:info-fill', {'class': 'app-icon medium text-info'}) }}

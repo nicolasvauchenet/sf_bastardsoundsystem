@@ -65,7 +65,7 @@ class ArtistRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('a');
 
         if($genre) {
-            $qb->andWhere('a.genre = :genre')
+            $qb->andWhere('LOWER(a.genre) = LOWER(:genre)')
                 ->setParameter('genre', $genre);
         }
 
@@ -75,7 +75,7 @@ class ArtistRepository extends ServiceEntityRepository
         }
 
         if($city) {
-            $qb->andWhere('a.city = :city')
+            $qb->andWhere('LOWER(a.city) = LOWER(:city)')
                 ->setParameter('city', $city);
         }
 
