@@ -3,11 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\PartnershipRepository;
+use App\Validator\UniqueEmail;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: PartnershipRepository::class)]
+#[ORM\UniqueConstraint(name: 'UNIQ_PARTNERSHIP_EMAIL', fields: ['email'])]
+#[UniqueEntity(fields: ['email'], message: 'Cette adresse e-mail est déjà utilisée')]
 class Partnership
 {
     #[ORM\Id]
@@ -22,6 +26,10 @@ class Partnership
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
+    #[UniqueEmail(
+        repositories: [User::class, Membership::class],
+        message: 'Cette adresse e-mail est déjà utilisée'
+    )]
     private ?string $email = null;
 
     #[ORM\Column(length: 255, nullable: true)]
