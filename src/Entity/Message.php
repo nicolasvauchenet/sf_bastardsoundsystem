@@ -40,6 +40,9 @@ class Message
     #[Gedmo\Timestampable(on: 'create')]
     private ?\DateTimeImmutable $sentAt = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $answeredAt = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,6 +140,18 @@ class Message
     public function setSentAt(\DateTimeImmutable $sentAt): static
     {
         $this->sentAt = $sentAt;
+
+        return $this;
+    }
+
+    public function getAnsweredAt(): ?\DateTimeImmutable
+    {
+        return $this->answeredAt;
+    }
+
+    public function setAnsweredAt(?\DateTimeImmutable $answeredAt): static
+    {
+        $this->answeredAt = $answeredAt;
 
         return $this;
     }

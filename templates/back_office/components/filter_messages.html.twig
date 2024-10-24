@@ -1,0 +1,74 @@
+<div {{ attributes }}>
+    {% set messages = computed.messages %}
+    {% if messages %}
+        <section class="app-section">
+            <h2 class="mb-3">
+                {% if app.request.query.get('etat') == 'nouveau' %}
+                    {{ messages | length }} nouveau{{ messages | length > 1 ? 'x' : '' }} message{{ messages | length > 1 ? 's' : '' }}&nbsp;:
+                {% elseif app.request.query.get('etat') == 'attente' %}
+                    {{ messages | length }} message{{ messages | length > 1 ? 's' : '' }} en attente&nbsp;:
+                {% elseif app.request.query.get('etat') == 'archive' %}
+                    {{ messages | length }} message{{ messages | length > 1 ? 's' : '' }} archivé{{ messages | length > 1 ? 's' : '' }}&nbsp;:
+                {% else %}
+                    {{ messages | length }} message{{ messages | length > 1 ? 's' : '' }}&nbsp;:
+                {% endif %}
+            </h2>
+
+            <div class="app-grid four" data-loading="addClass(loading)">
+                {% for message in messages %}
+                    <div class="app-card" data-controller="modal">
+                        <a href="#" data-action="click->modal#open">
+                            <div class="card-header">
+                                <img src="{{ asset('img/account/navigation.webp') }}" alt="Messages"/>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">{{ message.senderName }}</h3>
+                                <p class="card-title">{{ message.senderType }}</p>
+                                {% if message.answeredAt %}
+                                    <p class="small">
+                                        <strong>Réponse le</strong>
+                                        <br/>
+                                        {{ message.answeredAt | date ('d/m/Y') }}
+                                        <strong>à</strong>
+                                        {{ message.answeredAt | date ('H:i') }}
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </a>
+
+                        {% include 'back_office/_layout/_modal.html.twig' with {'type': 'card', 'content_type': 'message', 'content': message} %}
+
+                        <div class="card-footer">
+                            {% if app.request.query.get('etat') != 'archive' %}
+                                <a href="{{ path('app_back_office_contacts_message_archive', {'id': message.id}) }}"
+                                   class="text-danger" title="Archiver ce message"
+                                   onclick="return window.confirm('On archive ce message ?')">
+                                    {{ ux_icon('icomoon-free:cross', {'class': 'app-icon'}) }}
+                                </a>
+                            {% endif %}
+                            {% if app.request.query.get('etat') != 'attente' %}
+                                <a href="{{ path('app_back_office_contacts_message_wait', {'id': message.id}) }}"
+                                   class="text-warning" title="Mettre ce message en attente"
+                                   onclick="return window.confirm('On met ce message en attente ?')">
+                                    {{ ux_icon('subway:refresh-time', {'class': 'app-icon'}) }}
+                                </a>
+                            {% endif %}
+                            <a href="{{ path('app_back_office_contacts_message_answer', {'id': message.id}) }}"
+                               class="text-success"
+                               title="Marquer ce message comme répondu"
+                               onclick="return window.confirm('On marque ce message comme répondu ?')">
+                                {{ ux_icon('formkit:check', {'class': 'app-icon'}) }}
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% else %}
+        <section class="app-section">
+            <p class="text-center">
+                <strong>Aucun message trouvé…</strong>
+            </p>
+        </section>
+    {% endif %}
+</div>

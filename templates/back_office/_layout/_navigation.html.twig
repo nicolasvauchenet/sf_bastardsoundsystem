@@ -60,22 +60,22 @@
                     </div>
                     <div class="grid-item">
                         <strong>Messages</strong>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_back_office_message_home' %}active{% endif %} {% if app_messageService.byStatus('Nouveau') | length > 0 %}text-danger{% endif %}">
+                        <a href="{{ path('app_back_office_contacts_message_home') }}?etat=nouveau"
+                           class="{% if app.request.get('_route') == 'app_back_office_contacts_message_home' and app.request.query.get('etat') == 'nouveau' %}active{% endif %} {% if app_messageService.byStatus('Nouveau') | length > 0 %}text-danger{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             {{ app_messageService.byStatus('Nouveau') | length }}
                             Nouveau{{ app_messageService.byStatus('Nouveau') | length > 1 ? 'x' : '' }}
                             message{{ app_messageService.byStatus('Nouveau') | length > 1 ? 's' : '' }}
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_back_office_message_wait' %}active{% endif %} {% if app_messageService.byStatus('Attente') | length > 0 %}text-warning{% endif %}">
+                        <a href="{{ path('app_back_office_contacts_message_home') }}?etat=attente"
+                           class="{% if app.request.get('_route') == 'app_back_office_contacts_message_home' and app.request.query.get('etat') == 'attente' %}active{% endif %} {% if app_messageService.byStatus('Attente') | length > 0 %}text-warning{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             {{ app_messageService.byStatus('Attente') | length }}
                             Message{{ app_messageService.byStatus('Attente') | length > 1 ? 's' : '' }}
                             en attente
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_back_office_message_archive' %}active{% endif %}">
+                        <a href="{{ path('app_back_office_contacts_message_home') }}?etat=archive"
+                           class="{% if app.request.get('_route') == 'app_back_office_contacts_message_home' and app.request.query.get('etat') == 'archive' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Messages archivés
                         </a>

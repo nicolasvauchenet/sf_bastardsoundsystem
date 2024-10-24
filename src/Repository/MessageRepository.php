@@ -15,4 +15,18 @@ class MessageRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Message::class);
     }
+
+    public function findByFilters(?string $status = null): array
+    {
+        $qb = $this->createQueryBuilder('m');
+
+        if($status) {
+            $qb->andWhere('LOWER(m.status) = LOWER(:status)')
+                ->setParameter('status', $status);
+        }
+
+        $qb->orderBy('m.sentAt', 'ASC');
+
+        return $qb->getQuery()->getResult();
+    }
 }
