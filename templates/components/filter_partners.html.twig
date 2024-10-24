@@ -58,11 +58,11 @@
                 {% elseif partners | length > 0 %}
                     Bravo&nbsp;! Tu as trouvé {{ this.partners | length }} partenaire&nbsp;:
                 {% else %}
-                    Hélas&nbsp;! Tu n'as pas trouvé de partenaire :(
+                    Hélas&nbsp;! Tu n'as pas trouvé de partenaire&nbsp;:(
                 {% endif %}
             </h2>
 
-            <div class="app-grid two mb-3" data-loading="addClass(loading)">
+            <div class="app-grid two" data-loading="addClass(loading)">
                 {% for partner in partners %}
                     <div class="app-card">
                         <a href="{{ path('app_front_office_partner_details', {'slug': partner.slug}) }}"

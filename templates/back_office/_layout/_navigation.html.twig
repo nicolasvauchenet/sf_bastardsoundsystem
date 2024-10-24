@@ -16,22 +16,22 @@
                 <div class="app-grid three">
                     <div class="grid-item">
                         <strong>Adhésions</strong>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_back_office_membership_home' %}active{% endif %} {% if app_membershipService.byStatus('Nouvelle') | length > 0 %}text-danger{% endif %}">
+                        <a href="{{ path('app_back_office_contacts_membership_home') }}?etat=nouvelle"
+                           class="{% if app.request.get('_route') == 'app_back_office_contacts_membership_home' and app.request.query.get('etat') == 'nouvelle' %}active{% endif %} {% if app_membershipService.byStatus('Nouvelle') | length > 0 %}text-danger{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             {{ app_membershipService.byStatus('Nouvelle') | length }}
                             Nouvelle{{ app_membershipService.byStatus('Nouvelle') | length > 1 ? 's' : '' }}
                             demande{{ app_membershipService.byStatus('Nouvelle') | length > 1 ? 's' : '' }}
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_back_office_membership_wait' %}active{% endif %} {% if app_membershipService.byStatus('En attente') | length > 0 %}text-warning{% endif %}">
+                        <a href="{{ path('app_back_office_contacts_membership_home') }}?etat=attente"
+                           class="{% if app.request.get('_route') == 'app_back_office_contacts_membership_home' and app.request.query.get('etat') == 'attente' %}active{% endif %} {% if app_membershipService.byStatus('Attente') | length > 0 %}text-warning{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
-                            {{ app_membershipService.byStatus('En attente') | length }}
-                            Demande{{ app_membershipService.byStatus('En attente') | length > 1 ? 's' : '' }}
+                            {{ app_membershipService.byStatus('Attente') | length }}
+                            Demande{{ app_membershipService.byStatus('Attente') | length > 1 ? 's' : '' }}
                             en attente
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_back_office_membership_archive' %}active{% endif %}">
+                        <a href="{{ path('app_back_office_contacts_membership_home') }}?etat=archive"
+                           class="{% if app.request.get('_route') == 'app_back_office_contacts_membership_home' and app.request.query.get('etat') == 'archive' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Demandes archivées
                         </a>
@@ -46,10 +46,10 @@
                             proposition{{ app_partnershipService.byStatus('Nouvelle') | length > 1 ? 's' : '' }}
                         </a>
                         <a href="#"
-                           class="{% if app.request.get('_route') == 'app_back_office_partnership_wait' %}active{% endif %} {% if app_partnershipService.byStatus('En attente') | length > 0 %}text-warning{% endif %}">
+                           class="{% if app.request.get('_route') == 'app_back_office_partnership_wait' %}active{% endif %} {% if app_partnershipService.byStatus('Attente') | length > 0 %}text-warning{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
-                            {{ app_partnershipService.byStatus('En attente') | length }}
-                            Proposition{{ app_partnershipService.byStatus('En attente') | length > 1 ? 's' : '' }}
+                            {{ app_partnershipService.byStatus('Attente') | length }}
+                            Proposition{{ app_partnershipService.byStatus('Attente') | length > 1 ? 's' : '' }}
                             en attente
                         </a>
                         <a href="#"
@@ -68,10 +68,10 @@
                             message{{ app_messageService.byStatus('Nouveau') | length > 1 ? 's' : '' }}
                         </a>
                         <a href="#"
-                           class="{% if app.request.get('_route') == 'app_back_office_message_wait' %}active{% endif %} {% if app_messageService.byStatus('En attente') | length > 0 %}text-warning{% endif %}">
+                           class="{% if app.request.get('_route') == 'app_back_office_message_wait' %}active{% endif %} {% if app_messageService.byStatus('Attente') | length > 0 %}text-warning{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
-                            {{ app_messageService.byStatus('En attente') | length }}
-                            Message{{ app_messageService.byStatus('En attente') | length > 1 ? 's' : '' }}
+                            {{ app_messageService.byStatus('Attente') | length }}
+                            Message{{ app_messageService.byStatus('Attente') | length > 1 ? 's' : '' }}
                             en attente
                         </a>
                         <a href="#"

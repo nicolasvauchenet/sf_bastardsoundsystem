@@ -16,28 +16,17 @@ class MembershipRepository extends ServiceEntityRepository
         parent::__construct($registry, Membership::class);
     }
 
-    //    /**
-    //     * @return Membership[] Returns an array of Membership objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('m')
-    //            ->andWhere('m.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('m.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    public function findByFilters(?string $status = null): array
+    {
+        $qb = $this->createQueryBuilder('m');
 
-    //    public function findOneBySomeField($value): ?Membership
-    //    {
-    //        return $this->createQueryBuilder('m')
-    //            ->andWhere('m.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+        if($status) {
+            $qb->andWhere('LOWER(m.status) = LOWER(:status)')
+                ->setParameter('status', $status);
+        }
+
+        $qb->orderBy('m.sentAt', 'ASC');
+
+        return $qb->getQuery()->getResult();
+    }
 }

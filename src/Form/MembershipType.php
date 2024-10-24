@@ -26,7 +26,7 @@ class MembershipType extends AbstractType
                 'choices' => [
                     'Un musicien tout seul' => 'Musicien',
                     'Un groupe de musique' => 'Groupe',
-                    'Juste un passant' => 'Visiteur',
+                    'Un nouvel adhérent' => 'Adhérent',
                 ],
                 'placeholder' => 'Trouve-toi dans la liste',
                 'label_attr' => [

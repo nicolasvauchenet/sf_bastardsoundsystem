@@ -73,11 +73,11 @@
                 {% elseif artists | length > 0 %}
                     Bravo&nbsp;! Tu as trouvé {{ this.artists | length }} artiste&nbsp;:
                 {% else %}
-                    Hélas&nbsp;! Tu n'as pas trouvé d'artiste :(
+                    Hélas&nbsp;! Tu n'as pas trouvé d'artiste&nbsp;:(
                 {% endif %}
             </h2>
 
-            <div class="app-grid two mb-3" data-loading="addClass(loading)">
+            <div class="app-grid two" data-loading="addClass(loading)">
                 {% for artist in artists %}
                     <div class="app-card">
                         <a href="{{ path('app_front_office_artist_details', {'slug': artist.slug}) }}"
