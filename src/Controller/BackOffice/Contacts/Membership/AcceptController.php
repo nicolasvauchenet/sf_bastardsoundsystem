@@ -70,7 +70,7 @@ class AcceptController extends AbstractController
             'subject' => 'Bienvenue chez BSS !',
         ], $emailTemplate);
 
-        $this->addFlash('success', "Tu as accepté demande d'adhésion de {$membership->getName()}&nbsp!");
+        $this->addFlash('success', "Tu as accepté la demande d'adhésion de {$membership->getName()}&nbsp!");
 
         return $this->redirectToRoute('app_back_office_contacts_membership_home', ['etat' => 'nouvelle'], Response::HTTP_SEE_OTHER);
     }

@@ -1,6 +1,6 @@
 {% extends 'back_office/_layout/_index.html.twig' %}
 
-{% block title %}Les adhésions - Administration{% endblock %}
+{% block title %}Les partenariats - Administration{% endblock %}
 
 {% block body_class %}back-office contacts{% endblock %}
 
@@ -11,16 +11,16 @@
         <div class="content">
             <h1>
                 {% if app.request.query.get('etat') == 'nouvelle' %}
-                    Les demandes d'adhésion
+                    Les propositions de partenariat
                 {% elseif app.request.query.get('etat') == 'attente' %}
-                    Les adhésions en attente
+                    Les propositions de partenariat en attente
                 {% else %}
-                    Les adhésions archivées
+                    Les propositions de partenariat archivées
                 {% endif %}
             </h1>
             <p>Administration BSS</p>
         </div>
     </section>
 
-    {{ component('FilterMemberships') }}
+    {{ component('FilterPartnerships') }}
 {% endblock %}

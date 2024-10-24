@@ -1,23 +1,4 @@
 <div {{ attributes }}>
-    {# <section class="app-section post-figure">
-        <div class="app-text info mb-0">
-            <div class="icon">
-                {{ ux_icon('mage:filter', {'class': 'app-icon medium text-primary'}) }}
-            </div>
-            <div class="app-filters app-grid two">
-                <div class="filter-group">
-                    <label for="status" class="filter-label">État</label>
-                    <select name="status" id="status" class="filter-control" data-model="status">
-                        <option value="">Toutes les demandes</option>
-                        <option value="nouvelle">Nouvelles demandes</option>
-                        <option value="attente">Demandes en attente</option>
-                        <option value="archive">Demandes archivées</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </section> #}
-
     {% set memberships = computed.memberships %}
     {% if memberships %}
         <section class="app-section">
@@ -35,8 +16,8 @@
 
             <div class="app-grid four" data-loading="addClass(loading)">
                 {% for membership in memberships %}
-                    <div class="app-card">
-                        <a href="#">
+                    <div class="app-card" data-controller="modal">
+                        <a href="#" data-action="click->modal#open">
                             <div class="card-header">
                                 <img src="{{ asset('img/account/navigation.webp') }}" alt="Adhésions"/>
                             </div>
@@ -48,22 +29,10 @@
                                 </p>
                             </div>
                         </a>
+
+                        {% include 'back_office/_layout/_modal.html.twig' with {'type': 'card', 'content_type': 'membership', 'content': membership} %}
+
                         <div class="card-footer">
-                            {% if app.request.query.get('etat') != 'attente' %}
-                                <a href="{{ path('app_back_office_contacts_membership_wait', {'id': membership.id}) }}"
-                                   class="text-warning" title="Mettre cette demande en attente"
-                                   onclick="return window.confirm('On met cette demande en attente ?')">
-                                    {{ ux_icon('subway:refresh-time', {'class': 'app-icon'}) }}
-                                </a>
-                            {% endif %}
-                            {% if app.request.query.get('etat') != 'nouvelle' %}
-                                <a href="{{ path('app_back_office_contacts_membership_accept', {'id': membership.id}) }}"
-                                   class="text-success"
-                                   title="Accepter cette demande"
-                                   onclick="return window.confirm('On valide cette demande ?')">
-                                    {{ ux_icon('formkit:check', {'class': 'app-icon'}) }}
-                                </a>
-                            {% endif %}
                             {% if app.request.query.get('etat') != 'archive' %}
                                 <a href="{{ path('app_back_office_contacts_membership_archive', {'id': membership.id}) }}"
                                    class="text-danger" title="Refuser cette demande"
@@ -71,6 +40,19 @@
                                     {{ ux_icon('icomoon-free:cross', {'class': 'app-icon'}) }}
                                 </a>
                             {% endif %}
+                            {% if app.request.query.get('etat') != 'attente' %}
+                                <a href="{{ path('app_back_office_contacts_membership_wait', {'id': membership.id}) }}"
+                                   class="text-warning" title="Mettre cette demande en attente"
+                                   onclick="return window.confirm('On met cette demande en attente ?')">
+                                    {{ ux_icon('subway:refresh-time', {'class': 'app-icon'}) }}
+                                </a>
+                            {% endif %}
+                            <a href="{{ path('app_back_office_contacts_membership_accept', {'id': membership.id}) }}"
+                               class="text-success"
+                               title="Accepter cette demande"
+                               onclick="return window.confirm('On valide cette demande ?')">
+                                {{ ux_icon('formkit:check', {'class': 'app-icon'}) }}
+                            </a>
                         </div>
                     </div>
                 {% endfor %}

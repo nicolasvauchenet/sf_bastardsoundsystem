@@ -1,0 +1,68 @@
+<div {{ attributes }}>
+    {% set partnerships = computed.partnerships %}
+    {% if partnerships %}
+        <section class="app-section">
+            <h2 class="mb-3">
+                {% if app.request.query.get('etat') == 'nouvelle' %}
+                    {{ partnerships | length }} nouvelle{{ partnerships | length > 1 ? 's' : '' }} proposition{{ partnerships | length > 1 ? 's' : '' }} de partenariat&nbsp;:
+                {% elseif app.request.query.get('etat') == 'attente' %}
+                    {{ partnerships | length }} proposition{{ partnerships | length > 1 ? 's' : '' }} en attente&nbsp;:
+                {% elseif app.request.query.get('etat') == 'archive' %}
+                    {{ partnerships | length }} proposition{{ partnerships | length > 1 ? 's' : '' }} archivée{{ partnerships | length > 1 ? 's' : '' }}&nbsp;:
+                {% else %}
+                    {{ partnerships | length }} proposition{{ partnerships | length > 1 ? 's' : '' }}&nbsp;:
+                {% endif %}
+            </h2>
+
+            <div class="app-grid four" data-loading="addClass(loading)">
+                {% for partnership in partnerships %}
+                    <div class="app-card" data-controller="modal">
+                        <a href="#" data-action="click->modal#open">
+                            <div class="card-header">
+                                <img src="{{ asset('img/account/navigation.webp') }}" alt="Adhésions"/>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">{{ partnership.name }}</h3>
+                                <p class="card-title">{{ partnership.partnerType }}</p>
+                                <p>
+                                    <strong>{{ partnership.city }}</strong>
+                                </p>
+                            </div>
+                        </a>
+
+                        {% include 'back_office/_layout/_modal.html.twig' with {'type': 'card', 'content_type': 'partnership', 'content': partnership} %}
+
+                        <div class="card-footer">
+                            {% if app.request.query.get('etat') != 'archive' %}
+                                <a href="{{ path('app_back_office_contacts_partnership_archive', {'id': partnership.id}) }}"
+                                   class="text-danger" title="Refuser cette proposition"
+                                   onclick="return window.confirm('On refuse cette proposition ?')">
+                                    {{ ux_icon('icomoon-free:cross', {'class': 'app-icon'}) }}
+                                </a>
+                            {% endif %}
+                            {% if app.request.query.get('etat') != 'attente' %}
+                                <a href="{{ path('app_back_office_contacts_partnership_wait', {'id': partnership.id}) }}"
+                                   class="text-warning" title="Mettre cette proposition en attente"
+                                   onclick="return window.confirm('On met cette proposition en attente ?')">
+                                    {{ ux_icon('subway:refresh-time', {'class': 'app-icon'}) }}
+                                </a>
+                            {% endif %}
+                            <a href="{{ path('app_back_office_contacts_partnership_accept', {'id': partnership.id}) }}"
+                               class="text-success"
+                               title="Accepter cette proposition"
+                               onclick="return window.confirm('On valide cette proposition ?')">
+                                {{ ux_icon('formkit:check', {'class': 'app-icon'}) }}
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% else %}
+        <section class="app-section">
+            <p class="text-center">
+                <strong>Aucune proposition trouvée…</strong>
+            </p>
+        </section>
+    {% endif %}
+</div>

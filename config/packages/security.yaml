@@ -35,8 +35,10 @@ security:
   # Easy way to control access for large sections of your site
   # Note: Only the *first* access control that matches will be used
   access_control:
-  # - { path: ^/admin, roles: ROLE_ADMIN }
-  # - { path: ^/profile, roles: ROLE_USER }
+    - { path: ^/administration, roles: ROLE_ADMIN }
+    - { path: ^/mon-espace-adherent, roles: ROLE_MEMBER }
+    - { path: ^/mon-espace-artiste, roles: ROLE_ARTIST }
+    - { path: ^//mon-espace-partenaire, roles: ROLE_PARTNER }
 
   role_hierarchy:
     ROLE_ADMIN: ROLE_USER

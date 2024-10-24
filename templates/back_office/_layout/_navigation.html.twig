@@ -38,22 +38,22 @@
                     </div>
                     <div class="grid-item">
                         <strong>Partenariats</strong>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_back_office_partnership_home' %}active{% endif %} {% if app_partnershipService.byStatus('Nouvelle') | length > 0 %}text-danger{% endif %}">
+                        <a href="{{ path('app_back_office_contacts_partnership_home') }}?etat=nouvelle"
+                           class="{% if app.request.get('_route') == 'app_back_office_contacts_partnership_home' and app.request.query.get('etat') == 'nouvelle' %}active{% endif %} {% if app_partnershipService.byStatus('Nouvelle') | length > 0 %}text-danger{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             {{ app_partnershipService.byStatus('Nouvelle') | length }}
                             Nouvelle{{ app_partnershipService.byStatus('Nouvelle') | length > 1 ? 's' : '' }}
                             proposition{{ app_partnershipService.byStatus('Nouvelle') | length > 1 ? 's' : '' }}
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_back_office_partnership_wait' %}active{% endif %} {% if app_partnershipService.byStatus('Attente') | length > 0 %}text-warning{% endif %}">
+                        <a href="{{ path('app_back_office_contacts_partnership_home') }}?etat=attente"
+                           class="{% if app.request.get('_route') == 'app_back_office_contacts_partnership_home' and app.request.query.get('etat') == 'attente' %}active{% endif %} {% if app_partnershipService.byStatus('Attente') | length > 0 %}text-warning{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             {{ app_partnershipService.byStatus('Attente') | length }}
                             Proposition{{ app_partnershipService.byStatus('Attente') | length > 1 ? 's' : '' }}
                             en attente
                         </a>
-                        <a href="#"
-                           class="{% if app.request.get('_route') == 'app_back_office_partnership_archive' %}active{% endif %}">
+                        <a href="{{ path('app_back_office_contacts_partnership_home') }}?etat=archive"
+                           class="{% if app.request.get('_route') == 'app_back_office_contacts_partnership_home' and app.request.query.get('etat') == 'archive' %}active{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Propositions archivées
                         </a>

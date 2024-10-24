@@ -19,7 +19,7 @@ class ArchiveController extends AbstractController
         $entityManager->persist($membership);
         $entityManager->flush();
 
-        $this->addFlash('danger', "Tu as refusé demande d'adhésion de {$membership->getName()}&nbsp!");
+        $this->addFlash('danger', "Tu as refusé la demande d'adhésion de {$membership->getName()}&nbsp!");
 
         return $this->redirectToRoute('app_back_office_contacts_membership_home', ['etat' => 'archive'], Response::HTTP_SEE_OTHER);
     }

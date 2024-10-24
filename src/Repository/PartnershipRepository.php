@@ -16,28 +16,17 @@ class PartnershipRepository extends ServiceEntityRepository
         parent::__construct($registry, Partnership::class);
     }
 
-    //    /**
-    //     * @return Partnership[] Returns an array of Partnership objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('p.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    public function findByFilters(?string $status = null): array
+    {
+        $qb = $this->createQueryBuilder('p');
 
-    //    public function findOneBySomeField($value): ?Partnership
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+        if($status) {
+            $qb->andWhere('LOWER(p.status) = LOWER(:status)')
+                ->setParameter('status', $status);
+        }
+
+        $qb->orderBy('p.sentAt', 'ASC');
+
+        return $qb->getQuery()->getResult();
+    }
 }

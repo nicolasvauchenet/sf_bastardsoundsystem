@@ -1,0 +1,67 @@
+<div class="app-modal" data-modal-target="modal" data-action="click->modal#close">
+    <div class="modal-background" data-modal-target="background"></div>
+    <div class="modal-content">
+        <button class="modal-close is-large" aria-label="close" data-action="click->modal#close">
+            {{ ux_icon('fa:close', {'class': 'icon'}) }}
+        </button>
+
+        {% if type == 'card' %}
+            <div class="app-card">
+                <div class="card-header">
+                    <img src="{{ asset('img/account/navigation.webp') }}"
+                         alt="{% if content_type == 'membership' %}Adhésions{% elseif content_type == 'partnership' %}Partenariats{% endif %}"/>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{ content.name }}</h3>
+                    <p class="card-title">
+                        {% if content_type == 'membership' %}
+                            {{ content.memberType }}
+                        {% elseif content_type == 'partnership' %}
+                            {{ content.partnerType }}
+                        {% endif %}
+                    </p>
+                    <p>
+                        <strong>{{ content.city }}</strong>
+                        <br/>
+                        <a href="mailto:{{ content.email }}">{{ content.email }}</a>
+                        {% if content.phone %}
+                            <br/>
+                            <a href="tel:{{ content.phone | format_phone('compact') }}">
+                                {{ content.phone | format_phone }}
+                            </a>
+                        {% endif %}
+                    </p>
+                    {% if content.message %}
+                        <div class="card-text text-justify small">
+                            {{ content.message | raw }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="card-footer">
+                    {% if app.request.query.get('etat') != 'archive' %}
+                        <a href="{{ path('app_back_office_contacts_' ~ content_type ~ '_archive', {'id': content.id}) }}"
+                           class="text-danger"
+                           title="Refuser cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %}"
+                           onclick="return window.confirm('On refuse cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %} ?')">
+                            {{ ux_icon('icomoon-free:cross', {'class': 'app-icon'}) }}
+                        </a>
+                    {% endif %}
+                    {% if app.request.query.get('etat') != 'attente' %}
+                        <a href="{{ path('app_back_office_contacts_' ~ content_type ~ '_wait', {'id': content.id}) }}"
+                           class="text-warning"
+                           title="Mettre cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %} en attente"
+                           onclick="return window.confirm('On met cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %} en attente ?')">
+                            {{ ux_icon('subway:refresh-time', {'class': 'app-icon'}) }}
+                        </a>
+                    {% endif %}
+                    <a href="{{ path('app_back_office_contacts_' ~ content_type ~ '_accept', {'id': content.id}) }}"
+                       class="text-success"
+                       title="Accepter cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %}"
+                       onclick="return window.confirm('On valide cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %} ?')">
+                        {{ ux_icon('formkit:check', {'class': 'app-icon'}) }}
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>

@@ -59,10 +59,16 @@
     .card-subtitle {
       font-size: 1.5rem;
     }
+
+    .card-text {
+      padding: 0.5rem;
+      background-color: rgba($third, 0.15);
+      border-radius: 0.25rem;
+    }
   }
 
   .card-footer {
-    @include displayFlex(center, center);
+    @include displayFlex(center, null);
     gap: 0;
     width: 100%;
     background-color: $third;

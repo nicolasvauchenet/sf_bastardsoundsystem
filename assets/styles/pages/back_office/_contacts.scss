@@ -1,0 +1,15 @@
+&.contacts {
+  .app-main {
+    .app-section {
+      .app-card {
+        .card-header {
+          img {
+            @include respondTo(md) {
+              height: 30dvh;
+            }
+          }
+        }
+      }
+    }
+  }
+}
