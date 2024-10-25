@@ -108,10 +108,13 @@ class MembershipType extends AbstractType
                 'label' => 'État de la demande',
                 'choices' => [
                     'Nouvelle demande' => 'Nouvelle',
-                    'Demande acceptée' => 'Acceptée',
+                    'Demande en attente' => 'Attente',
                     'Demande refusée' => 'Refusée',
                 ],
                 'placeholder' => 'Choisis dans la liste',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                 ],

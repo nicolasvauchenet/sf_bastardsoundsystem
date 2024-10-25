@@ -39,7 +39,7 @@
 
         {% if mailData['from']['phone'] %}
             <p>
-                Vous pouvez rappeler {{ mailData['from']['name'] }} au {{ mailData['from']['phone'] | format_phone }}.
+                On peut rappeler {{ mailData['from']['name'] }} au {{ mailData['from']['phone'] | format_phone }}.
             </p>
         {% endif %}
     </main>

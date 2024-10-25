@@ -1,6 +1,69 @@
 <nav class="app-navigation">
+    {% set newEngagements = app_engagementService.byStatus('Nouvelle') | length %}
+    {% set waitingEngagements = app_engagementService.byStatus('Attente') | length %}
+    {% set revivedEngagements = app_engagementService.byStatus('Relance') | length %}
+    <div class="app-dropdownmenu">
+        <a href="#" onclick="return false;"
+           class="{% if newEngagements > 0 %}bg-danger{% elseif waitingEngagements > 0 or revivedEngagements > 0 %}bg-warning{% endif %}">
+            {{ ux_icon('el:group', {'class': 'app-icon medium'}) }}
+            Booking
+        </a>
+
+        <div class="dropdown-content">
+            <div class="dropdown-item">
+                <img src="{{ asset('img/label/navigation.webp') }}" alt="Booking"/>
+            </div>
+            <div class="dropdown-item">
+                <div class="app-grid three">
+                    <div class="grid-item">
+                        <strong>Propositions</strong>
+                        <a href="{{ path('app_back_office_engagement_home') }}?etat=nouvelle"
+                           class="{% if app.request.get('_route') == 'app_back_office_engagement_home' and app.request.query.get('etat') == 'nouvelle' %}active{% endif %} {% if app_engagementService.byStatus('Nouvelle') | length > 0 %}text-danger{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            {{ app_engagementService.byStatus('Nouvelle') | length }}
+                            Nouvelle{{ app_engagementService.byStatus('Nouvelle') | length > 1 ? 's' : '' }}
+                            proposition{{ app_engagementService.byStatus('Nouvelle') | length > 1 ? 's' : '' }}
+                        </a>
+                        <a href="{{ path('app_back_office_engagement_home') }}?etat=attente"
+                           class="{% if app.request.get('_route') == 'app_back_office_engagement_home' and app.request.query.get('etat') == 'attente' %}active{% endif %} {% if app_engagementService.byStatus('Attente') | length > 0 %}text-warning{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            {{ app_engagementService.byStatus('Attente') | length }}
+                            Proposition{{ app_engagementService.byStatus('Attente') | length > 1 ? 's' : '' }}
+                            en attente
+                        </a>
+                        <a href="{{ path('app_back_office_engagement_home') }}?etat=archive"
+                           class="{% if app.request.get('_route') == 'app_back_office_engagement_home' and app.request.query.get('etat') == 'archive' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Proposition refusées
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <strong>Statistiques</strong>
+                        <a href="{{ path('app_back_office_engagement_home') }}?etat=conclue"
+                           class="{% if app.request.get('_route') == 'app_back_office_engagement_home' and app.request.query.get('etat') == 'conclue' %}active{% endif %} {% if app_engagementService.byStatus('Conclue') | length > 0 %}text-success{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            {{ app_engagementService.byStatus('Conclue') | length }}
+                            Engagement{{ app_engagementService.byStatus('Conclue') | length > 1 ? 's' : '' }}
+                            conclu{{ app_engagementService.byStatus('Conclue') | length > 1 ? 's' : '' }}
+                        </a>
+                        <a href="{{ path('app_back_office_engagement_home') }}?etat=relance"
+                           class="{% if app.request.get('_route') == 'app_back_office_engagement_home' and app.request.query.get('etat') == 'relance' %}active{% endif %} {% if app_engagementService.byStatus('Relance') | length > 0 %}text-warning{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            {{ app_engagementService.byStatus('Relance') | length }}
+                            Engagement{{ app_engagementService.byStatus('Relance') | length > 1 ? 's' : '' }}
+                            impayé{{ app_engagementService.byStatus('Relance') | length > 1 ? 's' : '' }}
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <strong>Contrats</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {% set newContacts = app_membershipService.byStatus('Nouvelle') | length + app_partnershipService.byStatus('Nouvelle') | length + app_messageService.byStatus('Nouveau') | length %}
-    {% set waitingContacts = app_membershipService.byStatus('En attente') | length + app_partnershipService.byStatus('En attente') | length + app_messageService.byStatus('En attente') | length %}
+    {% set waitingContacts = app_membershipService.byStatus('Attente') | length + app_partnershipService.byStatus('Attente') | length + app_messageService.byStatus('Attente') | length %}
     <div class="app-dropdownmenu">
         <a href="#" onclick="return false;"
            class="{% if newContacts > 0 %}bg-danger{% elseif waitingContacts > 0 %}bg-warning{% endif %}">

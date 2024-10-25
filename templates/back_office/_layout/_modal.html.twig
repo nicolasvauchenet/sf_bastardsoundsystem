@@ -7,114 +7,235 @@
 
         {% if type == 'card' %}
             <div class="app-card">
-                <div class="card-header">
-                    <img src="{{ asset('img/account/navigation.webp') }}"
-                         alt="{% if content_type == 'membership' %}Adhésions{% elseif content_type == 'partnership' %}Partenariats{% elseif content_type == 'message' %}Messages{% endif %}"/>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">
-                        {% if content_type == 'message' %}{{ content.senderName }}{% else %}{{ content.name }}{% endif %}
-                    </h3>
-                    <p class="card-title">
-                        {% if content_type == 'membership' %}
-                            {{ content.memberType }}
-                        {% elseif content_type == 'partnership' %}
-                            {{ content.partnerType }}
-                        {% elseif content_type == 'message' %}
-                            {{ content.senderType }}
+                {% if content_type == 'engagement' %}
+                    <div class="card-header">
+                        {% if content.artist.photoBand %}
+                            <img src="{{ asset('uploads/artist/' ~ content.artist.slug ~ '/' ~ content.artist.photoBand) }}"
+                                 alt="{{ content.artist.name }}"/>
+                        {% elseif content.artist.photoLive %}
+                            <img src="{{ asset('uploads/artist/' ~ content.artist.slug ~ '/' ~ content.artist.photoLive) }}"
+                                 alt="{{ engagement.artist.name }}"/>
+                        {% elseif engagement.artist.logo %}
+                            <img src="{{ asset('uploads/artist/' ~ content.artist.slug ~ '/' ~ content.artist.logo) }}"
+                                 class="contain"
+                                 alt="{{ content.artist.name }}"/>
+                        {% else %}
+                            <img src="{{ asset('img/label/navigation.webp') }}" alt="Engagements"/>
                         {% endif %}
-                    </p>
-                    <p>
-                        {% if content_type != 'message' %}
-                            <strong>{{ content.city }}</strong>
-                            <br/>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{ content.artist.name }}</h3>
+                        {% if content.organization %}
+                            <p class="card-title">{{ content.organization }}</p>
+                            <p class="mb-0">{{ content.name }}</p>
+                        {% else %}
+                            <p class="card-title mb-0">{{ content.name }}</p>
+                        {% endif %}
+                        <p>
                             <a href="mailto:{{ content.email }}">{{ content.email }}</a>
                             {% if content.phone %}
-                                <br/>
-                                <a href="tel:{{ content.phone | format_phone('compact') }}">
-                                    {{ content.phone | format_phone }}
-                                </a>
-                            {% endif %}
-                        {% else %}
-                            <a href="mailto:{{ content.senderEmail }}">{{ content.senderEmail }}</a>
-                            {% if content.senderPhone %}
-                                <br/>
-                                <a href="tel:{{ content.senderPhone | format_phone('compact') }}">
-                                    {{ content.senderPhone | format_phone }}
-                                </a>
-                            {% endif %}
-                        {% endif %}
-                    </p>
-                    {% if content.message %}
-                        {% if message.answeredAt %}
-                            <p class="small">
-                                <strong>Réponse le</strong>
-                                {{ message.answeredAt | date ('d/m/Y') }}
-                                <strong>à</strong>
-                                {{ message.answeredAt | date ('H:i') }}
-                            </p>
+                            <br/>
+                            <a href="tel:{{ content.phone | format_phone('compact') }}">
+                                {{ content.phone | format_phone }}
+                            </a>
+                        </p>
                         {% endif %}
 
-                        <div class="card-text text-justify small">
-                            {% if content.subject is defined %}
-                                <strong>{{ content.subject }}</strong>
-                                <br/>
-                            {% endif %}
-                            {{ content.message | raw }}
+                        <div class="card-text">
+                            <p>
+                                {% if content.startAt %}
+                                    <strong>Date du concert :</strong>
+                                    {{ content.startAt | format_datetime(locale=app_locale, pattern="EEEE dd MMMM YYYY") | title }}
+                                {% endif %}
+                                {% if engagement.city or engagement.placeType %}
+                                    <br/>
+                                    {% if engagement.placeType %}
+                                        {{ engagement.placeType }}
+                                    {% endif %}
+                                    {% if engagement.city %}
+                                        <strong>À</strong>
+                                        {{ engagement.city }}
+                                    {% endif %}
+                                {% endif %}
+                                {% if content.placeType %}
+                                    <br/>
+                                    <strong>Type de lieu :</strong>
+                                    {{ content.placeType }}
+                                {% endif %}
+                                {% if content.budget %}
+                                    <br/>
+                                    <strong>Budget :</strong>
+                                    {{ content.budget }}€
+                                {% endif %}
+                                {% if content.concludedAt %}
+                                    <br/>
+                                    <strong>Conclue le :</strong>
+                                    {{ content.concludedAt | date('d/m/Y') }}
+                                {% endif %}
+                            </p>
                         </div>
-                    {% endif %}
-                </div>
-                <div class="card-footer">
-                    {% if app.request.query.get('etat') != 'archive' %}
-                        {% if content_type == 'message' %}
-                            <a href="{{ path('app_back_office_contacts_message_archive', {'id': content.id}) }}"
-                               class="text-danger"
-                               title="Archiver ce message"
-                               onclick="return window.confirm('On archive ce message ?')">
-                                {{ ux_icon('icomoon-free:cross', {'class': 'app-icon'}) }}
-                            </a>
+
+                        {% if content.message %}
+                            <div class="card-text">
+                                <p class="text-justify small">{{ content.message }}</p>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="card-footer">
+                        <a href="{{ path('app_back_office_engagement_delete', {'id': engagement.id}) }}"
+                           class="text-danger"
+                           title="Supprimer cet engagement"
+                           onclick="return window.confirm('On supprime cet engagement ?')">
+                            {{ ux_icon('clarity:trash-solid', {'class': 'app-icon'}) }}
+                        </a>
+                        {% if app.request.query.get('etat') != 'conclue' and app.request.query.get('etat') != 'relance' %}
+                            {% if app.request.query.get('etat') != 'archive' %}
+                                <a href="{{ path('app_back_office_engagement_archive', {'id': engagement.id}) }}"
+                                   class="text-danger" title="Archiver cette proposition d'engagement"
+                                   onclick="return window.confirm('On archive cette proposition d\'engagement ?')">
+                                    {{ ux_icon('icomoon-free:cross', {'class': 'app-icon'}) }}
+                                </a>
+                            {% endif %}
+                            {% if app.request.query.get('etat') != 'attente' %}
+                                <a href="{{ path('app_back_office_engagement_wait', {'id': engagement.id}) }}"
+                                   class="text-warning" title="Mettre cette proposition d'engagement en attente"
+                                   onclick="return window.confirm('On met cette proposition d\'engagement en attente ?')">
+                                    {{ ux_icon('subway:refresh-time', {'class': 'app-icon'}) }}
+                                </a>
+                            {% endif %}
+                            {% if app.request.query.get('etat') != 'conclue' %}
+                                <a href="{{ path('app_back_office_engagement_edit', {'id': engagement.id}) }}"
+                                   class="text-info"
+                                   title="Modifier cette proposition d'engagement">
+                                    {{ ux_icon('fa-solid:edit', {'class': 'app-icon'}) }}
+                                </a>
+                                <a href="{{ path('app_back_office_engagement_accept', {'id': engagement.id}) }}"
+                                   class="text-success"
+                                   title="Accepter cette proposition d'engagement"
+                                   onclick="return window.confirm('On accepte cette proposition d\'engagement ?')">
+                                    {{ ux_icon('formkit:check', {'class': 'app-icon'}) }}
+                                </a>
+                            {% endif %}
                         {% else %}
-                            <a href="{{ path('app_back_office_contacts_' ~ content_type ~ '_archive', {'id': content.id}) }}"
-                               class="text-danger"
-                               title="Refuser cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %}"
-                               onclick="return window.confirm('On refuse cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %} ?')">
-                                {{ ux_icon('icomoon-free:cross', {'class': 'app-icon'}) }}
+                            <a href="{{ path('app_back_office_engagement_revive', {'id': engagement.id}) }}"
+                               class="text-warning"
+                               title="Relancer la demande de paiement"
+                               onclick="return window.confirm('On relance la demande de paiement pour cet engagement ?')">
+                                {{ ux_icon('fa:send', {'class': 'app-icon'}) }}
                             </a>
                         {% endif %}
-                    {% endif %}
-                    {% if app.request.query.get('etat') != 'attente' %}
+                    </div>
+                {% else %}
+                    <div class="card-header">
+                        <img src="{{ asset('img/account/navigation.webp') }}"
+                             alt="{% if content_type == 'membership' %}Adhésions{% elseif content_type == 'partnership' %}Partenariats{% elseif content_type == 'message' %}Messages{% endif %}"/>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            {% if content_type == 'message' %}{{ content.senderName }}{% else %}{{ content.name }}{% endif %}
+                        </h3>
+                        <p class="card-title">
+                            {% if content_type == 'membership' %}
+                                {{ content.memberType }}
+                            {% elseif content_type == 'partnership' %}
+                                {{ content.partnerType }}
+                            {% elseif content_type == 'message' %}
+                                {{ content.senderType }}
+                            {% endif %}
+                        </p>
+                        <p>
+                            {% if content_type != 'message' %}
+                                <strong>{{ content.city }}</strong>
+                                <br/>
+                                <a href="mailto:{{ content.email }}">{{ content.email }}</a>
+                                {% if content.phone %}
+                                    <br/>
+                                    <a href="tel:{{ content.phone | format_phone('compact') }}">
+                                        {{ content.phone | format_phone }}
+                                    </a>
+                                {% endif %}
+                            {% else %}
+                                <a href="mailto:{{ content.senderEmail }}">{{ content.senderEmail }}</a>
+                                {% if content.senderPhone %}
+                                    <br/>
+                                    <a href="tel:{{ content.senderPhone | format_phone('compact') }}">
+                                        {{ content.senderPhone | format_phone }}
+                                    </a>
+                                {% endif %}
+                            {% endif %}
+                        </p>
+                        {% if content.message %}
+                            {% if message.answeredAt %}
+                                <p class="small">
+                                    <strong>Réponse le</strong>
+                                    {{ message.answeredAt | date ('d/m/Y') }}
+                                    <strong>à</strong>
+                                    {{ message.answeredAt | date ('H:i') }}
+                                </p>
+                            {% endif %}
+
+                            <div class="card-text text-justify small">
+                                {% if content.subject is defined %}
+                                    <strong>{{ content.subject }}</strong>
+                                    <br/>
+                                {% endif %}
+                                {{ content.message | raw }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer">
+                        {% if app.request.query.get('etat') != 'archive' %}
+                            {% if content_type == 'message' %}
+                                <a href="{{ path('app_back_office_contacts_message_archive', {'id': content.id}) }}"
+                                   class="text-danger"
+                                   title="Archiver ce message"
+                                   onclick="return window.confirm('On archive ce message ?')">
+                                    {{ ux_icon('icomoon-free:cross', {'class': 'app-icon'}) }}
+                                </a>
+                            {% else %}
+                                <a href="{{ path('app_back_office_contacts_' ~ content_type ~ '_archive', {'id': content.id}) }}"
+                                   class="text-danger"
+                                   title="Refuser cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %}"
+                                   onclick="return window.confirm('On refuse cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %} ?')">
+                                    {{ ux_icon('icomoon-free:cross', {'class': 'app-icon'}) }}
+                                </a>
+                            {% endif %}
+                        {% endif %}
+                        {% if app.request.query.get('etat') != 'attente' %}
+                            {% if content_type == 'message' %}
+                                <a href="{{ path('app_back_office_contacts_message_wait', {'id': content.id}) }}"
+                                   class="text-warning"
+                                   title="Mettre ce message en attente"
+                                   onclick="return window.confirm('On met ce message en attente ?')">
+                                    {{ ux_icon('subway:refresh-time', {'class': 'app-icon'}) }}
+                                </a>
+                            {% else %}
+                                <a href="{{ path('app_back_office_contacts_' ~ content_type ~ '_wait', {'id': content.id}) }}"
+                                   class="text-warning"
+                                   title="Mettre cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %} en attente"
+                                   onclick="return window.confirm('On met cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %} en attente ?')">
+                                    {{ ux_icon('subway:refresh-time', {'class': 'app-icon'}) }}
+                                </a>
+                            {% endif %}
+                        {% endif %}
                         {% if content_type == 'message' %}
-                            <a href="{{ path('app_back_office_contacts_message_wait', {'id': content.id}) }}"
-                               class="text-warning"
-                               title="Mettre ce message en attente"
-                               onclick="return window.confirm('On met ce message en attente ?')">
-                                {{ ux_icon('subway:refresh-time', {'class': 'app-icon'}) }}
+                            <a href="{{ path('app_back_office_contacts_message_answer', {'id': content.id}) }}"
+                               class="text-success"
+                               title="Marquer ce message comme répondu"
+                               onclick="return window.confirm('On marque ce message comme répondu ?')">
+                                {{ ux_icon('formkit:check', {'class': 'app-icon'}) }}
                             </a>
                         {% else %}
-                            <a href="{{ path('app_back_office_contacts_' ~ content_type ~ '_wait', {'id': content.id}) }}"
-                               class="text-warning"
-                               title="Mettre cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %} en attente"
-                               onclick="return window.confirm('On met cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %} en attente ?')">
-                                {{ ux_icon('subway:refresh-time', {'class': 'app-icon'}) }}
+                            <a href="{{ path('app_back_office_contacts_' ~ content_type ~ '_accept', {'id': content.id}) }}"
+                               class="text-success"
+                               title="Accepter cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %}"
+                               onclick="return window.confirm('On valide cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %} ?')">
+                                {{ ux_icon('formkit:check', {'class': 'app-icon'}) }}
                             </a>
                         {% endif %}
-                    {% endif %}
-                    {% if content_type == 'message' %}
-                        <a href="{{ path('app_back_office_contacts_message_answer', {'id': content.id}) }}"
-                           class="text-success"
-                           title="Marquer ce message comme répondu"
-                           onclick="return window.confirm('On marque ce message comme répondu ?')">
-                            {{ ux_icon('formkit:check', {'class': 'app-icon'}) }}
-                        </a>
-                    {% else %}
-                        <a href="{{ path('app_back_office_contacts_' ~ content_type ~ '_accept', {'id': content.id}) }}"
-                           class="text-success"
-                           title="Accepter cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %}"
-                           onclick="return window.confirm('On valide cette {% if content_type == 'membership' %}demande{% elseif content_type == 'partnership' %}proposition{% endif %} ?')">
-                            {{ ux_icon('formkit:check', {'class': 'app-icon'}) }}
-                        </a>
-                    {% endif %}
-                </div>
+                    </div>
+                {% endif %}
             </div>
         {% endif %}
     </div>

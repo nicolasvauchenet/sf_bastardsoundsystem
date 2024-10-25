@@ -1,11 +1,10 @@
 .app-button {
   @include displayFlex(center, center);
+  flex-wrap: wrap;
   box-sizing: border-box;
-  /*padding: 0.5rem 1rem;*/
   padding: 1rem 1.5rem;
   width: 100%;
   font-family: $font-secondary;
-  /*font-size: 1.25rem;*/
   font-size: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -39,5 +38,10 @@
   &:hover {
     color: $white;
     background-color: $secondary;
+  }
+
+  small {
+    margin-top: 0.25rem;
+    width: 100%;
   }
 }

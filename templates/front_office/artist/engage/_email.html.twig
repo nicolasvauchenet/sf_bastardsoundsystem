@@ -1,0 +1,71 @@
+{% apply inline_css %}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+        body {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 16px;
+            color: #222222;
+            background-color: #ffffff;
+        }
+
+        h1 {
+            font-family: "Roboto", sans-serif;
+            font-size: 1.75rem;
+            font-weight: bold;
+            line-height: 2rem;
+            text-transform: uppercase;
+            color: #650f3c;
+        }
+    </style>
+
+    <main>
+        <h1>Salut, {{ mailData['to']['name'] }} !</h1>
+
+        <p>
+            Nous avons reçu une proposition de booking de la part de {{ mailData['from']['name'] }}
+            {% if mailData['from']['organization'] %}
+                qui bosse chez {{ mailData['from']['organization'] }}
+            {% endif %}
+            {% if mailData['from']['city'] %}
+                dans la ville de {{ mailData['from']['city'] }}
+            {% endif %}
+            :
+        </p>
+
+        <h2>Les infos de l'événement :</h2>
+        <ul>
+            {% if mailData['placeType'] %}
+                <li>
+                    <strong>Type de lieu :</strong>
+                    {{ mailData['placeType'] }}
+                </li>
+            {% endif %}
+            {% if mailData['startAt'] %}
+                <li>
+                    <strong>Date prévue :</strong>
+                    {{ mailData['startAt'] | format_datetime(locale=app_locale, pattern="EEEE dd MMMM") | title }}
+                </li>
+            {% endif %}
+            {% if mailData['budget'] %}
+                <li>
+                    <strong>Budget prévu :</strong>
+                    {{ mailData['budget'] }}€
+                </li>
+            {% endif %}
+        </ul>
+
+        {% if mailData['message'] %}
+            <h2>Infos complémentaires :</h2>
+            <blockquote>
+                {{ mailData['message'] }}
+            </blockquote>
+        {% endif %}
+
+        {% if mailData['from']['phone'] %}
+            <p>
+                On peut rappeler {{ mailData['from']['name'] }} au {{ mailData['from']['phone'] | format_phone }}.
+            </p>
+        {% endif %}
+    </main>
+{% endapply %}

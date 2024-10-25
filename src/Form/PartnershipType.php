@@ -97,6 +97,9 @@ class PartnershipType extends AbstractType
                     'Demande refusée' => 'Refusée',
                 ],
                 'placeholder' => 'Choisis dans la liste',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                 ],

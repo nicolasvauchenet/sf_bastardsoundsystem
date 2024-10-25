@@ -1,0 +1,30 @@
+{% extends 'back_office/_layout/_index.html.twig' %}
+
+{% block title %}Le booking - Administration{% endblock %}
+
+{% block body_class %}back-office contacts{% endblock %}
+
+{% block main %}
+    <section class="app-section cover">
+        <img src="{{ asset('img/admincover.webp') }}" alt="Administration BSS"/>
+
+        <div class="content">
+            <h1>
+                {% if app.request.query.get('etat') == 'nouvelle' %}
+                    Les propositions d'engagement
+                {% elseif app.request.query.get('etat') == 'attente' %}
+                    Les propositions d'engagement en attente
+                {% elseif app.request.query.get('etat') == 'archive' %}
+                    Les propositions d'engagement refusées
+                {% elseif app.request.query.get('etat') == 'conclue' %}
+                    Les engagements conclus
+                {% elseif app.request.query.get('etat') == 'relance' %}
+                    Les engagements impayés
+                {% endif %}
+            </h1>
+            <p>Administration BSS</p>
+        </div>
+    </section>
+
+    {{ component('FilterEngagements') }}
+{% endblock %}

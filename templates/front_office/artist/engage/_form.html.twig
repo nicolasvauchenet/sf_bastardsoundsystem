@@ -1,0 +1,86 @@
+{{ form_start(form, {'attr': {'class': 'app-form'}}) }}
+<div class="app-grid two mb-3">
+    <fieldset class="form-fieldset">
+        <legend class="form-legend">Qui es-tu&nbsp;?</legend>
+
+        <div class="form-group">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.organization) }}
+            {{ form_widget(form.organization) }}
+            {{ form_errors(form.organization) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email) }}
+            {{ form_errors(form.email) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.phone) }}
+            {{ form_widget(form.phone) }}
+            {{ form_errors(form.phone) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.city) }}
+            {{ form_widget(form.city) }}
+            {{ form_errors(form.city) }}
+        </div>
+    </fieldset>
+
+    <fieldset class="form-fieldset">
+        <legend class="form-legend">Que veux-tu faire&nbsp;?</legend>
+
+        <div class="form-group">
+            {{ form_label(form.placeType) }}
+            {{ form_widget(form.placeType) }}
+            {{ form_errors(form.placeType) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.startAt) }}
+            {{ form_widget(form.startAt) }}
+            {{ form_errors(form.startAt) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.budget) }}
+            {{ form_widget(form.budget) }}
+            {{ form_errors(form.budget) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.message) }}
+            {{ form_widget(form.message) }}
+            {{ form_errors(form.message) }}
+        </div>
+
+        <p class="text-center">
+            <a href="{{ asset('uploads/document/statuts-de-lassociation.pdf') }}"
+               class="text-secondary"
+               target="_blank">
+                <strong>
+                    <small>Tu peux aller lire les statuts de l'association en cliquant là</small>
+                </strong>
+            </a>
+        </p>
+    </fieldset>
+</div>
+
+{{ form_widget(form._token) }}
+{{ form_widget(form.captcha) }}
+
+<fieldset class="form-fieldset controls">
+    <a href="tel:+33683573067" class="app-button outline">
+        J'appelle BSS
+        <small>06.83.57.30.67</small>
+    </a>
+    <button type="submit" class="form-submit app-button cta">J'envoie&nbsp;!</button>
+</fieldset>
+{{ form_end(form, {'render_rest': false}) }}

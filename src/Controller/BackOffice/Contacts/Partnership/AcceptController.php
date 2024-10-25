@@ -12,7 +12,7 @@ use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/administrations/contacts/partenariats', name: 'app_back_office_contacts_partnership_')]
+#[Route('/administration/contacts/partenariats', name: 'app_back_office_contacts_partnership_')]
 class AcceptController extends AbstractController
 {
     private UserPasswordHasherInterface $passwordHasher;

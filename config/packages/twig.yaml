@@ -8,6 +8,7 @@ twig:
     app_messageService: '@App\Service\BackOffice\MessageService'
     app_membershipService: '@App\Service\BackOffice\MembershipService'
     app_partnershipService: '@App\Service\BackOffice\PartnershipService'
+    app_engagementService: '@App\Service\BackOffice\EngagementService'
 
 when@test:
   twig:

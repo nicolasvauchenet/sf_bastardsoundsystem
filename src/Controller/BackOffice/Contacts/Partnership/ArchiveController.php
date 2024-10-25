@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/administrations/contacts/partenariats', name: 'app_back_office_contacts_partnership_')]
+#[Route('/administration/contacts/partenariats', name: 'app_back_office_contacts_partnership_')]
 class ArchiveController extends AbstractController
 {
     #[Route('/refuser/{id}', name: 'archive')]

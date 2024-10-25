@@ -27,6 +27,10 @@ class PartnershipController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            $partnership->setStatus('Nouvelle');
+            $entityManager->persist($partnership);
+            $entityManager->flush();
+
             $mailerService->sendEmail([
                 'from' => [
                     'type' => $form->get('partnerType')->getData(),
@@ -42,10 +46,6 @@ class PartnershipController extends AbstractController
                 'subject' => 'Nouvelle proposition de partenariat',
                 'message' => $form->get('message')->getData(),
             ], 'front_office/partnership/_email');
-
-            $partnership->setStatus('Nouvelle');
-            $entityManager->persist($partnership);
-            $entityManager->flush();
 
             $this->addFlash('success', 'Ta proposition de partenariat a bien été envoyée, merci :) On va te contacter très vite&nbsp;!');
 

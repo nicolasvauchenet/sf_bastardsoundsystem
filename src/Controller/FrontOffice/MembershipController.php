@@ -27,6 +27,10 @@ class MembershipController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            $membership->setStatus('Nouvelle');
+            $entityManager->persist($membership);
+            $entityManager->flush();
+
             $mailerService->sendEmail([
                 'from' => [
                     'type' => $form->get('memberType')->getData(),
@@ -42,10 +46,6 @@ class MembershipController extends AbstractController
                 'subject' => "Nouvelle demande d'adhésion",
                 'message' => $form->get('message')->getData(),
             ], 'front_office/membership/_email');
-
-            $membership->setStatus('Nouvelle');
-            $entityManager->persist($membership);
-            $entityManager->flush();
 
             $this->addFlash('success', "Ta demande d'adhésion a bien été envoyée, merci :) On va te contacter très vite&nbsp;!");
 

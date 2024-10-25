@@ -99,6 +99,9 @@ class MessageType extends AbstractType
                     'Message répondu' => 'Répondu',
                 ],
                 'placeholder' => 'Choisis dans la liste',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
                 'attr' => [
                     'class' => 'form-control',
                 ],

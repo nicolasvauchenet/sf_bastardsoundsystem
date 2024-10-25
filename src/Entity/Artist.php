@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ArtistRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -32,6 +34,18 @@ class Artist extends Member
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $photoBand = null;
+
+    /**
+     * @var Collection<int, Engagement>
+     */
+    #[ORM\OneToMany(targetEntity: Engagement::class, mappedBy: 'artist', orphanRemoval: true)]
+    private Collection $engagements;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->engagements = new ArrayCollection();
+    }
 
     public function getBandmates(): ?int
     {
@@ -125,6 +139,36 @@ class Artist extends Member
     public function setPhotoBand(?string $photoBand): static
     {
         $this->photoBand = $photoBand;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Engagement>
+     */
+    public function getEngagements(): Collection
+    {
+        return $this->engagements;
+    }
+
+    public function addEngagement(Engagement $engagement): static
+    {
+        if (!$this->engagements->contains($engagement)) {
+            $this->engagements->add($engagement);
+            $engagement->setArtist($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEngagement(Engagement $engagement): static
+    {
+        if ($this->engagements->removeElement($engagement)) {
+            // set the owning side to null (unless already changed)
+            if ($engagement->getArtist() === $this) {
+                $engagement->setArtist(null);
+            }
+        }
 
         return $this;
     }

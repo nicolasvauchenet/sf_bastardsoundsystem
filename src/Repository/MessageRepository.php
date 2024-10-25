@@ -25,7 +25,7 @@ class MessageRepository extends ServiceEntityRepository
                 ->setParameter('status', $status);
         }
 
-        $qb->orderBy('m.sentAt', 'ASC');
+        $qb->orderBy('m.sentAt', 'DESC');
 
         return $qb->getQuery()->getResult();
     }

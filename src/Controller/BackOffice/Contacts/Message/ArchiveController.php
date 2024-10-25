@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/administrations/contacts/messages', name: 'app_back_office_contacts_message_')]
+#[Route('/administration/contacts/messages', name: 'app_back_office_contacts_message_')]
 class ArchiveController extends AbstractController
 {
     #[Route('/archiver/{id}', name: 'archive')]

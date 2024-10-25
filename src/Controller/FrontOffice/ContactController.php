@@ -50,6 +50,10 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            $message->setStatus('Nouveau');
+            $entityManager->persist($message);
+            $entityManager->flush();
+
             $mailerService->sendEmail([
                 'from' => [
                     'type' => $form->get('senderType')->getData(),
@@ -64,10 +68,6 @@ class ContactController extends AbstractController
                 'subject' => $form->get('subject')->getData(),
                 'message' => $form->get('message')->getData(),
             ], 'front_office/contact/_email');
-
-            $message->setStatus('Nouveau');
-            $entityManager->persist($message);
-            $entityManager->flush();
 
             $this->addFlash('success', 'Ton message a bien été envoyé, merci :) On va te répondre très vite&nbsp;!');
 

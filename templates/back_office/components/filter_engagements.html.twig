@@ -1,0 +1,125 @@
+<div {{ attributes }}>
+    {% set engagements = computed.engagements %}
+    {% if engagements %}
+        <section class="app-section">
+            <h2 class="mb-3">
+                {% if app.request.query.get('etat') == 'nouvelle' %}
+                    {{ engagements | length }} nouvelle{{ engagements | length > 1 ? 's' : '' }} proposition{{ engagements | length > 1 ? 's' : '' }} d'engagement&nbsp;:
+                {% elseif app.request.query.get('etat') == 'attente' %}
+                    {{ engagements | length }} proposition{{ engagements | length > 1 ? 's' : '' }} d'engagement en attente&nbsp;:
+                {% elseif app.request.query.get('etat') == 'archive' %}
+                    {{ engagements | length }} proposition{{ engagements | length > 1 ? 's' : '' }} d'engagement refusée{{ engagements | length > 1 ? 's' : '' }}&nbsp;:
+                {% elseif app.request.query.get('etat') == 'conclue' %}
+                    {{ engagements | length }} engagement{{ engagements | length > 1 ? 's' : '' }} signé{{ engagements | length > 1 ? 's' : '' }}&nbsp;:
+                {% elseif app.request.query.get('etat') == 'relance' %}
+                    {{ engagements | length }} engagement{{ engagements | length > 1 ? 's' : '' }} impayé{{ engagements | length > 1 ? 's' : '' }}&nbsp;:
+                {% else %}
+                    {{ engagements | length }} proposition{{ engagements | length > 1 ? 's' : '' }} d'engagement&nbsp;:
+                {% endif %}
+            </h2>
+
+            <div class="app-grid three" data-loading="addClass(loading)">
+                {% for engagement in engagements %}
+                    <div class="app-card" data-controller="modal">
+                        <a href="#" data-action="click->modal#open">
+                            <div class="card-header {% if not engagement.artist.photoBand and not engagement.artist.photoLive and engagement.artist.logo %}contain{% endif %}">
+                                {% if engagement.artist.photoBand %}
+                                    <img src="{{ asset('uploads/artist/' ~ engagement.artist.slug ~ '/' ~ engagement.artist.photoBand) }}"
+                                         alt="{{ engagement.artist.name }}"/>
+                                {% elseif engagement.artist.photoLive %}
+                                    <img src="{{ asset('uploads/artist/' ~ engagement.artist.slug ~ '/' ~ engagement.artist.photoLive) }}"
+                                         alt="{{ engagement.artist.name }}"/>
+                                {% elseif engagement.artist.logo %}
+                                    <img src="{{ asset('uploads/artist/' ~ engagement.artist.slug ~ '/' ~ engagement.artist.logo) }}"
+                                         alt="{{ engagement.artist.name }}"/>
+                                {% else %}
+                                    <img src="{{ asset('img/label/navigation.webp') }}" alt="Engagements"/>
+                                {% endif %}
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">{{ engagement.artist.name }}</h3>
+                                {% if engagement.organization %}
+                                    <p class="card-title">{{ engagement.organization }}</p>
+                                {% else %}
+                                    <p class="card-title">{{ engagement.name }}</p>
+                                {% endif %}
+
+                                <div class="card-text">
+                                    <p>
+                                        {% if engagement.startAt %}
+                                            <strong>Le</strong>
+                                            {{ engagement.startAt | format_datetime(locale=app_locale, pattern="EEEE dd MMMM YYYY") | title }}
+                                        {% endif %}
+                                        {% if engagement.city or engagement.placeType %}
+                                            <br/>
+                                            {% if engagement.placeType %}
+                                                {{ engagement.placeType }}
+                                            {% endif %}
+                                            {% if engagement.city %}
+                                                <strong>À</strong>
+                                                {{ engagement.city }}
+                                            {% endif %}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+
+                        {% include 'back_office/_layout/_modal.html.twig' with {'type': 'card', 'content_type': 'engagement', 'content': engagement} %}
+
+                        <div class="card-footer">
+                            <a href="{{ path('app_back_office_engagement_delete', {'id': engagement.id}) }}"
+                               class="text-danger"
+                               title="Supprimer cet engagement"
+                               onclick="return window.confirm('On supprime cet engagement ?')">
+                                {{ ux_icon('clarity:trash-solid', {'class': 'app-icon'}) }}
+                            </a>
+                            {% if app.request.query.get('etat') != 'conclue' and app.request.query.get('etat') != 'relance' %}
+                                {% if app.request.query.get('etat') != 'archive' %}
+                                    <a href="{{ path('app_back_office_engagement_archive', {'id': engagement.id}) }}"
+                                       class="text-danger" title="Archiver cette proposition d'engagement"
+                                       onclick="return window.confirm('On archive cette proposition d\'engagement ?')">
+                                        {{ ux_icon('icomoon-free:cross', {'class': 'app-icon'}) }}
+                                    </a>
+                                {% endif %}
+                                {% if app.request.query.get('etat') != 'attente' %}
+                                    <a href="{{ path('app_back_office_engagement_wait', {'id': engagement.id}) }}"
+                                       class="text-warning" title="Mettre cette proposition d'engagement en attente"
+                                       onclick="return window.confirm('On met cette proposition d\'engagement en attente ?')">
+                                        {{ ux_icon('subway:refresh-time', {'class': 'app-icon'}) }}
+                                    </a>
+                                {% endif %}
+                                {% if app.request.query.get('etat') != 'conclue' %}
+                                    <a href="{{ path('app_back_office_engagement_edit', {'id': engagement.id}) }}"
+                                       class="text-info"
+                                       title="Modifier cette proposition d'engagement">
+                                        {{ ux_icon('fa-solid:edit', {'class': 'app-icon'}) }}
+                                    </a>
+                                    <a href="{{ path('app_back_office_engagement_accept', {'id': engagement.id}) }}"
+                                       class="text-success"
+                                       title="Accepter cette proposition d'engagement"
+                                       onclick="return window.confirm('On accepte cette proposition d\'engagement ?')">
+                                        {{ ux_icon('formkit:check', {'class': 'app-icon'}) }}
+                                    </a>
+                                {% endif %}
+                            {% else %}
+                                <a href="{{ path('app_back_office_engagement_revive', {'id': engagement.id}) }}"
+                                   class="text-warning"
+                                   title="Relancer la demande de paiement"
+                                   onclick="return window.confirm('On relance la demande de paiement pour cet engagement ?')">
+                                    {{ ux_icon('fa:send', {'class': 'app-icon'}) }}
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% else %}
+        <section class="app-section">
+            <p class="text-center">
+                <strong>Aucun engagement trouvé…</strong>
+            </p>
+        </section>
+    {% endif %}
+</div>

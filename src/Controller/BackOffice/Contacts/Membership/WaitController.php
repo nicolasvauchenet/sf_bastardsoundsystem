@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/administrations/contacts/adhesions', name: 'app_back_office_contacts_membership_')]
+#[Route('/administration/contacts/adhesions', name: 'app_back_office_contacts_membership_')]
 class WaitController extends AbstractController
 {
     #[Route('/mettre-en-attente/{id}', name: 'wait')]

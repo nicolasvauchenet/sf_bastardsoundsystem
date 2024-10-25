@@ -25,7 +25,7 @@ class PartnershipRepository extends ServiceEntityRepository
                 ->setParameter('status', $status);
         }
 
-        $qb->orderBy('p.sentAt', 'ASC');
+        $qb->orderBy('p.sentAt', 'DESC');
 
         return $qb->getQuery()->getResult();
     }

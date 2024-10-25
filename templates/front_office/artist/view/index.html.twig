@@ -86,7 +86,8 @@
                     {{ ux_icon('mdi:web', {'class': 'app-icon medium text-primary'}) }}
                 </a>
             {% endif %}
-            <a href="#" title="Engage {{ artist.name }} !">
+            <a href="#engage-cet-artiste"
+               title="Engage {{ artist.name }} !">
                 {{ ux_icon('fa6-solid:handshake', {'class': 'app-icon large text-success'}) }}
             </a>
         </div>
@@ -101,18 +102,14 @@
     </figure>
 
     <section class="app-section post-figure">
-        <h2>{{ artist.name }} vient jouer chez toi&nbsp;!</h2>
+        <h2 id="engage-cet-artiste">{{ artist.name }} vient jouer chez toi&nbsp;!</h2>
 
         <p class="text-justify small">
-            Engager <strong>{{ artist.name }}</strong>, c’est simple et direct avec <strong>Bastard Sound
-                                                                                            System</strong>. Une fois
-            sur cette page, clique simplement sur le bouton
-            {{ ux_icon('fa6-solid:handshake', {'class': 'app-icon text-success'}) }} ou sur celui juste là-dessous pour
-            commencer. Tu auras alors
-            accès à un formulaire où tu pourras nous en dire plus sur ton <strong>événement</strong> : un <strong>concert</strong>,
-            un <strong>festival</strong>, ou tout autre projet. Nous te contacterons rapidement pour discuter des
-            détails, fixer les <strong>conditions</strong> et le <strong>tarif</strong>, et finaliser l’accord avec un
-            <strong>contrat de prestation</strong>.
+            Engager <strong>{{ artist.name }}</strong>, c’est simple et direct avec
+            <strong>Bastard Sound System</strong>. Remplis le formulaire ci-dessous, dis-nous en plus sur ton
+            <strong>événement</strong> : un <strong>concert</strong>, un <strong>festival</strong>, ou tout autre
+            projet. Nous te contacterons rapidement pour discuter des détails, fixer les <strong>conditions</strong> et
+            le <strong>tarif</strong>, et finaliser l’accord avec un <strong>contrat de prestation</strong>.
         </p>
 
         <p class="text-justify small">
@@ -122,9 +119,6 @@
             avec nous, afin de profiter de notre expertise et faire de ta <strong>soirée</strong> un moment unique.
         </p>
 
-        <div class="app-grid two">
-            <a href="{{ path('app_front_office_contact') }}" class="app-button">Je contacte BSS</a>
-            <a href="#" class="app-button cta">J'engage {{ artist.name }}&nbsp;!</a>
-        </div>
+        {% include ('front_office/artist/engage/_form.html.twig') %}
     </section>
 {% endblock %}
