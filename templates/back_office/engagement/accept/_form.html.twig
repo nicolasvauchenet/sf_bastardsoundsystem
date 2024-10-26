@@ -1,0 +1,98 @@
+{{ form_start(form, {'attr': {'class': 'app-form'}}) }}
+<div class="app-grid three mb-3">
+    <fieldset class="form-fieldset">
+        <legend class="form-legend">Qui est-ce&nbsp;?</legend>
+
+        <div class="form-group">
+            {{ form_label(form.name, 'Son nom') }}
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.organization, 'Le nom de son lieu') }}
+            {{ form_widget(form.organization) }}
+            {{ form_errors(form.organization) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.email, 'Son email') }}
+            {{ form_widget(form.email) }}
+            {{ form_errors(form.email) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.phone, 'Son téléphone') }}
+            {{ form_widget(form.phone) }}
+            {{ form_errors(form.phone) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.city) }}
+            {{ form_widget(form.city) }}
+            {{ form_errors(form.city) }}
+        </div>
+    </fieldset>
+
+    <fieldset class="form-fieldset">
+        <legend class="form-legend">Que veut-il faire&nbsp;?</legend>
+
+        <div class="form-group">
+            {{ form_label(form.placeType, 'Type de lieu', {'label_attr': {'class': 'form-label required'}}) }}
+            {{ form_widget(form.placeType, {'required': true}) }}
+            {{ form_errors(form.placeType) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.startAt, 'Date du concert', {'label_attr': {'class': 'form-label required'}}) }}
+            {{ form_widget(form.startAt, {'required': true}) }}
+            {{ form_errors(form.startAt) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.budget, 'Quel budget ?', {'label_attr': {'class': 'form-label required'}}) }}
+            {{ form_widget(form.budget, {'required': true}) }}
+            {{ form_errors(form.budget) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.message, 'Son message') }}
+            {{ form_widget(form.message, {'attr': {'disabled': 'disabled'}}) }}
+            {{ form_errors(form.message) }}
+        </div>
+    </fieldset>
+
+    <fieldset class="form-fieldset">
+        <legend class="form-legend">Les conditions</legend>
+
+        <div class="form-group">
+            {{ form_label(form.contract) }}
+            {{ form_widget(form.contract) }}
+            {{ form_errors(form.contract) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.signedAt) }}
+            {{ form_widget(form.signedAt) }}
+            {{ form_errors(form.signedAt) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.paidAt) }}
+            {{ form_widget(form.paidAt) }}
+            {{ form_errors(form.paidAt) }}
+        </div>
+    </fieldset>
+</div>
+
+{{ form_widget(form._token) }}
+{{ form_widget(form.captcha) }}
+
+<fieldset class="form-fieldset controls">
+    <a href="{{ app.request.headers.get('referer') }}" class="app-button outline">
+        {{ ux_icon('ph:skip-back-fill', {'class': 'app-icon'}) }}
+        Retour
+    </a>
+    <button type="submit" class="form-submit app-button cta">Valide&nbsp;!</button>
+</fieldset>
+{{ form_end(form, {'render_rest': false}) }}

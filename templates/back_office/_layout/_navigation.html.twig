@@ -38,7 +38,7 @@
                         </a>
                     </div>
                     <div class="grid-item">
-                        <strong>Statistiques</strong>
+                        <strong>Engagements</strong>
                         <a href="{{ path('app_back_office_engagement_home') }}?etat=conclue"
                            class="{% if app.request.get('_route') == 'app_back_office_engagement_home' and app.request.query.get('etat') == 'conclue' %}active{% endif %} {% if app_engagementService.byStatus('Conclue') | length > 0 %}text-success{% endif %}">
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
@@ -56,6 +56,11 @@
                     </div>
                     <div class="grid-item">
                         <strong>Contrats</strong>
+                        <a href="#"
+                           class="{% if app.request.get('_route') == 'app_back_office_engagement_contract_new' %}active{% endif %}">
+                            <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
+                            Nouveau contrat
+                        </a>
                     </div>
                 </div>
             </div>

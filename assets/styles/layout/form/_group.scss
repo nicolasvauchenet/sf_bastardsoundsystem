@@ -47,6 +47,22 @@
     }
   }
 
+  .form-file {
+    display: block;
+    box-sizing: border-box;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    text-align: center;
+    color: $black;
+    background-color: $white;
+    border: 2px solid $third;
+    border-radius: 0.25rem;
+
+    &::file-selector-button {
+      display: none;
+    }
+  }
+
   ul {
     grid-column: 2/3;
     list-style: none;

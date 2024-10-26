@@ -42,16 +42,15 @@ class Engagement
     #[ORM\Column(length: 255)]
     private ?string $status = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $contract = null;
+
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $startAt = null;
 
     #[ORM\Column]
     #[Gedmo\Timestampable(on: 'create')]
     private ?\DateTimeImmutable $sentAt = null;
-
-    #[ORM\ManyToOne(inversedBy: 'engagements')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Artist $artist = null;
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $concludedAt = null;
@@ -61,6 +60,13 @@ class Engagement
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $revivedAt = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $signedAt = null;
+
+    #[ORM\ManyToOne(inversedBy: 'engagements')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Artist $artist = null;
 
     public function getId(): ?int
     {
@@ -175,6 +181,18 @@ class Engagement
         return $this;
     }
 
+    public function getContract(): ?string
+    {
+        return $this->contract;
+    }
+
+    public function setContract(?string $contract): static
+    {
+        $this->contract = $contract;
+
+        return $this;
+    }
+
     public function getStartAt(): ?\DateTimeImmutable
     {
         return $this->startAt;
@@ -195,18 +213,6 @@ class Engagement
     public function setSentAt(\DateTimeImmutable $SentAt): static
     {
         $this->sentAt = $SentAt;
-
-        return $this;
-    }
-
-    public function getArtist(): ?Artist
-    {
-        return $this->artist;
-    }
-
-    public function setArtist(?Artist $artist): static
-    {
-        $this->artist = $artist;
 
         return $this;
     }
@@ -243,6 +249,30 @@ class Engagement
     public function setRevivedAt(?\DateTimeImmutable $revivedAt): static
     {
         $this->revivedAt = $revivedAt;
+
+        return $this;
+    }
+
+    public function getSignedAt(): ?\DateTimeImmutable
+    {
+        return $this->signedAt;
+    }
+
+    public function setSignedAt(?\DateTimeImmutable $signedAt): static
+    {
+        $this->signedAt = $signedAt;
+
+        return $this;
+    }
+
+    public function getArtist(): ?Artist
+    {
+        return $this->artist;
+    }
+
+    public function setArtist(?Artist $artist): static
+    {
+        $this->artist = $artist;
 
         return $this;
     }

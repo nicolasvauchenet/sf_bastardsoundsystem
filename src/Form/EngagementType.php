@@ -10,11 +10,13 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class EngagementType extends AbstractType
 {
@@ -122,9 +124,51 @@ class EngagementType extends AbstractType
                     'rows' => 4,
                 ],
             ])
+            ->add('contract', FileType::class, [
+                'mapped' => false,
+                'required' => false,
+                'label' => 'Contrat de cession',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
+                'attr' => [
+                    'class' => 'form-file',
+                ],
+                'constraints' => [
+                    new File([
+                        'maxSize' => '2M',
+                        'mimeTypes' => [
+                            'application/pdf',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez choisir un fichier PDF',
+                    ]),
+                ],
+            ])
             ->add('startAt', null, [
                 'required' => false,
                 'label' => "C'est prévu quand ?",
+                'widget' => 'single_text',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+            ->add('signedAt', null, [
+                'required' => false,
+                'label' => 'Ça a été signé quand ?',
+                'widget' => 'single_text',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+            ->add('paidAt', null, [
+                'required' => false,
+                'label' => 'Ça a été payé quand ?',
                 'widget' => 'single_text',
                 'label_attr' => [
                     'class' => 'form-label',
