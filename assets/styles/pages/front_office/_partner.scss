@@ -22,8 +22,7 @@
         .app-grid-logo {
           @include displayFlex(center, center);
           padding: 1rem;
-          /*background-color: rgba($third, 0.15);*/
-          border: 0.25rem solid rgba($third, 0.15);
+          border: 0.5rem solid rgba($third, 0.15);
           border-radius: 0.25rem;
 
           img {
@@ -55,6 +54,23 @@
 
             @include respondTo(md) {
               @include displayGrid(repeat(4, 1fr), 1.5rem);
+            }
+
+            .grid-item {
+              &.app-text {
+                .content {
+                  @include displayFlex(center, center, 0.5rem, column);
+
+                  h3 {
+                    margin-bottom: 0;
+                  }
+
+                  p {
+                    @include displayFlex(center, center);
+                    flex: 1;
+                  }
+                }
+              }
             }
           }
         }

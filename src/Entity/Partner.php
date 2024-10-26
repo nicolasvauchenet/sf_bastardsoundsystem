@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PartnerRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -19,9 +21,6 @@ class Partner extends Member
     private ?string $type = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $specialties = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
     private ?string $website = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -29,6 +28,18 @@ class Partner extends Member
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $photoTeam = null;
+
+    /**
+     * @var Collection<int, Specialty>
+     */
+    #[ORM\ManyToMany(targetEntity: Specialty::class, mappedBy: 'partners')]
+    private Collection $specialties;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->specialties = new ArrayCollection();
+    }
 
     public function getLogo(): ?string
     {
@@ -66,18 +77,6 @@ class Partner extends Member
         return $this;
     }
 
-    public function getSpecialties(): ?string
-    {
-        return $this->specialties;
-    }
-
-    public function setSpecialties(?string $Specialties): static
-    {
-        $this->specialties = $Specialties;
-
-        return $this;
-    }
-
     public function getWebsite(): ?string
     {
         return $this->website;
@@ -110,6 +109,33 @@ class Partner extends Member
     public function setPhotoTeam(?string $photoTeam): static
     {
         $this->photoTeam = $photoTeam;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Specialty>
+     */
+    public function getSpecialties(): Collection
+    {
+        return $this->specialties;
+    }
+
+    public function addSpecialties(Specialty $specialties): static
+    {
+        if(!$this->specialties->contains($specialties)) {
+            $this->specialties->add($specialties);
+            $specialties->addPartner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSpecialties(Specialty $specialties): static
+    {
+        if($this->specialties->removeElement($specialties)) {
+            $specialties->removePartner($this);
+        }
 
         return $this;
     }

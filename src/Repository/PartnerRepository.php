@@ -16,30 +16,6 @@ class PartnerRepository extends ServiceEntityRepository
         parent::__construct($registry, Partner::class);
     }
 
-    public function findAllSpecialties(): array
-    {
-        $qb = $this->createQueryBuilder('p')
-            ->select('DISTINCT p.specialties')
-            ->orderBy('p.specialties', 'ASC');
-
-        $results = $qb->getQuery()->getResult();
-
-        $activities = [];
-        foreach($results as $result) {
-            $specialties = explode(',', $result['specialties']);
-            foreach($specialties as $specialty) {
-                $activity = trim($specialty);
-                if(!in_array($activity, $activities)) {
-                    $activities[] = $activity;
-                }
-            }
-        }
-
-        sort($activities);
-
-        return $activities;
-    }
-
     public function findAllDepartments(): array
     {
         $qb = $this->createQueryBuilder('p')
@@ -62,13 +38,15 @@ class PartnerRepository extends ServiceEntityRepository
         return array_column($results, 'city');
     }
 
-    public function findByFilters(?string $specialties = null, ?string $department = null, ?string $city = null): array
+    public function findByFilters(?string $specialty = null, ?string $department = null, ?string $city = null): array
     {
-        $qb = $this->createQueryBuilder('p');
+        $qb = $this->createQueryBuilder('p')
+            ->leftJoin('p.specialties', 's')
+            ->addSelect('s');
 
-        if($specialties) {
-            $qb->andWhere('LOWER(p.specialties) LIKE LOWER(:specialties)')
-                ->setParameter('specialties', '%' . $specialties . '%');
+        if($specialty) {
+            $qb->andWhere(':specialty MEMBER OF p.specialties')
+                ->setParameter('specialty', $specialty);
         }
 
         if($department) {
@@ -82,7 +60,7 @@ class PartnerRepository extends ServiceEntityRepository
         }
 
         $qb->andWhere('p.active = true')
-            ->orderBy('p.name', 'ASC');
+            ->orderBy('p.id', 'ASC');
 
         return $qb->getQuery()->getResult();
     }

@@ -13,7 +13,7 @@
                             <select name="specialty" id="specialty" class="filter-control" data-model="specialty">
                                 <option value="">Toutes les activités</option>
                                 {% for specialty in specialties %}
-                                    <option value="{{ specialty | lower }}">{{ specialty }}</option>
+                                    <option value="{{ specialty.id }}">{{ specialty.name }}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -32,7 +32,7 @@
                         </div>
                     {% endif %}
 
-                    {% set cities = app_partnerService.cities %}
+                    {#{% set cities = app_partnerService.cities %}
                     {% if cities | length > 1 %}
                         <div class="filter-group">
                             <label for="city" class="filter-label">Ville</label>
@@ -43,7 +43,7 @@
                                 {% endfor %}
                             </select>
                         </div>
-                    {% endif %}
+                    {% endif %}#}
                 </div>
             </div>
         </section>
@@ -62,7 +62,7 @@
                 {% endif %}
             </h2>
 
-            <div class="app-grid two" data-loading="addClass(loading)">
+            <div class="app-grid three" data-loading="addClass(loading)">
                 {% for partner in partners %}
                     <div class="app-card">
                         <a href="{{ path('app_front_office_partner_details', {'slug': partner.slug}) }}"
@@ -73,7 +73,10 @@
                             </div>
                             <div class="card-body">
                                 <h3 class="card-title">{{ partner.name }}</h3>
-                                <p class="card-subtitle">{{ partner.type }} {{ partner.specialties }}</p>
+                                <p class="card-subtitle">
+                                    {{ partner.type }}
+                                    {{ partner.specialties | map(specialty => specialty.name) | join(', ') }}
+                                </p>
                                 <p>
                                     <strong>{{ partner.city }}&nbsp;({{ partner.zipcode | slice(0,2) }})</strong>
                                 </p>
@@ -91,6 +94,10 @@
                                     {{ ux_icon('mdi:web', {'class': 'app-icon medium text-primary'}) }}
                                 </a>
                             {% endif %}
+                            <a href="{{ path('app_front_office_contact', {'slug': partner.slug}) }}"
+                               title="Contacte BSS à propos de {{ partner.name }} !">
+                                {{ ux_icon('bi:envelope-fill', {'class': 'app-icon medium text-success'}) }}
+                            </a>
                         </div>
                     </div>
                 {% endfor %}

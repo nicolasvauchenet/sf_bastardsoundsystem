@@ -2,6 +2,7 @@
 
 namespace App\Controller\FrontOffice;
 
+use App\Entity\Partner;
 use App\Form\MessageType;
 use App\Service\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -17,12 +18,18 @@ class ContactController extends AbstractController
     /**
      * @throws TransportExceptionInterface
      */
-    #[Route('/contacter-bss', name: 'app_front_office_contact')]
+    #[Route('/contacter-bss/{slug?}', name: 'app_front_office_contact')]
     public function index(Request                $request,
                           EntityManagerInterface $entityManager,
-                          MailerService          $mailerService): Response
+                          MailerService          $mailerService,
+                          ?Partner               $partner = null): Response
     {
         $message = new Message();
+
+        if($partner) {
+            $message->setSubject('À propos de ' . $partner->getName());
+        }
+
         if($user = $this->getUser()) {
             $message->setSenderName($user->getName())
                 ->setSenderEmail($user->getEmail());

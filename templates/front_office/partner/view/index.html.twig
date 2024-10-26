@@ -16,7 +16,10 @@
 
         <div class="content">
             <h1>{{ partner.name }}</h1>
-            <p>{{ partner.type }} {{ partner.specialties }}</p>
+            <p>
+                {{ partner.type }}
+                {{ partner.specialties | map(specialty => specialty.name) | join(', ') }}
+            </p>
         </div>
     </section>
 
@@ -49,6 +52,19 @@
                             <p class="text-center">{{ partner.city }}&nbsp;({{ partner.zipcode | slice(0, 2) }})</p>
                         </div>
                     </div>
+                    {% for specialty in partner.specialties %}
+                        <div class="grid-item app-text small">
+                            <div class="content">
+                                <h3 class="text-center">
+                                    {{ partner.type }}
+                                    {{ specialty.name }}
+                                </h3>
+                                <p class="text-center">
+                                    {{ ux_icon(specialty.icon, {'class': 'app-icon large text-primary'}) }}
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -66,6 +82,10 @@
                     {{ ux_icon('mdi:web', {'class': 'app-icon medium text-primary'}) }}
                 </a>
             {% endif %}
+            <a href="{{ path('app_front_office_contact', {'slug': partner.slug}) }}"
+               title="Contacte BSS à propos de {{ partner.slug }} !">
+                {{ ux_icon('bi:envelope-fill', {'class': 'app-icon medium text-success'}) }}
+            </a>
         </div>
     </section>
 
@@ -79,7 +99,7 @@
     </figure>
 
     <section class="app-section post-figure">
-        <h2>Nos Partenaires chez Bastard Sound System</h2>
+        <h2>Le Partenariat avec Bastard Sound System</h2>
 
         <p class="text-justify small">
             Chez <strong>Bastard Sound System</strong>, on croit au pouvoir de la collaboration. Nos

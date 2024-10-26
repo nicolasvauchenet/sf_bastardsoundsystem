@@ -6,7 +6,6 @@ use App\Entity\Social;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 class SocialFixtures extends Fixture implements OrderedFixtureInterface
 {

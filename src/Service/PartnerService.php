@@ -3,14 +3,17 @@
 namespace App\Service;
 
 use App\Repository\PartnerRepository;
+use App\Repository\SpecialtyRepository;
 
 class PartnerService
 {
     private PartnerRepository $partnerRepository;
+    private SpecialtyRepository $specialtyRepository;
 
-    public function __construct(PartnerRepository $partnerRepository)
+    public function __construct(PartnerRepository $partnerRepository, SpecialtyRepository $specialtyRepository)
     {
         $this->partnerRepository = $partnerRepository;
+        $this->specialtyRepository = $specialtyRepository;
     }
 
     public function getAllPartners(): array
@@ -20,7 +23,7 @@ class PartnerService
 
     public function getSpecialties(): array
     {
-        return $this->partnerRepository->findAllSpecialties();
+        return $this->specialtyRepository->findWithPartners();
     }
 
     public function getDepartments(): array

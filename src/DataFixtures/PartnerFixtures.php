@@ -27,9 +27,8 @@ class PartnerFixtures extends Fixture implements OrderedFixtureInterface
             ->setActive(true)
             ->setStatus('Actif')
             ->setType('Photo')
-            ->setSpecialties('Live')
             ->setLogo('laeti-d-photos-logo.png')
-            ->setDescription("Passionnée par la musique et la photographie, Laëtitia suit les groupes partout, capturant l’énergie brute des scènes et l’intensité des moments live. Toujours présente en tournée, elle immortalise chaque instant, des coulisses aux montées d’adrénaline sur scène. Photographe amateur, elle possède une solide expérience et un œil affûté pour saisir l’essence des performances. Cool et décontractée, elle se fond dans l’ambiance des concerts pour restituer des clichés authentiques, vibrants, et profondément connectés à l’univers des artistes qu’elle accompagne.")
+            ->setDescription("<strong>L’œil du chaos scénique&nbsp;:</strong><br/>Passionnée par la musique et la photographie, Laëtitia suit les groupes partout, capturant l’énergie brute des scènes et l’intensité des moments live. Toujours présente en tournée, elle immortalise chaque instant, des coulisses aux montées d’adrénaline sur scène. Photographe amateur, elle possède une solide expérience et un œil affûté pour saisir l’essence des performances. Cool et décontractée, elle se fond dans l’ambiance des concerts pour restituer des clichés authentiques, vibrants, et profondément connectés à l’univers des artistes qu’elle accompagne.")
             ->setCity('Limoges')
             ->setZipcode('87000');
         $manager->persist($partner);
@@ -43,9 +42,8 @@ class PartnerFixtures extends Fixture implements OrderedFixtureInterface
             ->setActive(true)
             ->setStatus('Actif')
             ->setType('Photo')
-            ->setSpecialties('Live')
             ->setLogo('cedric-carre-logo.png')
-            ->setDescription("Photographe, illustrateur et designer basé en Charente-Maritime, ce créatif allie sourire et perfectionnisme dans chacun de ses projets. Toujours cool et accessible, il s’attache à saisir l’instant parfait, que ce soit à travers la lentille de son appareil photo ou en travaillant des illustrations et des designs uniques. Inspiré par son environnement côtier, il crée des visuels qui marient technique impeccable et sens artistique aiguisé. Soucieux du moindre détail, il travaille chaque image et chaque projet avec passion, pour offrir des résultats à la fois percutants et raffinés.")
+            ->setDescription("<strong>L'Artisan des visuels percutants&nbsp;:</strong><br/>Photographe, illustrateur et designer basé en Charente-Maritime, ce créatif allie sourire et perfectionnisme dans chacun de ses projets. Toujours cool et accessible, il s’attache à saisir l’instant parfait, que ce soit à travers la lentille de son appareil photo ou en travaillant des illustrations et des designs uniques. Inspiré par son environnement côtier, il crée des visuels qui marient technique impeccable et sens artistique aiguisé. Soucieux du moindre détail, il travaille chaque image et chaque projet avec passion, pour offrir des résultats à la fois percutants et raffinés. Cédric est aussi et surtout un des co-fondateurs et membre du bureau de BSS&nbsp;!")
             ->setCity('Cozes')
             ->setZipcode('17120');
         $manager->persist($partner);
@@ -59,8 +57,7 @@ class PartnerFixtures extends Fixture implements OrderedFixtureInterface
             ->setActive(true)
             ->setStatus('Actif')
             ->setType('Vidéo')
-            ->setSpecialties('Live, Clips')
-            ->setDescription("ShadoWorkProd est une association audiovisuelle spécialisée dans la réalisation de clips vidéo et la captation de concerts. Discrets mais efficaces, nous œuvrons en coulisses pour sublimer vos projets et les mettre sous les feux des projecteurs. Que ce soit pour capturer l'énergie brute d'une performance live ou pour concevoir des clips créatifs et percutants, nous mettons notre savoir-faire et notre passion au service de vos idées. Avec ShadoWorkProd, votre univers artistique trouve l’écrin visuel qu’il mérite, toujours avec une touche d'authenticité&nbsp;!")
+            ->setDescription("<strong>L’art de sublimer l’instant live&nbsp;:</strong><br/>ShadoWorkProd est une association audiovisuelle spécialisée dans la réalisation de clips vidéo et la captation de concerts. Discrets mais efficaces, nous œuvrons en coulisses pour sublimer vos projets et les mettre sous les feux des projecteurs. Que ce soit pour capturer l'énergie brute d'une performance live ou pour concevoir des clips créatifs et percutants, nous mettons notre savoir-faire et notre passion au service de vos idées. Avec ShadoWorkProd, votre univers artistique trouve l’écrin visuel qu’il mérite, toujours avec une touche d'authenticité&nbsp;!")
             ->setLogo('shadoworkprod-logo.png')
             ->setCity('Cressat')
             ->setZipcode('23140');
@@ -75,9 +72,8 @@ class PartnerFixtures extends Fixture implements OrderedFixtureInterface
             ->setActive(true)
             ->setStatus('Actif')
             ->setType('Vidéo')
-            ->setSpecialties('Live, Clips')
             ->setLogo('imaginaerum-studio-logo.jpg')
-            ->setDescription("Imaginaerum Studio est une association dédiée à la production de contenu audiovisuel. En plus de cette mission, nous avons pour projet de créer un espace collaboratif dédié à la création audiovisuelle associative. Ce projet commence par l'ouverture d'un studio photo et vidéo à Aubusson, et s'étendra à terme en un complexe regroupant studios de tournage, résidences, ateliers de fabrication et bien plus. Nous souhaitons offrir aux créateurs un lieu où partager ressources, compétences et créativité pour donner vie à leurs projets dans un cadre inspirant et collaboratif.")
+            ->setDescription("<strong>L’Espace collaboratif pour réinventer la création&nbsp;:</strong><br/>Imaginaerum Studio est une association dédiée à la production de contenu audiovisuel. En plus de cette mission, nous avons pour projet de créer un espace collaboratif dédié à la création audiovisuelle associative. Ce projet commence par l'ouverture d'un studio photo et vidéo à Aubusson, et s'étendra à terme en un complexe regroupant studios de tournage, résidences, ateliers de fabrication et bien plus. Nous souhaitons offrir aux créateurs un lieu où partager ressources, compétences et créativité pour donner vie à leurs projets dans un cadre inspirant et collaboratif.")
             ->setCity('Aubusson')
             ->setZipcode('23200');
         $manager->persist($partner);
@@ -88,12 +84,11 @@ class PartnerFixtures extends Fixture implements OrderedFixtureInterface
             ->setPassword($this->passwordHasher->hashPassword($partner, '!bEb7RgDFJM?'))
             ->setRoles(['ROLE_PARTNER'])
             ->setName('Philae Studio')
-            ->setActive(false)
+            ->setActive(true)
             ->setStatus('Attente de proposition')
             ->setType('Studio')
-            ->setSpecialties('Enregistrement, Mixage')
             ->setLogo('philae-studio-logo.jpg')
-            ->setDescription("Studio d'enregistrement | Mixage | Production musicale")
+            ->setDescription("<strong>L’atelier du son authentique</strong><br/>Philae Studio est un petit écrin dédié aux artistes en quête d’authenticité. Ici, pas de fioritures, juste l’essentiel&nbsp;:&nbsp;un espace chaleureux, des équipements de qualité et une approche artisanale de l’enregistrement et du mixage. Notre objectif&nbsp;? Capturer l’âme de chaque morceau, avec simplicité et précision. Que ce soit pour enregistrer une maquette, peaufiner un EP, ou donner vie à vos nouvelles idées, Philae Studio met à votre disposition une ambiance intime et l’expertise nécessaire pour faire résonner votre musique comme vous l’entendez. Parce que chaque note mérite d’être sincère.")
             ->setCity('Limoges')
             ->setZipcode('87000');
         $manager->persist($partner);
@@ -107,7 +102,6 @@ class PartnerFixtures extends Fixture implements OrderedFixtureInterface
             ->setActive(false)
             ->setStatus('Attente de proposition')
             ->setType('Studio')
-            ->setSpecialties('Enregistrement, Mixage, Mastering')
             ->setLogo('tweed-studio-logo.webp')
             ->setDescription("Studio d'enregistrement et de mastering")
             ->setCity('Montluçon')
