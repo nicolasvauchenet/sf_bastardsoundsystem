@@ -48,7 +48,7 @@
                 <div class="app-info-grid">
                     <div class="grid-item app-text small">
                         <div class="content">
-                            <h3 class="text-center">Ville</h3>
+                            <h3 class="text-center">Base urbaine</h3>
                             <p class="text-center">{{ partner.city }}&nbsp;({{ partner.zipcode | slice(0, 2) }})</p>
                         </div>
                     </div>
@@ -57,7 +57,8 @@
                             <div class="content">
                                 <h3 class="text-center">
                                     {{ partner.type }}
-                                    {{ specialty.name }}
+                                    <br/>
+                                    {{ specialty.name | split(' ') | first }}
                                 </h3>
                                 <p class="text-center">
                                     {{ ux_icon(specialty.icon, {'class': 'app-icon large text-primary'}) }}
@@ -106,9 +107,9 @@
             <strong>partenaires</strong> sont des acteurs incontournables de la <strong>scène musicale</strong>, des
             professionnels passionnés qui partagent notre vision de casser les codes et de propulser la musique là où
             elle doit être : au cœur des foules. Qu’il s’agisse de <strong>studios d’enregistrement</strong>, de
-            <strong>festivals</strong>, de <strong>videastes</strong> ou de <strong>techniciens</strong>, chaque
-            partenaire joue un rôle clé pour accompagner les <strong>artistes</strong> dans leur développement et offrir
-            des prestations de qualité à chaque événement.
+            <strong>festivals</strong>, de <strong>photographes</strong>, de <strong>videastes</strong> ou de
+            <strong>techniciens</strong>, chaque partenaire joue un rôle clé pour accompagner les
+            <strong>artistes</strong> dans leur développement et offrir des prestations de qualité à chaque événement.
         </p>
 
         <div class="app-grid two">
@@ -116,7 +117,7 @@
                 Ce qu'on peut faire ensemble
             </a>
             <a href="{{ path('app_front_office_partnership') }}" class="app-button cta">
-                Deviens notre Partenaire&nbsp;!
+                Deviens Partenaire&nbsp;!
             </a>
         </div>
     </section>

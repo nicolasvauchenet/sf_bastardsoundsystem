@@ -27,7 +27,9 @@ class PartnerFixtures extends Fixture implements OrderedFixtureInterface
             ->setActive(true)
             ->setStatus('Actif')
             ->setType('Photo')
-            ->setLogo('laeti-d-photos-logo.png')
+            ->setLogo('laeti-d-photos-logo.jpg')
+            ->setPhotoLive('laeti-d-photos-live.jpg')
+            ->setPhotoTeam('laeti-d-photos-team.jpg')
             ->setDescription("<strong>L’œil du chaos scénique&nbsp;:</strong><br/>Passionnée par la musique et la photographie, Laëtitia suit les groupes partout, capturant l’énergie brute des scènes et l’intensité des moments live. Toujours présente en tournée, elle immortalise chaque instant, des coulisses aux montées d’adrénaline sur scène. Photographe amateur, elle possède une solide expérience et un œil affûté pour saisir l’essence des performances. Cool et décontractée, elle se fond dans l’ambiance des concerts pour restituer des clichés authentiques, vibrants, et profondément connectés à l’univers des artistes qu’elle accompagne.")
             ->setCity('Limoges')
             ->setZipcode('87000');
