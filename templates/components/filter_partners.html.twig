@@ -9,9 +9,9 @@
                     {% set occupations = app_partnerService.occupations %}
                     {% if occupations | length > 1 %}
                         <div class="filter-group">
-                            <label for="occupation" class="filter-label">Métier Principal</label>
+                            <label for="occupation" class="filter-label">Activité principale</label>
                             <select name="occupation" id="occupation" class="filter-control" data-model="occupation">
-                                <option value="">Tous les métiers</option>
+                                <option value="">Toutes les activités</option>
                                 {% for occupation in occupations %}
                                     <option value="{{ occupation.id }}">{{ occupation.name }}</option>
                                 {% endfor %}
@@ -19,44 +19,15 @@
                         </div>
                     {% endif %}
 
-                    {% set specialties = app_partnerService.specialties %}
-                    {% if specialties | length > 1 %}
-                        <div class="filter-group">
-                            <label for="specialty" class="filter-label">Activité</label>
-                            <select name="specialty" id="specialty" class="filter-control" data-model="specialty">
-                                <option value="">Toutes les activités</option>
-                                {% for specialty in specialties %}
-                                    <option value="{{ specialty.id }}">{{ specialty.name }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    {% endif %}
-
-                    {% set departments = app_partnerService.departments %}
-                    {% if departments | length > 1 %}
-                        <div class="filter-group">
-                            <label for="department" class="filter-label">Département</label>
-                            <select name="department" id="department" class="filter-control" data-model="department">
-                                <option value="">Tous les départements</option>
-                                {% for department in departments %}
-                                    <option value="{{ department }}">{{ department }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    {% endif %}
-
-                    {% set cities = app_partnerService.cities %}
-                    {% if cities | length > 1 %}
-                        <div class="filter-group">
-                            <label for="city" class="filter-label">Ville</label>
-                            <select name="city" id="city" class="filter-control" data-model="city">
-                                <option value="">Toutes les villes</option>
-                                {% for city in cities %}
-                                    <option value="{{ city | lower }}">{{ city }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    {% endif %}
+                    <div class="filter-group">
+                        <label for="specialty" class="filter-label">Spécialité</label>
+                        <select name="specialty" id="specialty" class="filter-control" data-model="specialty">
+                            <option value="">Toutes les spécialités</option>
+                            {% for specialty in validSpecialties %}
+                                <option value="{{ specialty.id }}">{{ specialty.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                 </div>
             </div>
         </section>

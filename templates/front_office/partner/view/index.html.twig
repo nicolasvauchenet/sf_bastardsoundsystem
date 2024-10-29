@@ -29,7 +29,8 @@
             {% endfor %}
             {% for occupation, specialties in groupedOccupations %}
                 <p>
-                    <strong>{{ occupation }}</strong> {{ specialties | join(' • ') }}
+                    <strong>{{ occupation }}</strong>
+                    <small>{{ specialties | join(' • ') }}</small>
                 </p>
             {% endfor %}
         </div>
@@ -58,19 +59,13 @@
                 {% endif %}
 
                 <div class="app-info-grid">
-                    {# <div class="grid-item app-text small">
-                        <div class="content">
-                            <h3 class="text-center">Base urbaine</h3>
-                            <p class="text-center">{{ partner.city }}&nbsp;({{ partner.zipcode | slice(0, 2) }})</p>
-                        </div>
-                    </div> #}
                     {% for pos in partner.partnerOccupationSpecialties %}
                         <div class="grid-item app-text small">
                             <div class="content">
                                 <h3 class="text-center">
                                     {{ pos.occupation.name }}
                                     <br/>
-                                    {{ pos.specialty.name | split(' ') | first }}
+                                    <small>{{ pos.specialty.name | split(' ') | first }}</small>
                                 </h3>
                                 <p class="text-center">
                                     {{ ux_icon(pos.specialty.icon, {'class': 'app-icon large text-primary'}) }}
@@ -125,8 +120,8 @@
         </p>
 
         <div class="app-grid two">
-            <a href="{{ path('app_front_office_production_collaboration_coorganization') }}" class="app-button">
-                Ce qu'on peut faire ensemble
+            <a href="{{ path('app_front_office_contact') }}" class="app-button">
+                Discutons-en&nbsp;!
             </a>
             <a href="{{ path('app_front_office_partnership') }}" class="app-button cta">
                 Deviens Partenaire&nbsp;!

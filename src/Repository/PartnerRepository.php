@@ -67,7 +67,7 @@ class PartnerRepository extends ServiceEntityRepository
         }
 
         $qb->andWhere('p.active = true')
-            ->orderBy('p.id', 'ASC');
+            ->orderBy('p.name', 'ASC');
 
         return $qb->getQuery()->getResult();
     }

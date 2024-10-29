@@ -16,28 +16,28 @@ class PartnerOccupationSpecialtyRepository extends ServiceEntityRepository
         parent::__construct($registry, PartnerOccupationSpecialty::class);
     }
 
-    //    /**
-    //     * @return PartnerOccupationSpecialty[] Returns an array of PartnerOccupationSpecialty objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('p.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    public function findSpecialtiesByOccupation(string $occupationId): array
+    {
+        $qb = $this->createQueryBuilder('pos')
+            ->select('DISTINCT s.id, s.name')
+            ->leftJoin('pos.specialty', 's')
+            ->leftJoin('pos.occupation', 'o')
+            ->andWhere('o.id = :occupationId')
+            ->andWhere('pos.active = true')
+            ->setParameter('occupationId', $occupationId)
+            ->orderBy('s.name', 'ASC');
 
-    //    public function findOneBySomeField($value): ?PartnerOccupationSpecialty
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+        return $qb->getQuery()->getArrayResult();
+    }
+
+    public function findAllSpecialties(): array
+    {
+        $qb = $this->createQueryBuilder('pos')
+            ->select('DISTINCT s.id, s.name')
+            ->leftJoin('pos.specialty', 's')
+            ->andWhere('pos.active = true')
+            ->orderBy('s.name', 'ASC');
+
+        return $qb->getQuery()->getArrayResult();
+    }
 }

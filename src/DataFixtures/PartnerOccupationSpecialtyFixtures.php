@@ -92,21 +92,21 @@ class PartnerOccupationSpecialtyFixtures extends Fixture implements OrderedFixtu
             ->setPartner($this->getReference('user-tweed-studio'))
             ->setOccupation($this->getReference('occupation-studio'))
             ->setSpecialty($this->getReference('specialty-enregistrement'))
-            ->setActive(true);
+            ->setActive(false);
         $manager->persist($partnerOccupationSpecialty);
 
         $partnerOccupationSpecialty = (new PartnerOccupationSpecialty())
             ->setPartner($this->getReference('user-tweed-studio'))
             ->setOccupation($this->getReference('occupation-studio'))
             ->setSpecialty($this->getReference('specialty-mixage'))
-            ->setActive(true);
+            ->setActive(false);
         $manager->persist($partnerOccupationSpecialty);
 
         $partnerOccupationSpecialty = (new PartnerOccupationSpecialty())
             ->setPartner($this->getReference('user-tweed-studio'))
             ->setOccupation($this->getReference('occupation-studio'))
             ->setSpecialty($this->getReference('specialty-mastering'))
-            ->setActive(true);
+            ->setActive(false);
         $manager->persist($partnerOccupationSpecialty);
 
         $manager->flush();
