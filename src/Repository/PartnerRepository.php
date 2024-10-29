@@ -38,15 +38,22 @@ class PartnerRepository extends ServiceEntityRepository
         return array_column($results, 'city');
     }
 
-    public function findByFilters(?string $specialty = null, ?string $department = null, ?string $city = null): array
+    public function findByFilters(?string $specialty = null, ?string $occupation = null, ?string $department = null, ?string $city = null): array
     {
         $qb = $this->createQueryBuilder('p')
-            ->leftJoin('p.specialties', 's')
-            ->addSelect('s');
+            ->leftJoin('p.partnerOccupationSpecialties', 'pos')
+            ->leftJoin('pos.specialty', 's')
+            ->leftJoin('pos.occupation', 'o')
+            ->addSelect('pos', 's', 'o');
 
         if($specialty) {
-            $qb->andWhere(':specialty MEMBER OF p.specialties')
+            $qb->andWhere('s.id = :specialty')
                 ->setParameter('specialty', $specialty);
+        }
+
+        if($occupation) {
+            $qb->andWhere('o.id = :occupation')
+                ->setParameter('occupation', $occupation);
         }
 
         if($department) {

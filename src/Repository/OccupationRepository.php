@@ -2,28 +2,28 @@
 
 namespace App\Repository;
 
-use App\Entity\Specialty;
+use App\Entity\Occupation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Specialty>
+ * @extends ServiceEntityRepository<Occupation>
  */
-class SpecialtyRepository extends ServiceEntityRepository
+class OccupationRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Specialty::class);
+        parent::__construct($registry, Occupation::class);
     }
 
     public function findWithPartners(): array
     {
-        $qb = $this->createQueryBuilder('s')
-            ->leftJoin('s.partnerOccupationSpecialties', 'pos')
+        $qb = $this->createQueryBuilder('o')
+            ->leftJoin('o.partnerOccupationSpecialties', 'pos')
             ->where('pos.id IS NOT NULL')
-            ->groupBy('s.id')
+            ->groupBy('o.id')
             ->having('COUNT(pos.id) > 0')
-            ->orderBy('s.name', 'ASC');
+            ->orderBy('o.name', 'ASC');
 
         return $qb->getQuery()->getResult();
     }

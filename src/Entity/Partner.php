@@ -17,9 +17,6 @@ class Partner extends Member
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $type = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $website = null;
 
@@ -30,15 +27,15 @@ class Partner extends Member
     private ?string $photoTeam = null;
 
     /**
-     * @var Collection<int, Specialty>
+     * @var Collection<int, PartnerOccupationSpecialty>
      */
-    #[ORM\ManyToMany(targetEntity: Specialty::class, mappedBy: 'partners')]
-    private Collection $specialties;
+    #[ORM\OneToMany(targetEntity: PartnerOccupationSpecialty::class, mappedBy: 'partner', orphanRemoval: true)]
+    private Collection $partnerOccupationSpecialties;
 
     public function __construct()
     {
         parent::__construct();
-        $this->specialties = new ArrayCollection();
+        $this->partnerOccupationSpecialties = new ArrayCollection();
     }
 
     public function getLogo(): ?string
@@ -61,18 +58,6 @@ class Partner extends Member
     public function setDescription(?string $description): static
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): static
-    {
-        $this->type = $type;
 
         return $this;
     }
@@ -114,27 +99,30 @@ class Partner extends Member
     }
 
     /**
-     * @return Collection<int, Specialty>
+     * @return Collection<int, PartnerOccupationSpecialty>
      */
-    public function getSpecialties(): Collection
+    public function getPartnerOccupationSpecialties(): Collection
     {
-        return $this->specialties;
+        return $this->partnerOccupationSpecialties;
     }
 
-    public function addSpecialties(Specialty $specialties): static
+    public function addPartnerOccupationSpecialty(PartnerOccupationSpecialty $partnerOccupationSpecialty): static
     {
-        if(!$this->specialties->contains($specialties)) {
-            $this->specialties->add($specialties);
-            $specialties->addPartner($this);
+        if(!$this->partnerOccupationSpecialties->contains($partnerOccupationSpecialty)) {
+            $this->partnerOccupationSpecialties->add($partnerOccupationSpecialty);
+            $partnerOccupationSpecialty->setPartner($this);
         }
 
         return $this;
     }
 
-    public function removeSpecialties(Specialty $specialties): static
+    public function removePartnerOccupationSpecialty(PartnerOccupationSpecialty $partnerOccupationSpecialty): static
     {
-        if($this->specialties->removeElement($specialties)) {
-            $specialties->removePartner($this);
+        if($this->partnerOccupationSpecialties->removeElement($partnerOccupationSpecialty)) {
+            // set the owning side to null (unless already changed)
+            if($partnerOccupationSpecialty->getPartner() === $this) {
+                $partnerOccupationSpecialty->setPartner(null);
+            }
         }
 
         return $this;

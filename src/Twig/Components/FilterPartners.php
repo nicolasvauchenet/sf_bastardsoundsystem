@@ -15,6 +15,9 @@ class FilterPartners
     private PartnerRepository $partnerRepository;
 
     #[LiveProp(writable: true)]
+    public string $occupation = '';
+
+    #[LiveProp(writable: true)]
     public string $specialty = '';
 
     #[LiveProp(writable: true)]
@@ -30,10 +33,10 @@ class FilterPartners
 
     public function getPartners(): array
     {
-        if($this->specialty === '' && $this->department === '' && $this->city === '') {
+        if($this->specialty === '' && $this->occupation === '' && $this->department === '' && $this->city === '') {
             return $this->partnerRepository->findBy(['active' => true]);
         }
 
-        return $this->partnerRepository->findByFilters($this->specialty, $this->department, $this->city);
+        return $this->partnerRepository->findByFilters($this->specialty, $this->occupation, $this->department, $this->city);
     }
 }

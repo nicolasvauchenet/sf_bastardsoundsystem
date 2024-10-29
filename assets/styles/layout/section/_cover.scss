@@ -38,6 +38,12 @@
       box-shadow: none;
     }
 
+    &:has(p) {
+      h1 {
+        margin-bottom: 1rem;
+      }
+    }
+
     h1 {
       color: $primary;
 
@@ -47,15 +53,23 @@
     }
 
     p {
-      margin-top: 1rem;
+      margin-bottom: 0.5rem;
       font-family: $font-secondary;
       font-size: 1.5rem;
       font-weight: bold;
       color: $black;
       text-transform: uppercase;
 
+      &:last-child {
+        margin-bottom: 0;
+      }
+
       @include respondTo(md) {
         color: $white;
+      }
+
+      strong {
+        color: $third;
       }
     }
   }

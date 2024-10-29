@@ -18,7 +18,7 @@ class ContactController extends AbstractController
     /**
      * @throws TransportExceptionInterface
      */
-    #[Route('/contacter-bss/{slug?}', name: 'app_front_office_contact')]
+    #[Route('/contacte-bss/{slug?}', name: 'app_front_office_contact')]
     public function index(Request                $request,
                           EntityManagerInterface $entityManager,
                           MailerService          $mailerService,

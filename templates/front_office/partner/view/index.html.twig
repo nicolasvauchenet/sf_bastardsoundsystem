@@ -16,10 +16,22 @@
 
         <div class="content">
             <h1>{{ partner.name }}</h1>
-            <p>
-                {{ partner.type }}
-                {{ partner.specialties | map(specialty => specialty.name) | join(', ') }}
-            </p>
+            {% set groupedOccupations = {} %}
+            {% for pos in partner.partnerOccupationSpecialties %}
+                {% set occupationName = pos.occupation.name %}
+                {% set specialtyName = pos.specialty.name %}
+                {% if groupedOccupations[occupationName] is not defined %}
+                    {% set groupedOccupations = groupedOccupations | merge({ (occupationName): [] }) %}
+                {% endif %}
+                {% if specialtyName not in groupedOccupations[occupationName] %}
+                    {% set groupedOccupations = groupedOccupations | merge({ (occupationName): groupedOccupations[occupationName] | merge([specialtyName]) }) %}
+                {% endif %}
+            {% endfor %}
+            {% for occupation, specialties in groupedOccupations %}
+                <p>
+                    <strong>{{ occupation }}</strong> {{ specialties | join(' • ') }}
+                </p>
+            {% endfor %}
         </div>
     </section>
 
@@ -29,7 +41,7 @@
                 {{ ux_icon('ph:skip-back-fill', {'class': 'app-icon large'}) }}
                 Partenaires
             </a>
-            Les infos de {{ partner.name }}
+            {{ partner.name }} • {{ partner.city }}&nbsp;({{ partner.zipcode | slice(0, 2) }})
         </h2>
 
         <div class="app-grid-container mb-3">
@@ -46,22 +58,22 @@
                 {% endif %}
 
                 <div class="app-info-grid">
-                    <div class="grid-item app-text small">
+                    {# <div class="grid-item app-text small">
                         <div class="content">
                             <h3 class="text-center">Base urbaine</h3>
                             <p class="text-center">{{ partner.city }}&nbsp;({{ partner.zipcode | slice(0, 2) }})</p>
                         </div>
-                    </div>
-                    {% for specialty in partner.specialties %}
+                    </div> #}
+                    {% for pos in partner.partnerOccupationSpecialties %}
                         <div class="grid-item app-text small">
                             <div class="content">
                                 <h3 class="text-center">
-                                    {{ partner.type }}
+                                    {{ pos.occupation.name }}
                                     <br/>
-                                    {{ specialty.name | split(' ') | first }}
+                                    {{ pos.specialty.name | split(' ') | first }}
                                 </h3>
                                 <p class="text-center">
-                                    {{ ux_icon(specialty.icon, {'class': 'app-icon large text-primary'}) }}
+                                    {{ ux_icon(pos.specialty.icon, {'class': 'app-icon large text-primary'}) }}
                                 </p>
                             </div>
                         </div>

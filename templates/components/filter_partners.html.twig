@@ -6,6 +6,19 @@
                     {{ ux_icon('mage:filter', {'class': 'app-icon medium text-primary'}) }}
                 </div>
                 <div class="app-filters app-grid two">
+                    {% set occupations = app_partnerService.occupations %}
+                    {% if occupations | length > 1 %}
+                        <div class="filter-group">
+                            <label for="occupation" class="filter-label">Métier Principal</label>
+                            <select name="occupation" id="occupation" class="filter-control" data-model="occupation">
+                                <option value="">Tous les métiers</option>
+                                {% for occupation in occupations %}
+                                    <option value="{{ occupation.id }}">{{ occupation.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% endif %}
+
                     {% set specialties = app_partnerService.specialties %}
                     {% if specialties | length > 1 %}
                         <div class="filter-group">
@@ -32,7 +45,7 @@
                         </div>
                     {% endif %}
 
-                    {#{% set cities = app_partnerService.cities %}
+                    {% set cities = app_partnerService.cities %}
                     {% if cities | length > 1 %}
                         <div class="filter-group">
                             <label for="city" class="filter-label">Ville</label>
@@ -43,7 +56,7 @@
                                 {% endfor %}
                             </select>
                         </div>
-                    {% endif %}#}
+                    {% endif %}
                 </div>
             </div>
         </section>
@@ -74,8 +87,13 @@
                             <div class="card-body">
                                 <h3 class="card-title">{{ partner.name }}</h3>
                                 <p class="card-subtitle">
-                                    {{ partner.type }}
-                                    {{ partner.specialties | map(specialty => specialty.name) | join(', ') }}
+                                    {% set uniqueOccupations = [] %}
+                                    {% for pos in partner.partnerOccupationSpecialties %}
+                                        {% if pos.occupation.name not in uniqueOccupations %}
+                                            {% set uniqueOccupations = uniqueOccupations | merge([pos.occupation.name]) %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {{ uniqueOccupations | join(', ') }}
                                 </p>
                                 <p>
                                     <strong>{{ partner.city }}&nbsp;({{ partner.zipcode | slice(0,2) }})</strong>

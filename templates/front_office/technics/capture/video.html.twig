@@ -99,10 +99,13 @@
             <strong>public</strong>.
         </p>
 
-        <p>
-            <a href="#" class="app-button cta">
-                Découvre nos partenaires vidéastes&nbsp;!
+        <div class="app-grid two">
+            <a href="{{ path('app_front_office_partner_home') }}" class="app-button">
+                Découvre nos partenaires&nbsp;!
             </a>
-        </p>
+            <a href="{{ path('app_front_office_membership') }}" class="app-button cta">
+                Rejoins BSS&nbsp;!
+            </a>
+        </div>
     </section>
 {% endblock %}

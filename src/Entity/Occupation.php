@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\SpecialtyRepository;
+use App\Repository\OccupationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
-#[ORM\Entity(repositoryClass: SpecialtyRepository::class)]
-class Specialty
+#[ORM\Entity(repositoryClass: OccupationRepository::class)]
+class Occupation
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -26,13 +26,13 @@ class Specialty
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $icon = null;
 
-    #[ORM\Column]
-    private ?bool $active = null;
+    #[ORM\Column(length: 255)]
+    private ?string $active = null;
 
     /**
      * @var Collection<int, PartnerOccupationSpecialty>
      */
-    #[ORM\OneToMany(targetEntity: PartnerOccupationSpecialty::class, mappedBy: 'specialty')]
+    #[ORM\OneToMany(targetEntity: PartnerOccupationSpecialty::class, mappedBy: 'occupation', orphanRemoval: true)]
     private Collection $partnerOccupationSpecialties;
 
     public function __construct()
@@ -81,12 +81,12 @@ class Specialty
         return $this;
     }
 
-    public function isActive(): ?bool
+    public function getActive(): ?string
     {
         return $this->active;
     }
 
-    public function setActive(bool $active): static
+    public function setActive(string $active): static
     {
         $this->active = $active;
 
@@ -105,7 +105,7 @@ class Specialty
     {
         if (!$this->partnerOccupationSpecialties->contains($partnerOccupationSpecialty)) {
             $this->partnerOccupationSpecialties->add($partnerOccupationSpecialty);
-            $partnerOccupationSpecialty->setSpecialty($this);
+            $partnerOccupationSpecialty->setOccupation($this);
         }
 
         return $this;
@@ -115,8 +115,8 @@ class Specialty
     {
         if ($this->partnerOccupationSpecialties->removeElement($partnerOccupationSpecialty)) {
             // set the owning side to null (unless already changed)
-            if ($partnerOccupationSpecialty->getSpecialty() === $this) {
-                $partnerOccupationSpecialty->setSpecialty(null);
+            if ($partnerOccupationSpecialty->getOccupation() === $this) {
+                $partnerOccupationSpecialty->setOccupation(null);
             }
         }
 

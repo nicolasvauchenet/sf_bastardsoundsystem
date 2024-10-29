@@ -156,10 +156,14 @@
             conseiller et te donner les <strong>outils nécessaires</strong> pour que ta <strong>musique</strong>
             résonne.
         </p>
-        <p>
-            <a href="#" class="app-button cta">
-                Rejoins-nous et découvre toutes les possibilités qui t’attendent avec BSS&nbsp;!
+
+        <div class="app-grid two">
+            <a href="{{ path('app_front_office_label_management_documents') }}" class="app-button">
+                Toutes ces possibilités t’attendent&nbsp;!
             </a>
-        </p>
+            <a href="{{ path('app_front_office_membership') }}" class="app-button cta">
+                Rejoins-nous&nbsp;!
+            </a>
+        </div>
     </section>
 {% endblock %}
