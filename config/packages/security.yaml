@@ -45,6 +45,7 @@ security:
     ROLE_MEMBER: ROLE_USER
     ROLE_ARTIST: ROLE_MEMBER
     ROLE_PARTNER: ROLE_MEMBER
+    ROLE_PROMOTER: ROLE_PARTNER
 
   access_denied_url: /
 

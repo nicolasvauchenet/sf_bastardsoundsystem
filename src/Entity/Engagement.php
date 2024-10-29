@@ -68,6 +68,9 @@ class Engagement
     #[ORM\JoinColumn(nullable: false)]
     private ?Artist $artist = null;
 
+    #[ORM\ManyToOne(inversedBy: 'engagements')]
+    private ?Promoter $promoter = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -273,6 +276,18 @@ class Engagement
     public function setArtist(?Artist $artist): static
     {
         $this->artist = $artist;
+
+        return $this;
+    }
+
+    public function getPromoter(): ?Promoter
+    {
+        return $this->promoter;
+    }
+
+    public function setPromoter(?Promoter $promoter): static
+    {
+        $this->promoter = $promoter;
 
         return $this;
     }

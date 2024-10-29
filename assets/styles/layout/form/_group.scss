@@ -76,4 +76,12 @@
       color: $danger;
     }
   }
+
+  .help {
+    grid-column: 2/3;
+    padding-right: 0.5rem;
+    margin-top: 0.25rem;
+    font-size: 1rem;
+    text-align: right;
+  }
 }

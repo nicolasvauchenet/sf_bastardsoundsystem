@@ -9,6 +9,9 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PartnerRepository::class)]
+#[ORM\InheritanceType('JOINED')]
+#[ORM\DiscriminatorColumn(name: 'discriminator', type: 'string')]
+#[ORM\DiscriminatorMap(['partner' => 'App\Entity\Partner', 'promoter' => 'App\Entity\Promoter'])]
 class Partner extends Member
 {
     #[ORM\Column(length: 255, nullable: true)]

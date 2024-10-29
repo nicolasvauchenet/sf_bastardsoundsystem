@@ -67,13 +67,16 @@
 
         <div class="form-group">
             {{ form_label(form.contract) }}
-            {{ form_widget(form.contract) }}
-            {{ form_errors(form.contract) }}
+            <p class="form-control">
+                <a href="{{ asset('uploads/contract/' ~ engagement.contract) }}" class="text-primary" target="_blank">
+                    {{ engagement.contract }}
+                </a>
+            </p>
         </div>
 
         <div class="form-group">
-            {{ form_label(form.signedAt) }}
-            {{ form_widget(form.signedAt) }}
+            {{ form_label(form.signedAt, 'Signé le', {'label_attr': {'class': 'form-label required'}}) }}
+            {{ form_widget(form.signedAt, {'required': true}) }}
             {{ form_errors(form.signedAt) }}
         </div>
 

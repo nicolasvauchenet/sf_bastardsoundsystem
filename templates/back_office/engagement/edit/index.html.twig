@@ -16,6 +16,10 @@
     </section>
 
     <section class="app-section post-figure">
-        {% include 'back_office/engagement/edit/_form.html.twig' %}
+        {% if engagement.status != 'Conclue' and engagement.status != 'Relance' and engagement.status != 'Terminée' %}
+            {% include 'back_office/engagement/edit/_form.html.twig' %}
+        {% elseif engagement.status != 'Terminée' %}
+            {% include 'back_office/engagement/accept/_form.html.twig' %}
+        {% endif %}
     </section>
 {% endblock %}

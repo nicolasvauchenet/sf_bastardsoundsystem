@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Artist;
 use App\Entity\Engagement;
+use App\Entity\Promoter;
 use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
 use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -24,8 +25,20 @@ class EngagementType extends AbstractType
     {
         $builder
             ->add('artist', EntityType::class, [
+                'required' => false,
                 'class' => Artist::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+            ->add('promoter', EntityType::class, [
+                'required' => false,
+                'class' => Promoter::class,
+                'choice_label' => 'name',
                 'label_attr' => [
                     'class' => 'form-label',
                 ],

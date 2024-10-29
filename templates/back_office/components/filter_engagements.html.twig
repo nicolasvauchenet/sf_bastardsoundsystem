@@ -74,34 +74,45 @@
                                onclick="return window.confirm('On supprime cet engagement ?')">
                                 {{ ux_icon('clarity:trash-solid', {'class': 'app-icon'}) }}
                             </a>
-                            {% if app.request.query.get('etat') != 'conclue' and app.request.query.get('etat') != 'relance' %}
-                                {% if app.request.query.get('etat') != 'archive' %}
-                                    <a href="{{ path('app_back_office_engagement_archive', {'id': engagement.id}) }}"
-                                       class="text-danger" title="Archive cette proposition d'engagement"
-                                       onclick="return window.confirm('On archive cette proposition d\'engagement ?')">
-                                        {{ ux_icon('icomoon-free:cross', {'class': 'app-icon'}) }}
-                                    </a>
-                                {% endif %}
-                                {% if app.request.query.get('etat') != 'attente' %}
-                                    <a href="{{ path('app_back_office_engagement_wait', {'id': engagement.id}) }}"
-                                       class="text-warning" title="Mets cette proposition d'engagement en attente"
-                                       onclick="return window.confirm('On met cette proposition d\'engagement en attente ?')">
-                                        {{ ux_icon('subway:refresh-time', {'class': 'app-icon'}) }}
-                                    </a>
-                                {% endif %}
-                                {% if app.request.query.get('etat') != 'conclue' %}
-                                    <a href="{{ path('app_back_office_engagement_edit', {'id': engagement.id}) }}"
-                                       class="text-info"
-                                       title="Modifie cette proposition d'engagement">
-                                        {{ ux_icon('fa-solid:edit', {'class': 'app-icon'}) }}
-                                    </a>
-                                    <a href="{{ path('app_back_office_engagement_accept', {'id': engagement.id}) }}"
-                                       class="text-success"
-                                       title="Valide cette proposition d'engagement">
-                                        {{ ux_icon('formkit:check', {'class': 'app-icon'}) }}
-                                    </a>
-                                {% endif %}
-                            {% else %}
+                            {% if engagement.status != 'Conclue' and engagement.status != 'Relance' and engagement.status != 'Terminée' %}
+                                <a href="{{ path('app_back_office_engagement_archive', {'id': engagement.id}) }}"
+                                   class="text-danger" title="Refuse cette proposition d'engagement"
+                                   onclick="return window.confirm('On refuse cette proposition d\'engagement ?')">
+                                    {{ ux_icon('icomoon-free:cross', {'class': 'app-icon'}) }}
+                                </a>
+                                <a href="{{ path('app_back_office_engagement_wait', {'id': engagement.id}) }}"
+                                   class="text-warning" title="Mets cette proposition d'engagement en attente"
+                                   onclick="return window.confirm('On met cette proposition d\'engagement en attente ?')">
+                                    {{ ux_icon('subway:refresh-time', {'class': 'app-icon'}) }}
+                                </a>
+                            {% endif %}
+                            <a href="{{ path('app_back_office_engagement_edit', {'id': engagement.id}) }}"
+                               class="text-info"
+                               title="Modifie cette proposition d'engagement">
+                                {{ ux_icon('fa-solid:edit', {'class': 'app-icon'}) }}
+                            </a>
+                            {% if engagement.status != 'Conclue' and engagement.status != 'Relance' and engagement.status != 'Terminée' %}
+                                <a href="{{ path('app_back_office_engagement_generate', {'id': engagement.id}) }}"
+                                   class="text-info"
+                                        {% if engagement.contract %}
+                                            title="Régénère le contrat de cession"
+                                            onclick="return window.confirm('On régénère un contrat pour cet engagement ?')"
+                                        {% else %}
+                                            title="Génère le contrat de cession"
+                                            onclick="return window.confirm('On génère un contrat pour cet engagement ?')"
+                                        {% endif %}
+                                >
+                                    {{ ux_icon('fluent:document-add-16-filled', {'class': 'app-icon text-success'}) }}
+                                </a>
+                            {% endif %}
+                            {% if engagement.contract and engagement.status != 'Conclue' %}
+                                <a href="{{ path('app_back_office_engagement_accept', {'id': engagement.id}) }}"
+                                   class="text-success"
+                                   title="Valide cette proposition d'engagement">
+                                    {{ ux_icon('formkit:check', {'class': 'app-icon'}) }}
+                                </a>
+                            {% endif %}
+                            {% if engagement.signedAt %}
                                 <a href="{{ path('app_back_office_engagement_revive', {'id': engagement.id}) }}"
                                    class="text-warning"
                                    title="Relance la demande de paiement"

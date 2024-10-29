@@ -3,6 +3,7 @@
 namespace App\Controller\BackOffice\Engagement;
 
 use App\Entity\Engagement;
+use App\Entity\Promoter;
 use App\Form\EngagementType;
 use App\Service\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -10,11 +11,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/administration/propositions-de-booking', name: 'app_back_office_engagement_')]
 class AcceptController extends AbstractController
 {
+    private UserPasswordHasherInterface $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+
     /**
      * @throws TransportExceptionInterface
      */
@@ -24,16 +33,31 @@ class AcceptController extends AbstractController
                            MailerService          $mailerService,
                            Engagement             $engagement): Response
     {
-        $artist = $engagement->getArtist();
-        $message = $engagement->getMessage();
+        $engagementBefore = $engagement;
         $form = $this->createForm(EngagementType::class, $engagement);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $engagement->setArtist($artist)
-                ->setMessage($message)
+            $engagement->setName($engagement->getName())
+                ->setArtist($engagementBefore->getArtist())
+                ->setMessage($engagementBefore->getMessage())
                 ->setStatus('Conclue')
                 ->setConcludedAt(new \DateTimeImmutable());
+
+            if(!$engagement->getPromoter()) {
+                $promoter = new Promoter();
+                $promoter->setEmail($engagement->getEmail())
+                    ->setPassword($this->passwordHasher->hashPassword($promoter, '!bEb7RgDFJM?'))
+                    ->setName($engagement->getName())
+                    ->setRoles(['ROLE_PROMOTER'])
+                    ->setActive(true)
+                    ->setStatus('Actif')
+                    ->setPhone($engagement->getPhone())
+                    ->setOrganization($engagement->getOrganization())
+                    ->setCity($engagement->getCity());
+                $entityManager->persist($promoter);
+                $engagement->setPromoter($promoter);
+            }
             $entityManager->persist($engagement);
             $entityManager->flush();
 
