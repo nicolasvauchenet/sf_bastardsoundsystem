@@ -49,6 +49,10 @@ a {
   color: $third;
   transition: all 0.4s;
 
+  @include respondTo(xs) {
+    color: $secondary;
+  }
+
   &:hover {
     color: $secondary;
   }

@@ -71,6 +71,10 @@
 
       strong {
         color: $third;
+
+        @include respondTo(xs) {
+          color: $secondary;
+        }
       }
     }
   }
