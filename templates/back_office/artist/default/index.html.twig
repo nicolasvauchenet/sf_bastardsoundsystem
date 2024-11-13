@@ -1,0 +1,106 @@
+{% extends 'back_office/_layout/_index.html.twig' %}
+
+{% block title %}Les artistes - Administration{% endblock %}
+
+{% block body_class %}back-office{% endblock %}
+
+{% block main %}
+    <section class="app-section cover">
+        <img src="{{ asset('img/admincover.webp') }}" alt="Administration BSS"/>
+
+        <div class="content">
+            <h1>Les Artistes du Label</h1>
+            <p>Administration BSS</p>
+        </div>
+    </section>
+
+    {% if app_artistService.allArtists(true) | length > 0 %}
+        <section class="app-section post-figure">
+            <h2>
+                {{ app_artistService.allArtists(true) | length }}
+                artiste{{ app_artistService.allArtists(true) | length > 1 ? 's' : '' }}
+                dans le label
+            </h2>
+
+            <div class="app-grid two" data-loading="addClass(loading)">
+                {% for artist in app_artistService.allArtists(true) %}
+                    <div class="app-card {% if not artist.active %}inactive{% endif %}">
+                        <a href="{{ path('app_front_office_artist_details', {'slug': artist.slug}) }}"
+                           title="Voir la fiche de {{ artist.name }}"
+                           target="_blank">
+                            <div class="card-header">
+                                <img src="{{ asset('uploads/artist/' ~ artist.slug ~ '/' ~ artist.photoLive) }}"
+                                     alt="{{ artist.name }}"/>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">{{ artist.name }}</h3>
+                                <p class="card-subtitle">{{ artist.genre }} {{ artist.style }}</p>
+                                <p>
+                                    <strong>{{ artist.city }}&nbsp;({{ artist.zipcode | slice(0,2) }})</strong>
+                                </p>
+                            </div>
+                        </a>
+                        <div class="card-footer">
+                            <a href="{{ path('app_back_office_artist_delete', {'slug': artist.slug}) }}"
+                               class="text-danger"
+                               title="Supprime cet artiste"
+                               onclick="return window.confirm('On supprime carrément l\'artiste {{ artist.name }} ?')">
+                                {{ ux_icon('clarity:trash-solid', {'class': 'app-icon medium'}) }}
+                            </a>
+                            <a href="{{ path('app_back_office_artist_edit', {'slug': artist.slug}) }}"
+                               class="text-info"
+                               title="Modifie les infos de {{ artist.name }}">
+                                {{ ux_icon('fa-solid:edit', {'class': 'app-icon medium'}) }}
+                            </a>
+                            {% if artist.active %}
+                                <a href="{{ path('app_back_office_artist_active', {'slug': artist.slug}) }}"
+                                   class="text-warning"
+                                   title="Désactive {{ artist.name }}"
+                                   onclick="return window.confirm('On désactive cet artiste ?')">
+                                    {{ ux_icon('mdi:eye-off', {'class': 'app-icon medium'}) }}
+                                </a>
+                            {% else %}
+                                <a href="{{ path('app_back_office_artist_active', {'slug': artist.slug}) }}"
+                                   class="text-success"
+                                   title="Active {{ artist.name }}"
+                                   onclick="return window.confirm('On active cet artiste ?')">
+                                    {{ ux_icon('mdi:eye', {'class': 'app-icon medium'}) }}
+                                </a>
+                            {% endif %}
+                            <a href="{{ path('app_front_office_artist_details', {'slug': artist.slug}) }}"
+                               title="La fiche de {{ artist.name }}"
+                               target="_blank">
+                                {{ ux_icon('akar-icons:info-fill', {'class': 'app-icon medium text-info'}) }}
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <div class="app-card alt">
+                    <a href="{{ path('app_back_office_artist_add') }}"
+                       title="Nouvel artiste">
+                        <div class="card-header">
+                            <img src="{{ asset('img/label/navigation.webp') }}"
+                                 alt="Nouvel artiste"/>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Nouvel Artiste</h3>
+                        </div>
+                    </a>
+                    <div class="card-footer">
+                        <a href="{{ path('app_back_office_artist_add') }}"
+                           title="Nouvel artiste">
+                            {{ ux_icon('subway:add', {'class': 'app-icon medium text-success'}) }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% else %}
+        <section class="app-section">
+            <p class="text-center">
+                <strong>Aucun artiste trouvé</strong>
+            </p>
+        </section>
+    {% endif %}
+{% endblock %}

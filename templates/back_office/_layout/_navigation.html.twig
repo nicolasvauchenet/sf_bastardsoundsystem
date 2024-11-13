@@ -1,4 +1,10 @@
 <nav class="app-navigation">
+    <a href="{{ path('app_back_office_artist_home') }}"
+       class="{% if 'app_back_office_artist_' in app.request.get('_route') %}active{% endif %}">
+        {{ ux_icon('el:group', {'class': 'app-icon medium'}) }}
+        Artistes
+    </a>
+
     {% set newEngagements = app_engagementService.byStatus('Nouvelle') | length %}
     {% set waitingEngagements = app_engagementService.byStatus('Attente') | length %}
     {% set revivedEngagements = app_engagementService.byStatus('Relance') | length %}

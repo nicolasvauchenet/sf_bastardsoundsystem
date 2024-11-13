@@ -36,4 +36,16 @@
       @include displayGrid(repeat(4, 1fr), 1.5rem);
     }
   }
+
+  &.third {
+    @include respondTo(md) {
+      @include displayGrid(2fr 1fr, 1.5rem);
+    }
+
+    &.reverse {
+      @include respondTo(md) {
+        @include displayGrid(1fr 2fr, 1.5rem);
+      }
+    }
+  }
 }

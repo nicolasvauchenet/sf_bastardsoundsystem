@@ -1,0 +1,22 @@
+{% extends 'back_office/_layout/_index.html.twig' %}
+
+{% block title %}Nouvel artiste{% endblock %}
+
+{% block body_class %}back-office{% endblock %}
+
+{% block main %}
+    <section class="app-section cover">
+        <img src="{{ asset('img/admincover.webp') }}" alt="Administration BSS"/>
+
+        <div class="content">
+            <h1>Nouvel Artiste</h1>
+            <p>Administration BSS</p>
+        </div>
+    </section>
+
+    <section class="app-section post-figure">
+        <h2>Ajoute un Artiste</h2>
+
+        {% include 'back_office/artist/_form.html.twig' %}
+    </section>
+{% endblock %}

@@ -13,8 +13,12 @@ class ArtistService
         $this->artistRepository = $artistRepository;
     }
 
-    public function getAllArtists(): array
+    public function getAllArtists($all = false): array
     {
+        if($all) {
+            return $this->artistRepository->findBy([], ['name' => 'ASC']);
+        }
+
         return $this->artistRepository->findBy(['active' => true], ['name' => 'ASC']);
     }
 

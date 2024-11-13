@@ -7,6 +7,7 @@ parameters:
   app_locale: fr
   app_locale_str: fr_FR
   timezone: '%env(resolve:APP_TIMEZONE)%'
+  uploads_directory: '%kernel.project_dir%/public/uploads'
 
 services:
   # default configuration for services in *this* file
@@ -38,5 +39,8 @@ services:
       $entityManager: '@doctrine.orm.entity_manager'
     tags: [ 'validator.constraint_validator' ]
 
+  App\Service\FileUploaderService:
+    arguments:
+      $uploadsDirectory: '%uploads_directory%'
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones

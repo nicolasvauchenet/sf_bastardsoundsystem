@@ -1,0 +1,28 @@
+{% extends 'back_office/_layout/_index.html.twig' %}
+
+{% block title %}Modifier un artiste{% endblock %}
+
+{% block body_class %}back-office artist{% endblock %}
+
+{% block main %}
+    <section class="app-section cover">
+        {% if artist.photoBand %}
+            <img src="{{ asset('uploads/artist/' ~ artist.slug ~ '/' ~ artist.photoBand) }}" alt="{{ artist.name }}"/>
+        {% elseif artist.photoLive %}
+            <img src="{{ asset('uploads/artist/' ~ artist.slug ~ '/' ~ artist.photoLive) }}" alt="{{ artist.name }}"/>
+        {% else %}
+            <img src="{{ asset('img/admincover.webp') }}" alt="Administration BSS"/>
+        {% endif %}
+
+        <div class="content">
+            <h1>Modifie un Artiste</h1>
+            <p>{{ artist.name }}</p>
+        </div>
+    </section>
+
+    <section class="app-section post-figure">
+        <h2>Modifie cet Artiste</h2>
+
+        {% include 'back_office/artist/_form.html.twig' %}
+    </section>
+{% endblock %}
