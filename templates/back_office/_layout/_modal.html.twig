@@ -165,12 +165,12 @@
                             {% endif %}
                         </p>
                         {% if content.message %}
-                            {% if message.answeredAt %}
+                            {% if content.message.answeredAt %}
                                 <p class="small">
                                     <strong>Réponse le</strong>
-                                    {{ message.answeredAt | date ('d/m/Y') }}
+                                    {{ content.message.answeredAt | date ('d/m/Y') }}
                                     <strong>à</strong>
-                                    {{ message.answeredAt | date ('H:i') }}
+                                    {{ content.message.answeredAt | date ('H:i') }}
                                 </p>
                             {% endif %}
 
