@@ -147,7 +147,6 @@ class ArtistType extends AbstractType
                 'required' => false,
                 'label' => 'Membres',
                 'empty_data' => 1,
-                'data' => 1,
                 'label_attr' => [
                     'class' => 'form-label',
                 ],
