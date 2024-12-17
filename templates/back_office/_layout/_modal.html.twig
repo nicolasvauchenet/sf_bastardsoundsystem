@@ -166,14 +166,14 @@
                         </p>
                         {% if content.message %}
                             {{ dump(content) }}
-                            {% if content.answeredAt %}
+                            {#{% if content.answeredAt %}
                                 <p class="small">
                                     <strong>Réponse le</strong>
                                     {{ content.answeredAt | date ('d/m/Y') }}
                                     <strong>à</strong>
                                     {{ content.answeredAt | date ('H:i') }}
                                 </p>
-                            {% endif %}
+                            {% endif %}#}
 
                             <div class="card-text text-justify small">
                                 {% if content.subject is defined %}
