@@ -165,6 +165,7 @@
                             {% endif %}
                         </p>
                         {% if content.message %}
+                            {{ dump(content) }}
                             {% if content.answeredAt %}
                                 <p class="small">
                                     <strong>Réponse le</strong>
