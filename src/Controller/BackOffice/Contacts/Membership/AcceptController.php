@@ -52,7 +52,8 @@ class AcceptController extends AbstractController
             ->setPassword($this->passwordHasher->hashPassword($member, 'change-moi-ca-tout-de-suite!'))
             ->setName($membership->getName())
             ->setPhone($membership->getPhone())
-            ->setCity($membership->getCity());
+            ->setCity($membership->getCity())
+            ->setBandmates(1);
         $entityManager->persist($member);
         $entityManager->remove($membership);
         $entityManager->flush();
