@@ -53,7 +53,9 @@ class AcceptController extends AbstractController
             ->setName($membership->getName())
             ->setPhone($membership->getPhone())
             ->setCity($membership->getCity())
-            ->setBandmates(1);
+            ->setBandmates(1)
+            ->setGenre('')
+            ->setStyle('');
         $entityManager->persist($member);
         $entityManager->remove($membership);
         $entityManager->flush();
