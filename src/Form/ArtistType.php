@@ -212,6 +212,7 @@ class ArtistType extends AbstractType
                     'Alternatif' => 'Alternatif',
                     'Poétique' => 'Poétique',
                     'Progressif' => 'Progressif',
+                    'Irlandais' => 'Irlandais',
                 ],
                 'placeholder' => 'Choisis un style',
                 'label_attr' => [
