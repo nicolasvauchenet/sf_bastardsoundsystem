@@ -5,12 +5,12 @@
             Label
         </a>
 
-        <div class="dropdown-content">
+        <div class="dropdown-content left">
             <div class="dropdown-item">
                 <img src="{{ asset('img/label/navigation.webp') }}" alt="Label"/>
             </div>
             <div class="dropdown-item">
-                <div class="app-grid three">
+                <div class="app-grid two">
                     <div class="grid-item">
                         <strong>Découvre BSS</strong>
                         <a href="{{ path('app_front_office_label_about') }}"
@@ -47,7 +47,7 @@
                             Documents et visuels
                         </a>
                     </div>
-                    <div class="grid-item">
+                    {#<div class="grid-item">
                         <strong>Booking</strong>
                         <a href="{{ path('app_front_office_label_booking_gig') }}"
                            class="{% if app.request.get('_route') == 'app_front_office_label_booking_gig' %}active{% endif %}">
@@ -64,7 +64,7 @@
                             <img src="{{ asset('img/logo_small.png') }}" class="bullet" alt="BSS"/>
                             Contrats et assurances
                         </a>
-                    </div>
+                    </div>#}
                 </div>
                 <p>
                     Fini les nuits à stresser pour un <strong>contrat</strong> mal ficelé ou une promo qui tourne au

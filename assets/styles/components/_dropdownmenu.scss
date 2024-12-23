@@ -167,6 +167,11 @@
       @include respondTo(md) {
         left: initial;
         width: 50dvw;
+
+        &.left {
+          left: 20dvh;
+          right: initial;
+        }
       }
     }
   }
