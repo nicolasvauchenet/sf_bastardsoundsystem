@@ -1,0 +1,227 @@
+@page {
+    margin: 0;
+}
+
+@page content-page {
+    margin-bottom: 10mm;
+
+    @bottom-left {
+        content: "Féelarsen - Dossier Général";
+        padding-left: 10mm;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    @bottom-right {
+        content: "Page " counter(page) " sur " counter(pages);
+        padding-right: 10mm;
+        font-size: 12px;
+        font-weight: bold;
+    }
+}
+
+body {
+    margin: 0;
+}
+
+.page-break {
+    page-break-before: always;
+}
+
+.content-page {
+    page: content-page;
+    margin: 10mm;
+}
+
+.cover-page {
+    position: relative;
+    margin: 0;
+    height: 297mm;
+    background-color: #dcd393;
+}
+
+.cover-page.home .filetitle {
+    position: absolute;
+    top: 212mm;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.cover-page .sectiontitle {
+    position: absolute;
+    top: 50%;
+    right: 10mm;
+    padding: 5mm 5mm 2mm;
+    text-align: center;
+    background-color: #dcd393;
+    border-radius: 0.25rem;
+}
+
+.cover-page.back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+    height: 297mm;
+}
+
+.cover-page.back img {
+    margin-bottom: 5mm;
+    width: 180mm;
+}
+
+.cover-page.back h2 {
+    margin-bottom: 2mm;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    text-transform: uppercase;
+    color: #650f3c;
+}
+
+h1 {
+    margin-bottom: 2mm;
+    font-size: 2.5rem;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.mb-6 {
+    margin-bottom: 6mm;
+}
+
+.cover-svg {
+    width: 210mm;
+    height: 260mm;
+}
+
+.section-svg {
+    width: 210mm;
+    height: 312mm;
+}
+
+.grid.two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5mm;
+}
+
+.grid.four {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 5mm;
+}
+
+.grid.four .grid-item h3,
+.grid.four .grid-item p {
+    text-align: center;
+}
+
+.grid.four .grid-item h3 {
+    margin-bottom: 2mm;
+}
+
+.grid.four .grid-item p {
+    margin: 0;
+}
+
+.grid.third {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    grid-gap: 5mm;
+    align-items: center;
+}
+
+.cover-page .grid.three {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 10mm 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2mm;
+}
+
+.cover-page .grid-item {
+    margin: 0 5mm;
+    width: 46mm;
+    height: 46mm;
+    font-weight: bold;
+    text-align: center;
+    color: #650f3c;
+    background-color: #ffffff;
+    border: 1mm solid #650f3c;
+    border-radius: 50%;
+}
+
+.cover-page .grid-item img {
+    display: block;
+    margin-top: 6mm;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30mm;
+}
+
+.cover-page .grid-item h3 {
+    margin-top: 5mm;
+    padding-bottom: 1mm;
+    border-bottom: 1mm solid #650f3c;
+}
+
+.cover-page .grid-item p {
+    margin-bottom: 0;
+}
+
+.frame {
+    position: relative;
+    margin-top: 10mm;
+    padding: 5mm;
+    border: 1mm solid #650f3c;
+    border-radius: 0.5rem;
+}
+
+.frame h2 {
+    position: absolute;
+    top: -5mm;
+    left: 5mm;
+    padding: 1mm 2mm;
+    background-color: #ffffff;
+}
+
+table.patch {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 0.25rem;
+    break-inside: avoid;
+}
+
+table.patch thead tr th {
+    padding: 1mm;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 1mm solid #650f3c;
+}
+
+table.patch tbody tr td {
+    padding: 2mm 1mm;
+    font-size: 12px;
+    border: 1mm solid #650f3c;
+}
+
+table.patch tbody tr:nth-child(odd) td {
+    background-color: #eeeeee;
+}

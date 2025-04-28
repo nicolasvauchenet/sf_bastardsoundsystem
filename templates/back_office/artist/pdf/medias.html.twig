@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Féelarsen - Dossier Médias</title>
+
+        <style>
+            {% include 'back_office/artist/pdf/styles.css' %}
+            @page content-page {
+                @bottom-left {
+                    content: "Féelarsen - Dossier Médias";
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Couverture -->
+        <section class="cover-page home">
+            <svg class="cover-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 260">
+                <defs>
+                    <clipPath id="clip-shape">
+                        <path d="M 0 0 H 210 V 160 Q 105 260 0 160 Z"/>
+                    </clipPath>
+                </defs>
+                <image href="file:///app/uploads/artist/feelarsen/pdf/cover.jpg"
+                       width="210"
+                       height="260"
+                       clip-path="url(#clip-shape)"
+                       preserveAspectRatio="xMidYMid slice"/>
+            </svg>
+
+            <div class="filetitle">
+                <h1>Féelarsen</h1>
+                <h2>Dossier Médias</h2>
+            </div>
+
+            <div class="grid three">
+                <p>&nbsp;</p>
+
+                <div class="grid-item">
+                    <h3>Contact Booking</h3>
+                    <p>
+                        <strong>Bastard Sound System</strong>
+                        <br/>
+                        06.83.57.30.67
+                    </p>
+                </div>
+
+                <p>&nbsp;</p>
+            </div>
+        </section>
+
+        {% include 'back_office/artist/pdf/medias/_content.html.twig' %}
+
+        <!-- Saut de page -->
+        <div class="page-break"></div>
+
+        <!-- Back -->
+        {% include 'back_office/artist/pdf/_back.html.twig' %}
+    </body>
+</html>
